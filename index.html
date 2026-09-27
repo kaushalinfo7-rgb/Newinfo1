@@ -85,37 +85,66 @@ let gisInited = false;
 let autoSaveTimer = null;
 
 function gapiLoaded() { gapi.load('client', initializeGapiClient); }
+
 async function initializeGapiClient() {
     try {
         await gapi.client.init({ apiKey: API_KEY, discoveryDocs: [DISCOVERY_DOC] });
         gapiInited = true;
+        checkExistingAuth(); // NEW: Check for saved token on refresh
     } catch(e) { console.error("GAPI Init Error", e); }
 }
+
+function updateAuthUI() {
+    document.getElementById('gdriveAuthBtn').style.display = 'none';
+    document.getElementById('gdriveSaveBtn').style.display = 'inline-block';
+    document.getElementById('gdriveLoadBtn').style.display = 'inline-block';
+    document.getElementById('gdriveSignoutBtn').style.display = 'inline-block';
+    document.getElementById('gdriveStatus').textContent = 'Signed in. Starting auto-sync...';
+}
+
+function checkExistingAuth() {
+    const saved = sessionStorage.getItem('gapi_token');
+    if (saved) {
+        const data = JSON.parse(saved);
+        if (Date.now() < data.expires) {
+            gapi.client.setToken({ access_token: data.token });
+            updateAuthUI();
+        } else {
+            sessionStorage.removeItem('gapi_token');
+        }
+    }
+}
+
 function gisLoaded() {
     tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
         scope: SCOPES,
         callback: (resp) => {
             if (resp.error !== undefined) { throw (resp); }
-            document.getElementById('gdriveAuthBtn').style.display = 'none';
-            document.getElementById('gdriveSaveBtn').style.display = 'inline-block';
-            document.getElementById('gdriveLoadBtn').style.display = 'inline-block';
-            document.getElementById('gdriveSignoutBtn').style.display = 'inline-block';
-            document.getElementById('gdriveStatus').textContent = 'Signed in. Starting auto-sync...';
-            // AUTOMATICALLY LOAD FROM DRIVE ON SUCCESSFUL LOGIN
+            
+            // NEW: Store token in session storage to survive page refreshes
+            sessionStorage.setItem('gapi_token', JSON.stringify({
+                token: resp.access_token,
+                expires: Date.now() + (resp.expires_in * 1000)
+            }));
+            
+            updateAuthUI();
             loadFromDrive();
         },
     });
     gisInited = true;
 }
+
 function handleAuthClick() {
     if (!gapiInited || !gisInited) return alert('Google Scripts still loading, or API keys are missing. Check instructions.');
     tokenClient.requestAccessToken({prompt: 'consent'});
 }
+
 function handleSignoutClick() {
     const token = gapi.client.getToken();
     if (token !== null) google.accounts.oauth2.revoke(token.access_token);
     gapi.client.setToken('');
+    sessionStorage.removeItem('gapi_token'); // NEW: Clear saved token on signout
     document.getElementById('gdriveAuthBtn').style.display = 'inline-block';
     document.getElementById('gdriveSaveBtn').style.display = 'none';
     document.getElementById('gdriveLoadBtn').style.display = 'none';
@@ -123,11 +152,9 @@ function handleSignoutClick() {
     document.getElementById('gdriveStatus').textContent = 'Signed out. Auto-sync paused.';
 }
 
-// Background trigger for auto-saving
 function triggerAutoSave() {
     if (gapiInited && gapi.client.getToken() !== null) {
         clearTimeout(autoSaveTimer);
-        // Wait 2.5 seconds after the user finishes interacting before saving
         autoSaveTimer = setTimeout(() => {
             saveToDrive(true); 
         }, 2500);
@@ -140,6 +167,7 @@ async function getDriveFileId() {
     });
     return res.result.files && res.result.files.length > 0 ? res.result.files[0].id : null;
 }
+
 async function saveToDrive(silent = false) {
     try {
         if (!silent) document.getElementById('gdriveStatus').textContent = 'Saving to Drive...';
@@ -168,6 +196,7 @@ async function saveToDrive(silent = false) {
         document.getElementById('gdriveStatus').textContent = 'Error auto-saving. Will retry on next change.';
     }
 }
+
 async function loadFromDrive() {
     try {
         document.getElementById('gdriveStatus').textContent = 'Loading latest data from Drive...';
@@ -178,7 +207,7 @@ async function loadFromDrive() {
         const res = await gapi.client.drive.files.get({ fileId: fileId, alt: 'media' });
         if (res.result && typeof res.result === 'object') {
             st = normalize(res.result);
-            persistLocalOnly(); // Save locally without triggering an immediate Drive upload loop
+            persistLocalOnly(); 
             render(); renderTodo();
             document.getElementById('gdriveStatus').textContent = 'Data loaded successfully! Last synced at ' + new Date().toLocaleTimeString();
             toast('Loaded from Drive');
@@ -209,12 +238,10 @@ function loadState(){
     st=normalize(DEFAULT_STATE);
 }
 
-// Saves locally without pinging Google Drive (used during Auto-Load to prevent loops)
 function persistLocalOnly(){
     try{ localStorage.setItem("cgpscStudy",JSON.stringify(normalize(st))) }catch(e){}
 }
 
-// Main save function: Updates local storage AND triggers background Google Drive save
 function persist(){
     persistLocalOnly();
     triggerAutoSave();
@@ -226,7 +253,25 @@ const topics=()=>{let a=[];Object.entries(S).forEach(([p,ss])=>ss.forEach(([s,ts
 const key=x=>x.p+"|"+x.s+"|"+x.t; function pct(){let a=topics(),d=a.filter(x=>st.done[key(x)]).length;return [d,a.length,d/a.length*100]};
 function closeSide(){document.querySelector('.side').classList.remove('open');document.getElementById('sideBackdrop').classList.remove('open')}
 function toggleSide(){document.querySelector('.side').classList.toggle('open');document.getElementById('sideBackdrop').classList.toggle('open')}
-function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===id));document.getElementById('title').textContent={dashboard:'Dashboard',syllabus:'Syllabus & Progress',study:'Study Session',quiz:'Practice Quiz',questionbank:'Question Bank',todo:"Today's To-Do",revision:'Revision Queue',analytics:'Analytics',settings:'Settings & Backup'}[id];if(id==='revision')renderRev();if(id==='analytics')renderAnalytics();if(id==='study')renderLog();if(id==='questionbank')renderQuestionBank();if(id==='todo')renderTodo();closeSide();window.scrollTo({top:0,behavior:'smooth'});persist()}
+
+function go(id){
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===id));
+    document.getElementById('title').textContent={dashboard:'Dashboard',syllabus:'Syllabus & Progress',study:'Study Session',quiz:'Practice Quiz',questionbank:'Question Bank',todo:"Today's To-Do",revision:'Revision Queue',analytics:'Analytics',settings:'Settings & Backup'}[id];
+    if(id==='revision')renderRev();
+    if(id==='analytics')renderAnalytics();
+    if(id==='study')renderLog();
+    if(id==='questionbank')renderQuestionBank();
+    if(id==='todo')renderTodo();
+    closeSide();
+    window.scrollTo({top:0,behavior:'smooth'});
+    persist();
+    
+    // NEW: Save the active page so it survives a refresh
+    localStorage.setItem('activePage', id);
+}
+
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.p));
 
 function renderDash(){renderDashTodo();let [d,t,p]=pct();ring.style.setProperty('--pc',p+'%');document.getElementById('pct').textContent=Math.round(p)+'%';document.getElementById('topics').textContent=d+' / '+t;let m=st.sessions.reduce((a,x)=>a+x.min,0);hours.textContent=Math.floor(m/60)+'h '+m%60+'m';tests.textContent=st.tests.length;let q=st.tests.reduce((a,x)=>a+x.total,0),c=st.tests.reduce((a,x)=>a+x.score,0);qs.textContent=q;acc.textContent=q?Math.round(c/q*100)+'%':'0%';subprog.innerHTML='';Object.entries(S).forEach(([p,ss])=>ss.forEach(([s,ts])=>{let d=ts.filter(t=>st.done[p+'|'+s+'|'+t]).length,pc=Math.round(d/ts.length*100);subprog.innerHTML+=`<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;font-size:11px"><b>${s}</b><span class="muted">${pc}%</span></div><div class="progress" style="margin-top:5px"><i style="width:${pc}%"></i></div></div>`}));let day=new Date().toISOString().slice(0,10),dm=st.sessions.filter(x=>x.date===day).reduce((a,x)=>a+x.min,0);today.innerHTML=`<p class="muted">Study time today</p><h2>${Math.floor(dm/60)}h ${dm%60}m</h2><div class="progress"><i style="width:${Math.min(100,dm/240*100)}%"></i></div><button class="btn primary" style="margin-top:10px" onclick="go('study')">Start session</button>`}
@@ -259,6 +304,12 @@ document.getElementById('date').textContent=new Date().toLocaleDateString('en-IN
 
 loadState(); 
 fill();
+
+// NEW: Load the last active page on refresh instead of defaulting to Dashboard
+const lastPage = localStorage.getItem('activePage') || 'dashboard';
+go(lastPage);
+
+// Ensure the UI renders properly
 renderDash();
 renderSyllabus();
 renderLog();
