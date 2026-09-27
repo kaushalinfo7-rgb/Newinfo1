@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CGPSC Study Command Center</title>
+<!-- Google Drive API Scripts -->
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#182033;--muted:#697386;--line:#e4e8f0;--p:#315efb;--p2:#6948df;--g:#18a673;--r:#df5555;--shadow:0 10px 28px #1e2a4612}*{box-sizing:border-box}body{margin:0;font:14px system-ui,Arial;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.side{width:245px;position:fixed;inset:0 auto 0 0;background:#10172b;color:white;padding:18px 13px}.brand{padding:8px 10px 20px;border-bottom:1px solid #ffffff18}.brand b{font-size:18px}.brand small{display:block;color:#aeb7ca;margin-top:5px}.nav{padding-top:15px}.nav button{display:block;width:100%;border:0;background:none;color:#aeb7ca;text-align:left;padding:11px 12px;border-radius:10px;margin:3px 0}.nav button:hover,.nav button.active{background:#222c49;color:white}.main{margin-left:245px;width:calc(100% - 245px);padding:24px;max-width:1550px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.top h1{margin:0;font-size:24px}.top p{margin:4px 0 0;color:var(--muted);font-size:12px}.btn{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:9px}.primary{background:var(--p);border-color:var(--p);color:#fff}.danger{color:var(--r)}.page{display:none}.page.active{display:block}.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.card h3,.card h4{margin:0 0 7px}.muted{color:var(--muted);font-size:12px}.hero{background:linear-gradient(125deg,#18275c,#315efb,#6948df);color:#fff;border-radius:23px;padding:25px;display:grid;grid-template-columns:1.5fr .8fr;gap:20px;margin-bottom:15px}.hero h2{font-size:34px;line-height:1.05;margin:8px 0}.hero p{color:#e7ebff;line-height:1.55;font-size:13px}.hero .btn{background:#fff;color:#2949b9;border:0}.stat small{color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase}.stat b{display:block;font-size:27px;margin:6px 0}.progress{height:8px;background:#edf0f5;border-radius:20px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}.ring{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--p) var(--pc),#e9edf4 0);position:relative}.ring:after{content:"";position:absolute;width:68px;height:68px;border-radius:50%;background:white}.ring span{z-index:1;font-weight:800;color:#182033}.subject{border:1px solid var(--line);border-radius:13px;padding:14px;margin:10px 0}.topic{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #edf0f4;font-size:12px}.topic:last-child{border:0}.topic label{display:flex;gap:8px;align-items:center}.topic input{accent-color:var(--p)}.pill{font-size:10px;padding:4px 7px;border-radius:20px;background:#eef2ff;color:var(--p);font-weight:700}.modal{position:fixed;inset:0;background:#0b1020a8;display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modalbox{background:#fff;border-radius:18px;width:min(800px,100%);max-height:90vh;overflow:auto;padding:20px}.timer{font-size:46px;font-weight:800;text-align:center;margin:20px}.quizopt{padding:13px;border:1px solid var(--line);border-radius:10px;margin:8px 0}.quizopt.sel{border-color:var(--p);background:#eef2ff}.toast{position:fixed;right:20px;bottom:20px;background:#10172b;color:#fff;padding:11px 15px;border-radius:10px;display:none;z-index:100}textarea,select,input[type=text]{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text)}textarea{min-height:190px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:10px}.mobile{display:none}.side-backdrop{display:none}@media(max-width:950px){.g4{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}}@media(max-width:720px){.side{display:none;z-index:60;width:min(285px,85vw);box-shadow:10px 0 30px #0004}.side.open{display:block}.side-backdrop{position:fixed;inset:0;background:#0b102080;z-index:55}.side-backdrop.open{display:block}.main{margin:0;width:100%;padding:14px}.g4,.g3,.g2{grid-template-columns:1fr}.mobile{display:inline-block}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><b>📚 CGPSC Command Center</b><small>Offline personal study system</small></div>
+<nav class="nav">
+<button class="active" data-p="dashboard">🏠 Dashboard</button>
+<button data-p="syllabus">📚 Syllabus & Progress</button>
+<button data-p="study">⏱️ Study Session</button>
+<button data-p="quiz">📝 Practice Quiz</button>
+<button data-p="questionbank">➕ Question Bank</button>
+<button data-p="todo">☑️ Today's To-Do</button>
+<button data-p="revision">🔁 Revision Queue</button>
+<button data-p="analytics">📊 Analytics</button>
+<button data-p="settings">⚙️ Settings & Backup</button>
+</nav>
+</aside>
+<div class="side-backdrop" id="sideBackdrop" onclick="closeSide()"></div>
+<main class="main">
+<div class="top">
+<div><button class="btn mobile" id="menuBtn" onclick="toggleSide()" aria-label="Open menu">☰</button>
+<h1 id="title">Dashboard</h1><p id="date"></p></div>
+<div><button class="btn" onclick="quickStudy()">▶ Quick Study</button> <button class="btn primary" onclick="go('quiz')">📝 Practice</button></div>
+</div>
+
+<section id="dashboard" class="page active">
+<div class="hero"><div><small>CGPSC PREPARATION SYSTEM</small><h2>Hello Kaushal</h2><p>One local dashboard for syllabus progress, study time, practice, revision and performance tracking.</p><button class="btn" onclick="go('syllabus')">Open Syllabus</button></div>
+<div class="card" style="background:#ffffff1c;color:#fff;border-color:#ffffff30"><small style="color:#dce2ff">TOTAL SYLLABUS PROGRESS</small><div style="display:flex;align-items:center;gap:18px;margin-top:15px"><div class="ring" id="ring" style="--pc:0%"><span id="pct">0%</span></div><div><b id="topics">0 / 0</b><div style="color:#d7dcf7;font-size:11px">topics completed</div></div></div></div></div>
+<div class="grid g4"><div class="card stat"><small>Study time</small><b id="hours">0h 0m</b><span class="muted">logged sessions</span></div><div class="card stat"><small>Quiz attempts</small><b id="tests">0</b><span class="muted">completed</span></div><div class="card stat"><small>Questions</small><b id="qs">0</b><span class="muted">attempted</span></div><div class="card stat"><small>Accuracy</small><b id="acc">0%</b><span class="muted">overall</span></div></div>
+<div class="grid g2" style="margin-top:14px"><div class="card"><h3>📈 Subject progress</h3><div id="subprog"></div></div><div class="card"><h3>🎯 Today</h3><div id="today"></div></div></div>
+</section>
+
+<section id="syllabus" class="page"><div class="card"><h3>Syllabus & Progress</h3><p class="muted">Based on the supplied syllabus structure. Tick a topic after you have studied/revised it.</p><div class="progress" style="margin-top:12px"><i id="bar"></i></div><p id="bartext" class="muted"></p></div><div id="syllabuslist" class="grid g2" style="margin-top:14px"></div></section>
+
+<section id="study" class="page"><div class="grid g2"><div class="card"><h3>⏱️ Study Timer</h3><p class="muted">Select a subject, start, pause and save the session.</p><div class="timer" id="timer">00:00:00</div><select id="studySub"></select><div style="display:flex;justify-content:center;gap:7px;margin-top:12px"><button class="btn primary" id="timerBtn" onclick="toggleTimer()">Start</button><button class="btn" onclick="resetTimer()">Reset</button><button class="btn" onclick="saveSession()">Save</button></div></div><div class="card"><h3>🗓️ Study log</h3><div id="log"></div></div></div></section>
+
+<section id="quiz" class="page"><div class="card" id="quizStart"><h3>📝 Practice Quiz</h3><p class="muted">Starter questions are included. Results are stored automatically.</p><div class="grid g2" style="margin-top:12px"><select id="quizSub"></select><select id="quizN"><option>5</option><option>10</option></select></div><button class="btn primary" style="margin-top:12px" onclick="startQuiz()">Start Quiz</button></div><div class="card" id="quizRun" style="display:none"></div></section>
+
+<section id="questionbank" class="page"><div class="card"><h3>➕ Add Quiz Questions</h3><p class="muted">Add your own MCQs subject-wise. Questions are saved on this device and appear automatically in Practice Quiz.</p><div class="grid g2" style="margin-top:12px"><select id="customQSubject"></select><input id="customQQuestion" type="text" placeholder="Question"></div><div class="grid g2" style="margin-top:10px"><input id="customQA" type="text" placeholder="Option A"><input id="customQB" type="text" placeholder="Option B"><input id="customQC" type="text" placeholder="Option C"><input id="customQD" type="text" placeholder="Option D"></div><div class="grid g2" style="margin-top:10px"><select id="customQAnswer"><option value="0">Correct answer: A</option><option value="1">Correct answer: B</option><option value="2">Correct answer: C</option><option value="3">Correct answer: D</option></select><button class="btn primary" onclick="addCustomQuestion()">Add Question</button></div></div><div class="card" style="margin-top:14px"><h3>📥 Add Many Questions at Once</h3><p class="muted">Paste JSON using the format shown below, then click Import Questions.</p><textarea id="questionImport" style="min-height:220px" placeholder='[{"p":"Biology","q":"What is the basic unit of life?","o":["Cell","Tissue","Organ","Organ system"],"a":0}]'></textarea><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn primary" onclick="importQuestionsText()">Import Questions</button><button class="btn" onclick="loadQuestionExample()">Show Example</button></div></div><div class="card" style="margin-top:14px"><h3>Question Bank</h3><div id="customQuestionList"></div></div></section>
+
+<section id="todo" class="page"><div class="grid g2"><div class="card"><h3>Today's To-Do List</h3><p class="muted">Add the topics you want to study today. They stay saved until completed or deleted.</p><div class="grid g2"><div><label>Subject</label><select id="todoSub"></select></div><div><label>Topic</label><input id="todoTopic" type="text" placeholder="e.g. Photosynthesis"></div></div><div style="margin-top:12px"><label>Study date</label><input id="todoDate" type="date"></div><div style="margin-top:12px"><label>Priority</label><select id="todoPriority"><option>High</option><option selected>Medium</option><option>Low</option></select></div><button class="btn primary" style="margin-top:14px" onclick="addTodo()">＋ Add To-Do</button></div><div class="card"><h3>Plan another day</h3><p class="muted">Choose a date to view or prepare another day's study plan.</p><input id="todoViewDate" type="date" onchange="renderTodo()"><div id="todoSummary" style="margin-top:15px"></div></div></div><div class="card" style="margin-top:16px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><h3 id="todoHeading">Today's Topics</h3><p class="muted" id="todoCount"></p></div><button class="btn" onclick="setTodoToday()">Today</button></div><div id="todoList"></div></div></section>
+
+<section id="revision" class="page"><div class="card"><h3>🔁 Revision Queue</h3><p class="muted">Incomplete topics are shown first.</p><div id="rev"></div></div></section>
+<section id="analytics" class="page"><div class="grid g3"><div class="card stat"><small>Average accuracy</small><b id="avg">0%</b></div><div class="card stat"><small>Best score</small><b id="best">0%</b></div><div class="card stat"><small>Study sessions</small><b id="sessions">0</b></div></div><div class="card" style="margin-top:14px"><h3>Test history</h3><div id="history"></div></div></section>
+
+<section id="settings" class="page">
+<div class="card">
+    <h3>☁️ Google Drive Sync</h3>
+    <p class="muted">Sync your progress securely to your personal Google Drive (hidden AppData folder).</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn primary" id="gdriveAuthBtn" onclick="handleAuthClick()">Sign In with Google</button>
+        <button class="btn" id="gdriveSaveBtn" onclick="saveToDrive()" style="display:none">Save to Drive</button>
+        <button class="btn" id="gdriveLoadBtn" onclick="loadFromDrive()" style="display:none">Load from Drive</button>
+        <button class="btn danger" id="gdriveSignoutBtn" onclick="handleSignoutClick()" style="display:none">Sign Out</button>
+    </div>
+    <p id="gdriveStatus" class="muted" style="margin-top:10px;font-weight:bold"></p>
+</div>
+<div class="card" style="margin-top:14px"><h3>⚙️ Local Settings & Backup</h3><p class="muted">Export a manual backup file to your computer.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn" onclick="exportData()">⬇ Export Backup</button><button class="btn" onclick="document.getElementById('import').click()">⬆ Import Backup</button><button class="btn danger" onclick="resetAll()">Reset Local Progress</button></div><input id="import" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></section>
+</main></div><div class="toast" id="toast"></div>
+
+<script>
+// ==========================================
+// GOOGLE DRIVE SYNC CONFIGURATION
+// ==========================================
+const CLIENT_ID = '933983082254-1an3gt4c89usmbt9a9qbbhdhnol4rj5j.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDs97mJSrmtgJzraJEDnVbhkRhGrDKhgpY';
+const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+const SCOPES = 'https://www.googleapis.com/auth/drive.appdata';
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+function gapiLoaded() { gapi.load('client', initializeGapiClient); }
+async function initializeGapiClient() {
+    try {
+        await gapi.client.init({ apiKey: API_KEY, discoveryDocs: [DISCOVERY_DOC] });
+        gapiInited = true;
+    } catch(e) { console.error("GAPI Init Error", e); }
+}
+function gisLoaded() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: (resp) => {
+            if (resp.error !== undefined) { throw (resp); }
+            document.getElementById('gdriveAuthBtn').style.display = 'none';
+            document.getElementById('gdriveSaveBtn').style.display = 'inline-block';
+            document.getElementById('gdriveLoadBtn').style.display = 'inline-block';
+            document.getElementById('gdriveSignoutBtn').style.display = 'inline-block';
+            document.getElementById('gdriveStatus').textContent = 'Signed in. Ready to sync.';
+        },
+    });
+    gisInited = true;
+}
+function handleAuthClick() {
+    if (!gapiInited || !gisInited) return alert('Google Scripts still loading, or API keys are missing. Check instructions.');
+    tokenClient.requestAccessToken({prompt: 'consent'});
+}
+function handleSignoutClick() {
+    const token = gapi.client.getToken();
+    if (token !== null) google.accounts.oauth2.revoke(token.access_token);
+    gapi.client.setToken('');
+    document.getElementById('gdriveAuthBtn').style.display = 'inline-block';
+    document.getElementById('gdriveSaveBtn').style.display = 'none';
+    document.getElementById('gdriveLoadBtn').style.display = 'none';
+    document.getElementById('gdriveSignoutBtn').style.display = 'none';
+    document.getElementById('gdriveStatus').textContent = 'Signed out.';
+}
+async function getDriveFileId() {
+    const res = await gapi.client.drive.files.list({
+        spaces: 'appDataFolder', q: "name='cgpscStudyProgress.json'", fields: 'files(id, name)'
+    });
+    return res.result.files && res.result.files.length > 0 ? res.result.files[0].id : null;
+}
+async function saveToDrive() {
+    try {
+        document.getElementById('gdriveStatus').textContent = 'Saving to Drive...';
+        const fileContent = JSON.stringify(st);
+        const metadata = { name: 'cgpscStudyProgress.json', parents: ['appDataFolder'] };
+        const form = new FormData();
+        form.append('metadata', new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
+        form.append('file', new Blob([fileContent], {type: 'application/json'}));
+
+        let fileId = await getDriveFileId();
+        let url = fileId ? `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=multipart` : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+        let method = fileId ? 'PATCH' : 'POST';
+
+        const res = await fetch(url, {
+            method: method,
+            headers: { Authorization: 'Bearer ' + gapi.client.getToken().access_token },
+            body: form
+        });
+        if(res.ok) {
+            document.getElementById('gdriveStatus').textContent = 'Successfully saved to Google Drive!';
+            toast('Synced to Drive');
+        } else throw new Error('Upload failed');
+    } catch(e) {
+        document.getElementById('gdriveStatus').textContent = 'Error saving to Drive.';
+    }
+}
+async function loadFromDrive() {
+    try {
+        document.getElementById('gdriveStatus').textContent = 'Loading from Drive...';
+        const fileId = await getDriveFileId();
+        if (!fileId) return document.getElementById('gdriveStatus').textContent = 'No saved data found on Drive.';
+        const res = await gapi.client.drive.files.get({ fileId: fileId, alt: 'media' });
+        if (res.result && typeof res.result === 'object') {
+            st = normalize(res.result);
+            persist(); render(); renderTodo();
+            document.getElementById('gdriveStatus').textContent = 'Data successfully loaded from Google Drive!';
+            toast('Loaded from Drive');
+        }
+    } catch(e) {
+        document.getElementById('gdriveStatus').textContent = 'Error loading from Drive.';
+    }
+}
+
+// ==========================================
+// APP LOGIC & LOCAL STORAGE
+// ==========================================
+const S={"Paper 01":[["General Studies",["History of Chhattisgarh","Geography of Chhattisgarh","History, Music, Art & Culture","Tribes & Festivals","Economy, Forest & Agriculture","Administration & Panchayati Raj","Industries, Energy, Water & Minerals","Chhattisgarh Current Affairs"]],["Language",["General Hindi","General English","Chhattisgarhi Language"]],["Intelligence / Analytical & Logical Ability",["Communication Skills","Logical Reasoning","Decision Making","General Mental Ability","Basic Statistical Works"]]],"Paper 02":[["Chemistry",["Rate of Reaction & Equilibrium","Acids, Bases & pH","Water, Washing Soda, Baking Soda, Bleaching Powder & POP","Lime, Cement, Glass & Steel","Metals, Ores, Metallurgy, Corrosion & Alloys","Nonmetals","Hydrogen, Oxygen & Nitrogen","Alcohol & Acetic Acid","Polythene, PVC, Teflon, Soap & Detergents"]],["Physics",["Energy Sources & CREDA","Light & Optics","Electricity & Effects","Magnetism, Motor & Generator","X-rays & Terrestrial Magnetism"]],["Biology",["Animal Nutrition","Human Digestion","Photosynthesis","Respiration & RQ","Transport, Blood & Heart","Excretion","Control & Coordination","Reproduction","Heredity & Evolution"]],["Technology",["Science & Technology Policy","Space Programme, INSAT & IRS","Rural IT & Computers","Energy Resources","Current Science & Technology","Agricultural Science, Fertilizers & Pest/Disease Control"]],["Environment",["Biodiversity","Environmental Pollution & Waste","Disaster Management","Population & Health"]],["Agriculture",["Ecology & Natural Resources","Crop Distribution & Agro-climatic Patterns","Cropping Systems","Crop Production Packages","Plantations & Weeds","Soils, Fertility & Problem Soils","Soil & Water Conservation","Irrigation & Watershed","Farm Management & Economics","Marketing & Cooperatives","Genetics & Plant Breeding","Seed Technology","Plant Physiology","Horticulture","Plant Protection","Food Production & Policy"]],["Forestry",["Silviculture","Agroforestry","Social Forestry & JFM","Forest Soil, Conservation & Watershed","Environment & Biodiversity","Tree Improvement & Technology","Forest Management & Working Plan","Mensuration & Remote Sensing","Survey & Forest Engineering","Forest Ecology & Ethnobotany","Forest Resources Utilization","Forest Protection & Wildlife","Forest Economics & Legislation"]]]};
+const Q=[{p:"General Studies",q:"Which is part of Chhattisgarh-focused General Studies?",o:["History of Chhattisgarh","Oceanography only","European history only","World literature only"],a:0},{p:"Chhattisgarhi Language",q:"Which language is explicitly included?",o:["Chhattisgarhi","French","German","Spanish"],a:0},{p:"Chemistry",q:"Which belongs to Chemistry?",o:["Acids, bases & pH","Political theory","Astronomy","Accounting"],a:0},{p:"Biology",q:"Which belongs to Biology?",o:["Human digestion","Public finance","Banking","Cartography"],a:0},{p:"Forestry",q:"Which is a Forestry area?",o:["Forest mensuration","Marine navigation","Macroeconomics","Film studies"],a:0},{p:"Environment",q:"Which is an Environment area?",o:["Biodiversity","Corporate law","Literary criticism","Banking"],a:0},{p:"Agriculture",q:"Which is included in Agriculture?",o:["Plant breeding","Film studies","International law","Accounting"],a:0},{p:"Physics",q:"Which is included in Physics?",o:["Light & optics","Ancient poetry","Tax law","Sociology"],a:0},{p:"Technology",q:"Which is included in Technology?",o:["Space programme, INSAT & IRS","Medieval architecture","Commercial law","Music theory"],a:0},{p:"Logical Reasoning",q:"Which is included under Intelligence / Analytical & Logical Ability?",o:["Logical reasoning","Marine biology","Forest engineering","Metallurgy"],a:0}];
+const DEFAULT_STATE={done:{},sessions:[],tests:[],questions:[],todos:[]};
+let st={done:{},sessions:[],tests:[],questions:[],todos:[]},timer=0,ti=null,quiz={list:[],i:0,score:0,sel:null};
+
+function normalize(x){return {done:{...(x&&x.done||{})},sessions:Array.isArray(x&&x.sessions)?x.sessions:[],tests:Array.isArray(x&&x.tests)?x.tests:[],questions:Array.isArray(x&&x.questions)?x.questions:[],todos:Array.isArray(x&&x.todos)?x.todos:[]}}
+
+// FIX: Synchronous load to prevent race conditions that wipe data
+function loadState(){
+    try {
+        const x=JSON.parse(localStorage.getItem("cgpscStudy"));
+        if(x){
+            st=normalize(x);
+            return;
+        }
+    } catch(e){}
+    st=normalize(DEFAULT_STATE);
+}
+
+function persist(){
+    try{ localStorage.setItem("cgpscStudy",JSON.stringify(normalize(st))) }catch(e){}
+}
+function save(){persist();render()}
+function render(){renderDash();renderSyllabus();renderLog();if(document.getElementById("revision").classList.contains("active"))renderRev();if(document.getElementById("analytics").classList.contains("active"))renderAnalytics();if(document.getElementById("questionbank").classList.contains("active"))renderQuestionBank()}
+const topics=()=>{let a=[];Object.entries(S).forEach(([p,ss])=>ss.forEach(([s,ts])=>ts.forEach(t=>a.push({p,s,t}))));return a};
+const key=x=>x.p+"|"+x.s+"|"+x.t; function pct(){let a=topics(),d=a.filter(x=>st.done[key(x)]).length;return [d,a.length,d/a.length*100]};
+function closeSide(){document.querySelector('.side').classList.remove('open');document.getElementById('sideBackdrop').classList.remove('open')}
+function toggleSide(){document.querySelector('.side').classList.toggle('open');document.getElementById('sideBackdrop').classList.toggle('open')}
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===id));document.getElementById('title').textContent={dashboard:'Dashboard',syllabus:'Syllabus & Progress',study:'Study Session',quiz:'Practice Quiz',questionbank:'Question Bank',todo:"Today's To-Do",revision:'Revision Queue',analytics:'Analytics',settings:'Settings & Backup'}[id];if(id==='revision')renderRev();if(id==='analytics')renderAnalytics();if(id==='study')renderLog();if(id==='questionbank')renderQuestionBank();if(id==='todo')renderTodo();closeSide();window.scrollTo({top:0,behavior:'smooth'});persist()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.p));
+
+function renderDash(){renderDashTodo();let [d,t,p]=pct();ring.style.setProperty('--pc',p+'%');document.getElementById('pct').textContent=Math.round(p)+'%';document.getElementById('topics').textContent=d+' / '+t;let m=st.sessions.reduce((a,x)=>a+x.min,0);hours.textContent=Math.floor(m/60)+'h '+m%60+'m';tests.textContent=st.tests.length;let q=st.tests.reduce((a,x)=>a+x.total,0),c=st.tests.reduce((a,x)=>a+x.score,0);qs.textContent=q;acc.textContent=q?Math.round(c/q*100)+'%':'0%';subprog.innerHTML='';Object.entries(S).forEach(([p,ss])=>ss.forEach(([s,ts])=>{let d=ts.filter(t=>st.done[p+'|'+s+'|'+t]).length,pc=Math.round(d/ts.length*100);subprog.innerHTML+=`<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;font-size:11px"><b>${s}</b><span class="muted">${pc}%</span></div><div class="progress" style="margin-top:5px"><i style="width:${pc}%"></i></div></div>`}));let day=new Date().toISOString().slice(0,10),dm=st.sessions.filter(x=>x.date===day).reduce((a,x)=>a+x.min,0);today.innerHTML=`<p class="muted">Study time today</p><h2>${Math.floor(dm/60)}h ${dm%60}m</h2><div class="progress"><i style="width:${Math.min(100,dm/240*100)}%"></i></div><button class="btn primary" style="margin-top:10px" onclick="go('study')">Start session</button>`}
+function renderSyllabus(){let box=document.getElementById('syllabuslist');box.innerHTML='';Object.entries(S).forEach(([p,ss])=>{let c=document.createElement('div');c.className='card';c.innerHTML='<h3>'+p+'</h3>';ss.forEach(([s,ts])=>{let d=document.createElement('div');d.className='subject';d.innerHTML='<h4>'+s+'</h4>';ts.forEach(t=>{let k=p+'|'+s+'|'+t,row=document.createElement('div');row.className='topic';row.innerHTML=`<label><input type="checkbox" ${st.done[k]?'checked':''}> ${t}</label><span class="pill">${st.done[k]?'Done':'Pending'}</span>`;row.querySelector('input').onchange=e=>{st.done[k]=e.target.checked;save();toast(e.target.checked?'Topic completed':'Topic reopened')};d.appendChild(row)});c.appendChild(d)});box.appendChild(c)});let [d,t,p]=pct();bar.style.width=p+'%';bartext.textContent=d+' of '+t+' topics completed • '+Math.round(p)+'% overall'}
+function fill(){let subs=[...new Set(topics().map(x=>x.s))];['studySub','quizSub','customQSubject','todoSub'].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=subs.map(x=>`<option>${x}</option>`).join('')})}
+function renderLog(){log.innerHTML=st.sessions.length?st.sessions.slice().reverse().slice(0,15).map(x=>`<div class="topic"><span><b>${x.s}</b><br><small class="muted">${x.date}</small></span><span class="pill">${x.min} min</span></div>`).join(''):'<div class="muted" style="padding:20px">No sessions yet.</div>'}
+function draw(){let h=Math.floor(timer/3600),m=Math.floor(timer%3600/60),s=timer%60;document.getElementById('timer').textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':')};function toggleTimer(){if(ti){clearInterval(ti);ti=null;timerBtn.textContent='Resume'}else{ti=setInterval(()=>{timer++;draw()},1000);timerBtn.textContent='Pause'}}function resetTimer(){clearInterval(ti);ti=null;timer=0;draw();timerBtn.textContent='Start'}function saveSession(){let m=Math.floor(timer/60);if(!m)return toast('Study at least 1 minute first');st.sessions.push({date:new Date().toISOString().slice(0,10),s:studySub.value,min:m});resetTimer();save();toast('Study session saved')}
+function allQuestions(){return Q.concat(st.questions||[])}
+function startQuiz(){let s=quizSub.value,n=+quizN.value,p=allQuestions().filter(x=>x.p===s);if(p.length<n)p=allQuestions();p=p.sort(()=>Math.random()-.5).slice(0,n);quiz={list:p,i:0,score:0,sel:null};quizStart.style.display='none';quizRun.style.display='block';question()};function question(){let q=quiz.list[quiz.i];quizRun.innerHTML=`<span class="pill">Question ${quiz.i+1}/${quiz.list.length} • ${q.p}</span><h3 style="line-height:1.5;margin-top:15px">${q.q}</h3><div id="opts"></div><button class="btn primary" id="next" disabled>${quiz.i===quiz.list.length-1?'Finish':'Next'}</button>`;q.o.forEach((o,i)=>{let d=document.createElement('div');d.className='quizopt';d.textContent=String.fromCharCode(65+i)+'. '+o;d.onclick=()=>{quiz.sel=i;document.querySelectorAll('.quizopt').forEach(x=>x.classList.remove('sel'));d.classList.add('sel');next.disabled=false};opts.appendChild(d)});next.onclick=nextQ};function nextQ(){if(quiz.sel===quiz.list[quiz.i].a)quiz.score++;quiz.i++;if(quiz.i>=quiz.list.length)return finish();quiz.sel=null;question()};function finish(){let total=quiz.list.length,score=quiz.score;st.tests.push({date:new Date().toISOString().slice(0,10),score,total,pc:Math.round(score/total*100)});save();quizRun.innerHTML=`<div style="text-align:center;padding:30px"><div style="font-size:50px">🎉</div><h2>${score}/${total}</h2><p>Accuracy: ${Math.round(score/total*100)}%</p><button class="btn primary" onclick="quizStart.style.display='block';quizRun.style.display='none'">New Quiz</button></div>`}
+function validQuestion(x){return x&&typeof x.p==='string'&&typeof x.q==='string'&&Array.isArray(x.o)&&x.o.length===4&&x.o.every(v=>typeof v==='string'&&v.trim())&&Number.isInteger(x.a)&&x.a>=0&&x.a<4}
+function addCustomQuestion(){let x={p:customQSubject.value,q:customQQuestion.value.trim(),o:[customQA.value.trim(),customQB.value.trim(),customQC.value.trim(),customQD.value.trim()],a:+customQAnswer.value};if(!validQuestion(x))return toast('Fill the question and all 4 options');st.questions.push(x);persist();renderQuestionBank();customQQuestion.value='';customQA.value='';customQB.value='';customQC.value='';customQD.value='';toast('Question added')}
+function importQuestionsText(){try{let x=JSON.parse(questionImport.value);if(!Array.isArray(x)||!x.length||!x.every(validQuestion))throw 1;st.questions.push(...x);persist();renderQuestionBank();questionImport.value='';toast(x.length+' questions imported')}catch(e){alert('Invalid format. Use the example shown below.')}}
+function loadQuestionExample(){questionImport.value=JSON.stringify([{p:'Biology',q:'What is the basic unit of life?',o:['Cell','Tissue','Organ','Organ system'],a:0},{p:'Forestry',q:'Which branch measures trees and forest stands?',o:['Forest mensuration','Silviculture','Entomology','Taxonomy'],a:0}],null,2)}
+function renderQuestionBank(){let box=document.getElementById('customQuestionList');if(!box)return;box.innerHTML=st.questions.length?st.questions.map((x,i)=>`<div class="topic"><span><b>${i+1}. ${x.q}</b><br><small class="muted">${x.p} • Answer: ${String.fromCharCode(65+x.a)}) ${x.o[x.a]}</small></span><button class="btn danger" onclick="deleteCustomQuestion(${i})">Delete</button></div>`).join(''):'<div class="muted" style="padding:20px">No custom questions yet.</div>'}
+function deleteCustomQuestion(i){if(confirm('Delete this question?')){st.questions.splice(i,1);persist();renderQuestionBank();toast('Question deleted')}}
+function localDate(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function todoDateLabel(d){if(d===localDate())return 'Today';return new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}
+function addTodo(){const date=todoDate.value||localDate(),topic=todoTopic.value.trim(),subject=todoSub.value||'General';if(!topic)return toast('Enter a topic first');st.todos=st.todos||[];st.todos.push({id:Date.now()+Math.random(),date,subject,topic,priority:todoPriority.value,done:false});persist();todoTopic.value='';todoViewDate.value=date;renderTodo();renderDash();toast('Topic added to To-Do')}
+function toggleTodo(id){const x=(st.todos||[]).find(x=>String(x.id)===String(id));if(!x)return;x.done=!x.done;persist();renderTodo();renderDash()}
+function deleteTodo(id){st.todos=(st.todos||[]).filter(x=>String(x.id)!==String(id));persist();renderTodo();renderDash();toast('To-Do removed')}
+function setTodoToday(){const d=localDate();todoViewDate.value=d;todoDate.value=d;renderTodo()}
+function renderTodo(){const d=todoViewDate.value||localDate();todoViewDate.value=d;todoDate.value=todoDate.value||localDate();const items=(st.todos||[]).filter(x=>x.date===d);todoHeading.textContent=(d===localDate()?'Today':todoDateLabel(d))+"'s Topics";todoCount.textContent=items.length?items.filter(x=>x.done).length+' of '+items.length+' completed':'No topics planned for this day.';todoList.innerHTML=items.length?items.map(x=>`<div class="topic" style="${x.done?'opacity:.65':''}"><span style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" ${x.done?'checked':''} onchange="toggleTodo(${JSON.stringify(x.id)})" style="margin-top:4px"><span><b style="${x.done?'text-decoration:line-through':''}">${escapeHtml(x.topic)}</b><br><small class="muted">${escapeHtml(x.subject)} • ${escapeHtml(x.priority)} priority</small></span></span><button class="btn" onclick="deleteTodo(${JSON.stringify(x.id)})">Delete</button></div>`).join(''):'<div class="muted" style="padding:20px">No study topics planned. Add one above.</div>';todoSummary.innerHTML=items.length?`<b>${items.length}</b> planned<br><span class="muted">${items.filter(x=>x.done).length} completed • ${items.filter(x=>!x.done).length} remaining</span>`:'<span class="muted">Nothing scheduled.</span>'}
+function renderDashTodo(){const items=(st.todos||[]).filter(x=>x.date===localDate());document.getElementById('today').innerHTML=items.length?items.map(x=>`<div class="topic" style="${x.done?'opacity:.6':''}"><span><b style="${x.done?'text-decoration:line-through':''}">${escapeHtml(x.topic)}</b><br><small class="muted">${escapeHtml(x.subject)} • ${escapeHtml(x.priority)}</small></span><input type="checkbox" ${x.done?'checked':''} onchange="toggleTodo(${JSON.stringify(x.id)})"></div>`).join(''):'<div class="muted" style="padding:10px 0">No topics planned for today.</div>'}
+function escapeHtml(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function renderRev(){let a=topics().filter(x=>!st.done[key(x)]).slice(0,40);rev.innerHTML=a.length?a.map(x=>`<div class="topic"><span><b>${x.t}</b><br><small class="muted">${x.p} • ${x.s}</small></span><button class="btn" onclick="doneTopic(${JSON.stringify(x.p)},${JSON.stringify(x.s)},${JSON.stringify(x.t)})">Mark done</button></div>`).join(''):'<div style="padding:25px;text-align:center">🎉 All listed topics completed.</div>'}function doneTopic(p,s,t){st.done[p+'|'+s+'|'+t]=true;save();renderRev();toast('Topic completed')}
+function renderAnalytics(){let q=st.tests.reduce((a,x)=>a+x.total,0),c=st.tests.reduce((a,x)=>a+x.score,0);avg.textContent=q?Math.round(c/q*100)+'%':'0%';best.textContent=st.tests.length?Math.max(...st.tests.map(x=>x.pc))+'%':'0%';sessions.textContent=st.sessions.length;history.innerHTML=st.tests.length?'<table><tr><th>Date</th><th>Score</th><th>Accuracy</th></tr>'+st.tests.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${x.score}/${x.total}</td><td>${x.pc}%</td></tr>`).join('')+'</table>':'<div class="muted" style="padding:20px">No tests completed.</div>'}
+function exportData(){let b=new Blob([JSON.stringify(st,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='cgpsc-study-backup.json';a.click()};function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.done||!x.sessions||!x.tests||!Array.isArray(x.questions||[]))throw 1;st=x;persist();render();toast('Backup imported')}catch(_){alert('Invalid backup file')}};r.readAsText(f)}function resetAll(){if(confirm('Delete ALL local progress, tests, sessions and quiz history?')){localStorage.removeItem('cgpscStudy');location.reload()}}function quickStudy(){go('study');if(!ti)toggleTimer()};function toast(t){let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1700)}
+
+document.getElementById('date').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+// FIX: Initialize synchronously in explicit order
+loadState(); 
+fill();
+renderDash();
+renderSyllabus();
+renderLog();
+renderQuestionBank();
+renderTodo();
+draw();
+
+window.addEventListener('pagehide',persist);
+window.addEventListener('beforeunload',persist);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persist()});
+</script>
+</body>
+</html>
