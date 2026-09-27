@@ -57,12 +57,12 @@
 
 <section id="settings" class="page">
 <div class="card">
-    <h3>☁️ Google Drive Sync</h3>
-    <p class="muted">Sync your progress securely to your personal Google Drive (hidden AppData folder).</p>
+    <h3>☁️ Google Drive Sync (Auto-Sync Enabled)</h3>
+    <p class="muted">Once signed in, your progress automatically syncs to your Google Drive in the background.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
         <button class="btn primary" id="gdriveAuthBtn" onclick="handleAuthClick()">Sign In with Google</button>
-        <button class="btn" id="gdriveSaveBtn" onclick="saveToDrive()" style="display:none">Save to Drive</button>
-        <button class="btn" id="gdriveLoadBtn" onclick="loadFromDrive()" style="display:none">Load from Drive</button>
+        <button class="btn" id="gdriveSaveBtn" onclick="saveToDrive(false)" style="display:none">Force Save to Drive</button>
+        <button class="btn" id="gdriveLoadBtn" onclick="loadFromDrive()" style="display:none">Force Load from Drive</button>
         <button class="btn danger" id="gdriveSignoutBtn" onclick="handleSignoutClick()" style="display:none">Sign Out</button>
     </div>
     <p id="gdriveStatus" class="muted" style="margin-top:10px;font-weight:bold"></p>
@@ -82,6 +82,7 @@ const SCOPES = 'https://www.googleapis.com/auth/drive.appdata';
 let tokenClient;
 let gapiInited = false;
 let gisInited = false;
+let autoSaveTimer = null;
 
 function gapiLoaded() { gapi.load('client', initializeGapiClient); }
 async function initializeGapiClient() {
@@ -100,7 +101,9 @@ function gisLoaded() {
             document.getElementById('gdriveSaveBtn').style.display = 'inline-block';
             document.getElementById('gdriveLoadBtn').style.display = 'inline-block';
             document.getElementById('gdriveSignoutBtn').style.display = 'inline-block';
-            document.getElementById('gdriveStatus').textContent = 'Signed in. Ready to sync.';
+            document.getElementById('gdriveStatus').textContent = 'Signed in. Starting auto-sync...';
+            // AUTOMATICALLY LOAD FROM DRIVE ON SUCCESSFUL LOGIN
+            loadFromDrive();
         },
     });
     gisInited = true;
@@ -117,17 +120,31 @@ function handleSignoutClick() {
     document.getElementById('gdriveSaveBtn').style.display = 'none';
     document.getElementById('gdriveLoadBtn').style.display = 'none';
     document.getElementById('gdriveSignoutBtn').style.display = 'none';
-    document.getElementById('gdriveStatus').textContent = 'Signed out.';
+    document.getElementById('gdriveStatus').textContent = 'Signed out. Auto-sync paused.';
 }
+
+// Background trigger for auto-saving
+function triggerAutoSave() {
+    if (gapiInited && gapi.client.getToken() !== null) {
+        clearTimeout(autoSaveTimer);
+        // Wait 2.5 seconds after the user finishes interacting before saving
+        autoSaveTimer = setTimeout(() => {
+            saveToDrive(true); 
+        }, 2500);
+    }
+}
+
 async function getDriveFileId() {
     const res = await gapi.client.drive.files.list({
         spaces: 'appDataFolder', q: "name='cgpscStudyProgress.json'", fields: 'files(id, name)'
     });
     return res.result.files && res.result.files.length > 0 ? res.result.files[0].id : null;
 }
-async function saveToDrive() {
+async function saveToDrive(silent = false) {
     try {
-        document.getElementById('gdriveStatus').textContent = 'Saving to Drive...';
+        if (!silent) document.getElementById('gdriveStatus').textContent = 'Saving to Drive...';
+        else document.getElementById('gdriveStatus').textContent = 'Auto-saving in background...';
+        
         const fileContent = JSON.stringify(st);
         const metadata = { name: 'cgpscStudyProgress.json', parents: ['appDataFolder'] };
         const form = new FormData();
@@ -144,23 +161,26 @@ async function saveToDrive() {
             body: form
         });
         if(res.ok) {
-            document.getElementById('gdriveStatus').textContent = 'Successfully saved to Google Drive!';
-            toast('Synced to Drive');
+            document.getElementById('gdriveStatus').textContent = 'Last synced to Drive at ' + new Date().toLocaleTimeString();
+            if (!silent) toast('Synced to Drive');
         } else throw new Error('Upload failed');
     } catch(e) {
-        document.getElementById('gdriveStatus').textContent = 'Error saving to Drive.';
+        document.getElementById('gdriveStatus').textContent = 'Error auto-saving. Will retry on next change.';
     }
 }
 async function loadFromDrive() {
     try {
-        document.getElementById('gdriveStatus').textContent = 'Loading from Drive...';
+        document.getElementById('gdriveStatus').textContent = 'Loading latest data from Drive...';
         const fileId = await getDriveFileId();
-        if (!fileId) return document.getElementById('gdriveStatus').textContent = 'No saved data found on Drive.';
+        if (!fileId) {
+            return document.getElementById('gdriveStatus').textContent = 'No previous cloud backup found. Ready to auto-sync new data.';
+        }
         const res = await gapi.client.drive.files.get({ fileId: fileId, alt: 'media' });
         if (res.result && typeof res.result === 'object') {
             st = normalize(res.result);
-            persist(); render(); renderTodo();
-            document.getElementById('gdriveStatus').textContent = 'Data successfully loaded from Google Drive!';
+            persistLocalOnly(); // Save locally without triggering an immediate Drive upload loop
+            render(); renderTodo();
+            document.getElementById('gdriveStatus').textContent = 'Data loaded successfully! Last synced at ' + new Date().toLocaleTimeString();
             toast('Loaded from Drive');
         }
     } catch(e) {
@@ -178,7 +198,6 @@ let st={done:{},sessions:[],tests:[],questions:[],todos:[]},timer=0,ti=null,quiz
 
 function normalize(x){return {done:{...(x&&x.done||{})},sessions:Array.isArray(x&&x.sessions)?x.sessions:[],tests:Array.isArray(x&&x.tests)?x.tests:[],questions:Array.isArray(x&&x.questions)?x.questions:[],todos:Array.isArray(x&&x.todos)?x.todos:[]}}
 
-// FIX: Synchronous load to prevent race conditions that wipe data
 function loadState(){
     try {
         const x=JSON.parse(localStorage.getItem("cgpscStudy"));
@@ -190,9 +209,17 @@ function loadState(){
     st=normalize(DEFAULT_STATE);
 }
 
-function persist(){
+// Saves locally without pinging Google Drive (used during Auto-Load to prevent loops)
+function persistLocalOnly(){
     try{ localStorage.setItem("cgpscStudy",JSON.stringify(normalize(st))) }catch(e){}
 }
+
+// Main save function: Updates local storage AND triggers background Google Drive save
+function persist(){
+    persistLocalOnly();
+    triggerAutoSave();
+}
+
 function save(){persist();render()}
 function render(){renderDash();renderSyllabus();renderLog();if(document.getElementById("revision").classList.contains("active"))renderRev();if(document.getElementById("analytics").classList.contains("active"))renderAnalytics();if(document.getElementById("questionbank").classList.contains("active"))renderQuestionBank()}
 const topics=()=>{let a=[];Object.entries(S).forEach(([p,ss])=>ss.forEach(([s,ts])=>ts.forEach(t=>a.push({p,s,t}))));return a};
@@ -230,7 +257,6 @@ function exportData(){let b=new Blob([JSON.stringify(st,null,2)],{type:'applicat
 
 document.getElementById('date').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
-// FIX: Initialize synchronously in explicit order
 loadState(); 
 fill();
 renderDash();
@@ -240,8 +266,8 @@ renderQuestionBank();
 renderTodo();
 draw();
 
-window.addEventListener('pagehide',persist);
-window.addEventListener('beforeunload',persist);
+window.addEventListener('pagehide', persist);
+window.addEventListener('beforeunload', persist);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persist()});
 </script>
 </body>
