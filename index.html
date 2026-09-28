@@ -1080,6 +1080,107 @@ html,body{
 @media (min-width:1051px){
   #start .tracker-panel{box-sizing:border-box;max-height:70vh;overflow:auto}
 }
+/* ---------- FULL PROGRESS DASHBOARD ---------- */
+#progressScreen{background:var(--bg);overflow:auto}
+.progress-dashboard{width:min(1500px,calc(100% - 56px));margin:0 auto;padding:34px 0 64px}
+.progress-dashboard-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:24px}
+.progress-kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--primary)}
+.progress-dashboard-header h1{margin:4px 0 4px;font-size:clamp(30px,4vw,48px);letter-spacing:-.03em;color:var(--primary-dark)}
+.progress-dashboard-header p{margin:0;color:var(--muted);max-width:700px;font-size:14px}
+.progress-header-actions{display:flex;gap:10px;flex-shrink:0}
+.progress-hero{display:grid;grid-template-columns:1fr 180px;gap:28px;padding:30px 34px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:22px;color:#fff;box-shadow:0 14px 35px rgba(23,62,66,.18);margin-bottom:18px}
+.progress-hero-label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;opacity:.72;font-weight:800}
+.progress-hero-number{font-size:62px;line-height:1;font-weight:900;margin-top:8px}
+.progress-hero-caption{font-size:14px;opacity:.78;margin:5px 0 22px}
+.progress-hero-bar{height:9px;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden;max-width:850px}
+.progress-hero-bar span{display:block;height:100%;width:0;background:var(--gold);border-radius:99px;transition:width .35s ease}
+.progress-hero-foot{display:flex;gap:24px;margin-top:11px;font-size:12px;opacity:.8}
+.progress-hero-ring{display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid rgba(255,255,255,.15)}
+.progress-ring{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) 0deg,rgba(255,255,255,.14) 0deg);position:relative}
+.progress-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--primary-dark)}
+.progress-ring span{position:relative;z-index:1;font-size:24px;font-weight:900}
+.progress-hero-ring small{margin-top:9px;opacity:.72}
+.progress-stat-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.progress-stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:17px;display:flex;gap:13px;align-items:flex-start;box-shadow:var(--shadow)}
+.progress-stat-card .ps-icon{width:34px;height:34px;border-radius:10px;background:var(--soft);display:grid;place-items:center;color:var(--primary);font-weight:900;flex:0 0 auto}
+.progress-stat-card .ps-icon.wrong{color:var(--danger)}
+.progress-stat-card small{display:block;color:var(--muted);font-size:11px;font-weight:700}
+.progress-stat-card b{display:block;font-size:24px;line-height:1.15;margin:3px 0}
+.progress-stat-card em{display:block;color:var(--muted);font-size:10px;font-style:normal}
+.progress-section-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+.progress-section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.progress-section-head h2{font-size:18px;margin:0;color:var(--primary-dark)}
+.progress-section-head p{margin:4px 0 0;color:var(--muted);font-size:11px}
+.progress-section-head.compact{margin-bottom:16px}
+.progress-period-tabs{display:flex;background:var(--soft);padding:4px;border-radius:10px;gap:3px}
+.progress-period{border:0;background:transparent;border-radius:8px;padding:7px 11px;color:var(--muted);font-size:11px;font-weight:800;cursor:pointer}
+.progress-period.active{background:var(--surface);color:var(--primary-dark);box-shadow:0 1px 5px rgba(23,42,45,.08)}
+.progress-chart-meta{display:flex;justify-content:space-between;margin:22px 0 5px;font-size:11px;color:var(--muted)}
+.progress-chart-meta b{color:var(--text)}
+.progress-big-chart{height:290px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--border);padding:0 4px;overflow-x:auto}
+.progress-big-column{height:100%;min-width:38px;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;position:relative}
+.progress-big-bars{height:225px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:3px}
+.progress-big-bar{width:9px;min-height:2px;border-radius:5px 5px 2px 2px}
+.progress-big-bar.solved{background:var(--progress)}
+.progress-big-bar.correct{background:var(--success)}
+.progress-big-bar.wrong{background:var(--danger)}
+.progress-big-value{font-size:9px;color:var(--muted);height:12px}
+.progress-big-accuracy{font-size:9px;font-weight:800;color:var(--primary)}
+.progress-big-label{font-size:9px;color:var(--muted);white-space:nowrap}
+.progress-chart-legend{display:flex;justify-content:flex-end;gap:16px;margin-top:12px;color:var(--muted);font-size:10px}
+.pc-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.pc-dot.solved{background:var(--progress)}.pc-dot.correct{background:var(--success)}.pc-dot.wrong{background:var(--danger)}
+.progress-two-col{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:18px}
+.progress-performance-list{display:grid;gap:11px}
+.performance-row{display:grid;grid-template-columns:100px 1fr 70px;align-items:center;gap:12px;font-size:11px}
+.performance-row label{color:var(--muted);font-weight:700}.performance-track{height:9px;background:var(--track);border-radius:99px;overflow:hidden}.performance-track span{display:block;height:100%;border-radius:99px;background:var(--progress)}.performance-row b{text-align:right;color:var(--primary-dark)}
+.consistency-calendar-head,.consistency-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.consistency-calendar-head{margin-bottom:5px;color:var(--muted);font-size:9px;text-align:center;font-weight:800}
+.consistency-cell{aspect-ratio:1;border-radius:5px;background:var(--soft);min-height:17px;position:relative}.consistency-cell[data-level="1"]{background:#dfe9e8}.consistency-cell[data-level="2"]{background:#b8cecc}.consistency-cell[data-level="3"]{background:#7faaa7}.consistency-cell[data-level="4"]{background:var(--primary)}.consistency-cell span{display:none}.consistency-summary{margin-top:12px;font-size:11px;color:var(--muted)}
+.progress-topic-list,.progress-attention-list{display:grid;gap:9px;max-height:330px;overflow:auto}
+.progress-topic-row{display:grid;grid-template-columns:minmax(100px,1fr) 1fr 55px;align-items:center;gap:10px;font-size:11px}.progress-topic-row span:first-child{font-weight:700;color:var(--text)}.progress-topic-row small{color:var(--muted)}.progress-topic-track{height:8px;background:var(--track);border-radius:99px;overflow:hidden}.progress-topic-track span{display:block;height:100%;background:var(--progress);border-radius:99px}.progress-topic-row b{text-align:right;color:var(--primary-dark)}
+.attention-item{border:1px solid var(--border);background:var(--soft);border-radius:12px;padding:11px 12px}.attention-top{display:flex;justify-content:space-between;gap:10px;font-size:11px;font-weight:800}.attention-top span{color:var(--danger)}.attention-sub{font-size:10px;color:var(--muted);margin-top:3px}.progress-inline-btn{margin-top:13px;border:0;background:var(--primary-dark);color:#fff;border-radius:10px;padding:9px 13px;font-size:11px;font-weight:800;cursor:pointer}
+.progress-recent-days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.recent-day{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:11px}.recent-day-date{font-size:10px;color:var(--muted)}.recent-day-total{font-size:20px;font-weight:900;color:var(--primary-dark);margin:3px 0}.recent-day-breakdown{font-size:9px;color:var(--muted)}
+.progress-empty{padding:18px;border:1px dashed var(--border);border-radius:12px;color:var(--muted);font-size:11px;text-align:center}
+@media(max-width:1100px){.progress-stat-grid{grid-template-columns:repeat(3,1fr)}.progress-two-col{grid-template-columns:1fr}.progress-recent-days{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.progress-dashboard{width:min(100% - 24px,1500px);padding:20px 0 40px}.progress-dashboard-header{align-items:flex-start;flex-direction:column}.progress-header-actions{width:100%}.progress-header-actions button{flex:1}.progress-hero{grid-template-columns:1fr;padding:22px}.progress-hero-ring{border-left:0;border-top:1px solid rgba(255,255,255,.15);padding-top:18px}.progress-stat-grid{grid-template-columns:repeat(2,1fr)}.progress-section-card{padding:16px}.progress-section-head{flex-direction:column}.progress-period-tabs{width:100%}.progress-period{flex:1}.progress-big-chart{height:250px}.progress-big-bars{height:185px}.progress-big-column{min-width:34px}.progress-two-col{grid-template-columns:1fr}.progress-recent-days{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.progress-stat-grid{grid-template-columns:1fr}.progress-hero-number{font-size:50px}.progress-two-col{gap:12px}.performance-row{grid-template-columns:80px 1fr 55px}}
+
+/* ---------- DAILY STUDY PLAN ---------- */
+.study-nav-actions{display:flex;align-items:center;gap:9px}
+.plan-home-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 15px;border-radius:999px;background:var(--gold,#D9B56A);color:var(--primary-dark,#173E42);border:1px solid rgba(23,62,66,.16);box-shadow:0 8px 24px rgba(23,42,45,.14);font-weight:900;cursor:pointer}
+.plan-home-btn:hover{transform:translateY(-1px)}
+.manual-sync-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--muted);font-size:11px;font-weight:800;cursor:pointer;transition:all .18s ease}
+.manual-sync-btn:hover{color:var(--primary-dark);border-color:rgba(23,62,66,.28);background:var(--soft)}
+.manual-sync-btn.is-syncing{color:var(--primary-dark);background:var(--soft)}
+.manual-sync-btn.is-synced{color:#2d7a55;border-color:rgba(45,122,85,.25)}
+.manual-sync-icon{display:inline-block;font-size:15px;line-height:1;transition:transform .45s ease}
+.manual-sync-btn.is-syncing .manual-sync-icon{animation:manualSyncSpin .8s linear infinite}
+@keyframes manualSyncSpin{to{transform:rotate(360deg)}}
+.tracker-toggle{gap:8px}
+#planScreen{background:var(--bg);overflow:auto}
+.plan-dashboard{width:min(1400px,calc(100% - 56px));margin:0 auto;padding:34px 0 64px}
+.plan-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:24px}
+.plan-kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--primary)}
+.plan-header h1{margin:4px 0;font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;color:var(--primary-dark)}
+.plan-header p{margin:0;color:var(--muted);font-size:14px;max-width:700px}
+.plan-header-actions{flex-shrink:0}
+.plan-day-nav{display:grid;grid-template-columns:48px 1fr 48px auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:12px;margin-bottom:18px;box-shadow:var(--shadow)}
+.plan-day-arrow{height:48px;border:1px solid var(--border);background:var(--soft);border-radius:12px;font-size:27px;color:var(--primary-dark);cursor:pointer}
+.plan-selected-date{text-align:center}.plan-selected-date small{display:block;color:var(--primary);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.plan-selected-date strong{display:block;font-size:22px;color:var(--primary-dark);margin:2px 0}.plan-selected-date span{font-size:10px;color:var(--muted)}
+.plan-today-btn{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:10px 14px;font-size:11px;font-weight:800;color:var(--primary-dark);cursor:pointer}
+.plan-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+.plan-add-card,.plan-list-card,.plan-summary-card,.plan-calendar-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
+.plan-add-card{padding:21px;margin-bottom:18px}.plan-add-title{display:flex;gap:12px;align-items:center;margin-bottom:15px}.plan-add-icon{width:40px;height:40px;border-radius:12px;background:var(--primary-dark);color:#fff;display:grid;place-items:center;font-size:22px}.plan-add-title h2,.plan-list-head h2{margin:0;font-size:17px;color:var(--primary-dark)}.plan-add-title p,.plan-list-head p{margin:2px 0 0;color:var(--muted);font-size:10px}
+.plan-add-row{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,260px) 180px auto;gap:9px}.plan-add-row input,.plan-add-row select{height:44px;border:1px solid var(--border);border-radius:10px;background:var(--soft);padding:0 12px;color:var(--text);font:inherit;font-size:12px;outline:none}.plan-add-row input:focus,.plan-add-row select:focus{border-color:var(--primary)}
+.plan-list-card{padding:21px}.plan-list-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:13px}.plan-text-btn{border:0;background:none;color:var(--primary);font-size:10px;font-weight:800;cursor:pointer;padding:5px}.plan-text-btn:hover{text-decoration:underline}
+.plan-topic-list{display:grid;gap:9px}.plan-topic-item{display:grid;grid-template-columns:27px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--border);border-radius:13px;background:var(--surface);transition:.18s}.plan-topic-item.done{background:var(--soft);opacity:.75}.plan-topic-check{width:22px;height:22px;border:2px solid var(--border);border-radius:7px;background:var(--surface);display:grid;place-items:center;cursor:pointer;color:#fff;font-size:13px;font-weight:900}.plan-category-tag{display:inline-flex;align-items:center;padding:3px 7px;border-radius:999px;background:var(--soft);border:1px solid var(--border);color:var(--primary-dark);font-size:9px;font-weight:800}.plan-topic-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}\n.plan-topic-item.done .plan-topic-check{background:var(--success);border-color:var(--success)}.plan-topic-name{font-size:12px;font-weight:800;color:var(--text)}.plan-topic-item.done .plan-topic-name{text-decoration:line-through;color:var(--muted)}.plan-topic-meta{display:flex;gap:7px;align-items:center;margin-top:4px}.plan-priority{font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:3px 6px;border-radius:5px;background:var(--soft);color:var(--muted)}.plan-priority.high{background:#f6e4e1;color:var(--danger)}.plan-priority.low{background:#e8eeee;color:var(--muted)}.plan-topic-actions{display:flex;gap:5px}.plan-icon-btn{border:0;background:transparent;color:var(--muted);width:28px;height:28px;border-radius:7px;cursor:pointer}.plan-icon-btn:hover{background:var(--soft);color:var(--primary-dark)}
+.plan-summary-card{padding:20px;margin-bottom:18px;background:linear-gradient(145deg,var(--primary-dark),var(--primary));color:#fff}.plan-side-label{font-size:9px;letter-spacing:.15em;font-weight:900;opacity:.7}.plan-progress-number{display:flex;align-items:baseline;gap:5px;margin:10px 0 7px}.plan-progress-number b{font-size:38px;line-height:1}.plan-progress-number span{font-size:14px;opacity:.7}.plan-progress-track{height:8px;border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden}.plan-progress-track span{display:block;height:100%;width:0;background:var(--gold);border-radius:99px;transition:.25s}.plan-summary-card p{font-size:10px;opacity:.75;margin:9px 0 0}
+.plan-calendar-card{padding:18px;margin-bottom:18px}.plan-side-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.plan-side-head h3{font-size:15px;margin:0;color:var(--primary-dark)}.plan-side-head span{font-size:9px;color:var(--muted)}
+.plan-upcoming-list{display:grid;gap:7px}.plan-upcoming-row{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:9px 10px;border-radius:9px;background:var(--soft);cursor:pointer}.plan-upcoming-row:hover{outline:1px solid var(--border)}.plan-upcoming-date{font-size:9px;color:var(--muted)}.plan-upcoming-count{font-size:10px;font-weight:900;color:var(--primary-dark)}.plan-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.plan-mini-stats div{background:var(--soft);border-radius:10px;padding:10px 6px;text-align:center}.plan-mini-stats b{display:block;font-size:19px;color:var(--primary-dark)}.plan-mini-stats span{font-size:8px;color:var(--muted)}
+.plan-empty{padding:30px 15px;text-align:center;border:1px dashed var(--border);border-radius:12px;color:var(--muted);font-size:11px}.plan-empty strong{display:block;color:var(--primary-dark);font-size:13px;margin-bottom:3px}
+@media(max-width:900px){.plan-layout{grid-template-columns:1fr}.plan-sidebar{display:grid;grid-template-columns:1fr 1fr;gap:12px}.plan-summary-card,.plan-calendar-card{margin-bottom:0}.plan-sidebar .plan-calendar-card:last-child{grid-column:1/-1}}
+@media(max-width:700px){.plan-dashboard{width:calc(100% - 24px);padding:20px 0 40px}.plan-header{flex-direction:column;align-items:flex-start}.plan-header-actions,.plan-header-actions button{width:100%}.plan-day-nav{grid-template-columns:40px 1fr 40px}.plan-today-btn{grid-column:1/-1}.plan-add-row{grid-template-columns:1fr}.plan-add-row .btn{width:100%}.plan-sidebar{display:block}.plan-sidebar>*{margin-bottom:12px}.plan-topic-item{grid-template-columns:27px 1fr}.plan-topic-actions{grid-column:2}.plan-topic-actions .plan-icon-btn{background:var(--soft)}}
+
 </style>
 
 <style id="final-progress-placement">
@@ -1384,6 +1485,26 @@ body.theme-dark .focus-mode .statement,
 body.theme-dark .focus-mode .option,
 body.theme-dark .focus-mode .option-key{color:var(--text)!important}
 </style>
+
+<style id="revision-system">
+.revision-home-card{margin-top:28px;padding:18px;border:1px solid rgba(255,255,255,.18);border-radius:16px;background:rgba(255,255,255,.075);color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.revision-home-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.revision-home-title{font-weight:900;font-size:15px}.revision-count{min-width:34px;height:34px;padding:0 9px;border-radius:999px;display:inline-grid;place-items:center;background:#D9C98B;color:#173E42;font-weight:900;font-size:13px}
+.revision-home-sub{margin:8px 0 12px;color:#DCE9E6;font-size:12px;line-height:1.55}.revision-focus-list{display:grid;gap:6px;margin:0 0 13px;padding:0;list-style:none}.revision-focus-list li{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#EEF5F3}.revision-focus-list span:last-child{color:#E6DFAE;font-weight:850}
+.revision-open-btn{width:100%;min-height:42px;padding:9px 12px;border-radius:10px;background:#fff;color:#173E42;font-weight:900;border:1px solid rgba(255,255,255,.4)}.revision-open-btn:hover{background:#F3F6F5;transform:translateY(-1px)}
+#revisionScreen{min-height:100vh;background:var(--bg);padding:28px 34px 45px;box-sizing:border-box;overflow:auto}.revision-shell{width:min(1420px,100%);margin:0 auto}
+.revision-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:25px 28px;box-shadow:var(--shadow);margin-bottom:18px}.revision-header h1{margin:0 0 5px;font-size:30px;letter-spacing:-.025em}.revision-header p{margin:0;color:var(--muted);font-size:14px}.revision-header-actions{display:flex;gap:9px;flex-wrap:wrap}
+.revision-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}.revision-stat{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:17px 18px;box-shadow:var(--shadow)}.revision-stat small{display:block;color:var(--muted);font-weight:750;font-size:11px}.revision-stat b{display:block;margin-top:3px;font-size:25px}
+.revision-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.revision-list{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}.revision-list-head{padding:18px 20px;border-bottom:1px solid var(--border);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}.revision-list-head h2{margin:0;font-size:18px}.revision-list-head span{font-size:12px;color:var(--muted)}.revision-items{padding:14px}
+.revision-item{border:1px solid var(--border);border-radius:16px;padding:17px 18px;margin-bottom:11px;background:var(--surface)}.revision-item:last-child{margin-bottom:0}.revision-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.revision-topic{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#EEF4F3;color:var(--primary-dark);font-size:10px;font-weight:900}.revision-date{font-size:10px;color:var(--muted);white-space:nowrap}
+.revision-question{font-size:15px;line-height:1.7;font-weight:700;margin:12px 0;color:var(--text)}.revision-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 12px}.revision-answer-box{padding:10px 12px;border-radius:10px;background:var(--soft);border:1px solid var(--border);font-size:12px;line-height:1.5}.revision-answer-box.wrong-answer{border-left:4px solid var(--danger)}.revision-answer-box.correct-answer{border-left:4px solid var(--success)}.revision-answer-box small{display:block;color:var(--muted);font-weight:850;text-transform:uppercase;font-size:9px;letter-spacing:.06em;margin-bottom:2px}
+.revision-reveal{width:100%;min-height:40px;border-radius:10px;background:var(--primary);color:#fff;font-weight:850;padding:8px 12px}.revision-reveal:hover{background:var(--primary-dark)}.revision-detail{display:none;margin-top:10px}.revision-detail.open{display:block}.revision-options{display:grid;gap:5px;margin:0 0 10px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--soft);font-size:12px}.revision-options div.correct-option{font-weight:900;color:var(--success)}.revision-explanation{padding:12px;border-radius:10px;background:#FBFAF3;border:1px solid #D9D1AE;color:var(--text);font-size:12px;line-height:1.7}.revision-item-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:11px}.revision-remove{min-height:36px;padding:7px 11px;border-radius:9px;background:transparent;color:var(--danger);border:1px solid #D8B4B4;font-weight:850;font-size:11px}.revision-remove:hover{background:#FFF1F1}
+.revision-side{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:19px;position:sticky;top:20px}.revision-side h3{margin:0 0 5px;font-size:16px}.revision-side p{margin:0 0 14px;color:var(--muted);font-size:12px;line-height:1.6}.revision-topic-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}.revision-topic-row:last-child{border-bottom:0}
+.revision-empty{padding:55px 24px;text-align:center;color:var(--muted)}.revision-empty-icon{width:58px;height:58px;margin:0 auto 12px;border-radius:18px;display:grid;place-items:center;background:#EEF4F3;color:var(--primary);font-size:25px;font-weight:900}.revision-empty h3{margin:0 0 5px;color:var(--text);font-size:18px}.revision-empty p{max-width:500px;margin:0 auto;line-height:1.65;font-size:13px}
+body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-topic{background:#294245;color:#EDF6F4}body.theme-dark .revision-explanation{background:#21383A;border-color:#496568}body.theme-dark .revision-empty-icon{background:#294245;color:#8BC7C2}body.theme-dark .revision-remove{border-color:#805A5A}
+@media(max-width:1050px){#revisionScreen{padding:18px 16px 30px}.revision-layout{grid-template-columns:1fr}.revision-side{position:static}}
+@media(max-width:700px){#revisionScreen{padding:12px 10px 24px}.revision-header{padding:18px 15px;border-radius:15px;flex-direction:column}.revision-header h1{font-size:23px}.revision-header-actions{width:100%}.revision-header-actions .btn{flex:1}.revision-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.revision-stat{padding:12px}.revision-stat b{font-size:21px}.revision-list{border-radius:15px}.revision-list-head{padding:14px}.revision-items{padding:9px}.revision-item{padding:13px;margin-bottom:9px}.revision-item-top{display:block}.revision-date{display:block;margin-top:5px}.revision-meta{grid-template-columns:1fr;gap:6px}}
+</style>
+
 </head>
 <body>
 
@@ -1410,11 +1531,19 @@ body.theme-dark .focus-mode .option-key{color:var(--text)!important}
 
 <div id="start" class="screen">
   <main class="start">
-    <div class="brand"><span class="badge">CGPSC EXAM PREPARATION</span><h1>HELLO KAUSHAL</h1><p class="sub">Structured question bank • OMR navigation • Detailed result analysis</p></div>
+    <div class="brand"><span class="badge">CGPSC EXAM PREPARATION</span><h1>HELLO KAUSHAL</h1><p class="sub">Structured question bank • OMR navigation • Detailed result analysis</p><div id="revisionHomeCard" class="revision-home-card"><div class="revision-home-head"><span class="revision-home-title">Revision</span><strong id="revisionCount" class="revision-count">0</strong></div><p id="revisionHomeSub" class="revision-home-sub">Wrong answers you save during tests will appear here automatically.</p><ul id="revisionFocusList" class="revision-focus-list"></ul><button id="revisionOpenBtn" class="revision-open-btn" type="button">Open Revision</button></div></div>
     <div id="studyTracker" class="study-tracker" aria-live="polite">
-      <button id="trackerToggle" class="tracker-toggle" type="button" aria-expanded="false" aria-controls="trackerPanel">
-        <span class="tracker-icon" aria-hidden="true">▥</span><span>Progress</span><strong id="trackerTodayMini">0</strong>
-      </button>
+      <div class="study-nav-actions">
+        <button id="trackerToggle" class="tracker-toggle" type="button" aria-expanded="false" aria-controls="trackerPanel">
+          <span class="tracker-icon" aria-hidden="true">▥</span><span>Progress</span><strong id="trackerTodayMini">0</strong>
+        </button>
+        <button id="studyPlanHomeBtn" class="plan-home-btn" type="button" title="Open daily study plan">
+          <span aria-hidden="true">✓</span><span>Plan</span>
+        </button>
+        <button id="manualSyncBtn" class="manual-sync-btn" type="button" title="Sync data now" aria-label="Sync data now">
+          <span class="manual-sync-icon" aria-hidden="true">↻</span><span>Sync</span>
+        </button>
+      </div>
       <section id="trackerPanel" class="tracker-panel hidden" aria-label="Question solving progress">
         <div class="tracker-panel-head">
           <div><b>Question Progress</b><small id="trackerSummary">0 questions solved today</small></div>
@@ -1454,6 +1583,204 @@ body.theme-dark .focus-mode .option-key{color:var(--text)!important}
 </div>
 
 
+
+<div id="revisionScreen" class="screen hidden" aria-label="Revision section"><div class="revision-shell"><header class="revision-header"><div><h1>Revision</h1><p>Your automatically compiled wrong answers. Review them, understand the explanation, and remove a question when you have mastered it.</p></div><div class="revision-header-actions"><button id="revisionBackBtn" class="btn outline" type="button">Back to Home</button></div></header><div class="revision-summary"><div class="revision-stat"><small>Questions to revise</small><b id="revisionTotal">0</b></div><div class="revision-stat"><small>Topics needing attention</small><b id="revisionTopicTotal">0</b></div><div class="revision-stat"><small>Most repeated topic</small><b id="revisionTopTopic">—</b></div><div class="revision-stat"><small>Last added</small><b id="revisionLastAdded">—</b></div></div><div class="revision-layout"><section class="revision-list"><div class="revision-list-head"><h2>Wrong answers</h2><span id="revisionListCount">0 saved</span></div><div id="revisionItems" class="revision-items"></div></section><aside class="revision-side"><h3>Focus topics</h3><p>Topics with the most missed questions are shown first so you can prioritize your revision time.</p><div id="revisionTopicBreakdown"></div></aside></div></div></div>
+
+
+<div id="planScreen" class="screen hidden" aria-label="Daily study plan">
+  <div class="plan-dashboard">
+    <header class="plan-header">
+      <div>
+        <span class="plan-kicker">DAILY STUDY PLAN</span>
+        <h1>What do you need to study?</h1>
+        <p>Create a simple topic to-do list for each day and tick topics off as you complete them.</p>
+      </div>
+      <div class="plan-header-actions">
+        <button id="planBackBtn" class="btn outline" type="button">Back to Home</button>
+      </div>
+    </header>
+
+    <section class="plan-day-nav">
+      <button id="planPrevDay" class="plan-day-arrow" type="button" aria-label="Previous day">‹</button>
+      <div class="plan-selected-date">
+        <small id="planDateLabel">Today</small>
+        <strong id="planDateFull">—</strong>
+        <span id="planDayCount">0 topics planned</span>
+      </div>
+      <button id="planNextDay" class="plan-day-arrow" type="button" aria-label="Next day">›</button>
+      <button id="planTodayBtn" class="plan-today-btn" type="button">Today</button>
+    </section>
+
+    <div class="plan-layout">
+      <main>
+        <section class="plan-add-card">
+          <div class="plan-add-title">
+            <div class="plan-add-icon">+</div>
+            <div><h2>Add a topic</h2><p>Add what you want to study on this day.</p></div>
+          </div>
+          <div class="plan-add-row">
+            <input id="planTopicInput" type="text" maxlength="140" placeholder="e.g. Fundamental Rights" autocomplete="off">
+            <select id="planCategory" aria-label="Subject category">
+              <option value="">Select subject</option>
+              <option value="Chhattisgarh General Studies">Chhattisgarh General Studies</option>
+              <option value="Hindi">Hindi</option>
+              <option value="English">English</option>
+              <option value="Chhattisgarhi">Chhattisgarhi</option>
+              <option value="Reasoning & Logical Ability">Reasoning & Logical Ability</option>
+              <option value="Mental Ability">Mental Ability</option>
+              <option value="Mathematics & Statistics">Mathematics & Statistics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Physics">Physics</option>
+              <option value="Biology">Biology</option>
+              <option value="Technology">Technology</option>
+              <option value="Environment">Environment</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Forestry">Forestry</option>
+            </select>
+            <select id="planPriority" aria-label="Topic priority">
+              <option value="normal">Normal priority</option>
+              <option value="high">High priority</option>
+              <option value="low">Low priority</option>
+            </select>
+            <button id="planAddBtn" class="btn primary" type="button">Add topic</button>
+          </div>
+        </section>
+
+        <section class="plan-list-card">
+          <div class="plan-list-head">
+            <div><h2 id="planListTitle">Today's topics</h2><p>Check a topic when you have completed it.</p></div>
+            <button id="planClearCompleted" class="plan-text-btn" type="button">Clear completed</button>
+          </div>
+          <div id="planTopicList" class="plan-topic-list"></div>
+        </section>
+      </main>
+
+      <aside class="plan-sidebar">
+        <section class="plan-summary-card">
+          <span class="plan-side-label">DAY PROGRESS</span>
+          <div class="plan-progress-number"><b id="planDoneCount">0</b><span>/ <span id="planTotalCount">0</span></span></div>
+          <div class="plan-progress-track"><span id="planProgressBar"></span></div>
+          <p id="planProgressText">Nothing planned yet.</p>
+        </section>
+
+        <section class="plan-calendar-card">
+          <div class="plan-side-head"><h3>Upcoming</h3><span>7 days</span></div>
+          <div id="planUpcomingList" class="plan-upcoming-list"></div>
+        </section>
+
+        <section class="plan-calendar-card">
+          <div class="plan-side-head"><h3>Quick stats</h3></div>
+          <div class="plan-mini-stats">
+            <div><b id="planWeekTopics">0</b><span>This week</span></div>
+            <div><b id="planWeekDone">0</b><span>Completed</span></div>
+            <div><b id="planOpenCount">0</b><span>Open topics</span></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div id="progressScreen" class="screen hidden" aria-label="Progress dashboard">
+  <div class="progress-dashboard">
+    <header class="progress-dashboard-header">
+      <div>
+        <span class="progress-kicker">STUDY ANALYTICS</span>
+        <h1>Your Progress</h1>
+        <p>See your question-solving activity, accuracy, consistency, and the areas that need the most attention.</p>
+      </div>
+      <div class="progress-header-actions">
+        <button id="progressRefreshBtn" class="btn outline" type="button">Refresh</button>
+        <button id="progressBackBtn" class="btn primary" type="button">Back to Home</button>
+      </div>
+    </header>
+
+    <section class="progress-hero">
+      <div class="progress-hero-main">
+        <div class="progress-hero-label">Overall study progress</div>
+        <div class="progress-hero-number" id="progressHeroSolved">0</div>
+        <div class="progress-hero-caption">questions solved</div>
+        <div class="progress-hero-bar"><span id="progressHeroBar"></span></div>
+        <div class="progress-hero-foot">
+          <span id="progressHeroAccuracy">0% accuracy</span>
+          <span id="progressHeroAttempted">0 attempted</span>
+        </div>
+      </div>
+      <div class="progress-hero-ring" aria-label="Accuracy">
+        <div class="progress-ring" id="progressAccuracyRing"><span id="progressRingValue">0%</span></div>
+        <small>Accuracy</small>
+      </div>
+    </section>
+
+    <section class="progress-stat-grid">
+      <div class="progress-stat-card"><span class="ps-icon">✓</span><div><small>Correct</small><b id="progressCorrect">0</b><em id="progressCorrectRate">0% of solved</em></div></div>
+      <div class="progress-stat-card"><span class="ps-icon wrong">×</span><div><small>Wrong</small><b id="progressWrong">0</b><em id="progressWrongRate">0% of solved</em></div></div>
+      <div class="progress-stat-card"><span class="ps-icon">↗</span><div><small>This week</small><b id="progressWeekSolved">0</b><em id="progressWeekDelta">Questions solved</em></div></div>
+      <div class="progress-stat-card"><span class="ps-icon">◷</span><div><small>Current streak</small><b id="progressStreak">0 days</b><em id="progressStreakHint">Keep solving daily</em></div></div>
+      <div class="progress-stat-card"><span class="ps-icon">!</span><div><small>Revision queue</small><b id="progressRevisionCount">0</b><em id="progressRevisionHint">Wrong answers to revisit</em></div></div>
+    </section>
+
+    <section class="progress-section-card progress-activity">
+      <div class="progress-section-head">
+        <div><h2>Study activity</h2><p>Questions solved over time, with correct and wrong answers separated.</p></div>
+        <div class="progress-period-tabs">
+          <button class="progress-period active" data-period="daily" type="button">14 days</button>
+          <button class="progress-period" data-period="weekly" type="button">9 weeks</button>
+          <button class="progress-period" data-period="monthly" type="button">6 months</button>
+        </div>
+      </div>
+      <div class="progress-chart-meta"><b id="progressChartTitle">Last 14 days</b><span id="progressChartTotal">0 solved</span></div>
+      <div id="progressBigChart" class="progress-big-chart"></div>
+      <div class="progress-chart-legend">
+        <span><i class="pc-dot solved"></i>Solved</span>
+        <span><i class="pc-dot correct"></i>Correct</span>
+        <span><i class="pc-dot wrong"></i>Wrong</span>
+      </div>
+    </section>
+
+    <div class="progress-two-col">
+      <section class="progress-section-card">
+        <div class="progress-section-head compact">
+          <div><h2>Performance overview</h2><p>How your recent solving is translating into accuracy.</p></div>
+        </div>
+        <div class="progress-performance-list" id="progressPerformanceList"></div>
+      </section>
+
+      <section class="progress-section-card">
+        <div class="progress-section-head compact">
+          <div><h2>Consistency</h2><p>Your active study days and recent routine.</p></div>
+        </div>
+        <div class="consistency-calendar-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        <div id="progressConsistencyGrid" class="consistency-grid"></div>
+        <div class="consistency-summary" id="progressConsistencySummary">0 active days</div>
+      </section>
+    </div>
+
+    <div class="progress-two-col">
+      <section class="progress-section-card">
+        <div class="progress-section-head compact">
+          <div><h2>Topic performance</h2><p>Topics with enough tracked answers are shown with their accuracy and volume.</p></div>
+        </div>
+        <div id="progressTopicList" class="progress-topic-list"></div>
+      </section>
+
+      <section class="progress-section-card">
+        <div class="progress-section-head compact">
+          <div><h2>Needs attention</h2><p>Use this alongside Revision to decide what to revisit next.</p></div>
+        </div>
+        <div id="progressAttentionList" class="progress-attention-list"></div>
+        <button id="progressOpenRevisionBtn" class="progress-inline-btn" type="button">Open Revision →</button>
+      </section>
+    </div>
+
+    <section class="progress-section-card progress-recent">
+      <div class="progress-section-head compact">
+        <div><h2>Recent activity</h2><p>Your latest tracked study days.</p></div>
+      </div>
+      <div id="progressRecentDays" class="progress-recent-days"></div>
+    </section>
+  </div>
+</div>
 
 <div id="exam" class="screen hidden">
 <header class="exam-head">
@@ -1509,7 +1836,7 @@ const SAMPLE=[
  {id:4,type:"match_following",topic:"Forestry",instruction:"Match List-I with List-II:",left_title:"List-I",right_title:"List-II",pairs:[{left:"Teak",right:"Tectona grandis"},{left:"Sal",right:"Shorea robusta"},{left:"Neem",right:"Azadirachta indica"},{left:"Bamboo",right:"Poaceae"}],options:{A:"1-a, 2-b, 3-c, 4-d",B:"1-b, 2-a, 3-d, 4-c",C:"1-c, 2-d, 3-a, 4-b",D:"1-d, 2-c, 3-b, 4-a"},answer:"A",explanation:"The scientific names and family in the displayed pairs correspond to option A."},
  {id:5,type:"mcq",topic:"Chemistry",question:"Which pH value represents a neutral solution at 25°C?",options:{A:"1",B:"5",C:"7",D:"14"},answer:"C",explanation:"At 25°C, a neutral aqueous solution has pH 7."}
 ];
-const App={questions:[],cfg:{timePerQuestion:80,correct:2,incorrect:0.66},state:{index:0,remaining:0,answers:{},status:{},started:false},timer:null,startRemaining:0};
+const App={questions:[],cfg:{timePerQuestion:80,correct:2,incorrect:0.66},state:{index:0,remaining:0,answers:{},status:{},started:false},revision:[],timer:null,startRemaining:0};
 const $=id=>document.getElementById(id);
 const D={
   ring:$('ring'), pct:$('pct'), topics:$('topics'), hours:$('hours'), tests:$('tests'), qs:$('qs'), acc:$('acc'),
@@ -1534,7 +1861,7 @@ function renderMCQ(box,q){if(q.passage){let p=document.createElement('div');p.cl
 function renderStatements(box,q){let intro=document.createElement('div');intro.className='question-intro';intro.textContent=q.question_intro||q.question||'Consider the following statements:';box.appendChild(intro);let list=document.createElement('div');list.className='statement-box';(q.statements||[]).forEach((s,i)=>{let row=document.createElement('div');row.className='statement';let n=document.createElement('strong');n.textContent=(i+1)+'.';let t=document.createElement('span');t.textContent=s;row.append(n,t);list.appendChild(row)});box.appendChild(list);if(q.question_ending){let end=document.createElement('div');end.className='question-ending';end.textContent=q.question_ending;box.appendChild(end)}}
 function renderAR(box,q){let title=document.createElement('div');title.className='question-intro';title.textContent=q.question_intro||q.question||'Read the following Assertion and Reason:';box.appendChild(title);let ar=document.createElement('div');ar.className='ar-box';[['Assertion (A)',q.assertion],['Reason (R)',q.reason]].forEach(([lab,val])=>{let d=document.createElement('div');d.className='ar-item';let b=document.createElement('span');b.className='ar-label';b.textContent=lab;d.append(b,document.createTextNode(val||''));ar.appendChild(d)});box.appendChild(ar);if(q.question_ending){let e=document.createElement('div');e.className='question-ending';e.textContent=q.question_ending;box.appendChild(e)}}
 function renderMatch(box,q){let ins=document.createElement('div');ins.className='question-intro';ins.textContent=q.instruction||q.question||'Match List-I with List-II:';box.appendChild(ins);let table=document.createElement('table');table.className='match-table';let tr=table.insertRow();let h1=tr.insertCell();h1.outerHTML='<th>List-I</th>';let h2=tr.insertCell();h2.outerHTML='<th>List-II</th>';(q.pairs||[]).forEach((p,i)=>{let r=table.insertRow();r.insertCell().textContent=`${i+1}. ${p.left}`;r.insertCell().textContent=`${String.fromCharCode(97+i)}. ${p.right}`});box.appendChild(table);if(q.question_ending){let e=document.createElement('div');e.className='question-ending';e.textContent=q.question_ending;box.appendChild(e)}}
-function renderOptions(q){let c=$('options');c.innerHTML='';Object.entries(q.options||{}).forEach(([key,val])=>{let label=document.createElement('label');label.className='option';let input=document.createElement('input');input.type='radio';input.name='qopt';input.value=key;input.checked=App.state.answers[q.id]===key;let k=document.createElement('span');k.className='option-key';k.textContent=key+'.';let v=document.createElement('span');v.textContent=val;label.append(input,k,v);if(input.checked)label.classList.add('selected');input.onchange=()=>{const wasAnswered=!!App.state.answers[q.id];App.state.answers[q.id]=key;App.state.status[q.id]='answered';if(!wasAnswered)trackerRecordQuestion(q);document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));label.classList.add('selected');renderPalette();save()};c.appendChild(label)})}
+function renderOptions(q){let c=$('options');c.innerHTML='';Object.entries(q.options||{}).forEach(([key,val])=>{let label=document.createElement('label');label.className='option';let input=document.createElement('input');input.type='radio';input.name='qopt';input.value=key;input.checked=App.state.answers[q.id]===key;let k=document.createElement('span');k.className='option-key';k.textContent=key+'.';let v=document.createElement('span');v.textContent=val;label.append(input,k,v);if(input.checked)label.classList.add('selected');input.onchange=()=>{const wasAnswered=!!App.state.answers[q.id];App.state.answers[q.id]=key;App.state.status[q.id]='answered';if(!wasAnswered)trackerRecordQuestion(q);if(String(key).toUpperCase()!==String(q.answer).toUpperCase())revisionRecordQuestion(q,key);document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));label.classList.add('selected');renderPalette();save()};c.appendChild(label)})}
 function renderPalette(){let c=$('paletteGrid');c.innerHTML='';App.questions.forEach((q,i)=>{let b=document.createElement('button');b.className='qbtn';let st=App.state.status[q.id];if(st==='answered')b.classList.add('answered');if(st==='marked')b.classList.add('marked');if(st==='ansmarked')b.classList.add('ansmarked');if(i===App.state.index)b.classList.add('current');b.textContent=i+1;b.onclick=()=>{App.state.index=i;if(App.state.status[q.id]==='not-visited')App.state.status[q.id]='visited';render();renderPalette();setPalette(false)};c.appendChild(b)})}
 function next(){if(App.state.index===App.questions.length-1){showConfirm();return}App.state.index++;visit();render();renderPalette();save()}function prev(){if(App.state.index>0){App.state.index--;visit();render();renderPalette();save()}}function visit(){let id=App.questions[App.state.index].id;if(App.state.status[id]==='not-visited')App.state.status[id]='visited'}
 $('nextBtn').onclick=next;$('prevBtn').onclick=prev;$('clearBtn').onclick=()=>{delete App.state.answers[App.questions[App.state.index].id];App.state.status[App.questions[App.state.index].id]='not-answered';render();renderPalette();save()};$('markBtn').onclick=()=>{let q=App.questions[App.state.index],id=q.id;App.state.status[id]=App.state.answers[id]?'ansmarked':'marked';if(App.state.index<App.questions.length-1)App.state.index++;visit();render();renderPalette();save()};
@@ -1606,6 +1933,21 @@ function buildSolutions(){
    try{await navigator.clipboard.writeText(text);const old=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=old,1200)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();const old=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=old,1200)}
  }));
 }
+
+const REVISION_KEY='cgpsc_revision_queue_v1';
+function revisionLoad(){try{const raw=JSON.parse(localStorage.getItem(REVISION_KEY)||'[]');return Array.isArray(raw)?raw:[]}catch(e){return []}}
+function revisionSave(list){App.revision=Array.isArray(list)?list:[];try{localStorage.setItem(REVISION_KEY,JSON.stringify(App.revision))}catch(e){}}
+function revisionMerge(a,b){const map=new Map();[...(Array.isArray(a)?a:[]),...(Array.isArray(b)?b:[])].forEach(item=>{if(!item||!item.key)return;const old=map.get(item.key);if(!old){map.set(item.key,item);return}map.set(item.key,{...old,...item,addedAt:old.addedAt||item.addedAt,attempts:Math.max(Number(old.attempts)||0,Number(item.attempts)||0)})});return Array.from(map.values()).sort((x,y)=>Date.parse(y.lastWrongAt||y.addedAt||0)-Date.parse(x.lastWrongAt||x.addedAt||0))}
+function revisionQuestionKey(q){return String(q?.id??'')+'|'+String(q?.topic??'')+'|'+questionPlainText(q,0).trim().slice(0,260)}
+function revisionRecordQuestion(q,selected){if(!q||!selected||String(selected).toUpperCase()===String(q.answer).toUpperCase())return;const key=revisionQuestionKey(q),list=revisionMerge(App.revision,revisionLoad()),now=new Date().toISOString(),existing=list.find(x=>x.key===key);const item={key,id:q.id,topic:q.topic||'General',type:q.type||'mcq',questionText:questionPlainText(q,0),options:q.options||{},wrongAnswer:String(selected),correctAnswer:String(q.answer||'—'),explanation:q.explanation||'',addedAt:existing?.addedAt||now,lastWrongAt:now,attempts:(Number(existing?.attempts)||0)+1};revisionSave(existing?list.map(x=>x.key===key?{...x,...item}:x):[...list,item]);revisionRenderHome();revisionRenderScreen();queueCloudSave()}
+function revisionRemove(index){const list=revisionMerge(App.revision,revisionLoad());if(index<0||index>=list.length)return;list.splice(index,1);revisionSave(list);revisionRenderHome();revisionRenderScreen();queueCloudSave()}
+function revisionDateLabel(v){if(!v)return '—';const d=new Date(v);if(Number.isNaN(d.getTime()))return '—';return d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}
+function revisionTopicCounts(list){const counts={};(list||[]).forEach(x=>{const t=x.topic||'General';counts[t]=(counts[t]||0)+1});return Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))}
+function revisionRenderHome(){const list=revisionMerge(App.revision,revisionLoad()),count=$('revisionCount'),sub=$('revisionHomeSub'),focus=$('revisionFocusList');if(!count||!sub||!focus)return;count.textContent=list.length;if(!list.length){sub.textContent='No wrong answers yet. Questions you miss will be added here automatically.';focus.innerHTML='<li><span>Revision queue is clear</span><span>✓</span></li>';return}const topics=revisionTopicCounts(list).slice(0,3);sub.textContent=`${list.length} question${list.length===1?'':'s'} waiting for revision.`;focus.innerHTML=topics.map(([t,n])=>`<li><span>${esc(t)}</span><span>${n} question${n===1?'':'s'}</span></li>`).join('')}
+function revisionRenderScreen(){const list=revisionMerge(App.revision,revisionLoad()),items=$('revisionItems');if(!items)return;const topics=revisionTopicCounts(list);$('revisionTotal').textContent=list.length;$('revisionTopicTotal').textContent=topics.length;$('revisionTopTopic').textContent=topics[0]?.[0]||'—';$('revisionLastAdded').textContent=list[0]?revisionDateLabel(list[0].lastWrongAt||list[0].addedAt):'—';$('revisionListCount').textContent=`${list.length} saved`;$('revisionTopicBreakdown').innerHTML=topics.length?topics.map(([t,n])=>`<div class="revision-topic-row"><span>${esc(t)}</span><b>${n}</b></div>`).join(''):'<p style="margin:0;color:var(--muted);font-size:12px">No focus topics yet.</p>';if(!list.length){items.innerHTML='<div class="revision-empty"><div class="revision-empty-icon">✓</div><h3>Your revision queue is clear</h3><p>When you answer a question incorrectly, it will automatically be added here for later study.</p></div>';return}items.innerHTML=list.map((x,i)=>{const opts=Object.entries(x.options||{}).map(([k,v])=>`<div class="${String(k).toUpperCase()===String(x.correctAnswer).toUpperCase()?'correct-option':''}"><b>${esc(k)}.</b> ${esc(v)}</div>`).join('');const explanation=esc(x.explanation||'Review the correct option and compare it with the concept tested.');return `<article class="revision-item"><div class="revision-item-top"><span class="revision-topic">${esc(x.topic||'General')}</span><span class="revision-date">Added ${esc(revisionDateLabel(x.addedAt))} · ${Number(x.attempts)||1} miss${Number(x.attempts)===1?'':'es'}</span></div><div class="revision-question">${esc(x.questionText||'Question unavailable')}</div><div class="revision-meta"><div class="revision-answer-box wrong-answer"><small>Your last wrong answer</small><b>${esc(x.wrongAnswer||'—')}</b>${x.options?.[x.wrongAnswer]?` · ${esc(x.options[x.wrongAnswer])}`:''}</div><div class="revision-answer-box correct-answer"><small>Correct answer</small><b>${esc(x.correctAnswer||'—')}</b>${x.options?.[x.correctAnswer]?` · ${esc(x.options[x.correctAnswer])}`:''}</div></div><button class="revision-reveal" type="button" data-revision-reveal="${i}">Show explanation & options</button><div class="revision-detail" data-revision-detail="${i}"><div class="revision-options">${opts}</div><div class="revision-explanation"><b>Explanation</b><br>${explanation}</div></div><div class="revision-item-actions"><button class="revision-remove" type="button" data-revision-remove="${i}">✓ Remove — mastered</button></div></article>`}).join('');items.querySelectorAll('[data-revision-reveal]').forEach(btn=>btn.onclick=()=>{const detail=items.querySelector(`[data-revision-detail="${btn.dataset.revisionReveal}"]`);if(!detail)return;const open=detail.classList.toggle('open');btn.textContent=open?'Hide explanation':'Show explanation & options'});items.querySelectorAll('[data-revision-remove]').forEach(btn=>btn.onclick=()=>revisionRemove(Number(btn.dataset.revisionRemove)))}
+function revisionOpen(){$('start').classList.add('hidden');$('revisionScreen').classList.remove('hidden');revisionRenderScreen();window.scrollTo(0,0)}
+function revisionClose(){$('revisionScreen').classList.add('hidden');$('start').classList.remove('hidden');revisionRenderHome();window.scrollTo(0,0)}
+
 /* Universal single-user cloud sync.
    Configure the Supabase project URL + anon key in CLOUD_CONFIG below.
    The app keeps localStorage as an offline cache and syncs one shared record. */
@@ -1622,7 +1964,7 @@ function cloudStatus(text,kind=''){const el=$('cloudSyncText');if(!el)return;el.
 function cloudHeaders(){return {'apikey':CLOUD_CONFIG.anonKey,'Authorization':'Bearer '+CLOUD_CONFIG.anonKey,'Content-Type':'application/json','Accept':'application/json'}}
 function cloudEndpoint(){return CLOUD_CONFIG.url.replace(/\/$/,'')+'/rest/v1/'+encodeURIComponent(CLOUD_CONFIG.table)}
 function getTrackerSnapshot(){try{return JSON.parse(localStorage.getItem(TRACKER_KEY)||'{"days":{}}')}catch(e){return {days:{}}}}
-function buildCloudPayload(){return {version:1,updatedAt:new Date().toISOString(),questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining,tracker:getTrackerSnapshot(),theme:localStorage.getItem('cgpsc_theme')||'day'}}
+function buildCloudPayload(){return {version:2,updatedAt:new Date().toISOString(),questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining,tracker:getTrackerSnapshot(),revision:revisionMerge(App.revision,revisionLoad()),theme:localStorage.getItem('cgpsc_theme')||'day'}}
 function writeLocalSnapshot(payload){try{localStorage.setItem(CLOUD_LOCAL_KEY,JSON.stringify(payload))}catch(e){}}
 function readLocalSnapshot(){try{return JSON.parse(localStorage.getItem(CLOUD_LOCAL_KEY)||'null')}catch(e){return null}}
 async function cloudSaveNow(){
@@ -1649,10 +1991,10 @@ async function cloudLoad(){
     const r=await fetch(cloudEndpoint()+'?id=eq.'+encodeURIComponent(CLOUD_CONFIG.rowId)+'&select=payload,updated_at',{headers:cloudHeaders(),cache:'no-store'});
     if(!r.ok)throw new Error('Cloud load failed ('+r.status+')');
     const rows=await r.json();
-    const remote=rows?.[0]?.payload||null;
-    if(remote){writeLocalSnapshot(remote);cloudStatus('Synced just now','ok')}
-    else cloudStatus('Cloud record empty — local backup active','ok');
-    return remote;
+    let remote=rows?.[0]?.payload||null;
+     if(remote){remote={...remote,revision:revisionMerge(revisionLoad(),remote.revision||[])};revisionSave(remote.revision||[]);writeLocalSnapshot(remote);cloudStatus('Synced just now','ok')}
+     else cloudStatus('Cloud record empty — local backup active','ok');
+     return remote;
   }catch(e){cloudStatus('Offline — using local backup','error');console.warn(e);return null}
 }
 function applySnapshot(saved){
@@ -1670,7 +2012,7 @@ function applySnapshot(saved){
 }
 function save(){
   const payload=buildCloudPayload();
-  try{localStorage.setItem('cgpsc_mock_v2',JSON.stringify({questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining}));writeLocalSnapshot(payload)}catch(e){console.warn('Progress could not be saved:',e)}
+  try{localStorage.setItem('cgpsc_mock_v2',JSON.stringify({questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining,revision:App.revision}));writeLocalSnapshot(payload)}catch(e){console.warn('Progress could not be saved:',e)}
   queueCloudSave();
 }
 async function restoreSavedExam(){
@@ -1680,16 +2022,19 @@ async function restoreSavedExam(){
   let chosen=localSaved;
   const localSnapshot=readLocalSnapshot();
   if(cloudSaved&&localSnapshot){
+    if(cloudSaved.plan?.days){try{localStorage.setItem(PLAN_KEY,JSON.stringify(cloudSaved.plan))}catch(e){}}
+
     const rt=Date.parse(cloudSaved.updatedAt||0),lt=Date.parse(localSnapshot.updatedAt||0);
     chosen=rt>=lt?cloudSaved:localSnapshot;
   }else if(cloudSaved)chosen=cloudSaved;
   if(chosen&&applySnapshot(chosen))return true;
   if(localSaved&&localSaved.questions&&localSaved.state){
-    try{App.questions=validateData(localSaved.questions);App.cfg={...App.cfg,...(localSaved.cfg||{})};App.state={...App.state,...localSaved.state,answers:{...(localSaved.state.answers||{})},status:{...(localSaved.state.status||{})}};App.startRemaining=Number(localSaved.startRemaining)||App.state.remaining||0;App.questions.forEach(q=>{if(!App.state.status[q.id])App.state.status[q.id]=App.state.answers[q.id]?'answered':'not-visited'});if(App.state.started&&App.state.remaining>0){$('infoText').textContent=`Saved exam found • ${App.questions.length} questions • ${Math.ceil(App.state.remaining/60)} minutes remaining`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';return true}}catch(e){console.warn('Local saved exam was ignored:',e)}}
+    try{App.questions=validateData(localSaved.questions);App.cfg={...App.cfg,...(localSaved.cfg||{})};App.state={...App.state,...localSaved.state,answers:{...(localSaved.state.answers||{})},status:{...(localSaved.state.status||{})}};App.startRemaining=Number(localSaved.startRemaining)||App.state.remaining||0;App.revision=revisionMerge(revisionLoad(),localSaved.revision||[]);
+  if(snap.plan&&snap.plan.days){try{localStorage.setItem(PLAN_KEY,JSON.stringify(snap.plan))}catch(e){}}revisionSave(App.revision);App.questions.forEach(q=>{if(!App.state.status[q.id])App.state.status[q.id]=App.state.answers[q.id]?'answered':'not-visited'});if(App.state.started&&App.state.remaining>0){$('infoText').textContent=`Saved exam found • ${App.questions.length} questions • ${Math.ceil(App.state.remaining/60)} minutes remaining`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';return true}}catch(e){console.warn('Local saved exam was ignored:',e)}}
   return false;
 }
 
-$('printBtn').onclick=()=>window.print();$('retakeBtn').onclick=()=>{clearInterval(App.timer);App.state={index:0,remaining:App.questions.length*App.cfg.timePerQuestion,answers:{},status:{},started:false};App.questions.forEach(q=>App.state.status[q.id]='not-visited');$('result').classList.add('hidden');$('start').classList.remove('hidden');$('examInfo').classList.remove('hidden');$('startBtn').dataset.resume='0';$('startBtn').textContent='START EXAM'};
+$('revisionOpenBtn').onclick=revisionOpen;$('revisionBackBtn').onclick=revisionClose;revisionRenderHome();revisionRenderScreen();$('printBtn').onclick=()=>window.print();$('retakeBtn').onclick=()=>{clearInterval(App.timer);App.state={index:0,remaining:App.questions.length*App.cfg.timePerQuestion,answers:{},status:{},started:false};App.questions.forEach(q=>App.state.status[q.id]='not-visited');$('result').classList.add('hidden');$('start').classList.remove('hidden');$('examInfo').classList.remove('hidden');$('startBtn').dataset.resume='0';$('startBtn').textContent='START EXAM'};
 
 // Persistent question-solving tracker (available only from the initial screen).
 const TRACKER_KEY='cgpsc_question_tracker_v2';
@@ -1815,19 +2160,291 @@ function trackerSetOpen(open){
   const panel=$('trackerPanel'),btn=$('trackerToggle');
   panel.classList.toggle('hidden',!open);btn.setAttribute('aria-expanded',String(open));if(open)trackerRender()
 }
-$('trackerToggle').onclick=()=>trackerSetOpen($('trackerPanel').classList.contains('hidden'));
-$('trackerClose').onclick=()=>trackerSetOpen(false);
-document.addEventListener('keydown',e=>{if(e.key==='Escape')trackerSetOpen(false)});
-document.querySelectorAll('.tracker-tab').forEach(btn=>btn.onclick=()=>{
-  trackerPeriod=btn.dataset.period;
-  document.querySelectorAll('.tracker-tab').forEach(x=>x.classList.toggle('active',x===btn));
-  trackerRenderChart()
-});
 trackerRender();
+App.revision=revisionLoad();revisionRenderHome();revisionRenderScreen();
+
+/* ---------- FULL PROGRESS DASHBOARD LOGIC ---------- */
+let progressDashboardPeriod='daily';
+
+function progressAllTimeStats(){
+  const data=trackerLoad(), total={solved:0,correct:0,wrong:0};
+  Object.values(data.days||{}).forEach(rec=>{
+    if(!rec||typeof rec!=='object'||Array.isArray(rec))return;
+    Object.values(rec).forEach(v=>{
+      if(!v||typeof v!=='object')return;
+      total.solved++;
+      if(v.correct===true)total.correct++;
+      else if(v.wrong===true)total.wrong++;
+    });
+  });
+  // Include currently loaded exam answers if they are not already represented in tracker.
+  if(App.questions?.length){
+    App.questions.forEach(q=>{
+      const a=App.state.answers?.[q.id];
+      if(a==null)return;
+    });
+  }
+  return total;
+}
+function progressStreak(){
+  let d=new Date(),streak=0;
+  // Count today only if active; otherwise allow the streak to start from yesterday.
+  if(trackerDayStats(d).solved===0){d.setDate(d.getDate()-1)}
+  while(trackerDayStats(d).solved>0){
+    streak++;d.setDate(d.getDate()-1);
+  }
+  return streak;
+}
+function progressTopicStats(){
+  const data=trackerLoad(),topics={};
+  // Tracker keys contain question id/topic/text. Use the topic portion when possible.
+  Object.values(data.days||{}).forEach(rec=>{
+    if(!rec||typeof rec!=='object'||Array.isArray(rec))return;
+    Object.entries(rec).forEach(([key,v])=>{
+      if(!v||typeof v!=='object')return;
+      const parts=key.split('|');
+      const topic=(parts[1]||'General').trim()||'General';
+      if(!topics[topic])topics[topic]={solved:0,correct:0,wrong:0};
+      topics[topic].solved++;
+      if(v.correct===true)topics[topic].correct++;
+      if(v.wrong===true)topics[topic].wrong++;
+    });
+  });
+  return Object.entries(topics).map(([topic,x])=>({...x,topic,accuracy:x.solved?Math.round(x.correct/x.solved*100):0}))
+    .sort((a,b)=>b.solved-a.solved||a.accuracy-b.accuracy);
+}
+function progressActivitySeries(){
+  if(progressDashboardPeriod==='daily'){
+    const now=new Date(),out=[];
+    for(let i=13;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i);out.push({label:i===0?'Today':d.toLocaleDateString(undefined,{day:'numeric',month:'short'}),...trackerDayStats(d)})}
+    return out;
+  }
+  if(progressDashboardPeriod==='weekly'){
+    const now=new Date(),thisWeek=trackerStartOfWeek(now),out=[];
+    for(let i=8;i>=0;i--){const start=new Date(thisWeek);start.setDate(start.getDate()-i*7);const end=new Date(start);end.setDate(end.getDate()+6);out.push({label:i===0?'This week':start.toLocaleDateString(undefined,{day:'numeric',month:'short'}),...trackerSumRange(start,end)})}
+    return out;
+  }
+  const now=new Date(),out=[];
+  for(let i=5;i>=0;i--){const start=new Date(now.getFullYear(),now.getMonth()-i,1),end=new Date(now.getFullYear(),now.getMonth()-i+1,0);out.push({label:start.toLocaleDateString(undefined,{month:'short'}),...trackerSumRange(start,end)})}
+  return out;
+}
+function progressRenderBigChart(){
+  const el=$('progressBigChart');if(!el)return;
+  const series=progressActivitySeries(),max=Math.max(1,...series.map(x=>x.solved));
+  el.innerHTML=series.map(x=>{
+    const title=`${x.label}: ${x.solved} solved, ${x.correct} correct, ${x.wrong} wrong`;
+    return `<div class="progress-big-column" title="${esc(title)}">
+      <div class="progress-big-value">${x.solved}</div>
+      <div class="progress-big-bars">
+        <div class="progress-big-bar solved" style="height:${x.solved?Math.max(3,Math.round(x.solved/max*100)):2}%"></div>
+        <div class="progress-big-bar correct" style="height:${x.correct?Math.max(3,Math.round(x.correct/max*100)):2}%"></div>
+        <div class="progress-big-bar wrong" style="height:${x.wrong?Math.max(3,Math.round(x.wrong/max*100)):2}%"></div>
+      </div>
+      <div class="progress-big-accuracy">${x.solved?Math.round(x.correct/x.solved*100):0}%</div>
+      <div class="progress-big-label">${esc(x.label)}</div>
+    </div>`
+  }).join('');
+  const total=series.reduce((a,x)=>({solved:a.solved+x.solved,correct:a.correct+x.correct,wrong:a.wrong+x.wrong}),{solved:0,correct:0,wrong:0});
+  $('progressChartTotal').textContent=`${total.solved} solved · ${total.correct} correct · ${total.wrong} wrong`;
+  $('progressChartTitle').textContent=progressDashboardPeriod==='daily'?'Last 14 days':progressDashboardPeriod==='weekly'?'Last 9 weeks':'Last 6 months';
+}
+function progressRenderConsistency(){
+  const grid=$('progressConsistencyGrid');if(!grid)return;
+  const now=new Date(),end=new Date(now.getFullYear(),now.getMonth(),now.getDate()),start=new Date(end);start.setDate(start.getDate()-41);
+  const first=trackerStartOfWeek(start);
+  const cells=[];
+  for(let i=0;i<49;i++){
+    const d=new Date(first);d.setDate(d.getDate()+i);
+    if(d>end||i<0){cells.push('<div class="consistency-cell"></div>');continue}
+    const n=trackerDayStats(d).solved;
+    const level=n===0?0:n<=4?1:n<=9?2:n<=19?3:4;
+    cells.push(`<div class="consistency-cell" data-level="${level}" title="${esc(d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}))}: ${n} solved"></div>`);
+  }
+  grid.innerHTML=cells.join('');
+  let active=0;for(let i=0;i<42;i++){const d=new Date(first);d.setDate(d.getDate()+i);if(d<=end&&trackerDayStats(d).solved>0)active++}
+  $('progressConsistencySummary').textContent=`${active} active study day${active===1?'':'s'} in the recent period`;
+}
+function progressRenderPerformance(){
+  const el=$('progressPerformanceList');if(!el)return;
+  const today=new Date(),ranges=[
+    ['Today',new Date(today.getFullYear(),today.getMonth(),today.getDate()),today],
+    ['This week',trackerStartOfWeek(today),today],
+    ['This month',new Date(today.getFullYear(),today.getMonth(),1),today],
+    ['Last 30 days',new Date(today.getFullYear(),today.getMonth(),today.getDate()-29),today]
+  ];
+  el.innerHTML=ranges.map(([label,start,end])=>{
+    const x=trackerSumRange(start,end),acc=x.solved?Math.round(x.correct/x.solved*100):0;
+    return `<div class="performance-row"><label>${label}</label><div class="performance-track"><span style="width:${acc}%"></span></div><b>${acc}% · ${x.solved}</b></div>`;
+  }).join('');
+}
+function progressRenderTopics(){
+  const el=$('progressTopicList');if(!el)return;
+  const topics=progressTopicStats().slice(0,10);
+  el.innerHTML=topics.length?topics.map(x=>`<div class="progress-topic-row"><span>${esc(x.topic)}</span><div class="progress-topic-track"><span style="width:${x.accuracy}%"></span></div><b>${x.accuracy}%</b></div>`).join(''):'<div class="progress-empty">Topic-level performance will appear after you solve questions.</div>';
+}
+function progressRenderAttention(){
+  const el=$('progressAttentionList');if(!el)return;
+  const revision=revisionMerge(App.revision,revisionLoad());
+  const topics=progressTopicStats().filter(x=>x.solved>0).sort((a,b)=>a.accuracy-b.accuracy||b.wrong-a.wrong);
+  const rows=[];
+  topics.slice(0,4).forEach(x=>rows.push(`<div class="attention-item"><div class="attention-top"><span>${esc(x.topic)}</span><span>${x.accuracy}% accuracy</span></div><div class="attention-sub">${x.wrong} wrong out of ${x.solved} tracked questions</div></div>`));
+  if(revision.length)rows.push(`<div class="attention-item"><div class="attention-top"><span>Revision queue</span><span>${revision.length} questions</span></div><div class="attention-sub">Previously wrong questions are waiting for review.</div></div>`);
+  el.innerHTML=rows.length?rows.join(''):'<div class="progress-empty">No attention areas yet. Keep solving to build your performance profile.</div>';
+}
+function progressRenderRecent(){
+  const el=$('progressRecentDays');if(!el)return;
+  const now=new Date(),days=[];
+  for(let i=6;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i),x=trackerDayStats(d);days.push(`<div class="recent-day"><div class="recent-day-date">${esc(d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}))}</div><div class="recent-day-total">${x.solved}</div><div class="recent-day-breakdown">${x.correct} correct · ${x.wrong} wrong</div></div>`)}
+  el.innerHTML=days.join('');
+}
+function progressRenderDashboard(){
+  const all=progressAllTimeStats(),weekStart=trackerStartOfWeek(new Date()),week=trackerSumRange(weekStart,new Date()),revision=revisionMerge(App.revision,revisionLoad());
+  const accuracy=all.solved?Math.round(all.correct/all.solved*100):0;
+  const questionsTotal=App.questions?.length||0;
+  $('progressHeroSolved').textContent=all.solved;
+  $('progressHeroAccuracy').textContent=`${accuracy}% accuracy`;
+  $('progressHeroAttempted').textContent=`${all.solved} tracked`;
+  $('progressHeroBar').style.width=questionsTotal?Math.min(100,Math.round(all.solved/questionsTotal*100))+'%':'0%';
+  $('progressRingValue').textContent=accuracy+'%';
+  $('progressAccuracyRing').style.background=`conic-gradient(var(--gold) ${accuracy*3.6}deg,rgba(255,255,255,.14) ${accuracy*3.6}deg)`;
+  $('progressCorrect').textContent=all.correct;
+  $('progressWrong').textContent=all.wrong;
+  $('progressCorrectRate').textContent=`${all.solved?Math.round(all.correct/all.solved*100):0}% of solved`;
+  $('progressWrongRate').textContent=`${all.solved?Math.round(all.wrong/all.solved*100):0}% of solved`;
+  $('progressWeekSolved').textContent=week.solved;
+  $('progressWeekDelta').textContent=`${week.correct} correct · ${week.wrong} wrong`;
+  const streak=progressStreak();$('progressStreak').textContent=`${streak} day${streak===1?'':'s'}`;$('progressStreakHint').textContent=streak?'Keep the streak going':'Solve a question today';
+  $('progressRevisionCount').textContent=revision.length;
+  $('progressRevisionHint').textContent=revision.length?'Wrong answers to revisit':'Revision queue is clear';
+  progressRenderBigChart();progressRenderPerformance();progressRenderConsistency();progressRenderTopics();progressRenderAttention();progressRenderRecent();
+}
+function progressOpenDashboard(){trackerSetOpen(false);$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('progressScreen').classList.remove('hidden');window.scrollTo(0,0);progressRenderDashboard()}
+function progressCloseDashboard(){$('progressScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0);trackerRender()}
+function progressOpenRevisionFromDashboard(){ $('progressScreen').classList.add('hidden'); $('revisionScreen').classList.remove('hidden'); window.scrollTo(0,0); revisionRenderScreen(); }
+$('trackerToggle').onclick=()=>progressOpenDashboard();
+$('progressBackBtn').onclick=progressCloseDashboard;
+$('progressRefreshBtn').onclick=progressRenderDashboard;
+$('progressOpenRevisionBtn').onclick=progressOpenRevisionFromDashboard;
+document.querySelectorAll('.progress-period').forEach(btn=>btn.onclick=()=>{
+  progressDashboardPeriod=btn.dataset.period;
+  document.querySelectorAll('.progress-period').forEach(x=>x.classList.toggle('active',x===btn));
+  progressRenderBigChart();
+});
+
+/* ---------- DAILY STUDY PLAN LOGIC ---------- */
+const PLAN_KEY='cgpsc_daily_study_plan_v1';
+let planSelectedDate=trackerDate(new Date());
+function planLoad(){
+  try{
+    const x=JSON.parse(localStorage.getItem(PLAN_KEY)||'{}');
+    return x&&typeof x==='object'&&x.days&&typeof x.days==='object'?x:{days:{}};
+  }catch(e){return {days:{}}}
+}
+function planSave(data){
+  localStorage.setItem(PLAN_KEY,JSON.stringify(data));
+  queueCloudSave();
+}
+function planItems(date=planSelectedDate){
+  const data=planLoad();return Array.isArray(data.days?.[date])?data.days[date]:[];
+}
+function planDateObj(){const [y,m,d]=planSelectedDate.split('-').map(Number);return new Date(y,m-1,d)}
+function planShiftDate(delta){
+  const d=planDateObj();d.setDate(d.getDate()+delta);planSelectedDate=trackerDate(d);planRender();
+}
+function planAdd(){
+  const input=$('planTopicInput'),name=input.value.trim(),category=$('planCategory').value;if(!name)return;
+  const data=planLoad(),items=planItems();
+  items.push({id:'p_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),text:name,category:category||'Uncategorized',priority:$('planPriority').value,done:false,createdAt:new Date().toISOString()});
+  data.days[planSelectedDate]=items;planSave(data);input.value='';$('planCategory').value='';$('planPriority').value='normal';planRender();
+}
+function planToggle(id){
+  const data=planLoad(),items=planItems().map(x=>x.id===id?{...x,done:!x.done,completedAt:!x.done?new Date().toISOString():null}:x);
+  data.days[planSelectedDate]=items;planSave(data);planRender();
+}
+function planDelete(id){
+  const data=planLoad(),items=planItems().filter(x=>x.id!==id);data.days[planSelectedDate]=items;planSave(data);planRender();
+}
+function planClearCompleted(){
+  const data=planLoad(),items=planItems().filter(x=>!x.done);data.days[planSelectedDate]=items;planSave(data);planRender();
+}
+function planEdit(id){
+  const item=planItems().find(x=>x.id===id);if(!item)return;
+  const next=window.prompt('Edit topic',item.text);if(next===null)return;
+  const text=next.trim();if(!text)return;
+  const data=planLoad();data.days[planSelectedDate]=planItems().map(x=>x.id===id?{...x,text}:x);planSave(data);planRender();
+}
+function planOpen(date){
+  planSelectedDate=date;planRender();window.scrollTo(0,0);
+}
+function planRenderList(){
+  const list=$('planTopicList'),items=planItems(),done=items.filter(x=>x.done).length;
+  $('planDayCount').textContent=`${items.length} topic${items.length===1?'':'s'} planned`;
+  $('planTotalCount').textContent=items.length;$('planDoneCount').textContent=done;
+  $('planProgressBar').style.width=items.length?Math.round(done/items.length*100)+'%':'0%';
+  $('planProgressText').textContent=items.length?(done===items.length?'All topics completed 🎉':`${items.length-done} topic${items.length-done===1?'':'s'} remaining`):'Nothing planned yet.';
+  if(!items.length){list.innerHTML='<div class="plan-empty"><strong>No topics for this day</strong>Add the subjects or chapters you want to study today.</div>';return}
+  list.innerHTML=items.map(x=>`<div class="plan-topic-item ${x.done?'done':''}">
+    <button class="plan-topic-check" type="button" data-plan-toggle="${esc(x.id)}" aria-label="${x.done?'Mark incomplete':'Mark complete'}">${x.done?'✓':''}</button>
+    <div><div class="plan-topic-name">${esc(x.text)}</div><div class="plan-topic-meta"><span class="plan-category-tag">${esc(x.category||'Uncategorized')}</span><span class="plan-priority ${esc(x.priority||'normal')}">${esc(x.priority||'normal')} priority</span></div></div>
+    <div class="plan-topic-actions"><button class="plan-icon-btn" type="button" data-plan-edit="${esc(x.id)}" title="Edit">✎</button><button class="plan-icon-btn" type="button" data-plan-delete="${esc(x.id)}" title="Delete">×</button></div>
+  </div>`).join('');
+  list.querySelectorAll('[data-plan-toggle]').forEach(b=>b.onclick=()=>planToggle(b.dataset.planToggle));
+  list.querySelectorAll('[data-plan-edit]').forEach(b=>b.onclick=()=>planEdit(b.dataset.planEdit));
+  list.querySelectorAll('[data-plan-delete]').forEach(b=>b.onclick=()=>planDelete(b.dataset.planDelete));
+}
+function planRenderUpcoming(){
+  const el=$('planUpcomingList'),now=planDateObj(),rows=[];
+  for(let i=0;i<7;i++){
+    const d=new Date(now);d.setDate(d.getDate()+i);const key=trackerDate(d),items=planItems(key);
+    const label=i===0?'Today':i===1?'Tomorrow':d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
+    rows.push(`<div class="plan-upcoming-row" data-plan-date="${key}"><span class="plan-upcoming-date">${label}</span><span class="plan-upcoming-count">${items.filter(x=>!x.done).length}/${items.length}</span></div>`);
+  }
+  el.innerHTML=rows.join('');
+  el.querySelectorAll('[data-plan-date]').forEach(x=>x.onclick=()=>planOpen(x.dataset.planDate));
+}
+function planRenderStats(){
+  const now=planDateObj(),start=trackerStartOfWeek(now),end=new Date(start);end.setDate(end.getDate()+6);
+  let total=0,done=0,open=0;
+  for(let i=0;i<7;i++){const d=new Date(start);d.setDate(d.getDate()+i);const a=planItems(trackerDate(d));total+=a.length;done+=a.filter(x=>x.done).length;open+=a.filter(x=>!x.done).length}
+  $('planWeekTopics').textContent=total;$('planWeekDone').textContent=done;$('planOpenCount').textContent=open;
+}
+function planRender(){
+  const d=planDateObj(),today=trackerDate(new Date());
+  $('planDateLabel').textContent=planSelectedDate===today?'Today':d.toLocaleDateString(undefined,{weekday:'long'});
+  $('planDateFull').textContent=d.toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'});
+  $('planListTitle').textContent=planSelectedDate===today?"Today's topics":`${d.toLocaleDateString(undefined,{day:'numeric',month:'short'})} topics`;
+  planRenderList();planRenderUpcoming();planRenderStats();
+}
+function planOpenScreen(){
+  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
+}
+function planCloseScreen(){$('planScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
+$('studyPlanHomeBtn').onclick=e=>{e.stopPropagation();planOpenScreen()};
+$('studyPlanHomeBtn').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();planOpenScreen()}};
+async function manualSync(){
+  const btn=$('manualSyncBtn');if(!btn)return;
+  if(!cloudEnabled()){cloudStatus('Local backup active');btn.title='Cloud sync is not configured';return}
+  if(cloudBusy){cloudStatus('Sync already in progress…','loading');return}
+  clearTimeout(cloudSaveTimer);
+  btn.classList.remove('is-synced');btn.classList.add('is-syncing');btn.disabled=true;btn.setAttribute('aria-label','Syncing data');
+  try{await cloudSaveNow();}
+  finally{
+    btn.classList.remove('is-syncing');btn.classList.add('is-synced');btn.disabled=false;btn.setAttribute('aria-label','Sync data now');
+    setTimeout(()=>btn.classList.remove('is-synced'),1600);
+  }
+}
+$('manualSyncBtn').onclick=manualSync;
+$('planBackBtn').onclick=planCloseScreen;
+$('planPrevDay').onclick=()=>planShiftDate(-1);
+$('planNextDay').onclick=()=>planShiftDate(1);
+$('planTodayBtn').onclick=()=>{planSelectedDate=trackerDate(new Date());planRender()};
+$('planAddBtn').onclick=planAdd;
+$('planTopicInput').addEventListener('keydown',e=>{if(e.key==='Enter')planAdd()});
+$('planClearCompleted').onclick=planClearCompleted;
 
 function setTheme(theme){document.body.classList.remove('theme-comfort','theme-dark');document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));if(theme==='comfort'){$('comfortThemeBtn').classList.add('active');document.body.classList.add('theme-comfort')}else if(theme==='dark'){$('darkThemeBtn').classList.add('active');document.body.classList.add('theme-dark')}else{$('dayThemeBtn').classList.add('active')}localStorage.setItem('cgpsc_theme',theme)}
 $('dayThemeBtn').onclick=()=>{setTheme('day');setDisplayMenu(false)};$('comfortThemeBtn').onclick=()=>{setTheme('comfort');setDisplayMenu(false)};$('darkThemeBtn').onclick=()=>{setTheme('dark');setDisplayMenu(false)};$('focusBtn').onclick=()=>{document.body.classList.toggle('focus-mode');$('focusBtn').classList.toggle('active');$('focusBtn').textContent=document.body.classList.contains('focus-mode')?'Exit Focus':'Focus';setDisplayMenu(false)};setTheme(localStorage.getItem('cgpsc_theme')||'day');
-window.addEventListener('beforeunload',e=>{if(App.state.started){save();e.preventDefault();e.returnValue='Exam is in progress.'}});
+window.addEventListener('beforeunload',e=>{save();if(App.state.started){e.preventDefault();e.returnValue='Exam is in progress.'}});
 setInput(SAMPLE);
 restoreSavedExam();
 window.addEventListener('online',()=>{if(cloudEnabled()){cloudStatus('Back online — syncing…','loading');cloudSaveNow()}});
