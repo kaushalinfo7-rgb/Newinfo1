@@ -1496,6 +1496,312 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
 @media(max-width:700px){#revisionScreen{padding:12px 10px 24px}.revision-header{padding:18px 15px;border-radius:15px;flex-direction:column}.revision-header h1{font-size:23px}.revision-header-actions{width:100%}.revision-header-actions .btn{flex:1}.revision-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.revision-stat{padding:12px}.revision-stat b{font-size:21px}.revision-list{border-radius:15px}.revision-list-head{padding:14px}.revision-items{padding:9px}.revision-item{padding:13px;margin-bottom:9px}.revision-item-top{display:block}.revision-date{display:block;margin-top:5px}.revision-meta{grid-template-columns:1fr;gap:6px}}
 </style>
 
+<style id="question-bank-study-hub">
+.bank-import-card{margin-top:24px;background:linear-gradient(135deg,#f7faf9,#eef5f3);border:1px solid #d4e0dd;border-radius:20px;padding:20px;box-shadow:0 12px 30px rgba(23,42,45,.07)}.bank-import-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.bank-kicker,.studyhub-kicker{font-size:10px;letter-spacing:.16em;font-weight:900;color:var(--primary)}.bank-import-head h2{margin:4px 0 3px;color:var(--primary-dark);font-size:20px}.bank-import-head p{margin:0;color:var(--muted);font-size:11px}.bank-cloud-pill{padding:8px 11px;border-radius:999px;background:#e5f1ed;color:#286258;font-size:10px;font-weight:900;white-space:nowrap}.bank-import-row{display:grid;grid-template-columns:minmax(220px,1fr) minmax(260px,1fr);gap:10px;margin:16px 0 10px}.bank-field,.bank-file-label{display:flex;flex-direction:column;gap:6px;font-size:10px;font-weight:900;color:var(--primary-dark)}.bank-field select,.bank-file-label input{height:43px;box-sizing:border-box;border:1px solid var(--border);border-radius:10px;background:white;color:var(--text);padding:0 11px;font:inherit}.bank-file-label input{padding:9px}.bank-file-label small{font-weight:600;color:var(--muted)}.bank-import-card #jsonInput{min-height:180px;margin:8px 0 12px;background:#fff!important}.bank-import-summary{margin-top:9px;font-size:11px;color:var(--muted)}.cloud-status-hidden{display:none!important}.hub-home-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 15px;border-radius:999px;background:var(--primary-dark);color:#fff;border:1px solid var(--primary-dark);box-shadow:0 8px 24px rgba(23,42,45,.18);font-weight:900;cursor:pointer}.hub-home-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}.studyhub-dashboard{width:min(1400px,calc(100% - 56px));margin:0 auto;padding:34px 0 64px}.studyhub-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}.studyhub-header h1{margin:4px 0;font-size:clamp(32px,4vw,48px);letter-spacing:-.035em;color:var(--primary-dark)}.studyhub-header p{margin:0;color:var(--muted);font-size:14px}.studyhub-actions{display:flex;gap:9px}.studyhub-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.studyhub-overview>div{background:var(--surface);border:1px solid var(--border);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.studyhub-overview small,.studyhub-overview span{display:block;color:var(--muted);font-size:10px}.studyhub-overview strong{display:block;font-size:25px;color:var(--primary-dark);margin:3px 0}.studyhub-bank-section{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:21px}.studyhub-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:16px}.studyhub-section-head h2{margin:0;color:var(--primary-dark);font-size:19px}.studyhub-section-head p{margin:3px 0 0;color:var(--muted);font-size:11px}.hub-add-btn{border:0;border-radius:10px;padding:10px 13px;background:var(--gold);color:var(--primary-dark);font-weight:900;cursor:pointer}.hub-subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hub-subject-card{border:1px solid var(--border);border-radius:15px;padding:15px;background:var(--soft);display:flex;flex-direction:column;min-height:150px}.hub-subject-top{display:flex;justify-content:space-between;gap:10px}.hub-subject-card h3{margin:0;font-size:13px;color:var(--text)}.hub-subject-count{font-size:24px;font-weight:950;color:var(--primary-dark);margin:12px 0 2px}.hub-subject-label{font-size:10px;color:var(--muted)}.hub-subject-meta{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;gap:8px;align-items:center}.hub-ready{font-size:9px;color:var(--success);font-weight:900}.hub-practice-btn{border:1px solid var(--primary);background:var(--primary);color:#fff;border-radius:9px;padding:8px 11px;font-size:10px;font-weight:900;cursor:pointer}.hub-practice-btn:hover{filter:brightness(1.06)}.hub-empty{grid-column:1/-1;border:1px dashed var(--border);border-radius:15px;padding:30px;text-align:center;color:var(--muted);font-size:12px}.hub-empty b{display:block;color:var(--primary-dark);font-size:15px;margin-bottom:5px}
+@media(max-width:900px){.hub-subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.studyhub-overview{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.bank-import-head,.studyhub-header,.studyhub-section-head{flex-direction:column}.bank-import-row{grid-template-columns:1fr}.studyhub-dashboard{width:min(100% - 24px,1400px);padding:22px 0 45px}.studyhub-actions{width:100%}.studyhub-actions .btn{flex:1}.hub-subject-grid{grid-template-columns:1fr}.studyhub-overview{grid-template-columns:1fr 1fr}.bank-cloud-pill{align-self:flex-start}}
+</style>
+
+<style id="front-page-order-fix">
+/* =========================================================
+   FRONT PAGE — CLEAN INFORMATION HIERARCHY
+   Desktop: brand/revision on the left; question-bank workflow
+   on the right in a single, predictable vertical sequence.
+   Mobile: the same sequence collapses naturally.
+   ========================================================= */
+@media (min-width:1051px){
+  #start{
+    min-height:100vh!important;
+    padding:28px 34px!important;
+    box-sizing:border-box!important;
+    overflow:auto!important;
+    align-items:center!important;
+  }
+  #start .start{
+    width:min(1480px,100%)!important;
+    min-height:720px!important;
+    display:grid!important;
+    grid-template-columns:350px minmax(0,1fr)!important;
+    grid-template-rows:auto!important;
+    gap:0!important;
+    overflow:hidden!important;
+  }
+
+  /* Left column */
+  #start .brand{
+    grid-column:1!important;
+    grid-row:1!important;
+    min-height:720px!important;
+    box-sizing:border-box!important;
+    padding:42px 28px 120px!important;
+    border-right:1px solid rgba(255,255,255,.12)!important;
+    border-bottom:0!important;
+  }
+  #start .brand h1{font-size:36px!important}
+  #start .revision-home-card{
+    margin-top:28px!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+  }
+  #start .study-tracker{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    position:absolute!important;
+    left:20px!important;
+    right:20px!important;
+    bottom:20px!important;
+    padding:0!important;
+    z-index:30!important;
+  }
+  #start .study-nav-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr 1fr!important;
+    gap:7px!important;
+  }
+  #start .study-nav-actions > button{
+    width:100%!important;
+    min-width:0!important;
+    white-space:nowrap!important;
+    box-sizing:border-box!important;
+  }
+  #start .tracker-panel{
+    left:0!important;
+    right:auto!important;
+    bottom:54px!important;
+    width:302px!important;
+  }
+
+  /* Right column: one vertical workflow */
+  #start .bank-import-card{
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:start!important;
+    margin:0!important;
+    min-height:720px!important;
+    box-sizing:border-box!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:transparent!important;
+    padding:42px 46px 34px!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  #start .bank-import-head{
+    flex:0 0 auto!important;
+    padding-bottom:2px!important;
+  }
+  #start .bank-import-head h2{
+    font-size:25px!important;
+    margin:6px 0 5px!important;
+  }
+  #start .bank-import-head p{
+    max-width:760px!important;
+    line-height:1.55!important;
+  }
+  #start .bank-import-row{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    margin:22px 0 12px!important;
+    flex:0 0 auto!important;
+  }
+  #start .bank-import-card #jsonInput{
+    width:100%!important;
+    height:280px!important;
+    min-height:280px!important;
+    max-height:280px!important;
+    margin:0 0 14px!important;
+    box-sizing:border-box!important;
+    resize:vertical!important;
+    background:#fff!important;
+  }
+  #start .bank-import-card .actions{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:9px!important;
+    justify-content:flex-start!important;
+    margin:0 0 10px!important;
+  }
+  #start .bank-import-card .actions .btn{
+    flex:0 0 auto!important;
+    width:auto!important;
+  }
+  #start .bank-import-card #error{
+    margin:0 0 8px!important;
+    min-height:18px!important;
+  }
+  #start .bank-import-card .helper{
+    margin:0 0 8px!important;
+    line-height:1.5!important;
+  }
+  #start .bank-import-summary{
+    margin-top:auto!important;
+    padding-top:14px!important;
+    border-top:1px solid var(--border)!important;
+  }
+
+  /* The old standalone cloud status is intentionally hidden. */
+  #start #cloudSyncStatus{display:none!important}
+
+  /* Exam-start information belongs directly below the importer. */
+  #start #examInfo{
+    grid-column:2!important;
+    grid-row:1!important;
+    position:absolute!important;
+    left:396px!important;
+    right:46px!important;
+    bottom:28px!important;
+    margin:0!important;
+    padding:12px 0 0!important;
+    border-top:1px solid var(--border)!important;
+    background:transparent!important;
+    z-index:5!important;
+  }
+  #start #examInfo .helper{margin:0 0 10px!important}
+  #start #examInfo .actions{margin:0!important}
+}
+
+/* Smaller screens: keep the same logical order without forcing desktop geometry. */
+@media (max-width:1050px){
+  #start{
+    padding:14px!important;
+    box-sizing:border-box!important;
+    overflow:auto!important;
+  }
+  #start .start{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+    width:100%!important;
+    max-width:980px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  #start .brand{
+    order:1!important;
+    padding:28px 22px 24px!important;
+    margin:0!important;
+  }
+  #start .study-tracker{
+    order:2!important;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    padding:12px 16px!important;
+  }
+  #start .study-nav-actions{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+  #start .study-nav-actions > button{
+    width:100%!important;
+    min-width:0!important;
+    white-space:nowrap!important;
+  }
+  #start .tracker-panel{
+    left:0!important;
+    right:0!important;
+    bottom:52px!important;
+    width:auto!important;
+  }
+  #start .bank-import-card{
+    order:3!important;
+    margin:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+  }
+  #start #examInfo{
+    order:4!important;
+    margin:0!important;
+    padding:18px 20px 24px!important;
+  }
+  #start #cloudSyncStatus{display:none!important}
+}
+
+@media (max-width:650px){
+  #start{padding:8px!important}
+  #start .brand{padding:24px 18px 20px!important}
+  #start .study-nav-actions{grid-template-columns:1fr 1fr 1fr!important}
+  #start .study-nav-actions > button{
+    min-height:42px!important;
+    padding:7px 5px!important;
+    font-size:11px!important;
+  }
+  #start .bank-import-card{
+    padding:18px!important;
+  }
+  #start .bank-import-head{
+    flex-direction:column!important;
+    gap:10px!important;
+  }
+  #start .bank-import-row{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  #start .bank-import-card #jsonInput{
+    min-height:240px!important;
+    height:240px!important;
+    max-height:none!important;
+  }
+  #start .bank-import-card .actions{
+    flex-direction:column!important;
+  }
+  #start .bank-import-card .actions .btn{
+    width:100%!important;
+  }
+}
+</style>
+
+
+<style id="compact-study-nav">
+/* Compact Progress / Study Hub / Plan navigation */
+#start .study-tracker{
+  width:100%!important;
+  box-sizing:border-box!important;
+}
+#start .study-nav-actions{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:6px!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+}
+#start .study-nav-actions > button{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  min-height:34px!important;
+  height:34px!important;
+  padding:5px 7px!important;
+  margin:0!important;
+  font-size:11px!important;
+  line-height:1.1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  box-sizing:border-box!important;
+}
+@media (min-width:1051px){
+  #start .study-tracker{
+    left:20px!important;
+    right:20px!important;
+    bottom:18px!important;
+  }
+}
+@media (max-width:650px){
+  #start .study-nav-actions{
+    gap:5px!important;
+  }
+  #start .study-nav-actions > button{
+    min-height:36px!important;
+    height:36px!important;
+    padding:5px 4px!important;
+    font-size:10px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -1528,7 +1834,7 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
         <button id="trackerToggle" class="tracker-toggle" type="button" aria-expanded="false" aria-controls="trackerPanel">
           <span class="tracker-icon" aria-hidden="true">▥</span><span>Progress</span><strong id="trackerTodayMini">0</strong>
         </button>
-        <button id="manualSyncBtn" class="manual-sync-btn" type="button" title="Sync all data now" aria-label="Sync all data now"><span aria-hidden="true">↻</span><span>Sync</span></button>
+        <button id="studyHubHomeBtn" class="hub-home-btn" type="button" title="Open Study Hub"><span aria-hidden="true">✦</span><span>Study Hub</span></button>
         <button id="studyPlanHomeBtn" class="plan-home-btn" type="button" title="Open daily study plan">
           <span aria-hidden="true">✓</span><span>Plan</span>
         </button>
@@ -1560,13 +1866,19 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
         <p class="tracker-note">Each question is counted once on the day it is first answered. Accuracy = Correct ÷ Solved.</p>
       </section>
     </div>
-    <h3>Load Question Bank</h3>
-    <p class="sub">Paste your structured JSON below, or copy the sample JSON to use as a template.</p>
-    <textarea id="jsonInput" spellcheck="false"></textarea>
-    <div class="actions"><button class="btn outline" id="copySampleBtn">Copy Sample JSON</button><button class="btn primary" id="loadBtn">Validate & Load</button></div>
-    <div id="error" class="error"></div>
-    <div class="helper"><b>Supported types:</b> <code>mcq</code> · <code>multiple_statement</code> · <code>assertion_reason</code> · <code>match_following</code>. Old JSON using <code>question + options + answer</code> is also accepted automatically.</div>
-    <div id="cloudSyncStatus" class="helper" style="margin-top:12px"><b>Cloud sync:</b> <span id="cloudSyncText">Local backup active</span></div>
+    <section class="bank-import-card">
+      <div class="bank-import-head"><div><span class="bank-kicker">QUESTION BANK BUILDER</span><h2>Add questions to your Study Hub</h2><p>Select the subject first, then paste JSON or choose a JSON file. New questions are added to that subject's existing bank.</p></div><div class="bank-cloud-pill">☁ Auto-synced</div></div>
+      <div class="bank-import-row">
+        <label class="bank-field"><span>Subject</span><select id="bankSubjectSelect"></select></label>
+        <label class="bank-file-label"><span>JSON file</span><input id="bankFileInput" type="file" accept=".json,application/json"><small>Optional — imports directly into the selected subject</small></label>
+      </div>
+      <textarea id="jsonInput" spellcheck="false"></textarea>
+      <div class="actions"><button class="btn outline" id="copySampleBtn">Copy Sample JSON</button><button class="btn outline" id="loadBtn">Validate JSON</button><button class="btn primary" id="addBankBtn">Add to Question Bank</button></div>
+      <div id="error" class="error"></div>
+      <div class="helper"><b>Supported types:</b> <code>mcq</code> · <code>multiple_statement</code> · <code>assertion_reason</code> · <code>match_following</code>. Old JSON using <code>question + options + answer</code> is also accepted automatically.</div>
+      <div id="bankImportSummary" class="bank-import-summary"></div>
+    </section>
+    <div id="cloudSyncStatus" class="helper cloud-status-hidden"><b>Cloud sync:</b> <span id="cloudSyncText">Automatic sync active</span></div>
     <div id="examInfo" class="hidden" style="margin-top:25px"><div class="helper"><b id="infoText"></b><br>Timer and marking settings can be changed below before starting.</div><div class="actions"><button class="btn outline" id="fullscreenBtn">Enter Fullscreen</button><button class="btn primary" id="startBtn">START EXAM</button></div></div>
   </main>
 </div>
@@ -1667,6 +1979,25 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
         </section>
       </aside>
     </div>
+  </div>
+</div>
+
+<div id="studyHubScreen" class="screen hidden" aria-label="Study Hub">
+  <div class="studyhub-dashboard">
+    <header class="studyhub-header">
+      <div><span class="studyhub-kicker">STUDY COMMAND CENTER</span><h1>Study Hub</h1><p>Your subject-wise question banks, preparation coverage, and practice entry point in one place.</p></div>
+      <div class="studyhub-actions"><button id="studyHubRefreshBtn" class="btn outline" type="button">Refresh</button><button id="studyHubBackBtn" class="btn primary" type="button">Back to Home</button></div>
+    </header>
+    <section class="studyhub-overview">
+      <div><small>Question bank coverage</small><strong id="hubTotalQuestions">0</strong><span>questions across all subjects</span></div>
+      <div><small>Subjects with questions</small><strong id="hubSubjectCount">0</strong><span>ready for practice</span></div>
+      <div><small>Largest bank</small><strong id="hubLargestBank">—</strong><span id="hubLargestBankCount">0 questions</span></div>
+      <div><small>Last updated</small><strong id="hubLastUpdated">—</strong><span>automatically saved</span></div>
+    </section>
+    <section class="studyhub-bank-section">
+      <div class="studyhub-section-head"><div><h2>Subject-wise question banks</h2><p>Every JSON set you add is kept under its selected subject and synced with your study data.</p></div><button id="hubImportBtn" class="hub-add-btn" type="button">＋ Add Question Bank</button></div>
+      <div id="hubSubjectGrid" class="hub-subject-grid"></div>
+    </section>
   </div>
 </div>
 
@@ -2341,7 +2672,7 @@ function progressRenderDashboard(){
   $('progressRevisionHint').textContent=revision.length?'Wrong answers to revisit':'Revision queue is clear';
   progressRenderBigChart();progressRenderPerformance();progressRenderConsistency();progressRenderTopics();progressRenderAttention();progressRenderRecent();
 }
-function progressOpenDashboard(){setActiveView('progress');trackerSetOpen(false);$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('progressScreen').classList.remove('hidden');window.scrollTo(0,0);progressRenderDashboard()}
+function progressOpenDashboard(){setActiveView('progress');trackerSetOpen(false);$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('progressScreen').classList.remove('hidden');window.scrollTo(0,0);progressRenderDashboard()}
 function progressCloseDashboard(){setActiveView('home');$('progressScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0);trackerRender()}
 function progressOpenRevisionFromDashboard(){ setActiveView('revision'); $('progressScreen').classList.add('hidden'); $('revisionScreen').classList.remove('hidden'); window.scrollTo(0,0); revisionRenderScreen(); }
 $('trackerToggle').onclick=()=>progressOpenDashboard();
@@ -2449,7 +2780,7 @@ function restoreActiveView(){
   else if(view==='plan'&&typeof planOpenScreen==='function')planOpenScreen();
 }
 function planOpenScreen(){setActiveView('plan');
-  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
+  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
 }
 function planCloseScreen(){setActiveView('home');$('planScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
 $('studyPlanHomeBtn').onclick=e=>{e.stopPropagation();planOpenScreen()};
@@ -2462,13 +2793,6 @@ $('planAddBtn').onclick=planAdd;
 $('planTopicInput').addEventListener('keydown',e=>{if(e.key==='Enter')planAdd()});
 $('planClearCompleted').onclick=planClearCompleted;
 
-async function manualSync(){
-  const b=$('manualSyncBtn');if(!b)return;
-  b.classList.add('syncing');b.classList.remove('synced');b.disabled=true;
-  try{await cloudSaveNow();await cloudPullLatest();b.classList.add('synced');setTimeout(()=>b.classList.remove('synced'),1200)}
-  finally{b.classList.remove('syncing');b.disabled=false}
-}
-$('manualSyncBtn').onclick=manualSync;
 function setTheme(theme){document.body.classList.remove('theme-comfort','theme-dark');document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));if(theme==='comfort'){$('comfortThemeBtn').classList.add('active');document.body.classList.add('theme-comfort')}else if(theme==='dark'){$('darkThemeBtn').classList.add('active');document.body.classList.add('theme-dark')}else{$('dayThemeBtn').classList.add('active')}localStorage.setItem('cgpsc_theme',theme)}
 $('dayThemeBtn').onclick=()=>{setTheme('day');setDisplayMenu(false)};$('comfortThemeBtn').onclick=()=>{setTheme('comfort');setDisplayMenu(false)};$('darkThemeBtn').onclick=()=>{setTheme('dark');setDisplayMenu(false)};$('focusBtn').onclick=()=>{document.body.classList.toggle('focus-mode');$('focusBtn').classList.toggle('active');$('focusBtn').textContent=document.body.classList.contains('focus-mode')?'Exit Focus':'Focus';setDisplayMenu(false)};setTheme(localStorage.getItem('cgpsc_theme')||'day');
 window.addEventListener('beforeunload',e=>{save();if(App.state.started){e.preventDefault();e.returnValue='Exam is in progress.'}});
@@ -2487,6 +2811,30 @@ document.addEventListener('keydown',e=>{
   if(e.key.toLowerCase()==='m'){e.preventDefault();document.getElementById('markBtn')?.click()}
   if(e.key.toLowerCase()==='c'){e.preventDefault();document.getElementById('clearBtn')?.click()}
 });
+
+/* ---------- SUBJECT-WISE QUESTION BANKS / STUDY HUB ---------- */
+const QUESTION_BANKS_KEY='cgpsc_question_banks_v1';
+const BANK_SUBJECTS=['Chhattisgarh General Studies','Hindi','English','Chhattisgarhi','Reasoning & Logical Ability','Mental Ability','Mathematics & Statistics','Chemistry','Physics','Biology','Technology','Environment','Agriculture','Forestry','Current Affairs'];
+function bankLoad(){try{const x=JSON.parse(localStorage.getItem(QUESTION_BANKS_KEY)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
+function bankSave(data){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(data));queueCloudSave()}catch(e){console.warn('Question banks could not be saved:',e)}}
+function bankSlug(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+function bankQuestionKey(subject,q,i){const raw=q?.sourceId??q?.id??i;return bankSlug(subject)+'__'+String(raw)+'__'+i}
+function bankNormalizeQuestions(data,subject){const arr=validateData(data);return arr.map((q,i)=>({...q,id:bankQuestionKey(subject,q,i),sourceId:q.id??i+1,subject,bankSubject:subject,importedAt:new Date().toISOString()}))}
+function bankTotals(){const b=bankLoad();let total=0,subjects=0,largest={name:'—',count:0};BANK_SUBJECTS.forEach(s=>{const n=Array.isArray(b[s])?b[s].length:0;total+=n;if(n)subjects++;if(n>largest.count)largest={name:s,count:n}});return {total,subjects,largest}}
+function bankInitSelect(){const sel=$('bankSubjectSelect');if(!sel)return;sel.innerHTML=BANK_SUBJECTS.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('')}
+function bankRenderSummary(){const el=$('bankImportSummary');if(!el)return;const t=bankTotals();el.innerHTML=t.total?`<b>${t.total}</b> questions currently stored across <b>${t.subjects}</b> subject${t.subjects===1?'':'s'}.`:'No subject-wise question banks added yet.'}
+function bankRenderHub(){const b=bankLoad(),t=bankTotals();if($('hubTotalQuestions'))$('hubTotalQuestions').textContent=t.total;if($('hubSubjectCount'))$('hubSubjectCount').textContent=t.subjects;if($('hubLargestBank'))$('hubLargestBank').textContent=t.largest.name;if($('hubLargestBankCount'))$('hubLargestBankCount').textContent=t.largest.count+' question'+(t.largest.count===1?'':'s');if($('hubLastUpdated')){let latest=0;Object.values(b).forEach(arr=>(Array.isArray(arr)?arr:[]).forEach(q=>{latest=Math.max(latest,Date.parse(q.importedAt||0)||0)}));$('hubLastUpdated').textContent=latest?new Date(latest).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'—'}const grid=$('hubSubjectGrid');if(!grid)return;grid.innerHTML=BANK_SUBJECTS.map(s=>{const n=Array.isArray(b[s])?b[s].length:0;return `<article class="hub-subject-card"><div class="hub-subject-top"><h3>${esc(s)}</h3><span class="hub-ready">${n?'READY':'EMPTY'}</span></div><div class="hub-subject-count">${n}</div><div class="hub-subject-label">question${n===1?'':'s'} in this bank</div><div class="hub-subject-meta"><span>${n?'Available for practice':'Add JSON to begin'}</span>${n?`<button class="hub-practice-btn" data-hub-practice="${esc(s)}">Practice</button>`:''}</div></article>`}).join('');grid.querySelectorAll('[data-hub-practice]').forEach(btn=>btn.onclick=()=>bankPractice(btn.dataset.hubPractice));bankRenderSummary()}
+function bankAddFromInput(){const subject=$('bankSubjectSelect')?.value;if(!subject){$('error').textContent='Select a subject first.';return false}try{const raw=JSON.parse($('jsonInput').value);const incoming=bankNormalizeQuestions(raw,subject);const banks=bankLoad();const existing=Array.isArray(banks[subject])?banks[subject]:[];const seen=new Set(existing.map(q=>String(q.id)));const unique=incoming.filter(q=>{if(seen.has(String(q.id)))return false;seen.add(String(q.id));return true});banks[subject]=existing.concat(unique);bankSave(banks);$('error').textContent=`Added ${unique.length} new question${unique.length===1?'':'s'} to ${subject}.${incoming.length-unique.length?` ${incoming.length-unique.length} duplicate${incoming.length-unique.length===1?'':'s'} skipped.`:''}`;bankRenderSummary();bankRenderHub();return true}catch(e){$('error').textContent='Error: '+e.message;return false}}
+function bankLoadJsonFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{$('jsonInput').value=String(reader.result||'');$('error').textContent=`Loaded ${file.name}. Select/confirm the subject, then click Add to Question Bank.`};reader.onerror=()=>{$('error').textContent='Could not read the selected JSON file.'};reader.readAsText(file)}
+function bankPractice(subject){const banks=bankLoad(),qs=Array.isArray(banks[subject])?banks[subject]:[];if(!qs.length)return;App.questions=qs.map(q=>({...q}));App.state={index:0,remaining:App.questions.length*App.cfg.timePerQuestion,answers:{},status:{},started:false};App.questions.forEach(q=>App.state.status[q.id]='not-visited');$('jsonInput').value=JSON.stringify(App.questions,null,2);$('infoText').textContent=`${qs.length} ${subject} questions loaded • ${Math.ceil(App.state.remaining/60)} minutes • +${App.cfg.correct} / -${App.cfg.incorrect}`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='START EXAM';$('startBtn').dataset.resume='0';hubClose();$('start').classList.remove('hidden');window.scrollTo(0,0)}
+function hubOpen(){setActiveView('hub');$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.add('hidden');$('progressScreen').classList.add('hidden');$('studyHubScreen').classList.remove('hidden');bankRenderHub();window.scrollTo(0,0)}
+function hubClose(){setActiveView('home');$('studyHubScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
+function hubInit(){bankInitSelect();bankRenderSummary();bankRenderHub();$('bankFileInput')?.addEventListener('change',e=>bankLoadJsonFile(e.target.files?.[0]));$('addBankBtn')?.addEventListener('click',bankAddFromInput);$('loadBtn')?.addEventListener('click',()=>{try{validateData(JSON.parse($('jsonInput').value));$('error').textContent='JSON is valid. Choose the subject and click “Add to Question Bank”.';}catch(e){$('error').textContent='Error: '+e.message}});$('studyHubHomeBtn')?.addEventListener('click',hubOpen);$('studyHubBackBtn')?.addEventListener('click',hubClose);$('studyHubRefreshBtn')?.addEventListener('click',bankRenderHub);$('hubImportBtn')?.addEventListener('click',()=>{hubClose();$('bankSubjectSelect')?.focus();window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})})}
+const _oldBuildCloudPayload=buildCloudPayload;buildCloudPayload=function(){const p=_oldBuildCloudPayload();p.version=3;p.questionBanks=bankLoad();return p};
+const _oldApplySnapshot=applySnapshot;applySnapshot=function(saved){const ok=_oldApplySnapshot(saved);if(saved?.questionBanks&&typeof saved.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(saved.questionBanks))}catch(e){}}return ok};
+const _oldCloudLoad=cloudLoad;cloudLoad=async function(){const remote=await _oldCloudLoad();if(remote?.questionBanks&&typeof remote.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(remote.questionBanks))}catch(e){}}return remote};
+const _oldRestoreActiveView=restoreActiveView;restoreActiveView=function(){const view=getActiveView();if(view==='hub'&&typeof hubOpen==='function'){hubOpen();return}_oldRestoreActiveView()};
+hubInit();
 </script>
 
 
