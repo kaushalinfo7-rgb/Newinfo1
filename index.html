@@ -1958,13 +1958,13 @@ const CLOUD_CONFIG={
   rowId:'00000000-0000-0000-0000-000000000001'
 };
 const CLOUD_LOCAL_KEY='cgpsc_cloud_snapshot_v1';
-let cloudSaveTimer=null,cloudBusy=false,cloudQueued=false;
+let cloudSaveTimer=null,cloudBusy=false,cloudQueued=false,cloudPollTimer=null,cloudPullBusy=false;
 function cloudEnabled(){return /^https:\/\/[^\s]+$/.test(CLOUD_CONFIG.url||'')&&String(CLOUD_CONFIG.anonKey||'').length>20}
 function cloudStatus(text,kind=''){const el=$('cloudSyncText');if(!el)return;el.textContent=text;el.dataset.state=kind}
 function cloudHeaders(){return {'apikey':CLOUD_CONFIG.anonKey,'Authorization':'Bearer '+CLOUD_CONFIG.anonKey,'Content-Type':'application/json','Accept':'application/json'}}
 function cloudEndpoint(){return CLOUD_CONFIG.url.replace(/\/$/,'')+'/rest/v1/'+encodeURIComponent(CLOUD_CONFIG.table)}
 function getTrackerSnapshot(){try{return JSON.parse(localStorage.getItem(TRACKER_KEY)||'{"days":{}}')}catch(e){return {days:{}}}}
-function buildCloudPayload(){return {version:2,updatedAt:new Date().toISOString(),questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining,tracker:getTrackerSnapshot(),revision:revisionMerge(App.revision,revisionLoad()),theme:localStorage.getItem('cgpsc_theme')||'day'}}
+function buildCloudPayload(){let plan={days:{}};try{const raw=JSON.parse(localStorage.getItem(PLAN_KEY)||'{}');if(raw&&typeof raw==='object'&&raw.days&&typeof raw.days==='object')plan=raw}catch(e){};return {version:3,updatedAt:new Date().toISOString(),questions:App.questions,cfg:App.cfg,state:App.state,startRemaining:App.startRemaining,tracker:getTrackerSnapshot(),revision:revisionMerge(App.revision,revisionLoad()),plan,theme:localStorage.getItem('cgpsc_theme')||'day'}}
 function writeLocalSnapshot(payload){try{localStorage.setItem(CLOUD_LOCAL_KEY,JSON.stringify(payload))}catch(e){}}
 function readLocalSnapshot(){try{return JSON.parse(localStorage.getItem(CLOUD_LOCAL_KEY)||'null')}catch(e){return null}}
 async function cloudSaveNow(){
@@ -1982,6 +1982,7 @@ async function cloudSaveNow(){
 }
 function queueCloudSave(){
   if(!cloudEnabled())return;
+  try{writeLocalSnapshot(buildCloudPayload())}catch(e){}
   clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(cloudSaveNow,500);
 }
 async function cloudLoad(){
@@ -1992,11 +1993,56 @@ async function cloudLoad(){
     if(!r.ok)throw new Error('Cloud load failed ('+r.status+')');
     const rows=await r.json();
     let remote=rows?.[0]?.payload||null;
-     if(remote){remote={...remote,revision:revisionMerge(revisionLoad(),remote.revision||[])};revisionSave(remote.revision||[]);writeLocalSnapshot(remote);cloudStatus('Synced just now','ok')}
+     if(remote){
+      if(Array.isArray(remote.revision)){App.revision=remote.revision;revisionSave(remote.revision)}
+      if(remote.plan&&remote.plan.days){try{localStorage.setItem(PLAN_KEY,JSON.stringify(remote.plan))}catch(e){}}
+      if(remote.tracker&&remote.tracker.days){try{localStorage.setItem(TRACKER_KEY,JSON.stringify(remote.tracker))}catch(e){}}
+      writeLocalSnapshot(remote);cloudStatus('Synced just now','ok')
+    }
      else cloudStatus('Cloud record empty — local backup active','ok');
      return remote;
   }catch(e){cloudStatus('Offline — using local backup','error');console.warn(e);return null}
 }
+async function cloudPullLatest(){
+  if(!cloudEnabled()||cloudPullBusy||document.visibilityState==='hidden')return;
+  cloudPullBusy=true;
+  try{
+    const r=await fetch(cloudEndpoint()+'?id=eq.'+encodeURIComponent(CLOUD_CONFIG.rowId)+'&select=payload,updated_at',{headers:cloudHeaders(),cache:'no-store'});
+    if(!r.ok)throw new Error('Cloud refresh failed ('+r.status+')');
+    const rows=await r.json(),remote=rows?.[0]?.payload||null;
+    if(!remote)return;
+    const remoteAt=Date.parse(remote.updatedAt||rows?.[0]?.updated_at||0);
+    const local=readLocalSnapshot(),localAt=Date.parse(local?.updatedAt||0);
+    if(!remoteAt || remoteAt<=localAt)return;
+    if(applySnapshot(remote)){
+      writeLocalSnapshot(remote);
+      revisionRenderHome();revisionRenderScreen();trackerRender();
+      if(!$('progressScreen').classList.contains('hidden'))progressRenderDashboard();
+      if(!$('planScreen').classList.contains('hidden'))planRender();
+      cloudStatus('Updated from another device','ok');
+    }else{
+      writeLocalSnapshot(remote);
+      revisionRenderHome();revisionRenderScreen();trackerRender();
+      if(!$('progressScreen').classList.contains('hidden'))progressRenderDashboard();
+      if(!$('planScreen').classList.contains('hidden'))planRender();
+      cloudStatus('Updated from another device','ok');
+    }
+  }catch(e){
+    console.warn('Automatic cloud refresh failed:',e);
+  }finally{
+    cloudPullBusy=false;
+  }
+}
+function startCloudAutoSync(){
+  if(!cloudEnabled())return;
+  clearInterval(cloudPollTimer);
+  cloudPollTimer=setInterval(cloudPullLatest,5000);
+  cloudPullLatest();
+}
+function stopCloudAutoSync(){
+  clearInterval(cloudPollTimer);cloudPollTimer=null;
+}
+
 function applySnapshot(saved){
   if(!saved||!Array.isArray(saved.questions)||!saved.questions.length||!saved.state)return false;
   try{
@@ -2005,6 +2051,8 @@ function applySnapshot(saved){
     App.startRemaining=Number(saved.startRemaining)||App.state.remaining||0;
     App.questions.forEach(q=>{if(!App.state.status[q.id])App.state.status[q.id]=App.state.answers[q.id]?'answered':'not-visited'});
     if(saved.tracker&&saved.tracker.days)try{localStorage.setItem(TRACKER_KEY,JSON.stringify(saved.tracker))}catch(e){}
+    if(saved.plan&&saved.plan.days)try{localStorage.setItem(PLAN_KEY,JSON.stringify(saved.plan))}catch(e){}
+    if(Array.isArray(saved.revision)){App.revision=saved.revision;revisionSave(saved.revision)}
     if(saved.theme)setTheme(saved.theme);
     if(App.state.started&&App.state.remaining>0){$('infoText').textContent=`Saved exam found • ${App.questions.length} questions • ${Math.ceil(App.state.remaining/60)} minutes remaining`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';return true}
     return false;
@@ -2029,8 +2077,9 @@ async function restoreSavedExam(){
   }else if(cloudSaved)chosen=cloudSaved;
   if(chosen&&applySnapshot(chosen))return true;
   if(localSaved&&localSaved.questions&&localSaved.state){
-    try{App.questions=validateData(localSaved.questions);App.cfg={...App.cfg,...(localSaved.cfg||{})};App.state={...App.state,...localSaved.state,answers:{...(localSaved.state.answers||{})},status:{...(localSaved.state.status||{})}};App.startRemaining=Number(localSaved.startRemaining)||App.state.remaining||0;App.revision=revisionMerge(revisionLoad(),localSaved.revision||[]);
-  if(snap.plan&&snap.plan.days){try{localStorage.setItem(PLAN_KEY,JSON.stringify(snap.plan))}catch(e){}}revisionSave(App.revision);App.questions.forEach(q=>{if(!App.state.status[q.id])App.state.status[q.id]=App.state.answers[q.id]?'answered':'not-visited'});if(App.state.started&&App.state.remaining>0){$('infoText').textContent=`Saved exam found • ${App.questions.length} questions • ${Math.ceil(App.state.remaining/60)} minutes remaining`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';return true}}catch(e){console.warn('Local saved exam was ignored:',e)}}
+    try{App.questions=validateData(localSaved.questions);App.cfg={...App.cfg,...(localSaved.cfg||{})};App.state={...App.state,...localSaved.state,answers:{...(localSaved.state.answers||{})},status:{...(localSaved.state.status||{})}};App.startRemaining=Number(localSaved.startRemaining)||App.state.remaining||0;
+  if(localSaved.plan&&localSaved.plan.days){try{localStorage.setItem(PLAN_KEY,JSON.stringify(localSaved.plan))}catch(e){}}
+  if(Array.isArray(localSaved.revision)){App.revision=localSaved.revision;revisionSave(localSaved.revision)}else{revisionSave(App.revision)}App.questions.forEach(q=>{if(!App.state.status[q.id])App.state.status[q.id]=App.state.answers[q.id]?'answered':'not-visited'});if(App.state.started&&App.state.remaining>0){$('infoText').textContent=`Saved exam found • ${App.questions.length} questions • ${Math.ceil(App.state.remaining/60)} minutes remaining`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';return true}}catch(e){console.warn('Local saved exam was ignored:',e)}}
   return false;
 }
 
@@ -2360,6 +2409,7 @@ function planAdd(){
 function planToggle(id){
   const data=planLoad(),items=planItems().map(x=>x.id===id?{...x,done:!x.done,completedAt:!x.done?new Date().toISOString():null}:x);
   data.days[planSelectedDate]=items;planSave(data);planRender();
+  clearTimeout(cloudSaveTimer);cloudSaveNow();
 }
 function planDelete(id){
   const data=planLoad(),items=planItems().filter(x=>x.id!==id);data.days[planSelectedDate]=items;planSave(data);planRender();
@@ -2446,8 +2496,21 @@ function setTheme(theme){document.body.classList.remove('theme-comfort','theme-d
 $('dayThemeBtn').onclick=()=>{setTheme('day');setDisplayMenu(false)};$('comfortThemeBtn').onclick=()=>{setTheme('comfort');setDisplayMenu(false)};$('darkThemeBtn').onclick=()=>{setTheme('dark');setDisplayMenu(false)};$('focusBtn').onclick=()=>{document.body.classList.toggle('focus-mode');$('focusBtn').classList.toggle('active');$('focusBtn').textContent=document.body.classList.contains('focus-mode')?'Exit Focus':'Focus';setDisplayMenu(false)};setTheme(localStorage.getItem('cgpsc_theme')||'day');
 window.addEventListener('beforeunload',e=>{save();if(App.state.started){e.preventDefault();e.returnValue='Exam is in progress.'}});
 setInput(SAMPLE);
-restoreSavedExam();
-window.addEventListener('online',()=>{if(cloudEnabled()){cloudStatus('Back online — syncing…','loading');cloudSaveNow()}});
+restoreSavedExam().then(()=>startCloudAutoSync());
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'){
+    startCloudAutoSync();
+  }else{
+    stopCloudAutoSync();
+  }
+});
+window.addEventListener('online',()=>{
+  if(cloudEnabled()){
+    cloudStatus('Back online — syncing…','loading');
+    cloudSaveNow();
+    setTimeout(cloudPullLatest,900);
+  }
+});
 
 /* Desktop keyboard convenience */
 document.addEventListener('keydown',e=>{
