@@ -2254,124 +2254,17 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 </style>
 
 <style id="nav-button-polish">
-/* Refined primary navigation: Progress / Study Hub / Plan */
-#start .home-nav,
-#start .nav-actions,
-#start .quick-nav,
-#start .dashboard-nav {
-  gap: 12px !important;
-}
-
-#start .home-nav button,
-#start .nav-actions button,
-#start .quick-nav button,
-#start .dashboard-nav button,
-#start button[onclick*="progress" i],
-#start button[onclick*="studyHub" i],
-#start button[onclick*="plan" i] {
-  position: relative;
-  min-height: 54px !important;
-  padding: 12px 18px !important;
-  border: 1px solid rgba(148, 163, 184, .22) !important;
-  border-radius: 16px !important;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.96), rgba(241,245,249,.94)) !important;
-  color: #172033 !important;
-  box-shadow:
-    0 8px 22px rgba(15,23,42,.08),
-    inset 0 1px 0 rgba(255,255,255,.95) !important;
-  font-weight: 800 !important;
-  letter-spacing: -.01em !important;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease,
-              background .2s ease !important;
-  overflow: hidden;
-}
-
-#start .home-nav button::before,
-#start .nav-actions button::before,
-#start .quick-nav button::before,
-#start .dashboard-nav button::before,
-#start button[onclick*="progress" i]::before,
-#start button[onclick*="studyHub" i]::before,
-#start button[onclick*="plan" i]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(255,255,255,.5), transparent 48%);
-  pointer-events: none;
-}
-
-#start .home-nav button:hover,
-#start .nav-actions button:hover,
-#start .quick-nav button:hover,
-#start .dashboard-nav button:hover,
-#start button[onclick*="progress" i]:hover,
-#start button[onclick*="studyHub" i]:hover,
-#start button[onclick*="plan" i]:hover {
-  transform: translateY(-3px);
-  border-color: rgba(13, 148, 136, .42) !important;
-  box-shadow:
-    0 14px 30px rgba(15,23,42,.12),
-    0 0 0 4px rgba(13,148,136,.07),
-    inset 0 1px 0 rgba(255,255,255,.95) !important;
-}
-
-#start .home-nav button:active,
-#start .nav-actions button:active,
-#start .quick-nav button:active,
-#start .dashboard-nav button:active,
-#start button[onclick*="progress" i]:active,
-#start button[onclick*="studyHub" i]:active,
-#start button[onclick*="plan" i]:active {
-  transform: translateY(-1px) scale(.985);
-}
-
-/* Give each destination a distinct visual identity without changing its label. */
-#start .home-nav button:nth-child(1),
-#start .nav-actions button:nth-child(1),
-#start .quick-nav button:nth-child(1),
-#start .dashboard-nav button:nth-child(1) {
-  border-top: 3px solid #0f766e !important;
-}
-
-#start .home-nav button:nth-child(2),
-#start .nav-actions button:nth-child(2),
-#start .quick-nav button:nth-child(2),
-#start .dashboard-nav button:nth-child(2) {
-  border-top: 3px solid #2563eb !important;
-}
-
-#start .home-nav button:nth-child(3),
-#start .nav-actions button:nth-child(3),
-#start .quick-nav button:nth-child(3),
-#start .dashboard-nav button:nth-child(3) {
-  border-top: 3px solid #d97706 !important;
-}
-
-/* Dark theme */
-body.dark #start .home-nav button,
-body.dark #start .nav-actions button,
-body.dark #start .quick-nav button,
-body.dark #start .dashboard-nav button,
-body.dark #start button[onclick*="progress" i],
-body.dark #start button[onclick*="studyHub" i],
-body.dark #start button[onclick*="plan" i] {
-  background: linear-gradient(145deg, #172235, #111a2b) !important;
-  color: #f8fafc !important;
-  border-color: rgba(148,163,184,.18) !important;
-  box-shadow: 0 10px 25px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04) !important;
-}
-
-@media (max-width: 720px) {
-  #start .home-nav button,
-  #start .nav-actions button,
-  #start .quick-nav button,
-  #start .dashboard-nav button {
-    min-height: 50px !important;
-    padding: 10px 13px !important;
-    border-radius: 14px !important;
-  }
-}
+/* Consistent main navigation buttons */
+#start .study-nav-actions{display:grid!important;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px!important}
+#start .study-nav-actions>button{
+  position:relative!important;min-height:54px!important;padding:12px 16px!important;border:1px solid rgba(148,163,184,.22)!important;border-top:3px solid #2F6F6D!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(241,245,249,.95))!important;color:#172033!important;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95)!important;font-weight:800!important;cursor:pointer!important;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+#start .study-nav-actions>button:hover{transform:translateY(-3px);border-color:rgba(47,111,109,.45)!important;box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(47,111,109,.07),inset 0 1px 0 rgba(255,255,255,.95)!important}
+#start .study-nav-actions>button:active{transform:translateY(-1px) scale(.985)}
+#start .study-nav-actions .tracker-toggle{background:linear-gradient(145deg,#2f6f6d,#24565a)!important;color:#fff!important;border-color:#2f6f6d!important}
+#start .study-nav-actions .tracker-toggle strong{background:#d9c98b!important;color:#173e42!important}
+body.theme-dark #start .study-nav-actions>button{background:linear-gradient(145deg,#172235,#111a2b)!important;color:#f8fafc!important;border-color:rgba(148,163,184,.18)!important;box-shadow:0 10px 25px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04)!important}
+@media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}#start .study-nav-actions>button{min-height:50px!important;padding:10px 12px!important}}
 </style>
 
 
@@ -2442,8 +2335,51 @@ body.theme-dark .notes-content th,body.theme-dark .notes-content td{border-color
 </style>
 
 
+
+<style id="quickquiz-ui">
+#start .study-nav-actions{grid-template-columns:repeat(5,minmax(120px,1fr))!important}
+.quickquiz-home-btn{position:relative;min-height:54px;padding:12px 18px;border:1px solid rgba(148,163,184,.22);border-top:3px solid #f59e0b;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(241,245,249,.94));color:#172033;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95);font-weight:800;cursor:pointer;transition:.2s ease}
+.quickquiz-home-btn:hover{transform:translateY(-3px);border-color:rgba(245,158,11,.45);box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(245,158,11,.08)}
+body.theme-dark #start .quickquiz-home-btn{background:linear-gradient(145deg,#172235,#111a2b);color:#f8fafc;border-color:rgba(148,163,184,.18)}
+.quickquiz-dashboard{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:34px 0 60px}
+.quickquiz-header{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;margin-bottom:22px}
+.quickquiz-kicker{font-size:10px;font-weight:900;letter-spacing:.18em;color:#b45309}
+.quickquiz-header h1{margin:5px 0 7px;font-size:36px;letter-spacing:-.04em}
+.quickquiz-header p{margin:0;color:var(--muted);font-size:13px}
+.quickquiz-actions{display:flex;gap:9px;flex-shrink:0}
+.quickquiz-hero{display:grid;grid-template-columns:62px minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px;border:1px solid rgba(245,158,11,.22);border-radius:22px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(255,255,255,.92));box-shadow:0 14px 35px rgba(15,23,42,.07)}
+.quickquiz-hero-icon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:rgba(245,158,11,.16)}
+.quickquiz-hero>div:nth-child(2)>span{font-size:10px;font-weight:900;letter-spacing:.12em;color:#92400e}
+.quickquiz-hero h2{margin:4px 0 5px;font-size:21px}
+.quickquiz-hero p{margin:0;color:var(--muted);font-size:12px}
+.quickquiz-start-btn{border:0;border-radius:13px;padding:13px 19px;background:#b45309;color:#fff;font-weight:900;cursor:pointer;box-shadow:0 8px 20px rgba(180,83,9,.22)}
+.quickquiz-start-btn:hover{transform:translateY(-1px)}
+.quickquiz-start-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.quickquiz-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.quickquiz-stats>div{padding:16px;border:1px solid rgba(148,163,184,.16);border-radius:16px;background:rgba(148,163,184,.035)}
+.quickquiz-stats small,.quickquiz-stats span{display:block;color:var(--muted);font-size:10px}
+.quickquiz-stats strong{display:block;margin:4px 0;font-size:19px}
+.quickquiz-list-card{border:1px solid rgba(148,163,184,.16);border-radius:20px;background:var(--card,#fff);overflow:hidden}
+.quickquiz-list-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid rgba(148,163,184,.13)}
+.quickquiz-list-head>div>span{font-size:9px;font-weight:900;letter-spacing:.15em;color:var(--muted)}
+.quickquiz-list-head h2{margin:4px 0 0;font-size:19px}
+.quickquiz-mix-badge{padding:7px 10px;border-radius:999px;background:rgba(245,158,11,.11);color:#92400e;font-size:10px;font-weight:900}
+.quickquiz-question-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:14px}
+.quickquiz-empty{grid-column:1/-1;padding:34px;text-align:center;color:var(--muted);font-size:12px}
+.quickquiz-question{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:11px;align-items:start;padding:12px;border:1px solid rgba(148,163,184,.13);border-radius:14px;background:rgba(148,163,184,.025)}
+.quickquiz-number{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(15,118,110,.09);color:#0f766e;font-size:11px;font-weight:900}
+.quickquiz-question-text{min-width:0;font-size:12px;font-weight:750;line-height:1.45}
+.quickquiz-question-subject{display:inline-flex;margin-top:6px;padding:4px 7px;border-radius:6px;background:rgba(148,163,184,.09);color:var(--muted);font-size:9px;font-weight:800}
+.quickquiz-type{font-size:9px;color:var(--muted);white-space:nowrap;padding-top:3px}
+body.theme-dark .quickquiz-hero{background:linear-gradient(135deg,rgba(245,158,11,.13),#111a2b);border-color:rgba(245,158,11,.2)}
+body.theme-dark .quickquiz-list-card{background:#111a2b;border-color:rgba(148,163,184,.16)}
+body.theme-dark .quickquiz-mix-badge{color:#fbbf24;background:rgba(245,158,11,.1)}
+@media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}.quickquiz-hero{grid-template-columns:50px 1fr}.quickquiz-start-btn{grid-column:1/-1}.quickquiz-stats{grid-template-columns:repeat(2,1fr)}.quickquiz-question-list{grid-template-columns:1fr}}
+@media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}.quickquiz-dashboard{width:min(100% - 24px,1180px);padding-top:20px}.quickquiz-header{flex-direction:column}.quickquiz-actions{width:100%}.quickquiz-actions .btn{flex:1}.quickquiz-hero{padding:16px}.quickquiz-header h1{font-size:29px}.quickquiz-stats{grid-template-columns:1fr 1fr}}
+</style>
+
 <style id="notes-home-button-polish">
-#start .study-nav-actions{display:grid !important;grid-template-columns:repeat(4,minmax(120px,1fr));gap:12px !important}
+#start .study-nav-actions{display:grid !important;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px !important}
 #start .notes-home-btn{position:relative;min-height:54px;padding:12px 18px;border:1px solid rgba(148,163,184,.22);border-top:3px solid #7c3aed;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(241,245,249,.94));color:#172033;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95);font-weight:800;cursor:pointer;transition:.2s ease}
 #start .notes-home-btn:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.4);box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(124,58,237,.07)}
 body.theme-dark #start .notes-home-btn{background:linear-gradient(145deg,#172235,#111a2b);color:#f8fafc;border-color:rgba(148,163,184,.18)}
@@ -2562,6 +2498,58 @@ body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.1
 @media(prefers-reduced-motion:reduce){.notes-subject-group .saved-note-list{animation:none}}
 </style>
 
+
+<style id="final-main-nav-consistency">
+/* Final override: one coherent button system for the main dashboard navigation. */
+#start .study-nav-actions>button,
+#start .study-nav-actions .tracker-toggle,
+#start .study-nav-actions .hub-home-btn,
+#start .study-nav-actions .plan-home-btn,
+#start .study-nav-actions .notes-home-btn,
+#start .study-nav-actions .quickquiz-home-btn{
+  min-height:54px!important;
+  padding:12px 16px!important;
+  border:1px solid rgba(148,163,184,.24)!important;
+  border-top:3px solid #2F6F6D!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#f7faf9,#eaf2f0)!important;
+  color:#173E42!important;
+  box-shadow:0 8px 22px rgba(23,42,45,.09),inset 0 1px 0 rgba(255,255,255,.9)!important;
+  font-weight:900!important;
+  cursor:pointer!important;
+}
+#start .study-nav-actions>button:hover,
+#start .study-nav-actions .tracker-toggle:hover,
+#start .study-nav-actions .hub-home-btn:hover,
+#start .study-nav-actions .plan-home-btn:hover,
+#start .study-nav-actions .notes-home-btn:hover,
+#start .study-nav-actions .quickquiz-home-btn:hover{
+  transform:translateY(-2px)!important;
+  border-color:#2F6F6D!important;
+  background:linear-gradient(145deg,#ffffff,#edf5f3)!important;
+  box-shadow:0 13px 28px rgba(23,42,45,.13),0 0 0 4px rgba(47,111,109,.07)!important;
+  filter:none!important;
+}
+#start .study-nav-actions .tracker-toggle strong{
+  background:#D9C98B!important;
+  color:#173E42!important;
+}
+body.theme-dark #start .study-nav-actions>button,
+body.theme-dark #start .study-nav-actions .tracker-toggle,
+body.theme-dark #start .study-nav-actions .hub-home-btn,
+body.theme-dark #start .study-nav-actions .plan-home-btn,
+body.theme-dark #start .study-nav-actions .notes-home-btn,
+body.theme-dark #start .study-nav-actions .quickquiz-home-btn{
+  background:linear-gradient(145deg,#1b3032,#142527)!important;
+  color:#F4FAF9!important;
+  border-color:rgba(169,216,212,.18)!important;
+  border-top-color:#6FA8A7!important;
+  box-shadow:0 10px 25px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+@media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}#start .study-nav-actions>button{min-height:50px!important;padding:10px 12px!important}}
+</style>
+
 </head>
 <body>
 
@@ -2600,6 +2588,9 @@ body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.1
         </button>
         <button id="notesHomeBtn" class="notes-home-btn" type="button" title="Open subject notes">
           <span aria-hidden="true">▤</span><span>Notes</span>
+        </button>
+        <button id="quickQuizHomeBtn" class="quickquiz-home-btn" type="button" title="Start a 25-question mixed quiz">
+          <span aria-hidden="true">⚡</span><span>Quick Quiz</span>
         </button>
       </div>
       <section id="trackerPanel" class="tracker-panel hidden" aria-label="Question solving progress">
@@ -2713,7 +2704,6 @@ body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.1
 
         <div class="notes-editor-footer">
           <span id="notesLastSaved">Not saved yet</span>
-          <button id="notesDeleteBtn" class="notes-delete-btn" type="button">Delete this subject's notes</button>
         </div>
       </main>
     </section>
@@ -2829,6 +2819,48 @@ body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.1
         </section>
       </aside>
     </div>
+  </div>
+</div>
+
+
+<div id="quickQuizScreen" class="screen hidden" aria-label="Quick Quiz">
+  <div class="quickquiz-dashboard">
+    <header class="quickquiz-header">
+      <div>
+        <span class="quickquiz-kicker">RAPID MIXED PRACTICE</span>
+        <h1>Quick Quiz</h1>
+        <p>25 randomly selected questions from your subject-wise question bank.</p>
+      </div>
+      <div class="quickquiz-actions">
+        <button id="quickQuizRefreshBtn" class="btn outline" type="button">New Random Set</button>
+        <button id="quickQuizBackBtn" class="btn primary" type="button">Back to Home</button>
+      </div>
+    </header>
+
+    <section class="quickquiz-hero">
+      <div class="quickquiz-hero-icon">⚡</div>
+      <div>
+        <span>25 QUESTIONS • MIXED SUBJECTS</span>
+        <h2>Test your overall CGPSC readiness</h2>
+        <p id="quickQuizStatus">Generating a random set from your question bank…</p>
+      </div>
+      <button id="quickQuizStartBtn" class="quickquiz-start-btn" type="button">Start Quick Quiz</button>
+    </section>
+
+    <section class="quickquiz-stats">
+      <div><small>Questions</small><strong id="quickQuizCount">0 / 25</strong></div>
+      <div><small>Subjects represented</small><strong id="quickQuizSubjects">0</strong></div>
+      <div><small>Question bank</small><strong id="quickQuizBankTotal">0</strong><span>available questions</span></div>
+      <div><small>Selection</small><strong>Random</strong><span>fresh on every new set</span></div>
+    </section>
+
+    <section class="quickquiz-list-card">
+      <div class="quickquiz-list-head">
+        <div><span>QUESTION PREVIEW</span><h2>Today's random set</h2></div>
+        <span id="quickQuizSubjectMix" class="quickquiz-mix-badge">Mixed subjects</span>
+      </div>
+      <div id="quickQuizQuestionList" class="quickquiz-question-list"></div>
+    </section>
   </div>
 </div>
 
@@ -3545,7 +3577,7 @@ function planLoad(){
   }catch(e){return {days:{}}}
 }
 function planSave(data){
-  localStorage.setItem(PLAN_KEY,JSON.stringify(data));
+  storageSet(PLAN_KEY,JSON.stringify(data));
   queueCloudSave();
 }
 function planItems(date=planSelectedDate){
@@ -3620,18 +3652,31 @@ function planRender(){
   $('planListTitle').textContent=planSelectedDate===today?"Today's topics":`${d.toLocaleDateString(undefined,{day:'numeric',month:'short'})} topics`;
   planRenderList();planRenderUpcoming();planRenderStats();
 }
+/* ---------- SAFE STORAGE LAYER ---------- */
+const SAFE_STORAGE_MEMORY={};
+function storageGet(key,fallback=null){
+  try{const v=window.localStorage?.getItem(key);return v===null?fallback:v}catch(e){return Object.prototype.hasOwnProperty.call(SAFE_STORAGE_MEMORY,key)?SAFE_STORAGE_MEMORY[key]:fallback}
+}
+function storageSet(key,value){
+  try{window.localStorage?.setItem(key,value);return true}catch(e){SAFE_STORAGE_MEMORY[key]=String(value);return false}
+}
+function storageRemove(key){
+  try{window.localStorage?.removeItem(key)}catch(e){}
+  delete SAFE_STORAGE_MEMORY[key];
+}
 const APP_VIEW_KEY='cgpsc_active_view_v1';
-function setActiveView(view){try{localStorage.setItem(APP_VIEW_KEY,view)}catch(e){}}
-function getActiveView(){try{return localStorage.getItem(APP_VIEW_KEY)||'home'}catch(e){return 'home'}}
+function setActiveView(view){storageSet(APP_VIEW_KEY,view)}
+function getActiveView(){return storageGet(APP_VIEW_KEY,'home')||'home'}
 function restoreActiveView(){
   const view=getActiveView();
   if(view==='progress'&&typeof progressOpenDashboard==='function')progressOpenDashboard();
   else if(view==='revision'&&typeof revisionOpen==='function')revisionOpen();
   else if(view==='plan'&&typeof planOpenScreen==='function')planOpenScreen();
   else if(view==='notes'&&typeof notesOpen==='function')notesOpen();
+  else if(view==='quickquiz'&&typeof quickQuizOpen==='function')quickQuizOpen();
 }
 function planOpenScreen(){setActiveView('plan');
-  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('notesScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
+  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('notesScreen').classList.add('hidden');$('quickQuizScreen')?.classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
 }
 function planCloseScreen(){setActiveView('home');$('planScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
 $('studyPlanHomeBtn').onclick=e=>{e.stopPropagation();planOpenScreen()};
@@ -3644,8 +3689,8 @@ $('planAddBtn').onclick=planAdd;
 $('planTopicInput').addEventListener('keydown',e=>{if(e.key==='Enter')planAdd()});
 $('planClearCompleted').onclick=planClearCompleted;
 
-function setTheme(theme){document.body.classList.remove('theme-comfort','theme-dark');document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));if(theme==='comfort'){$('comfortThemeBtn').classList.add('active');document.body.classList.add('theme-comfort')}else if(theme==='dark'){$('darkThemeBtn').classList.add('active');document.body.classList.add('theme-dark')}else{$('dayThemeBtn').classList.add('active')}localStorage.setItem('cgpsc_theme',theme)}
-$('dayThemeBtn').onclick=()=>{setTheme('day');setDisplayMenu(false)};$('comfortThemeBtn').onclick=()=>{setTheme('comfort');setDisplayMenu(false)};$('darkThemeBtn').onclick=()=>{setTheme('dark');setDisplayMenu(false)};$('focusBtn').onclick=()=>{document.body.classList.toggle('focus-mode');$('focusBtn').classList.toggle('active');$('focusBtn').textContent=document.body.classList.contains('focus-mode')?'Exit Focus':'Focus';setDisplayMenu(false)};setTheme(localStorage.getItem('cgpsc_theme')||'day');
+function setTheme(theme){document.body.classList.remove('theme-comfort','theme-dark');document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));if(theme==='comfort'){$('comfortThemeBtn').classList.add('active');document.body.classList.add('theme-comfort')}else if(theme==='dark'){$('darkThemeBtn').classList.add('active');document.body.classList.add('theme-dark')}else{$('dayThemeBtn').classList.add('active')}storageSet('cgpsc_theme',theme)}
+$('dayThemeBtn').onclick=()=>{setTheme('day');setDisplayMenu(false)};$('comfortThemeBtn').onclick=()=>{setTheme('comfort');setDisplayMenu(false)};$('darkThemeBtn').onclick=()=>{setTheme('dark');setDisplayMenu(false)};$('focusBtn').onclick=()=>{document.body.classList.toggle('focus-mode');$('focusBtn').classList.toggle('active');$('focusBtn').textContent=document.body.classList.contains('focus-mode')?'Exit Focus':'Focus';setDisplayMenu(false)};setTheme(storageGet('cgpsc_theme','day'));
 window.addEventListener('beforeunload',e=>{save();if(App.state.started){e.preventDefault();e.returnValue='Exam is in progress.'}});
 setInput(SAMPLE);
 restoreSavedExam().then(()=>setTimeout(()=>{restoreActiveView();startCloudAutoSync()},80));
@@ -3671,7 +3716,7 @@ let notesSelectedSubject=NOTES_SUBJECTS[0];
 
 function notesLoad(){
   try{
-    const x=JSON.parse(localStorage.getItem(NOTES_KEY)||'{}');
+    const x=JSON.parse(storageGet(NOTES_KEY,'{}')||'{}');
     return x&&typeof x==='object'&&!Array.isArray(x)?x:{};
   }catch(e){return {}}
 }
@@ -3695,13 +3740,13 @@ function notesSafePreview(raw){
 const NOTES_OPEN_SUBJECTS_KEY='cgpsc_notes_open_subjects_v1';
 let notesOpenSubjects=new Set();
 try{
-  const savedOpen=JSON.parse(localStorage.getItem(NOTES_OPEN_SUBJECTS_KEY)||'[]');
+  const savedOpen=JSON.parse(storageGet(NOTES_OPEN_SUBJECTS_KEY,'[]')||'[]');
   if(Array.isArray(savedOpen)) notesOpenSubjects=new Set(savedOpen.filter(s=>NOTES_SUBJECTS.includes(s)));
 }catch(e){}
 if(!notesOpenSubjects.size) notesOpenSubjects.add(NOTES_SUBJECTS[0]);
 
 function notesPersistOpenSubjects(){
-  try{localStorage.setItem(NOTES_OPEN_SUBJECTS_KEY,JSON.stringify([...notesOpenSubjects]))}catch(e){}
+  try{storageSet(NOTES_OPEN_SUBJECTS_KEY,JSON.stringify([...notesOpenSubjects]))}catch(e){}
 }
 
 function notesToggleSubject(subject){
@@ -3761,7 +3806,6 @@ function notesSelect(subject){
   $('notesCurrentStatus').textContent=notes.length?'Create a new note or open one from the subject list.':'No notes yet — add your HTML below.';
   $('notesPreviewPane').classList.add('hidden');
   $('notesSyncBadge').textContent='☁ Auto-synced';
-  $('notesDeleteBtn').textContent='Clear all notes for this subject';
   notesRenderSubjects();
 }
 
@@ -3857,7 +3901,6 @@ function notesEditOpenNote(){
   $('notesCurrentStatus').textContent='Editing saved note. Saving creates a new version.';
   $('notesSyncBadge').textContent='☁ Auto-synced';
   $('notesPreviewPane')?.classList.add('hidden');
-  $('notesDeleteBtn').textContent='Clear all notes for this subject';
 
   try{notesRenderSubjects()}catch(e){console.warn('Notes list refresh failed:',e)}
   try{window.scrollTo(0,0)}catch(e){}
@@ -3879,19 +3922,18 @@ function notesDeleteById(id){
   notesRenderSubjects();
 }
 
-function notesDeleteCurrent(){
-  const data=notesLoad();
-  const notes=Array.isArray(data[notesSelectedSubject])?data[notesSelectedSubject]:[];
-  if(!notes.length)return;
-  if(!confirm(`Delete all ${notes.length} saved notes for ${notesSelectedSubject}?`))return;
-  delete data[notesSelectedSubject];
-  notesSaveData(data);
-  notesSelect(notesSelectedSubject);
+function notesDeleteCurrent(){ /* Bulk note deletion intentionally disabled to prevent accidental data loss. */ }
+function notesPreview(){
+  const htmlText=$('notesHtmlInput')?.value||'';
+  const pane=$('notesPreviewPane');
+  const content=$('notesPreviewContent');
+  if(!pane||!content)return;
+  content.innerHTML=notesSafePreview(htmlText);
+  pane.classList.remove('hidden');
 }
-
 function notesOpen(){
   setActiveView('notes');
-  ['start','progressScreen','revisionScreen','planScreen','studyHubScreen','noteReaderScreen'].forEach(id=>$(id)?.classList.add('hidden'));
+  ['start','progressScreen','revisionScreen','planScreen','studyHubScreen','quickQuizScreen','noteReaderScreen'].forEach(id=>$(id)?.classList.add('hidden'));
   $('notesScreen').classList.remove('hidden');
   notesRenderSubjects();
   notesSelect(notesSelectedSubject);
@@ -3919,7 +3961,6 @@ function notesInit(){
   bind('notesSaveBtn',notesSaveCurrent);
   bind('notesPreviewBtn',notesPreview);
   bind('notesClosePreviewBtn',()=>$('notesPreviewPane')?.classList.add('hidden'));
-  bind('notesDeleteBtn',notesDeleteCurrent);
 
   /* Saved-note reader controls: use normal DOM click handlers. */
   bind('noteReaderBackBtn',e=>{
@@ -3948,11 +3989,120 @@ function notesInit(){
 }
 notesInit();
 
+
+/* ---------- QUICK QUIZ ---------- */
+const QUICK_QUIZ_COUNT=25;
+let quickQuizQuestions=[];
+function quickQuizAllQuestions(){
+  const banks=bankLoad();
+  const all=[];
+  Object.entries(banks).forEach(([subject,arr])=>{
+    if(!Array.isArray(arr))return;
+    arr.forEach(q=>all.push({...q,subject:q.subject||subject,bankSubject:subject}));
+  });
+  return all;
+}
+function quickQuizShuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+function quickQuizQuestionText(q){
+  return q.question||q.question_intro||q.question_ending||q.assertion||'Question from question bank';
+}
+function quickQuizTypeLabel(q){
+  return ({mcq:'MCQ',multiple_statement:'Statements',assertion_reason:'Assertion–Reason',match_following:'Match'}[q.type]||String(q.type||'Question').replace(/_/g,' '));
+}
+function quickQuizRender(){
+  const all=quickQuizAllQuestions();
+  const list=$('quickQuizQuestionList');
+  const start=$('quickQuizStartBtn');
+  $('quickQuizBankTotal').textContent=all.length;
+  if(all.length<QUICK_QUIZ_COUNT){
+    quickQuizQuestions=[];
+    $('quickQuizCount').textContent=`${all.length} / ${QUICK_QUIZ_COUNT}`;
+    $('quickQuizSubjects').textContent=new Set(all.map(q=>q.subject)).size;
+    $('quickQuizStatus').textContent=`Add at least ${QUICK_QUIZ_COUNT-all.length} more question${QUICK_QUIZ_COUNT-all.length===1?'':'s'} to the question bank to start a 25-question quiz.`;
+    $('quickQuizSubjectMix').textContent='Not enough questions';
+    start.disabled=true;
+    list.innerHTML=all.length?all.map((q,i)=>quickQuizCard(q,i)).join(''):`<div class="quickquiz-empty">No questions have been added to the question bank yet.</div>`;
+    return;
+  }
+  quickQuizQuestions=quickQuizShuffle(all).slice(0,QUICK_QUIZ_COUNT);
+  const subjects=new Set(quickQuizQuestions.map(q=>q.subject||q.bankSubject||'General'));
+  $('quickQuizCount').textContent=`${quickQuizQuestions.length} / ${QUICK_QUIZ_COUNT}`;
+  $('quickQuizSubjects').textContent=subjects.size;
+  $('quickQuizStatus').textContent=`Ready — ${quickQuizQuestions.length} questions selected from ${subjects.size} subject${subjects.size===1?'':'s'}.`;
+  $('quickQuizSubjectMix').textContent=`${subjects.size} subjects mixed`;
+  start.disabled=false;
+  list.innerHTML=quickQuizQuestions.map((q,i)=>quickQuizCard(q,i)).join('');
+}
+function quickQuizCard(q,i){
+  const subject=q.subject||q.bankSubject||'General';
+  return `<article class="quickquiz-question"><div class="quickquiz-number">${i+1}</div><div><div class="quickquiz-question-text">${esc(quickQuizQuestionText(q))}</div><span class="quickquiz-question-subject">${esc(subject)}</span></div><span class="quickquiz-type">${esc(quickQuizTypeLabel(q))}</span></article>`;
+}
+function quickQuizOpen(){
+  setActiveView('quickquiz');
+  ['start','progressScreen','revisionScreen','planScreen','studyHubScreen','notesScreen','noteReaderScreen','exam','confirm','result'].forEach(id=>$(id)?.classList.add('hidden'));
+  $('quickQuizScreen').classList.remove('hidden');
+  quickQuizRender();
+  window.scrollTo(0,0);
+}
+function quickQuizClose(){
+  setActiveView('home');
+  $('quickQuizScreen').classList.add('hidden');
+  $('start').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+function quickQuizStart(){
+  if(quickQuizQuestions.length!==QUICK_QUIZ_COUNT){
+    quickQuizRender();
+    if(quickQuizQuestions.length!==QUICK_QUIZ_COUNT){
+      $('quickQuizStatus').textContent='The quiz needs 25 questions in the question bank before it can start.';
+      return;
+    }
+  }
+
+  // Build a completely fresh exam state from the selected 25 questions.
+  App.questions=quickQuizQuestions.map((q,i)=>normalize({...q,id:q.id??`quick-${Date.now()}-${i}`},i));
+  App.state={
+    index:0,
+    remaining:App.questions.length*App.cfg.timePerQuestion,
+    answers:{},
+    status:{},
+    started:true
+  };
+  App.startRemaining=App.state.remaining;
+  App.questions.forEach(q=>App.state.status[q.id]='not-visited');
+  App.state.status[App.questions[0].id]='visited';
+
+  $('jsonInput').value=JSON.stringify(App.questions,null,2);
+  $('infoText').textContent=`Quick Quiz • 25 mixed-subject questions • ${Math.ceil(App.state.remaining/60)} minutes • +${App.cfg.correct} / -${App.cfg.incorrect}`;
+  $('examInfo').classList.remove('hidden');
+
+  // Switch directly into the real exam interface. Do not route through the home loader.
+  ['quickQuizScreen','start','result','confirm'].forEach(id=>$(id)?.classList.add('hidden'));
+  $('exam').classList.remove('hidden');
+  $('totalNo').textContent=App.questions.length;
+  $('currentNo').textContent='1';
+  setActiveView('home');
+  clearInterval(App.timer);
+  render();
+  renderPalette();
+  startTimer();
+  save();
+  window.scrollTo(0,0);
+}
+$('quickQuizHomeBtn')?.addEventListener('click',e=>{e.stopPropagation();quickQuizOpen()});
+$('quickQuizBackBtn')?.addEventListener('click',quickQuizClose);
+$('quickQuizRefreshBtn')?.addEventListener('click',quickQuizRender);
+$('quickQuizStartBtn')?.addEventListener('click',quickQuizStart);
+
 /* ---------- SUBJECT-WISE QUESTION BANKS / STUDY HUB ---------- */
 const QUESTION_BANKS_KEY='cgpsc_question_banks_v1';
 const BANK_SUBJECTS=['Chhattisgarh General Studies','Hindi','English','Chhattisgarhi','Reasoning & Logical Ability','Mental Ability','Mathematics & Statistics','Chemistry','Physics','Biology','Technology','Environment','Agriculture','Forestry','Current Affairs'];
-function bankLoad(){try{const x=JSON.parse(localStorage.getItem(QUESTION_BANKS_KEY)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
-function bankSave(data){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(data));queueCloudSave()}catch(e){console.warn('Question banks could not be saved:',e)}}
+function bankLoad(){try{const x=JSON.parse(storageGet(QUESTION_BANKS_KEY,'{}')||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
+function bankSave(data){try{storageSet(QUESTION_BANKS_KEY,JSON.stringify(data));queueCloudSave()}catch(e){console.warn('Question banks could not be saved:',e)}}
 function bankSlug(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function bankQuestionKey(subject,q,i){const raw=q?.sourceId??q?.id??i;return bankSlug(subject)+'__'+String(raw)+'__'+i}
 function bankNormalizeQuestions(data,subject){const arr=validateData(data);return arr.map((q,i)=>({...q,id:bankQuestionKey(subject,q,i),sourceId:q.id??i+1,subject,bankSubject:subject,importedAt:new Date().toISOString()}))}
@@ -3992,5 +4142,204 @@ document.addEventListener('click',function(e){
 
 </script>
 
+
+<!-- ===== KAUSHAL FIX PATCH v2 — paste this whole block immediately before </body> (after the existing </script>) ===== -->
+<style id="kaushal-fixes">
+.qbtn.visited{background:#f3d9d5!important;border-color:#d8a6a0!important}
+body.theme-dark .qbtn.visited{background:#6b3c3c!important;color:#fff!important}
+body.theme-dark .notes-reader-header{background:rgba(17,26,43,.94)!important}
+body.theme-dark .notes-reader-shell{background:#0b1220!important}
+body.theme-dark .notes-back-btn{background:#172235!important;color:#f8fafc!important}
+body.theme-dark .saved-note-document{background:#111a2b!important;color:#e2e8f0!important}
+body.exam-active *,body.exam-active *::before,body.exam-active *::after{animation:none!important}
+@media(min-width:1051px){#start #examInfo{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;grid-column:2!important;grid-row:3!important}}
+.tracker-label,.tracker-value,.tracker-accuracy,.progress-big-label,.progress-big-value,.progress-big-accuracy,.recent-day-breakdown,.hub-ready,.plan-priority,.plan-category-tag,.attention-sub,.progress-stat-card em{font-size:11px!important}
+.muted-fix,.sub{color:#4E6265!important}
+</style>
+<script id="kaushal-fixes-js">
+(function(){
+const S=f=>{try{f()}catch(e){console.warn('patch:',e)}};
+const EDIT_KEY='cgpsc_last_edit_v1',SIG_KEY='cgpsc_sync_sig_v1',ATT_KEY='cgpsc_attempts_v1';
+let cloudReady=false;
+/* ---------- helpers ---------- */
+function hashStr(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36)}
+function toast(m){const t=document.createElement('div');t.textContent=m;t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#10242b;color:#fff;padding:11px 16px;border-radius:12px;z-index:300000;font-size:13px;max-width:90vw;text-align:center';document.body.appendChild(t);setTimeout(()=>t.remove(),3500)}
+function uiDialog(msg,o={}){return new Promise(res=>{const m=document.createElement('div');m.className='modal';m.style.zIndex=250000;m.innerHTML=`<div class="modal-box"><p style="font-weight:700;margin-top:0">${esc(msg)}</p>${o.input!=null?'<input style="width:100%;padding:11px;border:1px solid #cdd9d6;border-radius:10px;font:inherit">':''}<div class="actions" style="justify-content:flex-end;margin-top:14px"><button class="btn outline" data-r="0">Cancel</button><button class="btn primary" data-r="1">${esc(o.ok||'OK')}</button></div></div>`;document.body.appendChild(m);const inp=m.querySelector('input');if(inp){inp.value=o.input;inp.focus()}m.onclick=e=>{const b=e.target.closest('[data-r]');if(!b)return;const v=b.dataset.r==='1',val=inp?inp.value:null;m.remove();res(inp?(v?val:null):v)}})}
+function rebind(id,fn){const b=$(id);if(!b)return;const n=b.cloneNode(true);b.replaceWith(n);n.addEventListener('click',fn)}
+const guardExam=async()=>(App.state.started&&Object.keys(App.state.answers||{}).length&&$('exam').classList.contains('hidden'))?uiDialog('A saved exam is in progress. Starting a new one will replace it. Continue?',{ok:'Replace'}):true;
+
+/* ---------- storage quota warning ---------- */
+S(()=>{const si=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){try{return si.call(this,k,v)}catch(e){toast('⚠ Device storage is full — export a backup from Study Hub and clear old data.');throw e}}});
+
+/* ---------- viewport / forms / fullscreen ---------- */
+S(()=>{document.querySelector('meta[name=viewport]').content='width=device-width, initial-scale=1.0, viewport-fit=cover'});
+S(()=>{const o=document.querySelector('#planCategory option[value="Forestry"]');if(o&&!document.querySelector('#planCategory option[value="Current Affairs"]')){const n=document.createElement('option');n.value=n.textContent='Current Affairs';o.after(n)}});
+S(()=>rebind('fullscreenBtn',()=>{const d=document.documentElement;if(!d.requestFullscreen){toast('Fullscreen is not supported on this device.');return}d.requestFullscreen().catch(()=>toast('Fullscreen was blocked.'))}));
+
+/* ---------- import: no sample prefill, explicit subject, strict validation, hash dedupe ---------- */
+S(()=>{$('jsonInput').value='';$('jsonInput').placeholder='Paste question JSON here, or tap “Copy Sample JSON” to see the format.';const s=$('bankSubjectSelect');s.insertAdjacentHTML('afterbegin','<option value="">— Select subject —</option>');s.value=''});
+normalize=function(q,i){const x={...q};x.id=x.id??i+1;x.type=x.type||((x.assertion&&x.reason)?'assertion_reason':(x.statements?'multiple_statement':(x.pairs?'match_following':'mcq')));x.topic=x.topic||'General';x.options=Object.fromEntries(Object.entries(x.options||{}).map(([k,v])=>[String(k).trim().toUpperCase(),v]));if(x.answer!=null)x.answer=String(x.answer).trim().toUpperCase();return x};
+function strictValidate(data){if(!Array.isArray(data)||!data.length)throw Error('Question bank must be a non-empty JSON array.');const out=data.map(normalize);out.forEach((q,i)=>{const n='Question '+(i+1)+': ';if(Object.keys(q.options).length<2)throw Error(n+'needs at least 2 options.');if(!q.answer||!(q.answer in q.options))throw Error(n+'answer "'+(q.answer??'')+'" is missing or not one of the options.');if(q.type==='multiple_statement'&&!Array.isArray(q.statements))throw Error(n+'"statements" array is missing.');if(q.type==='assertion_reason'&&!(q.assertion&&q.reason))throw Error(n+'needs "assertion" and "reason".');if(q.type==='match_following'&&!Array.isArray(q.pairs))throw Error(n+'"pairs" array is missing.');if(q.type==='mcq'&&!(q.question||q.question_intro))throw Error(n+'"question" text is missing.')});return out}
+bankNormalizeQuestions=function(data,subject){return strictValidate(data).map((q,i)=>({...q,id:bankSlug(subject)+'__'+hashStr(questionPlainText(q,i)),sourceId:q.id,subject,bankSubject:subject,importedAt:new Date().toISOString()}))};
+S(()=>rebind('loadBtn',()=>{try{const n=strictValidate(JSON.parse($('jsonInput').value)).length;$('error').textContent='✓ JSON is valid ('+n+' questions). Choose a subject and click “Add to Question Bank”.'}catch(e){$('error').textContent='Error: '+e.message}}));
+
+/* ---------- keyboard: never hijack Ctrl/Cmd shortcuts; arrows work on radios ---------- */
+document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)e.stopImmediatePropagation()},true);
+document.addEventListener('keydown',e=>{if($('exam').classList.contains('hidden'))return;if(e.target?.type==='radio'&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();e.stopImmediatePropagation();$(e.key==='ArrowRight'?'nextBtn':'prevBtn').click()}},true);
+
+/* ---------- exam core: marked state, answers recorded on submit, end-timestamp timer ---------- */
+renderOptions=function(q){const c=$('options');c.innerHTML='';Object.entries(q.options||{}).forEach(([key,val])=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name='qopt';input.value=key;input.checked=App.state.answers[q.id]===key;const k=document.createElement('span');k.className='option-key';k.textContent=key+'.';const v=document.createElement('span');v.textContent=val;label.append(input,k,v);if(input.checked)label.classList.add('selected');input.onchange=()=>{App.state.answers[q.id]=key;const s=App.state.status[q.id];App.state.status[q.id]=(s==='marked'||s==='ansmarked')?'ansmarked':'answered';document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));label.classList.add('selected');renderPalette();save()};c.appendChild(label)})};
+renderPalette=function(){const c=$('paletteGrid');c.innerHTML='';App.questions.forEach((q,i)=>{const b=document.createElement('button');b.className='qbtn';const st=App.state.status[q.id];if(st==='answered')b.classList.add('answered');if(st==='marked')b.classList.add('marked');if(st==='ansmarked')b.classList.add('ansmarked');if(st==='visited'||st==='not-answered')b.classList.add('visited');if(i===App.state.index)b.classList.add('current');b.textContent=i+1;const lab={answered:'answered','not-visited':'not visited',visited:'visited, not answered','not-answered':'visited, not answered',marked:'marked for review',ansmarked:'answered and marked'}[st]||'';b.setAttribute('aria-label','Question '+(i+1)+(lab?', '+lab:''));b.onclick=()=>{App.state.index=i;if(App.state.status[q.id]==='not-visited')App.state.status[q.id]='visited';render();renderPalette();setPalette(false)};c.appendChild(b)})};
+S(()=>{const l=document.querySelector('.legend');if(l)l.innerHTML='<div><i class="dot" style="background:var(--gold)"></i>Answered</div><div><i class="dot" style="background:#E8EEEC;border:1px solid #aaa"></i>Not Visited</div><div><i class="dot" style="background:#f3d9d5"></i>Not Answered</div><div><i class="dot" style="background:#8b9d9f"></i>Marked</div><div><i class="dot" style="background:#6b7d7f"></i>Ans &amp; Marked</div>'});
+startTimer=function(){clearInterval(App.timer);document.body.classList.add('exam-active');App.endAt=Date.now()+App.state.remaining*1000;history.pushState({v:'exam'},'');const step=()=>{App.state.remaining=Math.max(0,Math.round((App.endAt-Date.now())/1000));tick();if(App.state.remaining<=0){clearInterval(App.timer);submitExam();return}if(App.state.remaining%5===0)save()};step();App.timer=setInterval(step,1000)};
+const _se=submitExam;submitExam=function(){document.body.classList.remove('exam-active');App.questions.forEach(q=>{const a=App.state.answers[q.id];if(a==null)return;trackerRecordQuestion(q);revisionRecordQuestion(q,a)});try{const r=calc(),a=JSON.parse(storageGet(ATT_KEY,'[]')||'[]');a.unshift({at:new Date().toISOString(),n:App.questions.length,score:+r.score.toFixed(2),max:App.questions.length*App.cfg.correct,attempted:r.attempted,correct:r.correct,wrong:r.wrong});storageSet(ATT_KEY,JSON.stringify(a.slice(0,100)))}catch(e){}_se();queueCloudSave()};
+const _br=buildResult;buildResult=function(){_br();S(()=>{const a=JSON.parse(storageGet(ATT_KEY,'[]')||'[]');let s=document.getElementById('historySection');if(!s){s=document.createElement('section');s.className='section';s.id='historySection';document.querySelector('#result main.result').appendChild(s)}s.innerHTML='<h2>Test History</h2>'+(a.slice(0,10).map((x,i)=>{const p=x.max?Math.round(x.score/x.max*100):0,pv=a[i+1],d=pv&&pv.max?p-Math.round(pv.score/pv.max*100):null;return `<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #edf1ef;font-size:13px"><span>${new Date(x.at).toLocaleString()} · ${x.n} Q</span><b>${x.score}/${x.max} (${p}%)${d==null?'':` <span class="${d>=0?'correct':'wrong'}">${d>=0?'▲':'▼'}${Math.abs(d)}</span>`}</b></div>`}).join('')||'No attempts yet.')})};
+S(()=>{const eb=document.createElement('button');eb.className='theme-btn';eb.style.gridColumn='1/-1';eb.textContent='Save & Exit';eb.onclick=()=>{clearInterval(App.timer);document.body.classList.remove('exam-active');save();$('displayMenu').classList.add('hidden');$('exam').classList.add('hidden');$('start').classList.remove('hidden');$('infoText').textContent='Saved exam • '+Object.keys(App.state.answers).length+'/'+App.questions.length+' answered • '+Math.ceil(App.state.remaining/60)+' min left';$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';window.scrollTo(0,0)};document.querySelector('.display-mode-grid').appendChild(eb)});
+
+/* ---------- navigation: back button, home theme switch ---------- */
+const _sav=setActiveView;setActiveView=function(v){_sav(v);if(v!=='home'&&history.state?.v!==v)history.pushState({v},'')};
+window.addEventListener('popstate',()=>{if(!$('exam').classList.contains('hidden')){history.pushState({v:'exam'},'');toast('Use View → Save & Exit to leave the exam.');return}if(!$('noteReaderScreen').classList.contains('hidden')){notesCloseReader();return}['progressScreen','revisionScreen','planScreen','studyHubScreen','notesScreen','quickQuizScreen','result'].forEach(id=>$(id)?.classList.add('hidden'));$('start').classList.remove('hidden');_sav('home')});
+S(()=>{const b=document.createElement('button');b.className='revision-open-btn';b.id='homeThemeBtn';b.type='button';b.style.marginTop='12px';const ord=['day','comfort','dark'],lab=()=>'Theme: '+storageGet('cgpsc_theme','day');b.textContent=lab();b.onclick=()=>{setTheme(ord[(ord.indexOf(storageGet('cgpsc_theme','day'))+1)%3]);b.textContent=lab()};document.querySelector('#start .brand').appendChild(b)});
+
+/* ---------- notes ---------- */
+notesSafePreview=function(raw){const d=new DOMParser().parseFromString(String(raw||''),'text/html');d.querySelectorAll('script,iframe,object,embed,form,base,meta,link,style,title').forEach(x=>x.remove());d.body.querySelectorAll('*').forEach(el=>[...el.attributes].forEach(a=>{if(/^on/i.test(a.name)||a.name==='srcdoc'||(/^(href|src|xlink:href|action|formaction)$/i.test(a.name)&&/^\s*(javascript:|data:text\/html)/i.test(a.value)))el.removeAttribute(a.name)}));return d.body.innerHTML};
+const _ns=notesSelect;notesSelect=function(s){window._editingNoteId=null;_ns(s)};
+notesToggleSubject=async function(subject){if(!NOTES_SUBJECTS.includes(subject))return;const dirty=$('notesTitleInput').value.trim()||$('notesHtmlInput').value.trim();if(subject!==notesSelectedSubject&&dirty&&!(await uiDialog('You have unsaved text. Discard it and switch subject?',{ok:'Discard'})))return;if(notesOpenSubjects.has(subject))notesOpenSubjects.delete(subject);else notesOpenSubjects.add(subject);notesPersistOpenSubjects();if(subject!==notesSelectedSubject){notesSelectedSubject=subject;notesSelect(subject)}else notesRenderSubjects()};
+const _eo=notesEditOpenNote;notesEditOpenNote=function(){const id=window._currentOpenNoteId;_eo();if(id){window._editingNoteId=id;$('notesCurrentStatus').textContent='Editing saved note — saving updates it in place.'}};
+notesSaveCurrent=function(){const data=notesLoad(),html=$('notesHtmlInput').value||'';if(!html.trim()){$('notesCurrentStatus').textContent='Add some HTML before saving.';return}const arr=Array.isArray(data[notesSelectedSubject])?data[notesSelectedSubject]:[],title=$('notesTitleInput').value.trim()||notesSelectedSubject+' Notes',i=window._editingNoteId?arr.findIndex(n=>n.id===window._editingNoteId):-1,note={id:i>=0?arr[i].id:'note_'+Date.now()+'_'+Math.random().toString(36).slice(2,8),title,html,updatedAt:new Date().toISOString()};if(i>=0)arr[i]=note;else arr.unshift(note);data[notesSelectedSubject]=arr;notesSaveData(data);window._editingNoteId=null;$('notesLastSaved').textContent='Saved just now';$('notesCurrentStatus').textContent=(i>=0?'Updated "':'Saved "')+title+'" under '+notesSelectedSubject+'.';$('notesTitleInput').value='';$('notesHtmlInput').value='';notesRenderSubjects()};
+S(()=>rebind('notesSaveBtn',()=>notesSaveCurrent()));
+notesDeleteById=async function(id){const data=notesLoad();let sub=null;for(const s of NOTES_SUBJECTS)if(Array.isArray(data[s])&&data[s].some(n=>n.id===id)){sub=s;break}if(!sub)return;const note=data[sub].find(n=>n.id===id);if(!(await uiDialog('Delete "'+(note?.title||'this note')+'"?',{ok:'Delete'})))return;data[sub]=data[sub].filter(n=>n.id!==id);notesSaveData(data);if(window._currentOpenNoteId===id)notesCloseReader();notesRenderSubjects()};
+
+/* ---------- plan ---------- */
+planEdit=async function(id){const it=planItems().find(x=>x.id===id);if(!it)return;const t=await uiDialog('Edit topic',{input:it.text,ok:'Next'});if(t===null||!t.trim())return;const c=await uiDialog('Subject category',{input:it.category||'Uncategorized',ok:'Save'});if(c===null)return;const d=planLoad();d.days[planSelectedDate]=planItems().map(x=>x.id===id?{...x,text:t.trim(),category:c.trim()||'Uncategorized'}:x);planSave(d);planRender()};
+S(()=>{const cb=document.createElement('button');cb.className='plan-text-btn';cb.type='button';cb.textContent='↪ Carry over unfinished';cb.onclick=()=>{const d=planDateObj();d.setDate(d.getDate()-1);const prev=planItems(trackerDate(d)).filter(x=>!x.done);if(!prev.length){toast('Nothing unfinished from the previous day.');return}const data=planLoad(),cur=planItems(),have=new Set(cur.map(x=>x.text+'|'+x.category)),add=prev.filter(x=>!have.has(x.text+'|'+x.category)).map(x=>({...x,id:'p_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),createdAt:new Date().toISOString()}));data.days[planSelectedDate]=cur.concat(add);planSave(data);planRender();toast(add.length+' topic(s) carried over')};$('planClearCompleted').before(cb)});
+
+/* ---------- quick quiz / practice / progress ---------- */
+quickQuizShuffle=function(arr){const rev=new Set(revisionMerge(App.revision,revisionLoad()).map(x=>x.key));return arr.map(q=>[Math.random()+(rev.has(revisionQuestionKey(q))?.6:0),q]).sort((a,b)=>b[0]-a[0]).map(x=>x[1])};
+const _qr=quickQuizRender;quickQuizRender=function(){_qr();if(quickQuizQuestions.length===QUICK_QUIZ_COUNT){const c={};quickQuizQuestions.forEach(q=>{const s=q.subject||q.bankSubject||'General';c[s]=(c[s]||0)+1});$('quickQuizQuestionList').innerHTML=Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<article class="quickquiz-question"><div class="quickquiz-number">${n}</div><div class="quickquiz-question-text">${esc(s)}</div><span class="quickquiz-type">questions</span></article>`).join('')}};
+S(()=>{rebind('quickQuizRefreshBtn',()=>quickQuizRender());rebind('quickQuizStartBtn',async()=>{if(await guardExam())quickQuizStart()})});
+const _bpr=bankPractice;bankPractice=async function(s){if(await guardExam())_bpr(s)};
+const _prd=progressRenderDashboard;progressRenderDashboard=function(){_prd();const t=bankTotals().total;if(t)$('progressHeroBar').style.width=Math.min(100,Math.round(progressAllTimeStats().solved/t*100))+'%'};
+S(()=>rebind('progressRefreshBtn',()=>progressRenderDashboard()));
+
+/* ---------- Study Hub: clear bank, export / restore backup ---------- */
+S(()=>{const g=$('hubSubjectGrid');new MutationObserver(()=>{g.querySelectorAll('[data-hub-practice]:not([data-fx])').forEach(p=>{p.dataset.fx=1;const b=document.createElement('button');b.className='hub-practice-btn';b.style.marginLeft='5px';b.textContent='Clear';b.onclick=async()=>{const s=p.dataset.hubPractice;if(!(await uiDialog('Delete ALL questions in "'+s+'"?',{ok:'Delete'})))return;const d=bankLoad();delete d[s];bankSave(d);bankRenderHub()};p.after(b)})}).observe(g,{childList:true});
+const box=$('studyHubRefreshBtn').parentNode,mk=(t,f)=>{const b=document.createElement('button');b.className='btn outline';b.type='button';b.textContent=t;b.onclick=f;box.prepend(b);return b};
+const fi=document.createElement('input');fi.type='file';fi.accept='.json';fi.hidden=true;document.body.appendChild(fi);
+fi.onchange=()=>{const f=fi.files[0];if(!f)return;const r=new FileReader();r.onload=async()=>{try{const o=JSON.parse(r.result);if(!(await uiDialog('Restore backup? This replaces the data on this device.',{ok:'Restore'})))return;Object.entries(o).forEach(([k,v])=>{if(k.startsWith('cgpsc_'))localStorage.setItem(k,v)});localStorage.setItem(EDIT_KEY,new Date().toISOString());localStorage.removeItem(SIG_KEY);location.reload()}catch(e){toast('Invalid backup file.')}};r.readAsText(f)};
+mk('Restore Backup',()=>fi.click());
+mk('Export Backup',()=>{const o={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith('cgpsc_'))o[k]=localStorage.getItem(k)}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:'application/json'}));a.download='kaushal-backup-'+trackerDate(new Date())+'.json';a.click()})});
+
+/* ---------- cloud sync: real edit timestamps, no pre-load uploads, all collections applied ---------- */
+function syncSig(){return hashStr(JSON.stringify([bankLoad(),notesLoad(),getTrackerSnapshot(),planLoad(),revisionMerge(App.revision,revisionLoad()),storageGet(ATT_KEY,''),App.state.answers,App.questions.length]))}
+const _bcp=buildCloudPayload;buildCloudPayload=function(){const p=_bcp();p.updatedAt=storageGet(EDIT_KEY,new Date(0).toISOString());try{p.attempts=JSON.parse(storageGet(ATT_KEY,'[]')||'[]')}catch(e){p.attempts=[]}return p};
+queueCloudSave=function(){if(!cloudEnabled())return;try{writeLocalSnapshot(buildCloudPayload())}catch(e){}if(!cloudReady)return;const s=syncSig();if(s!==storageGet(SIG_KEY)){storageSet(EDIT_KEY,new Date().toISOString());storageSet(SIG_KEY,s)}clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(cloudSaveNow,$('exam').classList.contains('hidden')?800:20000)};
+function applyCollections(s){if(!s)return;if(s.questionBanks)storageSet(QUESTION_BANKS_KEY,JSON.stringify(s.questionBanks));if(s.notes)storageSet(NOTES_KEY,JSON.stringify(s.notes));if(s.tracker?.days)storageSet(TRACKER_KEY,JSON.stringify(s.tracker));if(Array.isArray(s.revision)){App.revision=s.revision;storageSet(REVISION_KEY,JSON.stringify(s.revision))}if(s.plan?.days)storageSet(PLAN_KEY,JSON.stringify(s.plan));if(Array.isArray(s.attempts))storageSet(ATT_KEY,JSON.stringify(s.attempts))}
+function refreshViews(){S(()=>{revisionRenderHome();revisionRenderScreen();trackerRender();bankRenderHub();notesRenderSubjects();if(!$('planScreen').classList.contains('hidden'))planRender();if(!$('progressScreen').classList.contains('hidden'))progressRenderDashboard()})}
+const _as=applySnapshot;applySnapshot=function(s){S(()=>applyCollections(s));const r=_as(s);S(()=>storageSet(SIG_KEY,syncSig()));refreshViews();return r};
+cloudPullLatest=async function(){if(!cloudEnabled()||!cloudReady||cloudPullBusy||document.visibilityState==='hidden'||!$('exam').classList.contains('hidden'))return;cloudPullBusy=true;try{const r=await fetch(cloudEndpoint()+'?id=eq.'+encodeURIComponent(CLOUD_CONFIG.rowId)+'&select=payload,updated_at',{headers:cloudHeaders(),cache:'no-store'});if(!r.ok)throw Error('refresh '+r.status);const rows=await r.json(),remote=rows?.[0]?.payload,localAt=Date.parse(storageGet(EDIT_KEY,'')||0)||0;if(!remote){if(localAt)cloudSaveNow();return}const remoteAt=Date.parse(remote.updatedAt||rows[0].updated_at||0)||0;if(remoteAt>localAt){applySnapshot(remote);storageSet(EDIT_KEY,new Date(remoteAt).toISOString());writeLocalSnapshot(remote);cloudStatus('Updated from another device','ok')}else if(localAt>remoteAt)cloudSaveNow()}catch(e){console.warn(e)}finally{cloudPullBusy=false}};
+const _sca=startCloudAutoSync;startCloudAutoSync=function(){cloudReady=true;_sca()};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cloudReady){clearTimeout(cloudSaveTimer);cloudSaveNow()}});
+})();
+</script>
+<!-- ===== END KAUSHAL FIX PATCH ===== -->
+
+<!-- ===== KAUSHAL FIX PATCH v3 — paste AFTER the v2 patch block, immediately before </body> ===== -->
+<style id="kaushal-fixes-v3">
+@media(max-width:700px){input,select,textarea{font-size:16px!important}}
+</style>
+<script id="kaushal-fixes-v3-js">
+(function(){
+const S=f=>{try{f()}catch(e){console.warn('v3:',e)}};
+const VER='cgpsc_srv_ver_v3',SYNC='cgpsc_sync_sig_v3',FORCE='cgpsc_force_push_v3',MIG='cgpsc_mig_v3',ATT='cgpsc_attempts_v1';
+let ready=false,pulling=false,firstPull=true;
+const J=(k,d)=>{try{return JSON.parse(storageGet(k,'')||'null')??d}catch(e){return d}};
+function hs(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return(h>>>0).toString(36)}
+function toast(m){const t=document.createElement('div');t.textContent=m;t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#10242b;color:#fff;padding:11px 16px;border-radius:12px;z-index:300000;font-size:13px;max-width:90vw;text-align:center';document.body.appendChild(t);setTimeout(()=>t.remove(),3500)}
+function dlg(msg,o={}){return new Promise(res=>{const m=document.createElement('div');m.className='modal';m.style.zIndex=250000;m.setAttribute('role','dialog');m.innerHTML=`<div class="modal-box"><p style="font-weight:700;margin-top:0">${esc(msg)}</p>${o.input!=null?'<input style="width:100%;padding:11px;border:1px solid #cdd9d6;border-radius:10px;font:inherit">':''}<div class="actions" style="justify-content:flex-end;margin-top:14px"><button class="btn outline" data-r="0">Cancel</button><button class="btn primary" data-r="1">${esc(o.ok||'OK')}</button></div></div>`;document.body.appendChild(m);const inp=m.querySelector('input');if(inp){inp.value=o.input;inp.focus()}const done=v=>{const val=inp?inp.value:null;m.remove();res(inp?(v?val:null):v)};m.onclick=e=>{const b=e.target.closest('[data-r]');if(b)done(b.dataset.r==='1');else if(e.target===m)done(false)};m.onkeydown=e=>{if(e.key==='Escape')done(false);if(e.key==='Enter'&&inp)done(true)}})}
+const qid=(s,q)=>bankSlug(s)+'__'+hs(questionPlainText(q,0)+'|'+q.answer);
+function migBank(b){const o={};Object.keys(b||{}).forEach(s=>{const seen=new Set();o[s]=(Array.isArray(b[s])?b[s]:[]).map(q=>normalize(q,0)).map(q=>({...q,id:qid(s,q)})).filter(q=>!seen.has(q.id)&&seen.add(q.id))});return o}
+normalize=function(q,i){const x={...q};x.id=x.id??i+1;x.type=x.type||((x.assertion&&x.reason)?'assertion_reason':(x.statements?'multiple_statement':(x.pairs?'match_following':'mcq')));x.topic=x.topic||'General';let o=x.options||{};if(Array.isArray(o))o=Object.fromEntries(o.map((v,n)=>[String.fromCharCode(65+n),v]));x.options=Object.fromEntries(Object.entries(o).map(([k,v])=>[String(k).trim().toUpperCase(),v]));if(x.answer!=null)x.answer=String(x.answer).trim().toUpperCase();return x};
+bankNormalizeQuestions=function(d,s){const arr=d;if(!Array.isArray(arr)||!arr.length)throw Error('Question bank must be a non-empty JSON array.');const out=arr.map(normalize);out.forEach((q,i)=>{const n='Question '+(i+1)+': ';if(Object.keys(q.options).length<2)throw Error(n+'needs at least 2 options.');if(!q.answer||!(q.answer in q.options))throw Error(n+'answer "'+(q.answer??'')+'" is missing or not one of the options.');if(q.type==='multiple_statement'&&!Array.isArray(q.statements))throw Error(n+'"statements" array missing.');if(q.type==='assertion_reason'&&!(q.assertion&&q.reason))throw Error(n+'needs "assertion" and "reason".');if(q.type==='match_following'&&!Array.isArray(q.pairs))throw Error(n+'"pairs" array missing.');if(q.type==='mcq'&&!(q.question||q.question_intro))throw Error(n+'"question" missing.')});return out.map(q=>({...q,id:qid(s,q),sourceId:q.id,subject:s,bankSubject:s,importedAt:new Date().toISOString()}))};
+/* one-time migration of stored banks (answers upper-cased, stable content ids) */
+S(()=>{if(storageGet(MIG))return;storageSet(QUESTION_BANKS_KEY,JSON.stringify(migBank(bankLoad())));if(!storageGet('cgpsc_last_edit_v1')){const sn=readLocalSnapshot();storageSet('cgpsc_last_edit_v1',sn?.updatedAt||new Date(0).toISOString())}storageSet(MIG,'1')});
+const boot={rev:revisionLoad(),plan:planLoad(),notes:notesLoad(),trk:getTrackerSnapshot()};
+
+/* ---------- security: escape / sanitize ---------- */
+notesSafePreview=function(raw){const d=new DOMParser().parseFromString(String(raw||''),'text/html');d.querySelectorAll('script,iframe,object,embed,form,base,meta,link,style,title,noscript').forEach(x=>x.remove());d.body.querySelectorAll('*').forEach(el=>[...el.attributes].forEach(a=>{const v=a.value.replace(/[\u0000-\u0020\u00a0\u200b]/g,'').toLowerCase();if(/^on/i.test(a.name)||a.name==='srcdoc'||/^(javascript|vbscript|data:text\/html)/.test(v))el.removeAttribute(a.name)}));return d.body.innerHTML};
+const cleanAtt=a=>(Array.isArray(a)?a:[]).map(x=>({at:isNaN(Date.parse(x?.at))?new Date(0).toISOString():new Date(x.at).toISOString(),n:+x?.n||0,score:+x?.score||0,max:+x?.max||0,attempted:+x?.attempted||0,correct:+x?.correct||0,wrong:+x?.wrong||0})).slice(0,100);
+
+/* ---------- sync v3: upload gate, compare-and-swap, light polling, merge ---------- */
+writeLocalSnapshot=function(){};
+const _bcp=buildCloudPayload;buildCloudPayload=function(){const p=_bcp();p.questions=[];p.state={};p.startRemaining=0;p.attempts=cleanAtt(J(ATT,[]));return p};
+const sig=()=>hs(JSON.stringify([bankLoad(),notesLoad(),getTrackerSnapshot(),planLoad(),revisionLoad(),storageGet(ATT,'')]));
+cloudStatus=function(t){const e=$('cloudSyncText');if(e)e.textContent=t;document.querySelectorAll('.bank-cloud-pill,#notesSyncBadge').forEach(x=>x.textContent='☁ '+t)};
+function mergeObj(l,r,key,pick){const m=new Map();(l||[]).forEach(x=>x&&m.set(x[key],x));(r||[]).forEach(x=>{if(!x)return;const o=m.get(x[key]);m.set(x[key],o?pick(o,x):x)});return[...m.values()]}
+function union(remote){
+ const rb=migBank(remote.questionBanks||{}),lb=bankLoad(),b={};new Set([...Object.keys(lb),...Object.keys(rb)]).forEach(s=>b[s]=mergeObj(lb[s],rb[s],'id',o=>o));storageSet(QUESTION_BANKS_KEY,JSON.stringify(b));
+ const ln=notesLoad(),rn=remote.notes||{},n={};new Set([...Object.keys(ln),...Object.keys(rn)]).forEach(s=>n[s]=mergeObj(ln[s],rn[s],'id',(a,c)=>Date.parse(c.updatedAt||0)>Date.parse(a.updatedAt||0)?c:a));storageSet(NOTES_KEY,JSON.stringify(n));
+ const t=getTrackerSnapshot(),rt=remote.tracker?.days||{};Object.entries(rt).forEach(([d,v])=>{if(!t.days[d]||Array.isArray(t.days[d]))t.days[d]=v;else if(v&&!Array.isArray(v))t.days[d]={...v,...t.days[d]}});storageSet(TRACKER_KEY,JSON.stringify(t));
+ storageSet(REVISION_KEY,JSON.stringify(revisionMerge(revisionLoad(),remote.revision||[])));
+ const lp=planLoad(),rp=remote.plan?.days||{};Object.entries(rp).forEach(([d,items])=>{lp.days[d]=mergeObj(lp.days[d],items,'id',(a,c)=>({...a,done:a.done||c.done}))});storageSet(PLAN_KEY,JSON.stringify(lp));
+ storageSet(ATT,JSON.stringify(cleanAtt(mergeObj(J(ATT,[]),remote.attempts,'at',o=>o).sort((a,c)=>Date.parse(c.at)-Date.parse(a.at)))));
+}
+function takeRemote(r){if(r.questionBanks)storageSet(QUESTION_BANKS_KEY,JSON.stringify(migBank(r.questionBanks)));if(r.notes)storageSet(NOTES_KEY,JSON.stringify(r.notes));if(r.tracker?.days)storageSet(TRACKER_KEY,JSON.stringify(r.tracker));if(Array.isArray(r.revision))storageSet(REVISION_KEY,JSON.stringify(r.revision));if(r.plan?.days)storageSet(PLAN_KEY,JSON.stringify(r.plan));if(Array.isArray(r.attempts))storageSet(ATT,JSON.stringify(cleanAtt(r.attempts)))}
+function refresh(){S(()=>{App.revision=revisionLoad();revisionRenderHome();revisionRenderScreen();trackerRender();bankRenderHub();notesRenderSubjects();if(!$('planScreen').classList.contains('hidden'))planRender();if(!$('progressScreen').classList.contains('hidden'))progressRenderDashboard()})}
+applySnapshot=function(){return false};   /* never load another device's exam state */
+async function pull(full){
+ if(!cloudEnabled()||pulling)return;pulling=true;
+ try{
+  const h={headers:cloudHeaders(),cache:'no-store'},ep=cloudEndpoint()+'?id=eq.'+encodeURIComponent(CLOUD_CONFIG.rowId);
+  let r=await fetch(ep+'&select=updated_at',h);if(!r.ok)throw Error('check '+r.status);const rows=await r.json();
+  if(!rows.length){ready=true;cloudStatus('Ready — no cloud copy yet');return}
+  const sv=rows[0].updated_at;
+  if(storageGet(FORCE)&&firstPull){storageSet(VER,sv);localStorage.removeItem(FORCE);firstPull=false;ready=true;storageSet(SYNC,'');cloudSaveNow();return}
+  if(!full&&!firstPull&&sv===storageGet(VER,''))return;
+  if(!$('exam').classList.contains('hidden')&&!firstPull)return;
+  r=await fetch(ep+'&select=payload,updated_at',h);if(!r.ok)throw Error('load '+r.status);const row=(await r.json())[0];if(!row)return;
+  const unsynced=sig()!==storageGet(SYNC,'');
+  if(firstPull||unsynced){union(row.payload||{});if(firstPull){S(()=>{storageSet(REVISION_KEY,JSON.stringify(revisionMerge(revisionLoad(),boot.rev)));const p=planLoad();Object.entries(boot.plan.days||{}).forEach(([d,it])=>p.days[d]=mergeObj(p.days[d],it,'id',(a,c)=>({...a,done:a.done||c.done})));storageSet(PLAN_KEY,JSON.stringify(p))})}}
+  else takeRemote(row.payload||{});
+  storageSet(VER,row.updated_at);ready=true;const wasFirst=firstPull;firstPull=false;refresh();
+  if(unsynced||wasFirst&&sig()!==storageGet(SYNC,'')){cloudSaveNow()}else{storageSet(SYNC,sig());cloudStatus('Synced')}
+ }catch(e){cloudStatus('Sync problem — will retry');console.warn(e)}finally{pulling=false}
+}
+cloudPullLatest=()=>document.visibilityState==='hidden'?0:pull(false);
+cloudSaveNow=async function(){
+ if(!cloudEnabled()||!ready)return;if(cloudBusy){cloudQueued=true;return}
+ cloudBusy=true;cloudStatus('Saving…');
+ try{
+  const p=buildCloudPayload();p.updatedAt=new Date().toISOString();const ver=storageGet(VER,''),ep=cloudEndpoint(),h={...cloudHeaders(),Prefer:'return=representation'};let ok=false;
+  if(ver){const r=await fetch(ep+'?id=eq.'+encodeURIComponent(CLOUD_CONFIG.rowId)+'&updated_at=eq.'+encodeURIComponent(ver),{method:'PATCH',headers:h,body:JSON.stringify({payload:p,updated_at:p.updatedAt})});if(!r.ok)throw Error('save '+r.status);ok=(await r.json()).length>0}
+  else{const r=await fetch(ep,{method:'POST',headers:h,body:JSON.stringify({id:CLOUD_CONFIG.rowId,payload:p,updated_at:p.updatedAt})});if(r.status!==409){if(!r.ok)throw Error('save '+r.status);ok=true}}
+  if(ok){storageSet(VER,p.updatedAt);storageSet(SYNC,sig());cloudStatus('Synced just now')}
+  else{cloudBusy=false;await pull(true);cloudQueued=false;setTimeout(cloudSaveNow,200);return}
+ }catch(e){cloudStatus('Offline — saved on this device');console.warn(e)}
+ finally{cloudBusy=false;if(cloudQueued){cloudQueued=false;setTimeout(cloudSaveNow,300)}}
+};
+queueCloudSave=function(){if(!cloudEnabled()||!ready)return;clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(()=>{if(sig()!==storageGet(SYNC,''))cloudSaveNow()},$('exam').classList.contains('hidden')?1500:20000)};
+startCloudAutoSync=function(){if(!cloudEnabled())return;clearInterval(cloudPollTimer);cloudPollTimer=setInterval(()=>cloudPullLatest(),8000);cloudPullLatest()};
+window.addEventListener('online',()=>{if(cloudEnabled())pull(true)});   /* pull before any push */
+
+/* ---------- exam flow ---------- */
+const _rep=new Set();
+renderOptions=function(q){const c=$('options');c.innerHTML='';Object.entries(q.options||{}).forEach(([key,val])=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name='qopt';input.value=key;input.checked=App.state.answers[q.id]===key;const k=document.createElement('span');k.className='option-key';k.textContent=key+'.';const v=document.createElement('span');v.textContent=val;label.append(input,k,v);if(input.checked)label.classList.add('selected');input.onchange=()=>{App.state.answers[q.id]=key;const s=App.state.status[q.id];App.state.status[q.id]=(s==='marked'||s==='ansmarked')?'ansmarked':'answered';trackerRecordQuestion(q);const rk=revisionQuestionKey(q);if(key!==q.answer){if(!revisionLoad().some(x=>x.key===rk))_rep.add(rk);revisionRecordQuestion(q,key)}else if(_rep.has(rk)){_rep.delete(rk);revisionSave(revisionLoad().filter(x=>x.key!==rk));revisionRenderHome()}document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));label.classList.add('selected');renderPalette();save()};c.appendChild(label)})};
+trackerRecordQuestion=function(q){if(!q)return;const d=trackerLoad(),day=trackerDate();if(!d.days[day]||typeof d.days[day]!=='object'||Array.isArray(d.days[day]))d.days[day]={};const ok=String(App.state.answers[q.id]).toUpperCase()===String(q.answer).toUpperCase();d.days[day][trackerQuestionKey(q)]={correct:ok,wrong:!ok};trackerSave(d);trackerRender()};
+submitExam=function(){if($('exam').classList.contains('hidden'))return;document.body.classList.remove('exam-active','focus-mode');$('confirm').classList.add('hidden');setPalette(false);clearInterval(App.timer);App.state.started=false;_rep.clear();
+ try{const r=calc(),a=J(ATT,[]);a.unshift({at:new Date().toISOString(),n:App.questions.length,score:+r.score.toFixed(2),max:App.questions.length*App.cfg.correct,attempted:r.attempted,correct:r.correct,wrong:r.wrong});storageSet(ATT,JSON.stringify(a.slice(0,100)))}catch(e){}
+ save();buildResult();$('exam').classList.add('hidden');$('result').classList.remove('hidden');window.scrollTo(0,0);queueCloudSave()};
+S(()=>{const b=[...document.querySelectorAll('.display-mode-grid .theme-btn')].find(x=>x.textContent==='Save & Exit');if(b)b.onclick=()=>{clearInterval(App.timer);document.body.classList.remove('exam-active','focus-mode');setPalette(false);save();$('displayMenu').classList.add('hidden');$('exam').classList.add('hidden');$('start').classList.remove('hidden');$('infoText').textContent='Saved exam • '+Object.keys(App.state.answers).length+'/'+App.questions.length+' answered • '+Math.ceil(App.state.remaining/60)+' min left';$('examInfo').classList.remove('hidden');$('startBtn').textContent='RESUME SAVED EXAM';$('startBtn').dataset.resume='1';window.scrollTo(0,0)}});
+bankPractice=async function(s){const all=(bankLoad()[s]||[]);if(!all.length)return;if(!(await(async()=>(App.state.started&&Object.keys(App.state.answers||{}).length&&$('exam').classList.contains('hidden'))?dlg('A saved exam is in progress. Replace it?',{ok:'Replace'}):true)()))return;let n=Math.min(50,all.length);if(all.length>50){const v=await dlg('How many questions? (1–'+all.length+')',{input:'50',ok:'Start'});if(v===null)return;n=Math.max(1,Math.min(all.length,parseInt(v)||50))}
+ App.questions=all.map(q=>[Math.random(),q]).sort((a,b)=>a[0]-b[0]).slice(0,n).map(x=>normalize({...x[1]},0));App.state={index:0,remaining:n*App.cfg.timePerQuestion,answers:{},status:{},started:false};App.questions.forEach(q=>App.state.status[q.id]='not-visited');$('infoText').textContent=n+' '+s+' questions • '+Math.ceil(App.state.remaining/60)+' minutes • +'+App.cfg.correct+' / -'+App.cfg.incorrect;$('examInfo').classList.remove('hidden');$('startBtn').textContent='START EXAM';$('startBtn').dataset.resume='0';hubClose();$('start').classList.remove('hidden');window.scrollTo(0,0)};
+S(()=>{const v=$('loadBtn'),b=document.createElement('button');b.className='btn outline';b.id='loadExamBtn';b.type='button';b.textContent='Load as One-off Exam';b.onclick=loadData;v.after(b)});
+
+/* ---------- navigation, keyboard, restore ---------- */
+const _sav=setActiveView;setActiveView=function(v){_sav(v);if(v==='home'){if(history.state&&history.state.v&&history.state.v!=='exam')history.back()}else if(history.state&&history.state.v&&history.state.v!=='exam')history.replaceState({v},'');else history.pushState({v},'')};
+window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'&&e.target?.id==='notesHtmlInput'){e.preventDefault();notesSaveCurrent()}},true);
+S(()=>{const fi=[...document.querySelectorAll('input[type=file][hidden]')].pop();if(fi)fi.onchange=()=>{const f=fi.files[0];if(!f)return;const r=new FileReader();r.onload=async()=>{try{const o=JSON.parse(r.result);if(!(await dlg('Restore this backup? It replaces the data on this device and then syncs to the cloud.',{ok:'Restore'})))return;Object.entries(o).forEach(([k,v])=>{if(k.startsWith('cgpsc_')&&![VER,SYNC,FORCE,'cgpsc_cloud_snapshot_v1'].includes(k))localStorage.setItem(k,v)});localStorage.setItem(FORCE,'1');location.reload()}catch(e){toast('Invalid backup file.')}};r.readAsText(f)}});
+S(()=>{document.querySelectorAll('.quickquiz-stats strong').forEach(e=>{if(e.textContent==='Random')e.textContent='Smart mix'});const i=document.getElementById('infoText')?.parentNode;if(i)i.innerHTML=i.innerHTML.replace('Timer and marking settings can be changed below before starting.','Marking: +'+App.cfg.correct+' / −'+App.cfg.incorrect+' per question.')});
+})();
+</script>
+<!-- ===== END KAUSHAL FIX PATCH v3 ===== -->
 
 </body></html>
