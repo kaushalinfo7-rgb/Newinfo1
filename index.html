@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="theme-color" content="#173E42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>HELLO KAUSHAL • Mock Test</title>
+<title>KAUSHAL • Study Command Center</title>
 <style>
 :root{--bg:#274245;--surface:#fff;--soft:#f7f8f7;--primary:#274245;--gold:#dfd6ae;--muted:#68797b;--danger:#b86b67;--border:#ddd7b9;--radius:16px;--shadow:0 12px 35px rgba(25,45,47,.12)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--primary);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,textarea{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}.screen{min-height:100vh}.btn{padding:11px 18px;border-radius:11px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--primary);color:white}.outline{background:white;color:var(--primary);border:1px solid var(--primary)}.danger{background:var(--danger);color:white}.light{background:transparent;color:white;border:1px solid rgba(255,255,255,.35)}
@@ -1802,6 +1802,766 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
 }
 </style>
 
+<style id="kaushal-new-design">
+/* ============================================================
+   KAUSHAL STUDY OS — COMPLETE VISUAL REBUILD
+   Presentation-only layer. Existing HTML/JS/data behavior stays intact.
+   ============================================================ */
+
+:root{
+  --ink:#142027;
+  --ink-2:#26343b;
+  --muted:#6b7a80;
+  --canvas:#eef3f1;
+  --panel:#ffffff;
+  --panel-2:#f7faf9;
+  --line:#dbe5e1;
+  --accent:#2d6b67;
+  --accent-2:#65a69b;
+  --accent-soft:#e4f1ee;
+  --gold:#d9b86c;
+  --danger:#b95858;
+  --success:#3d7a5c;
+  --navy:#10242b;
+  --navy-2:#17343b;
+  --shadow:0 18px 50px rgba(16,36,43,.09);
+  --shadow-sm:0 8px 24px rgba(16,36,43,.07);
+  --r-xl:28px;
+  --r-lg:20px;
+  --r-md:14px;
+  --r-sm:10px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--canvas);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{line-height:1.55;overflow-x:hidden}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.screen{min-height:100vh}
+.ambient-svg{display:none!important}
+
+/* ---------- shared ---------- */
+.btn{
+  border:0;border-radius:12px;min-height:42px;padding:10px 15px;
+  font-weight:800;font-size:13px;letter-spacing:-.01em;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.primary{background:var(--accent)!important;color:#fff!important;box-shadow:0 8px 18px rgba(45,107,103,.18)}
+.btn.primary:hover{background:#255c58!important}
+.btn.outline{background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.btn.outline:hover{border-color:#9eb9b4!important;background:var(--panel-2)!important}
+.btn.danger{background:var(--danger)!important;color:#fff!important}
+.btn.light{background:rgba(255,255,255,.09)!important;color:#fff!important;border:1px solid rgba(255,255,255,.2)!important}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.helper{
+  background:#f6f9f8;border:1px solid var(--line);border-radius:13px;
+  color:var(--muted);font-size:12px;padding:12px 14px;
+}
+.sub{color:var(--muted)!important}
+
+/* ---------- HOME / IMPORT ---------- */
+#start{
+  min-height:100vh;padding:34px;display:grid;place-items:center;
+  background:
+    radial-gradient(circle at 12% 10%,rgba(101,166,155,.14),transparent 27%),
+    radial-gradient(circle at 92% 86%,rgba(217,184,108,.13),transparent 24%),
+    var(--canvas);
+}
+#start .start{
+  width:min(1420px,100%);min-height:730px;margin:0;padding:0;
+  display:grid;grid-template-columns:300px minmax(0,1fr);
+  grid-template-rows:auto minmax(0,1fr) auto;
+  overflow:hidden;border:1px solid rgba(20,32,39,.08);
+  border-radius:var(--r-xl);background:var(--panel);box-shadow:var(--shadow);
+  position:relative;
+}
+#start .brand{
+  grid-column:1;grid-row:1/4;margin:0;padding:34px 26px;
+  border:0;border-right:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(160deg,#10272e 0%,#173c42 58%,#1c4a4b 100%);
+  color:#fff;text-align:left;display:flex;flex-direction:column;
+}
+#start .brand .badge{
+  width:max-content;background:rgba(255,255,255,.1);color:#dcebe8;
+  border:1px solid rgba(255,255,255,.13);padding:7px 10px;border-radius:999px;
+  font-size:9px;letter-spacing:.12em;font-weight:900;
+}
+#start .brand h1{
+  margin:18px 0 8px;font-size:38px;line-height:1.02;letter-spacing:-.05em;color:#fff
+}
+#start .brand>.sub{margin:0;color:#b9cfcc!important;font-size:13px;line-height:1.6}
+#start .revision-home-card{
+  margin-top:auto;padding:18px;border-radius:18px;
+  background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.12);
+}
+.revision-home-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.revision-home-title{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:#b9cfcc}
+.revision-count{font-size:22px;color:#fff}
+.revision-home-sub{font-size:11px;line-height:1.55;color:#a9c0bd;margin:8px 0 12px}
+.revision-focus-list{margin:0 0 12px;padding:0;list-style:none;display:grid;gap:6px}
+.revision-focus-list li{font-size:11px;color:#d9e6e4;padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.06)}
+.revision-open-btn{
+  width:100%;border:1px solid rgba(255,255,255,.2);background:#fff;color:var(--navy);
+  min-height:38px;border-radius:10px;font-weight:900;font-size:11px;
+}
+#start .study-tracker{
+  grid-column:2;grid-row:1;position:relative!important;inset:auto!important;
+  width:auto!important;padding:20px 26px 0!important;
+}
+#start .study-nav-actions{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;
+}
+#start .study-nav-actions>button{
+  min-height:58px!important;height:auto!important;width:100%!important;
+  border-radius:15px!important;padding:9px 12px!important;
+  font-size:12px!important;line-height:1.15!important;white-space:nowrap!important;
+  overflow:hidden;text-overflow:ellipsis;border:1px solid var(--line)!important;
+  background:var(--panel)!important;color:var(--ink)!important;
+  box-shadow:0 5px 15px rgba(16,36,43,.04)!important;
+}
+#start .study-nav-actions>button:hover{border-color:#a9c1bc!important;background:var(--accent-soft)!important}
+#start .study-nav-actions .tracker-toggle{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+#start .study-nav-actions .tracker-toggle strong{background:#dceadf!important;color:#24514e!important}
+#start .study-nav-actions .hub-home-btn span:first-child,
+#start .study-nav-actions .plan-home-btn span:first-child,
+#start .study-nav-actions .tracker-icon{font-size:15px}
+
+#start .bank-import-card{
+  grid-column:2;grid-row:2;margin:16px 26px 0;padding:22px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel-2);
+}
+.bank-import-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px}
+.bank-kicker{display:block;font-size:9px;font-weight:950;letter-spacing:.13em;color:var(--accent);margin-bottom:5px}
+.bank-import-head h2{margin:0;font-size:20px;letter-spacing:-.025em}
+.bank-import-head p{margin:5px 0 0;color:var(--muted);font-size:12px;max-width:700px}
+.bank-cloud-pill{
+  flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#e8f4ee;color:#357055;
+  border:1px solid #cfe6db;font-size:10px;font-weight:900
+}
+.bank-import-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.bank-field,.bank-file-label{display:grid;gap:6px;font-size:10px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.bank-field select,.bank-file-label input{
+  width:100%;height:43px;padding:0 11px;border-radius:10px;border:1px solid var(--line);
+  background:#fff;color:var(--ink);text-transform:none;font-size:12px;font-weight:600;letter-spacing:0;
+}
+.bank-file-label input{padding:9px}
+.bank-file-label small{font-size:9px;font-weight:600;text-transform:none;letter-spacing:0}
+#jsonInput{
+  width:100%;min-height:205px;resize:vertical;padding:14px;
+  border:1px solid var(--line)!important;border-radius:13px!important;
+  background:#fff!important;color:#24353a!important;font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  outline:none;
+}
+#jsonInput:focus{border-color:#86aba5!important;box-shadow:0 0 0 3px rgba(45,107,103,.08)}
+#start .bank-import-card .actions{margin-top:11px}
+#start .bank-import-card .actions .btn{min-height:38px;font-size:11px}
+.error{font-size:11px;text-align:left;margin-top:8px;color:var(--danger)!important;min-height:15px}
+#start .bank-import-card .helper{margin-top:8px}
+.bank-import-summary{margin-top:10px;color:var(--muted);font-size:11px}
+#start #examInfo{
+  grid-column:2;grid-row:3;margin:16px 26px 22px!important;
+  padding:0!important;border:0!important;background:transparent!important;
+}
+#start #examInfo .helper{margin:0 0 10px}
+#start #examInfo .actions{justify-content:flex-end}
+#start #examInfo .actions .btn{min-width:130px}
+.cloud-status-hidden{display:none!important}
+
+/* home tracker drawer */
+#start .tracker-panel{
+  position:absolute;right:26px;top:90px;width:min(400px,calc(100% - 52px));
+  z-index:100;background:#fff;border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 24px 60px rgba(16,36,43,.18);overflow:hidden;
+}
+.tracker-panel-head{padding:14px 16px;background:#f7faf9;border-bottom:1px solid var(--line)}
+.tracker-panel-head b{font-size:13px}.tracker-panel-head small{font-size:10px;color:var(--muted)}
+.tracker-close{border:0;background:transparent;color:var(--ink);font-size:20px}
+.tracker-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 12px 4px}
+.tracker-tab{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;min-height:32px;font-size:10px;font-weight:800}
+.tracker-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tracker-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 12px}
+.tracker-stats>div{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fafcfb;text-align:center}
+.tracker-stats small{display:block;color:var(--muted);font-size:9px}.tracker-stats b{font-size:18px}
+.tracker-chart-wrap{padding:4px 12px 10px}.tracker-chart{height:145px;border:1px solid var(--line);border-radius:12px;background:#f8fbfa}
+.tracker-note{font-size:9px;color:var(--muted);padding:0 13px 12px}
+.tracker-legend{font-size:9px}
+
+/* ---------- REVISION ---------- */
+.revision-shell,.plan-dashboard,.studyhub-dashboard,.progress-dashboard{width:min(1400px,calc(100% - 64px));margin:0 auto;padding:34px 0 50px}
+.revision-header,.plan-header,.studyhub-header,.progress-dashboard-header{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px
+}
+.revision-header h1,.plan-header h1,.studyhub-header h1,.progress-dashboard-header h1{
+  margin:5px 0 4px;font-size:34px;letter-spacing:-.045em;line-height:1.05
+}
+.revision-header p,.plan-header p,.studyhub-header p,.progress-dashboard-header p{margin:0;color:var(--muted);font-size:13px;max-width:720px}
+.revision-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.revision-stat{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm)}
+.revision-stat small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:900}
+.revision-stat b{display:block;margin-top:7px;font-size:22px;letter-spacing:-.03em}
+.revision-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px}
+.revision-list,.revision-side{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow-sm)}
+.revision-list-head{padding:17px 19px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.revision-list-head h2{margin:0;font-size:16px}.revision-list-head span{font-size:10px;color:var(--muted);font-weight:800}
+.revision-items{padding:14px}
+.revision-item{padding:16px;border:1px solid var(--line);border-radius:15px;background:#fbfdfc;margin-bottom:10px}
+.revision-item:last-child{margin-bottom:0}
+.revision-item-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.revision-topic{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:950}
+.revision-date{font-size:9px;color:var(--muted)}
+.revision-question{font-size:14px;font-weight:750;line-height:1.65;margin:8px 0 12px}
+.revision-answer-box{padding:9px 11px;border-radius:10px;margin:6px 0;font-size:11px}
+.revision-answer-box small{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;opacity:.75}
+.revision-answer-box b{font-size:11px}
+.revision-answer-box.wrong-answer{background:#fff2f2;color:#8c4242;border:1px solid #f0d5d5}
+.revision-answer-box.correct-answer{background:#edf7f0;color:#39654a;border:1px solid #d1e8d8}
+.revision-reveal,.revision-remove{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 10px;font-size:10px;font-weight:850;color:var(--ink)}
+.revision-detail{display:none;margin-top:10px}.revision-detail.open{display:block}
+.revision-options{display:grid;gap:6px}.revision-options>div{padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:11px}
+.revision-explanation{margin-top:8px;padding:10px;background:#faf8ef;border-radius:10px;font-size:11px}
+.revision-item-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.revision-remove{color:var(--success);border-color:#cfe3d5}
+.revision-side{padding:19px;height:max-content;position:sticky;top:20px}
+.revision-side h3{margin:0;font-size:15px}.revision-side p{font-size:11px;color:var(--muted);line-height:1.6}
+.revision-topic-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:11px}
+.revision-topic-row:last-child{border-bottom:0}
+.revision-empty{padding:35px 15px;text-align:center;color:var(--muted)}
+.revision-empty-icon{font-size:30px}
+
+/* ---------- PLAN ---------- */
+.plan-kicker,.studyhub-kicker,.progress-kicker{font-size:9px;letter-spacing:.13em;color:var(--accent);font-weight:950}
+.plan-day-nav{display:grid;grid-template-columns:44px 1fr 44px auto;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);background:#fff;border-radius:16px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.plan-day-arrow{width:42px;height:42px;border-radius:11px;border:1px solid var(--line);background:#f7faf9;color:var(--ink);font-size:22px}
+.plan-selected-date{text-align:center}.plan-selected-date small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;font-weight:900;letter-spacing:.08em}
+.plan-selected-date strong{display:block;font-size:18px;letter-spacing:-.02em}.plan-selected-date span{font-size:10px;color:var(--muted)}
+.plan-today-btn{height:40px;padding:0 13px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:10px;font-weight:900}
+.plan-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px}
+.plan-add-card,.plan-list-card,.plan-summary-card,.plan-calendar-card{border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow-sm)}
+.plan-add-card{padding:20px;margin-bottom:14px}
+.plan-add-title{display:flex;gap:12px;align-items:center;margin-bottom:14px}.plan-add-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--accent-soft);color:var(--accent);font-size:23px;font-weight:300}
+.plan-add-title h2{margin:0;font-size:16px}.plan-add-title p{margin:2px 0 0;color:var(--muted);font-size:10px}
+.plan-add-row{display:grid;grid-template-columns:minmax(0,1fr) 190px 150px auto;gap:8px}
+.plan-add-row input,.plan-add-row select{height:43px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);padding:0 11px;font-size:11px}
+.plan-add-row .btn{height:43px}
+.plan-list-card{overflow:hidden}.plan-list-head{padding:17px 19px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.plan-list-head h2{margin:0;font-size:16px}.plan-list-head p{margin:2px 0 0;font-size:10px;color:var(--muted)}
+.plan-text-btn{border:0;background:transparent;color:var(--accent);font-size:10px;font-weight:900}
+.plan-topic-list{padding:10px 14px}.plan-topic-item{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 6px;border-bottom:1px solid #edf1ef}
+.plan-topic-item:last-child{border-bottom:0}.plan-topic-item.done{opacity:.58}.plan-topic-item.done .plan-topic-name{text-decoration:line-through}
+.plan-topic-check{width:25px;height:25px;border-radius:8px;border:1px solid var(--line);background:#fff;color:#fff;display:grid;place-items:center;font-size:13px}
+.plan-topic-item.done .plan-topic-check{background:var(--success);border-color:var(--success)}
+.plan-topic-name{font-size:12px;font-weight:800}.plan-topic-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:3px}
+.plan-category-tag,.plan-priority{display:inline-flex;padding:3px 6px;border-radius:999px;background:#f0f4f2;color:var(--muted);font-size:8px;font-weight:850}
+.plan-priority.high{background:#fff0e5;color:#9b5a20}.plan-priority.low{background:#f0f1f5;color:#667080}
+.plan-topic-actions{display:flex;gap:4px}.plan-icon-btn{width:29px;height:29px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12px}
+.plan-sidebar{display:grid;gap:14px;align-content:start}.plan-summary-card,.plan-calendar-card{padding:17px}
+.plan-side-label{font-size:9px;letter-spacing:.1em;color:var(--muted);font-weight:950}.plan-progress-number{margin:6px 0 9px;font-size:28px;letter-spacing:-.04em}.plan-progress-number span{font-size:14px;color:var(--muted)}
+.plan-progress-track{height:8px;background:#edf2f0;border-radius:99px;overflow:hidden}.plan-progress-track span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px}
+.plan-summary-card p{font-size:10px;color:var(--muted);margin:8px 0 0}
+.plan-side-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.plan-side-head h3{margin:0;font-size:13px}.plan-side-head span{font-size:9px;color:var(--muted)}
+.plan-upcoming-row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #edf1ef;font-size:10px}.plan-upcoming-row:last-child{border-bottom:0}.plan-upcoming-date{color:var(--muted)}.plan-upcoming-count{font-weight:900}
+.plan-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.plan-mini-stats>div{padding:9px 5px;text-align:center;background:#f7faf9;border-radius:10px}.plan-mini-stats b{display:block;font-size:17px}.plan-mini-stats span{font-size:8px;color:var(--muted)}
+.plan-empty{padding:35px 12px;text-align:center;color:var(--muted);font-size:11px}
+
+/* ---------- STUDY HUB ---------- */
+.studyhub-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.studyhub-overview>div{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm)}
+.studyhub-overview small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.studyhub-overview strong{display:block;margin:6px 0 2px;font-size:22px;letter-spacing:-.03em}
+.studyhub-overview span{font-size:9px;color:var(--muted)}
+.studyhub-bank-section{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow-sm)}
+.studyhub-section-head{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:15px}
+.studyhub-section-head h2{margin:0;font-size:17px}.studyhub-section-head p{margin:3px 0 0;font-size:10px;color:var(--muted)}
+.hub-add-btn{min-height:39px;padding:0 13px;border-radius:10px;background:var(--navy);color:#fff;border:0;font-size:10px;font-weight:900}
+.hub-subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hub-subject-card{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fbfdfc;min-height:150px;display:flex;flex-direction:column}
+.hub-subject-top{display:flex;justify-content:space-between;gap:8px}.hub-subject-top h3{margin:0;font-size:11px;line-height:1.4}.hub-ready{font-size:7px;font-weight:950;letter-spacing:.08em;padding:4px 6px;border-radius:999px;background:#edf1ef;color:var(--muted);height:max-content}.hub-ready:has(+*){}
+.hub-subject-count{margin-top:auto;font-size:28px;font-weight:950;letter-spacing:-.05em}.hub-subject-label{font-size:9px;color:var(--muted)}.hub-subject-meta{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:8px;color:var(--muted)}
+.hub-practice-btn{border:1px solid #c9ded9;background:#edf7f5;color:var(--accent);border-radius:8px;padding:6px 8px;font-size:8px;font-weight:900}
+
+/* ---------- PROGRESS ---------- */
+.progress-hero{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:20px;padding:24px;border-radius:22px;background:linear-gradient(125deg,#102a31,#1c4b4d);color:#fff;margin-bottom:14px;box-shadow:var(--shadow)}
+.progress-hero-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#9ec0bc;font-weight:900}
+.progress-hero-number{font-size:58px;line-height:1;font-weight:950;letter-spacing:-.06em;margin-top:6px}.progress-hero-caption{font-size:11px;color:#b8cfcb}.progress-hero-bar{height:8px;background:rgba(255,255,255,.1);border-radius:99px;margin:20px 0 9px;overflow:hidden}.progress-hero-bar span{display:block;height:100%;background:linear-gradient(90deg,#d9b86c,#7dc0b2);border-radius:99px}
+.progress-hero-foot{display:flex;justify-content:space-between;font-size:10px;color:#c0d4d1}
+.progress-hero-ring{display:grid;place-items:center;align-content:center}.progress-ring{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) 0deg,rgba(255,255,255,.12) 0deg);position:relative}.progress-ring:after{content:"";position:absolute;inset:10px;border-radius:50%;background:#173d42}.progress-ring span{position:relative;z-index:1;font-size:23px;font-weight:950}.progress-hero-ring small{margin-top:8px;color:#b8cfcb;font-size:9px}
+.progress-stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.progress-stat-card{display:flex;gap:10px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:15px;background:#fff;box-shadow:var(--shadow-sm)}
+.ps-icon{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:#e9f3ef;color:var(--success);font-weight:950}.ps-icon.wrong{background:#fff0f0;color:var(--danger)}
+.progress-stat-card small{display:block;color:var(--muted);font-size:9px}.progress-stat-card b{display:block;font-size:19px;letter-spacing:-.03em}.progress-stat-card em{display:block;font-style:normal;color:var(--muted);font-size:8px}
+.progress-section-card{padding:20px;border:1px solid var(--line);border-radius:19px;background:#fff;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.progress-section-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.progress-section-head h2{margin:0;font-size:16px}.progress-section-head p{margin:3px 0 0;color:var(--muted);font-size:10px}.progress-section-head.compact{margin-bottom:12px}
+.progress-period-tabs{display:flex;gap:5px}.progress-period{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:8px;padding:7px 9px;font-size:9px;font-weight:900}.progress-period.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.progress-chart-meta{display:flex;justify-content:space-between;margin:16px 0 7px;font-size:10px}.progress-chart-meta span{color:var(--muted)}
+.progress-big-chart{height:230px;display:flex;align-items:flex-end;gap:7px;padding:12px 4px 0;border-bottom:1px solid var(--line);overflow:hidden}
+.progress-big-column{flex:1;min-width:10px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}.progress-big-bars{height:180px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:2px}.progress-big-bar{width:29%;min-width:3px;border-radius:5px 5px 2px 2px}.progress-big-bar.solved{background:#8fbab4}.progress-big-bar.correct{background:#4f8b69}.progress-big-bar.wrong{background:#cf7777}.progress-big-value{font-size:8px;color:var(--muted)}.progress-big-label{font-size:8px;color:var(--muted);max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.progress-big-accuracy{font-size:8px;color:var(--accent);font-weight:900}
+.progress-chart-legend{display:flex;justify-content:center;gap:16px;margin-top:9px;font-size:9px;color:var(--muted)}.pc-dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}.pc-dot.solved{background:#8fbab4}.pc-dot.correct{background:#4f8b69}.pc-dot.wrong{background:#cf7777}
+.progress-two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.progress-two-col>.progress-section-card{margin-bottom:14px}
+.performance-row{display:grid;grid-template-columns:150px 1fr 44px;align-items:center;gap:10px;margin:11px 0;font-size:10px}.performance-track,.progress-topic-track{height:7px;background:#edf2f0;border-radius:99px;overflow:hidden}.performance-track span,.progress-topic-track span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px}
+.consistency-calendar-head{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:5px}.consistency-calendar-head span{text-align:center;color:var(--muted);font-size:8px}.consistency-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.consistency-grid>div{aspect-ratio:1;border-radius:5px;background:#edf2f0}.consistency-grid>div[data-level="1"]{background:#cce3de}.consistency-grid>div[data-level="2"]{background:#9bc9c1}.consistency-grid>div[data-level="3"]{background:#5d9e96}.consistency-grid>div[data-level="4"]{background:#2d6b67}.consistency-summary{font-size:9px;color:var(--muted);margin-top:9px}
+.progress-topic-row{display:grid;grid-template-columns:170px 1fr 45px;gap:10px;align-items:center;margin:11px 0;font-size:10px}.progress-topic-row>span:last-child{text-align:right;font-weight:900}
+.attention-item{padding:11px 0;border-bottom:1px solid #edf1ef}.attention-item:last-child{border-bottom:0}.attention-top{display:flex;justify-content:space-between;gap:10px;font-size:10px;font-weight:900}.attention-top span:last-child{color:var(--danger)}.attention-sub{font-size:9px;color:var(--muted);margin-top:2px}
+.progress-inline-btn{border:0;background:var(--accent-soft);color:var(--accent);padding:9px 11px;border-radius:9px;font-size:9px;font-weight:950;margin-top:8px}
+.progress-recent-days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.recent-day{padding:11px;border:1px solid var(--line);border-radius:11px;background:#fbfdfc}.recent-day-date{font-size:8px;color:var(--muted)}.recent-day-total{font-size:20px;font-weight:950}.recent-day-breakdown{font-size:8px;color:var(--muted)}
+.progress-empty{padding:24px;text-align:center;color:var(--muted);font-size:10px}
+
+/* ---------- EXAM ---------- */
+#exam{background:#edf2f0}
+#exam .exam-head{
+  height:68px;min-height:68px;padding:0 24px;background:var(--navy);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  color:#fff;box-shadow:0 6px 22px rgba(16,36,43,.14);position:sticky;top:0;z-index:200
+}
+.head-left b{display:block;font-size:13px}.head-left span{display:block;color:#9fc0bb;font-size:9px;margin-top:2px}
+.head-center{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.08);padding:7px 12px;border-radius:999px}
+.exam-actions{justify-self:end;display:flex;align-items:center;gap:7px}
+.display-menu-btn,.palette-top-btn{height:38px;padding:0 11px;border-radius:9px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.17);font-size:10px;font-weight:900}
+.display-menu{position:absolute;right:0;top:46px;width:250px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 20px 45px rgba(16,36,43,.2);z-index:500}
+.display-menu-title{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:900;margin-bottom:8px}.display-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.theme-btn,.focus-btn{min-height:38px;border:1px solid var(--line);border-radius:8px;background:#f7faf9;color:var(--ink);font-size:10px;font-weight:850}.theme-btn.active,.focus-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.timer{min-width:82px;text-align:center;font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff!important}.timer.warn{color:#f0d178!important}.timer.critical{color:#ff9c9c!important}
+.progress-track{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08)}.progress-track .progress{height:100%;background:linear-gradient(90deg,#7dbdb4,#d9b86c)}
+#exam .exam-body{width:min(1450px,calc(100% - 48px));margin:0 auto;padding:22px 0 40px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px}
+#exam .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden}
+.q-head{padding:15px 19px;background:#f7faf9;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.q-head-main{display:flex;align-items:center;gap:8px}.q-eyebrow{font-size:8px;letter-spacing:.09em;font-weight:950;color:var(--accent);background:var(--accent-soft);padding:4px 6px;border-radius:5px}.q-head h2{margin:0;font-size:14px}.topic{font-size:9px;font-weight:900;color:var(--muted);border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+.q-content{padding:30px 34px;min-height:430px}.q-text{max-width:900px;font-size:18px;line-height:1.75;font-weight:700;color:var(--ink);margin:0 0 22px;white-space:pre-wrap;overflow-wrap:anywhere}
+.options{display:grid;gap:9px;max-width:940px}.option{position:relative;display:flex;gap:11px;align-items:flex-start;padding:13px 14px;border:1px solid var(--line)!important;border-radius:12px;background:#fbfdfc!important;color:var(--ink)!important;transition:.15s}.option:hover{transform:none!important;border-color:#86aaa5!important;background:#f3f8f6!important}.option.selected{background:#eaf5f2!important;border:2px solid var(--accent)!important}.option input{margin-top:3px;accent-color:var(--accent);transform:scale(1.1)}.option-key{font-size:11px;font-weight:950;min-width:20px}.option label{font-size:12px;line-height:1.6}
+.statement-box,.ar-item,.solution{background:#f7faf9!important;border-color:var(--line)!important}.match-table{border-color:var(--line)!important}.match-table th{background:var(--navy)!important;color:#fff!important}.passage{background:#fbf8ec!important;border-color:#e9e0bf!important}
+.q-footer{padding:12px 18px;background:#f7faf9;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;position:sticky;bottom:0;z-index:10}.q-footer .btn{min-height:39px;font-size:10px}
+.palette{height:calc(100vh - 108px);position:sticky;top:88px;display:flex!important;flex-direction:column}.palette-head{padding:14px 15px;border-bottom:1px solid var(--line);font-size:11px;font-weight:950;background:#f7faf9}.palette-grid{padding:13px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;overflow:auto}.qbtn{aspect-ratio:1;border-radius:10px;background:#edf2f0!important;border:1px solid #d7e0dd!important;color:var(--ink)!important;font-size:10px}.qbtn.current{outline:2px solid var(--accent)!important;outline-offset:2px}.qbtn.answered{background:#e5d69c!important;border-color:#c8b96d!important}.qbtn.marked{background:#66888a!important;color:#fff!important;border-color:#66888a!important}.qbtn.ansmarked{background:#315d60!important;color:#fff!important;border-color:#315d60!important}.legend{margin-top:auto;padding:13px;border-top:1px solid var(--line);background:#f7faf9;display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:8px}.dot{width:9px;height:9px}
+.mobile-toggle{display:none}
+.palette-backdrop{background:rgba(8,22,26,.55)!important;z-index:950!important}
+
+/* ---------- RESULT ---------- */
+#result{background:var(--canvas)}
+#result .exam-head{height:64px;min-height:64px;padding:0 28px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;color:#fff;position:sticky;top:0;z-index:50}
+#result .result{width:min(1240px,calc(100% - 64px));max-width:none;margin:28px auto 50px;padding:0}
+.result-header{display:grid;grid-template-columns:1fr auto;gap:4px 20px;align-items:center;padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow-sm)}
+.result-header h1{margin:0;font-size:24px;letter-spacing:-.035em}.score{grid-column:2;grid-row:1/3;font-size:48px;font-weight:950;letter-spacing:-.06em;color:var(--accent)}.result-header .sub{grid-column:1;margin:0;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0}.stat{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}.stat small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;font-weight:900;letter-spacing:.06em}.stat b{display:block;margin-top:4px;font-size:21px}
+.section{padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow-sm);margin:12px 0}.section h2{margin:0 0 13px;font-size:16px}
+.result-table{border-collapse:collapse;width:100%;font-size:10px}.result-table th{padding:9px;background:#f2f6f4;color:var(--muted);text-align:left;text-transform:uppercase;font-size:8px;letter-spacing:.06em}.result-table td{padding:9px;border-bottom:1px solid #edf1ef}.result-table tr:last-child td{border-bottom:0}
+.result-question-wrap{border:1px solid var(--line)!important;background:#fbfdfc!important}.result-explanation{background:#faf8ee!important;border-color:#e7dfbf!important}.exam-takeaway{background:#f7faf9!important}.copy-question{background:var(--accent)!important;color:#fff!important}
+.correct{color:var(--success)!important}.wrong{color:var(--danger)!important}
+
+/* ---------- MODAL ---------- */
+.modal{background:rgba(8,22,26,.65)!important;backdrop-filter:blur(5px);z-index:1000}.modal-box{width:min(460px,100%);background:#fff;border-radius:20px;border:1px solid var(--line);padding:24px;box-shadow:0 30px 70px rgba(0,0,0,.2)}
+
+/* ---------- DARK MODE ---------- */
+body.theme-dark{
+  --ink:#eaf3f1;--muted:#aec1be;--canvas:#0d171a;--panel:#17282c;--panel-2:#1d3034;--line:#3a5053;
+  --accent:#76b9af;--accent-2:#9acdc4;--accent-soft:#254744;--navy:#08181c;--navy-2:#0d2529;
+}
+body.theme-dark #start{background:radial-gradient(circle at 10% 10%,rgba(118,185,175,.1),transparent 30%),var(--canvas)}
+body.theme-dark #start .start,body.theme-dark .revision-list,body.theme-dark .revision-side,body.theme-dark .plan-add-card,body.theme-dark .plan-list-card,body.theme-dark .plan-summary-card,body.theme-dark .plan-calendar-card,body.theme-dark .studyhub-bank-section,body.theme-dark .studyhub-overview>div,body.theme-dark .progress-stat-card,body.theme-dark .progress-section-card,body.theme-dark .result-header,body.theme-dark .stat,body.theme-dark .section,body.theme-dark #exam .card{background:var(--panel)!important;color:var(--ink)!important}
+body.theme-dark #start .bank-import-card,body.theme-dark .q-head,body.theme-dark .q-footer,body.theme-dark .palette-head,body.theme-dark .legend{background:var(--panel-2)!important;color:var(--ink)!important}
+body.theme-dark #jsonInput,body.theme-dark .bank-field select,body.theme-dark .bank-file-label input,body.theme-dark .plan-add-row input,body.theme-dark .plan-add-row select,body.theme-dark .option,body.theme-dark .revision-item,body.theme-dark .hub-subject-card,body.theme-dark .plan-topic-item,body.theme-dark .plan-mini-stats>div{background:#1d3034!important;color:var(--ink)!important;border-color:var(--line)!important}
+body.theme-dark .btn.outline,body.theme-dark .plan-today-btn,body.theme-dark .plan-day-arrow,body.theme-dark .plan-icon-btn,body.theme-dark .revision-reveal,body.theme-dark .revision-remove,body.theme-dark .hub-practice-btn{background:#1d3034!important;color:var(--ink)!important;border-color:var(--line)!important}
+body.theme-dark .display-menu{background:var(--panel)!important;color:var(--ink)!important;border-color:var(--line)!important}
+body.theme-dark .theme-btn,body.theme-dark .focus-btn{background:#1d3034;color:var(--ink);border-color:var(--line)}
+body.theme-dark .qbtn{background:#2a4144!important;color:#fff!important;border-color:#496064!important}
+body.theme-dark .qbtn.answered{background:#756b3a!important}.qbtn.marked{color:#fff!important}
+body.theme-dark .result-explanation{background:#302f25!important;color:var(--ink)!important}.theme-dark .passage{background:#302f25!important;color:var(--ink)!important}
+
+/* ---------- COMFORT MODE ---------- */
+body.theme-comfort{--canvas:#f1eee5;--panel:#fffdf7;--panel-2:#f8f5ec;--ink:#292e2a;--muted:#59625a;--line:#d8d6c8;--accent:#355f60;--accent-soft:#e6efeb}
+
+/* ---------- FOCUS MODE ---------- */
+.focus-mode .exam-body{grid-template-columns:minmax(0,1fr)!important;width:min(1080px,calc(100% - 48px))!important}
+.focus-mode #palette{display:none!important}
+.focus-mode .q-content{padding-left:clamp(28px,8vw,100px);padding-right:clamp(28px,8vw,100px)}
+.focus-mode .q-text{max-width:900px;margin-left:auto;margin-right:auto}
+.focus-mode .q-footer{padding-left:clamp(28px,8vw,100px);padding-right:clamp(28px,8vw,100px)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1100px){
+  #start{padding:16px}
+  #start .start{grid-template-columns:1fr;grid-template-rows:auto auto auto auto;min-height:0}
+  #start .brand{grid-column:1;grid-row:1;padding:25px 22px;border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+  #start .brand h1{font-size:31px}
+  #start .revision-home-card{margin-top:20px}
+  #start .study-tracker{grid-column:1;grid-row:2;padding:14px 16px 0!important}
+  #start .bank-import-card{grid-column:1;grid-row:3;margin:14px 16px 0}
+  #start #examInfo{grid-column:1;grid-row:4;margin:14px 16px 20px!important}
+  .revision-shell,.plan-dashboard,.studyhub-dashboard,.progress-dashboard{width:min(100% - 32px,980px);padding-top:24px}
+  .hub-subject-grid{grid-template-columns:repeat(3,1fr)}
+  .progress-stat-grid{grid-template-columns:repeat(3,1fr)}
+  .plan-layout,.revision-layout{grid-template-columns:1fr}
+  .revision-side{position:static}
+  .plan-sidebar{grid-template-columns:repeat(3,1fr);display:grid}
+  #exam .exam-body{grid-template-columns:1fr;width:min(100% - 28px,900px)}
+  #exam .palette{position:fixed;right:-380px;top:0;width:340px;height:100dvh;z-index:1000;transition:right .22s ease;background:#fff!important}
+  #exam .palette.open{right:0}
+  .mobile-toggle{display:block;position:fixed;right:16px;bottom:16px;z-index:900;width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;font-size:10px;font-weight:900;border:0;box-shadow:0 12px 28px rgba(0,0,0,.2)}
+}
+@media(max-width:760px){
+  #start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  #start .study-nav-actions>button{min-height:50px!important;font-size:10px!important;padding:8px 5px!important}
+  .bank-import-row{grid-template-columns:1fr}
+  .bank-import-head,.studyhub-section-head,.revision-header,.plan-header,.studyhub-header,.progress-dashboard-header{align-items:flex-start;flex-direction:column}
+  .bank-cloud-pill{align-self:flex-start}
+  .bank-import-card{padding:16px!important}
+  .bank-import-card .actions .btn{flex:1}
+  .revision-summary,.studyhub-overview,.progress-stat-grid{grid-template-columns:repeat(2,1fr)}
+  .hub-subject-grid{grid-template-columns:repeat(2,1fr)}
+  .plan-sidebar{grid-template-columns:1fr}
+  .plan-add-row{grid-template-columns:1fr}
+  .plan-day-nav{grid-template-columns:38px 1fr 38px auto}
+  .progress-hero{grid-template-columns:1fr;padding:18px}.progress-hero-ring{display:none}
+  .progress-two-col{grid-template-columns:1fr}
+  .progress-big-chart{height:190px}.progress-big-bars{height:145px}
+  .progress-recent-days{grid-template-columns:repeat(2,1fr)}
+  .performance-row{grid-template-columns:100px 1fr 40px}
+  .progress-topic-row{grid-template-columns:110px 1fr 40px}
+  #result .result{width:calc(100% - 24px);margin-top:14px}
+  .result-header{grid-template-columns:1fr;text-align:left}.score{grid-column:1;grid-row:auto;font-size:39px}.stats{grid-template-columns:repeat(2,1fr)}
+  #exam .exam-head{height:auto;min-height:70px;padding:8px 10px;grid-template-columns:1fr auto}
+  .head-center{grid-column:1/-1;grid-row:2;justify-self:center;font-size:8px}
+  .head-left span{display:none}.head-left b{font-size:11px}
+  .exam-actions{gap:4px}.exam-actions>#submitTop{display:none}.timer{min-width:62px;font-size:11px}
+  .display-menu-btn,.palette-top-btn{height:35px;padding:0 8px;font-size:9px}
+  #exam .exam-body{width:calc(100% - 16px);padding:10px 0 70px}
+  .q-content{padding:20px 15px;min-height:0}.q-text{font-size:16px;line-height:1.7}.q-footer{display:grid;grid-template-columns:1fr 1fr;padding:10px}
+  .q-footer>div{display:grid!important;grid-template-columns:1fr 1fr!important;gap:5px!important}.q-footer .btn{font-size:9px;padding:8px 5px}
+  .q-head{padding:12px 14px}.q-head h2{font-size:12px}.q-eyebrow{display:none}
+  .option{padding:12px 11px}.option label{font-size:11px}
+  .revision-shell,.plan-dashboard,.studyhub-dashboard,.progress-dashboard{width:calc(100% - 24px);padding:18px 0 35px}
+}
+@media(max-width:480px){
+  #start{padding:8px}.revision-home-card{margin-top:16px}
+  #start .start{border-radius:20px}
+  #start .brand{padding:22px 17px}
+  #start .brand h1{font-size:28px}
+  #start .study-tracker{padding:10px 10px 0!important}
+  #start .bank-import-card{margin:10px 10px 0;padding:13px!important}
+  #start #examInfo{margin:10px 10px 15px!important}
+  .revision-summary,.studyhub-overview{grid-template-columns:1fr 1fr}
+  .hub-subject-grid{grid-template-columns:1fr}
+  .progress-stat-grid{grid-template-columns:1fr 1fr}
+  .progress-hero-number{font-size:47px}
+  .progress-recent-days{grid-template-columns:1fr 1fr}
+  .plan-day-nav{grid-template-columns:34px 1fr 34px}.plan-today-btn{grid-column:1/-1;width:100%}
+  .plan-mini-stats{grid-template-columns:1fr 1fr 1fr}
+  #result .result{width:calc(100% - 16px)}.stats{gap:7px}.stat{padding:11px}.stat b{font-size:18px}
+  .result-table{font-size:8px}.result-table th,.result-table td{padding:6px 4px}
+}
+
+/* accessibility + reduced motion */
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(101,166,155,.35);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<style id="nav-button-polish">
+/* Refined primary navigation: Progress / Study Hub / Plan */
+#start .home-nav,
+#start .nav-actions,
+#start .quick-nav,
+#start .dashboard-nav {
+  gap: 12px !important;
+}
+
+#start .home-nav button,
+#start .nav-actions button,
+#start .quick-nav button,
+#start .dashboard-nav button,
+#start button[onclick*="progress" i],
+#start button[onclick*="studyHub" i],
+#start button[onclick*="plan" i] {
+  position: relative;
+  min-height: 54px !important;
+  padding: 12px 18px !important;
+  border: 1px solid rgba(148, 163, 184, .22) !important;
+  border-radius: 16px !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(241,245,249,.94)) !important;
+  color: #172033 !important;
+  box-shadow:
+    0 8px 22px rgba(15,23,42,.08),
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+  font-weight: 800 !important;
+  letter-spacing: -.01em !important;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease,
+              background .2s ease !important;
+  overflow: hidden;
+}
+
+#start .home-nav button::before,
+#start .nav-actions button::before,
+#start .quick-nav button::before,
+#start .dashboard-nav button::before,
+#start button[onclick*="progress" i]::before,
+#start button[onclick*="studyHub" i]::before,
+#start button[onclick*="plan" i]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,.5), transparent 48%);
+  pointer-events: none;
+}
+
+#start .home-nav button:hover,
+#start .nav-actions button:hover,
+#start .quick-nav button:hover,
+#start .dashboard-nav button:hover,
+#start button[onclick*="progress" i]:hover,
+#start button[onclick*="studyHub" i]:hover,
+#start button[onclick*="plan" i]:hover {
+  transform: translateY(-3px);
+  border-color: rgba(13, 148, 136, .42) !important;
+  box-shadow:
+    0 14px 30px rgba(15,23,42,.12),
+    0 0 0 4px rgba(13,148,136,.07),
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+#start .home-nav button:active,
+#start .nav-actions button:active,
+#start .quick-nav button:active,
+#start .dashboard-nav button:active,
+#start button[onclick*="progress" i]:active,
+#start button[onclick*="studyHub" i]:active,
+#start button[onclick*="plan" i]:active {
+  transform: translateY(-1px) scale(.985);
+}
+
+/* Give each destination a distinct visual identity without changing its label. */
+#start .home-nav button:nth-child(1),
+#start .nav-actions button:nth-child(1),
+#start .quick-nav button:nth-child(1),
+#start .dashboard-nav button:nth-child(1) {
+  border-top: 3px solid #0f766e !important;
+}
+
+#start .home-nav button:nth-child(2),
+#start .nav-actions button:nth-child(2),
+#start .quick-nav button:nth-child(2),
+#start .dashboard-nav button:nth-child(2) {
+  border-top: 3px solid #2563eb !important;
+}
+
+#start .home-nav button:nth-child(3),
+#start .nav-actions button:nth-child(3),
+#start .quick-nav button:nth-child(3),
+#start .dashboard-nav button:nth-child(3) {
+  border-top: 3px solid #d97706 !important;
+}
+
+/* Dark theme */
+body.dark #start .home-nav button,
+body.dark #start .nav-actions button,
+body.dark #start .quick-nav button,
+body.dark #start .dashboard-nav button,
+body.dark #start button[onclick*="progress" i],
+body.dark #start button[onclick*="studyHub" i],
+body.dark #start button[onclick*="plan" i] {
+  background: linear-gradient(145deg, #172235, #111a2b) !important;
+  color: #f8fafc !important;
+  border-color: rgba(148,163,184,.18) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+@media (max-width: 720px) {
+  #start .home-nav button,
+  #start .nav-actions button,
+  #start .quick-nav button,
+  #start .dashboard-nav button {
+    min-height: 50px !important;
+    padding: 10px 13px !important;
+    border-radius: 14px !important;
+  }
+}
+</style>
+
+
+<style id="subject-notes-system">
+/* Separate Subject Notes page */
+.notes-dashboard{width:min(1480px,calc(100% - 48px));margin:0 auto;padding:34px 0 56px}
+.notes-header{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:24px}
+.notes-kicker,.notes-current-label{font-size:11px;font-weight:900;letter-spacing:.16em;color:#0f766e}
+.notes-header h1{margin:6px 0 8px;font-size:clamp(30px,3vw,46px);letter-spacing:-.04em}
+.notes-header p{margin:0;max-width:760px;color:var(--muted);line-height:1.65}
+.notes-header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.notes-sync-badge{padding:9px 13px;border-radius:999px;background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.18);color:#0f766e;font-size:12px;font-weight:800}
+.notes-workspace{display:grid;grid-template-columns:310px minmax(0,1fr);gap:18px;align-items:stretch}
+.notes-subject-panel,.notes-editor-panel{background:rgba(255,255,255,.92);border:1px solid rgba(148,163,184,.2);border-radius:24px;box-shadow:0 16px 45px rgba(15,23,42,.07)}
+.notes-subject-panel{padding:18px;min-height:680px}
+.notes-panel-head{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 5px 15px;border-bottom:1px solid rgba(148,163,184,.16)}
+.notes-panel-head span{font-size:10px;font-weight:900;letter-spacing:.15em;color:var(--muted)}
+.notes-panel-head h2{margin:4px 0 0;font-size:20px}
+.notes-panel-head b{font-size:12px;padding:7px 9px;border-radius:9px;background:#f1f5f9;color:#475569}
+.notes-subject-list{display:grid;gap:7px;margin-top:13px}
+.notes-subject-btn{width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:14px;padding:12px 13px;cursor:pointer;color:var(--text);transition:.18s ease}
+.notes-subject-btn:hover{background:#f8fafc;border-color:#e2e8f0;transform:translateX(2px)}
+.notes-subject-btn.active{background:linear-gradient(135deg,rgba(15,118,110,.12),rgba(13,148,136,.05));border-color:rgba(15,118,110,.24);box-shadow:inset 3px 0 0 #0f766e}
+.notes-subject-name{display:block;font-size:13px;font-weight:800}
+.notes-subject-meta{display:flex;justify-content:space-between;gap:8px;margin-top:5px;font-size:10px;color:var(--muted)}
+.notes-subject-meta strong{color:#0f766e}
+.notes-editor-panel{padding:24px;min-width:0}
+.notes-editor-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:18px;border-bottom:1px solid rgba(148,163,184,.16)}
+.notes-editor-head h2{margin:4px 0 5px;font-size:27px;letter-spacing:-.03em}
+.notes-editor-head p{margin:0;color:var(--muted);font-size:12px}
+.notes-editor-actions{display:flex;gap:9px;flex-shrink:0}
+.notes-title-row{padding:18px 0 13px}
+.notes-title-row label{display:grid;gap:7px;font-size:11px;font-weight:900;color:#475569;text-transform:uppercase;letter-spacing:.08em}
+.notes-title-row input{width:100%;box-sizing:border-box;border:1px solid #dbe3ec;border-radius:13px;padding:13px 14px;background:#fff;color:var(--text);font:inherit;font-size:14px;outline:none}
+.notes-title-row input:focus,.notes-html-input:focus{border-color:rgba(15,118,110,.5);box-shadow:0 0 0 4px rgba(15,118,110,.07)}
+.notes-format-strip{display:flex;justify-content:space-between;gap:15px;padding:10px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-bottom:0;border-radius:13px 13px 0 0;color:#64748b;font-size:11px}
+.notes-format-strip span:first-child{font-weight:900;color:#334155}
+.notes-format-strip code{font-size:10px}
+.notes-html-input{display:block;width:100%;min-height:470px;box-sizing:border-box;resize:vertical;border:1px solid #e2e8f0;border-radius:0 0 13px 13px;padding:17px;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;background:#0f172a;color:#e2e8f0;outline:none}
+.notes-preview-pane{margin-top:16px;border:1px solid #dbe3ec;border-radius:16px;overflow:hidden;background:#fff}
+.notes-preview-head{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:10px;font-weight:900;letter-spacing:.1em;color:#64748b}
+.notes-preview-head button{border:0;background:transparent;color:#0f766e;font-weight:800;cursor:pointer}
+.notes-content{padding:26px;min-height:180px;line-height:1.75;color:#1e293b}
+.notes-content h1,.notes-content h2,.notes-content h3{line-height:1.25;letter-spacing:-.02em}
+.notes-content table{width:100%;border-collapse:collapse;margin:16px 0}
+.notes-content th,.notes-content td{border:1px solid #dbe3ec;padding:8px;text-align:left}
+.notes-content th{background:#f1f5f9}
+.notes-content img{max-width:100%;height:auto}
+.notes-content blockquote{border-left:4px solid #0f766e;margin:16px 0;padding:8px 15px;background:#f8fafc}
+.notes-editor-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;padding-top:14px;color:var(--muted);font-size:11px}
+.notes-delete-btn{border:0;background:transparent;color:#b42318;font-weight:800;cursor:pointer;padding:7px}
+.notes-delete-btn:hover{text-decoration:underline}
+.notes-empty{padding:28px 10px;text-align:center;color:var(--muted);font-size:12px}
+.notes-empty b{display:block;color:var(--text);font-size:13px;margin-bottom:5px}
+body.theme-dark .notes-subject-panel,body.theme-dark .notes-editor-panel{background:#111a2b;border-color:rgba(148,163,184,.16)}
+body.theme-dark .notes-panel-head,body.theme-dark .notes-editor-head{border-color:rgba(148,163,184,.14)}
+body.theme-dark .notes-subject-btn{color:#f8fafc}
+body.theme-dark .notes-subject-btn:hover{background:#172235;border-color:rgba(148,163,184,.15)}
+body.theme-dark .notes-panel-head b,body.theme-dark .notes-format-strip,body.theme-dark .notes-preview-head{background:#172235;color:#94a3b8;border-color:rgba(148,163,184,.12)}
+body.theme-dark .notes-title-row label{color:#94a3b8}
+body.theme-dark .notes-title-row input{background:#0f172a;color:#f8fafc;border-color:rgba(148,163,184,.2)}
+body.theme-dark .notes-content{background:#111a2b;color:#e2e8f0}
+body.theme-dark .notes-preview-pane{background:#111a2b;border-color:rgba(148,163,184,.16)}
+body.theme-dark .notes-content th{background:#172235}
+body.theme-dark .notes-content th,body.theme-dark .notes-content td{border-color:rgba(148,163,184,.2)}
+@media(max-width:900px){.notes-workspace{grid-template-columns:1fr}.notes-subject-panel{min-height:0}.notes-subject-list{grid-template-columns:repeat(2,minmax(0,1fr))}.notes-header{align-items:flex-start;flex-direction:column}.notes-header-actions{width:100%;justify-content:space-between}}
+@media(max-width:560px){.notes-dashboard{width:min(100% - 24px,1480px);padding-top:20px}.notes-editor-panel{padding:16px}.notes-subject-list{grid-template-columns:1fr}.notes-editor-head{flex-direction:column}.notes-editor-actions{width:100%}.notes-editor-actions .btn{flex:1}.notes-format-strip{display:block}.notes-format-strip span{display:block}.notes-format-strip span+span{margin-top:4px}}
+</style>
+
+
+<style id="notes-home-button-polish">
+#start .study-nav-actions{display:grid !important;grid-template-columns:repeat(4,minmax(120px,1fr));gap:12px !important}
+#start .notes-home-btn{position:relative;min-height:54px;padding:12px 18px;border:1px solid rgba(148,163,184,.22);border-top:3px solid #7c3aed;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(241,245,249,.94));color:#172033;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95);font-weight:800;cursor:pointer;transition:.2s ease}
+#start .notes-home-btn:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.4);box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(124,58,237,.07)}
+body.theme-dark #start .notes-home-btn{background:linear-gradient(145deg,#172235,#111a2b);color:#f8fafc;border-color:rgba(148,163,184,.18)}
+@media(max-width:720px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))}#start .notes-home-btn{min-height:50px;padding:10px 13px}}
+</style>
+
+
+<style id="saved-notes-v2">
+.notes-subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.notes-subject-card{background:var(--card,#fff);border:1px solid rgba(148,163,184,.22);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+.notes-subject-card h3{margin:0 0 6px;font-size:16px}
+.notes-subject-card .notes-count{font-size:12px;opacity:.65;margin-bottom:14px}
+.saved-note-list{display:flex;flex-direction:column;gap:9px}
+.saved-note-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-radius:13px;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.13);cursor:pointer;transition:.18s ease}
+.saved-note-item:hover{transform:translateY(-1px);border-color:rgba(13,148,136,.35);background:rgba(13,148,136,.07)}
+.saved-note-item strong{display:block;font-size:14px}
+.saved-note-item small{display:block;margin-top:3px;opacity:.58}
+.saved-note-arrow{font-size:18px;opacity:.55}
+.empty-note-list{font-size:13px;opacity:.55;padding:10px 2px}
+.notes-reader-shell{min-height:100vh;background:var(--bg,#f6f8fb)}
+.notes-reader-header{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:22px;padding:20px 34px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(148,163,184,.2)}
+.notes-reader-header h1{margin:4px 0 3px;font-size:30px}
+.notes-reader-subject{font-size:13px;opacity:.6}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.16em;opacity:.5}
+.notes-back-btn,.notes-reader-edit{border:1px solid rgba(148,163,184,.22);border-radius:12px;padding:10px 14px;background:#fff;font-weight:750;cursor:pointer}
+.notes-reader-edit{background:#0f766e;color:#fff;border-color:#0f766e}
+.notes-reader-content{max-width:980px;margin:0 auto;padding:46px 28px 80px}
+.saved-note-document{background:#fff;border:1px solid rgba(148,163,184,.18);border-radius:22px;padding:46px 52px;box-shadow:0 14px 42px rgba(15,23,42,.07);line-height:1.75;overflow-wrap:anywhere}
+.saved-note-document img{max-width:100%;height:auto}
+.saved-note-document table{width:100%;border-collapse:collapse;margin:20px 0}
+.saved-note-document th,.saved-note-document td{border:1px solid #dbe2ea;padding:9px;text-align:left}
+.saved-note-document blockquote{margin:20px 0;padding:12px 18px;border-left:4px solid #0f766e;background:#f0fdfa}
+@media(max-width:800px){
+ .notes-subject-grid{grid-template-columns:1fr}
+ .notes-reader-header{grid-template-columns:1fr;gap:10px;padding:18px}
+ .notes-reader-content{padding:24px 14px 50px}
+ .saved-note-document{padding:28px 22px}
+}
+body.dark .notes-reader-header{background:rgba(17,26,43,.94)}
+body.dark .notes-reader-shell{background:#0b1220}
+body.dark .notes-back-btn{background:#172235;color:#f8fafc}
+body.dark .saved-note-document{background:#111a2b;border-color:rgba(148,163,184,.16)}
+body.dark .saved-note-document th,body.dark .saved-note-document td{border-color:#334155}
+body.dark .saved-note-document blockquote{background:#0b2524}
+</style>
+
+<style id="saved-notes-reader-interaction-fix">
+/* Keep saved-note HTML from ever covering the reader controls. */
+#noteReaderScreen{
+  position:relative!important;
+  z-index:9000!important;
+  pointer-events:auto!important;
+}
+#noteReaderScreen .notes-reader-shell{
+  position:relative!important;
+  z-index:9001!important;
+  pointer-events:auto!important;
+}
+#noteReaderScreen .notes-reader-header{
+  position:sticky!important;
+  z-index:9005!important;
+  pointer-events:auto!important;
+}
+#noteReaderScreen #noteReaderBackBtn,
+#noteReaderScreen #noteReaderEditBtn{
+  position:relative!important;
+  z-index:9010!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  touch-action:manipulation!important;
+}
+#noteReaderScreen .notes-reader-content{
+  position:relative!important;
+  z-index:1!important;
+}
+#noteReaderScreen .saved-note-document{
+  position:relative!important;
+  z-index:1!important;
+  isolation:isolate!important;
+  contain:paint!important;
+  overflow:hidden!important;
+}
+</style>
+
+
+<style id="notes-subject-list-v2">
+.notes-subject-group{margin-bottom:12px;border:1px solid rgba(148,163,184,.16);border-radius:15px;overflow:hidden;background:rgba(148,163,184,.035)}
+.notes-subject-group.active{border-color:rgba(13,148,136,.3)}
+.notes-subject-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border:0;background:transparent;cursor:pointer;text-align:left;font-weight:750}
+.notes-subject-btn.active{background:rgba(13,148,136,.08)}
+.notes-subject-count{min-width:24px;height:24px;padding:0 7px;border-radius:999px;display:grid;place-items:center;background:rgba(15,118,110,.1);font-size:11px}
+.notes-subject-group .saved-note-list{padding:0 9px 9px}
+.saved-note-item{cursor:default}
+.saved-note-main{min-width:0;flex:1;cursor:pointer}
+.saved-note-main strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.saved-note-actions{display:flex;gap:4px}
+.saved-note-open,.saved-note-delete{width:30px;height:30px;border:0;border-radius:9px;cursor:pointer;font-size:17px;background:rgba(148,163,184,.1)}
+.saved-note-open:hover{background:rgba(13,148,136,.12)}
+.saved-note-delete:hover{background:rgba(220,38,38,.1)}
+.notes-subject-group{transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.notes-subject-btn{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:8px}
+.notes-subject-chevron{width:24px;height:24px;display:grid;place-items:center;border-radius:7px;background:rgba(15,118,110,.08);color:#0f766e;font-size:18px;font-weight:900;line-height:1;transition:transform .2s ease,background .2s ease}
+.notes-subject-group.is-open .notes-subject-chevron{background:rgba(15,118,110,.14)}
+.notes-subject-group.is-collapsed .saved-note-list{display:none!important}
+.notes-subject-group.is-open{box-shadow:0 5px 18px rgba(15,23,42,.06)}
+.notes-subject-group.is-collapsed{box-shadow:none}
+.notes-subject-group .saved-note-list{animation:notesAccordionIn .2s ease}
+@keyframes notesAccordionIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+body.theme-dark .notes-subject-chevron{background:rgba(111,168,167,.12);color:#A9D8D4}
+body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.18)}
+@media(prefers-reduced-motion:reduce){.notes-subject-group .saved-note-list{animation:none}}
+</style>
+
 </head>
 <body>
 
@@ -1837,6 +2597,9 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
         <button id="studyHubHomeBtn" class="hub-home-btn" type="button" title="Open Study Hub"><span aria-hidden="true">✦</span><span>Study Hub</span></button>
         <button id="studyPlanHomeBtn" class="plan-home-btn" type="button" title="Open daily study plan">
           <span aria-hidden="true">✓</span><span>Plan</span>
+        </button>
+        <button id="notesHomeBtn" class="notes-home-btn" type="button" title="Open subject notes">
+          <span aria-hidden="true">▤</span><span>Notes</span>
         </button>
       </div>
       <section id="trackerPanel" class="tracker-panel hidden" aria-label="Question solving progress">
@@ -1887,6 +2650,93 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
 
 <div id="revisionScreen" class="screen hidden" aria-label="Revision section"><div class="revision-shell"><header class="revision-header"><div><h1>Revision</h1><p>Your automatically compiled wrong answers. Review them, understand the explanation, and remove a question when you have mastered it.</p></div><div class="revision-header-actions"><button id="revisionBackBtn" class="btn outline" type="button">Back to Home</button></div></header><div class="revision-summary"><div class="revision-stat"><small>Questions to revise</small><b id="revisionTotal">0</b></div><div class="revision-stat"><small>Topics needing attention</small><b id="revisionTopicTotal">0</b></div><div class="revision-stat"><small>Most repeated topic</small><b id="revisionTopTopic">—</b></div><div class="revision-stat"><small>Last added</small><b id="revisionLastAdded">—</b></div></div><div class="revision-layout"><section class="revision-list"><div class="revision-list-head"><h2>Wrong answers</h2><span id="revisionListCount">0 saved</span></div><div id="revisionItems" class="revision-items"></div></section><aside class="revision-side"><h3>Focus topics</h3><p>Topics with the most missed questions are shown first so you can prioritize your revision time.</p><div id="revisionTopicBreakdown"></div></aside></div></div></div>
 
+
+
+<div id="notesScreen" class="screen hidden" aria-label="Subject Notes">
+  <div class="notes-dashboard">
+    <header class="notes-header">
+      <div>
+        <span class="notes-kicker">PERSONAL KNOWLEDGE BASE</span>
+        <h1>Subject Notes</h1>
+        <p>Create and maintain HTML notes separately for every subject. Notes are automatically saved and synced across your devices.</p>
+      </div>
+      <div class="notes-header-actions">
+        <span id="notesSyncBadge" class="notes-sync-badge">☁ Auto-synced</span>
+        <button id="notesBackBtn" class="btn outline" type="button">Back to Home</button>
+      </div>
+    </header>
+
+    <section class="notes-workspace">
+      <aside class="notes-subject-panel">
+        <div class="notes-panel-head">
+          <div><span>SUBJECTS</span><h2>Your notes</h2></div>
+          <b id="notesSubjectCount">0/0</b>
+        </div>
+        <div id="notesSubjectList" class="notes-subject-list"></div>
+      </aside>
+
+      <main class="notes-editor-panel">
+        <div class="notes-editor-head">
+          <div>
+            <span class="notes-current-label">CURRENT SUBJECT</span>
+            <h2 id="notesCurrentSubject">Select a subject</h2>
+            <p id="notesCurrentStatus">Choose a subject from the left to create or edit its notes.</p>
+          </div>
+          <div class="notes-editor-actions">
+            <button id="notesPreviewBtn" class="btn outline" type="button">Preview</button>
+            <button id="notesSaveBtn" class="btn primary" type="button">Save Notes</button>
+          </div>
+        </div>
+
+        <div class="notes-title-row">
+          <label>Note title
+            <input id="notesTitleInput" type="text" maxlength="160" placeholder="e.g. Fundamental Rights — Quick Revision">
+          </label>
+        </div>
+
+        <div class="notes-format-strip">
+          <span>HTML editor</span>
+          <span>Use headings, lists, tables, links, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, etc.</span>
+        </div>
+        <textarea id="notesHtmlInput" class="notes-html-input" spellcheck="false" placeholder="<h2>Topic</h2>
+<p>Write your notes here...</p>
+
+<ul>
+  <li>Key point</li>
+  <li>Important fact</li>
+</ul>"></textarea>
+
+        <div id="notesPreviewPane" class="notes-preview-pane hidden">
+          <div class="notes-preview-head"><span>LIVE PREVIEW</span><button id="notesClosePreviewBtn" type="button">Close</button></div>
+          <article id="notesPreviewContent" class="notes-content"></article>
+        </div>
+
+        <div class="notes-editor-footer">
+          <span id="notesLastSaved">Not saved yet</span>
+          <button id="notesDeleteBtn" class="notes-delete-btn" type="button">Delete this subject's notes</button>
+        </div>
+      </main>
+    </section>
+  </div>
+</div>
+
+
+<div id="noteReaderScreen" class="screen hidden" aria-label="Saved HTML Note">
+  <div class="notes-reader-shell">
+    <header class="notes-reader-header">
+      <button class="notes-back-btn" id="noteReaderBackBtn" type="button" onclick="event.preventDefault();event.stopPropagation();notesCloseReader();return false;">← Back to Notes</button>
+      <div>
+        <div class="eyebrow">SAVED NOTE</div>
+        <h1 id="noteReaderTitle">Note</h1>
+        <div id="noteReaderSubject" class="notes-reader-subject"></div>
+      </div>
+      <button class="notes-reader-edit" id="noteReaderEditBtn" type="button" onclick="event.preventDefault();event.stopPropagation();notesEditOpenNote();return false;">Edit Note</button>
+    </header>
+    <main class="notes-reader-content">
+      <article id="noteReaderContent" class="saved-note-document"></article>
+    </main>
+  </div>
+</div>
 
 <div id="planScreen" class="screen hidden" aria-label="Daily study plan">
   <div class="plan-dashboard">
@@ -2778,9 +3628,10 @@ function restoreActiveView(){
   if(view==='progress'&&typeof progressOpenDashboard==='function')progressOpenDashboard();
   else if(view==='revision'&&typeof revisionOpen==='function')revisionOpen();
   else if(view==='plan'&&typeof planOpenScreen==='function')planOpenScreen();
+  else if(view==='notes'&&typeof notesOpen==='function')notesOpen();
 }
 function planOpenScreen(){setActiveView('plan');
-  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
+  $('start').classList.add('hidden');$('progressScreen').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('notesScreen').classList.add('hidden');$('planScreen').classList.remove('hidden');window.scrollTo(0,0);planRender();
 }
 function planCloseScreen(){setActiveView('home');$('planScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
 $('studyPlanHomeBtn').onclick=e=>{e.stopPropagation();planOpenScreen()};
@@ -2812,6 +3663,291 @@ document.addEventListener('keydown',e=>{
   if(e.key.toLowerCase()==='c'){e.preventDefault();document.getElementById('clearBtn')?.click()}
 });
 
+
+/* ---------- SUBJECT-WISE HTML NOTES ---------- */
+const NOTES_KEY='cgpsc_subject_html_notes_v1';
+const NOTES_SUBJECTS=['Chhattisgarh General Studies','Hindi','English','Chhattisgarhi','Reasoning & Logical Ability','Mental Ability','Mathematics & Statistics','Chemistry','Physics','Biology','Technology','Environment','Agriculture','Forestry','Current Affairs'];
+let notesSelectedSubject=NOTES_SUBJECTS[0];
+
+function notesLoad(){
+  try{
+    const x=JSON.parse(localStorage.getItem(NOTES_KEY)||'{}');
+    return x&&typeof x==='object'&&!Array.isArray(x)?x:{};
+  }catch(e){return {}}
+}
+function notesSaveData(data){
+  try{localStorage.setItem(NOTES_KEY,JSON.stringify(data));queueCloudSave()}
+  catch(e){console.warn('Notes could not be saved:',e)}
+}
+function notesSafePreview(raw){
+  /* Notes are authored HTML, but strip executable content before rendering. */
+  const box=document.createElement('div');
+  box.innerHTML=String(raw||'');
+  box.querySelectorAll('script,iframe,object,embed,form,base,meta,link,style,title').forEach(x=>x.remove());
+  box.querySelectorAll('*').forEach(el=>{
+    [...el.attributes].forEach(a=>{
+      if(/^on/i.test(a.name)||a.name==='srcdoc')el.removeAttribute(a.name);
+      if((a.name==='href'||a.name==='src')&&/^\s*javascript:/i.test(a.value))el.removeAttribute(a.name);
+    });
+  });
+  return box.innerHTML;
+}
+const NOTES_OPEN_SUBJECTS_KEY='cgpsc_notes_open_subjects_v1';
+let notesOpenSubjects=new Set();
+try{
+  const savedOpen=JSON.parse(localStorage.getItem(NOTES_OPEN_SUBJECTS_KEY)||'[]');
+  if(Array.isArray(savedOpen)) notesOpenSubjects=new Set(savedOpen.filter(s=>NOTES_SUBJECTS.includes(s)));
+}catch(e){}
+if(!notesOpenSubjects.size) notesOpenSubjects.add(NOTES_SUBJECTS[0]);
+
+function notesPersistOpenSubjects(){
+  try{localStorage.setItem(NOTES_OPEN_SUBJECTS_KEY,JSON.stringify([...notesOpenSubjects]))}catch(e){}
+}
+
+function notesToggleSubject(subject){
+  if(!NOTES_SUBJECTS.includes(subject))return;
+  if(notesOpenSubjects.has(subject)) notesOpenSubjects.delete(subject);
+  else notesOpenSubjects.add(subject);
+  notesSelectedSubject=subject;
+  notesPersistOpenSubjects();
+  notesRenderSubjects();
+  notesSelect(subject);
+}
+
+function notesRenderSubjects(){
+  const list=$('notesSubjectList'),data=notesLoad();
+  if(!list)return;
+  const count=NOTES_SUBJECTS.reduce((n,s)=>n+(Array.isArray(data[s])?data[s].filter(x=>String(x?.html||'').trim()).length:0),0);
+  $('notesSubjectCount').textContent=`${count} saved`;
+  list.innerHTML=NOTES_SUBJECTS.map(s=>{
+    const notes=Array.isArray(data[s])?data[s].filter(x=>String(x?.html||'').trim()):[];
+    const active=s===notesSelectedSubject;
+    const open=notesOpenSubjects.has(s);
+    return `<div class="notes-subject-group ${active?'active':''} ${open?'is-open':'is-collapsed'}">
+      <button class="notes-subject-btn ${active?'active':''}" type="button" data-notes-subject="${esc(s)}" aria-expanded="${open?'true':'false'}">
+        <span class="notes-subject-chevron" aria-hidden="true">${open?'⌄':'›'}</span>
+        <span class="notes-subject-name">${esc(s)}</span>
+        <span class="notes-subject-count">${notes.length}</span>
+      </button>
+      <div class="saved-note-list" ${open?'':'hidden'}>
+        ${notes.length ? notes.map(n=>`
+          <div class="saved-note-item" data-note-id="${esc(n.id)}">
+            <div class="saved-note-main"><strong>${esc(n.title||'Untitled Note')}</strong><small>${n.updatedAt?new Date(n.updatedAt).toLocaleDateString():''}</small></div>
+            <div class="saved-note-actions">
+              <button type="button" class="saved-note-open" data-open-note="${esc(n.id)}" title="Open note">›</button>
+              <button type="button" class="saved-note-delete" data-delete-note="${esc(n.id)}" title="Delete note">×</button>
+            </div>
+          </div>`).join('') : `<div class="empty-note-list">No saved notes</div>`}
+      </div>
+    </div>`;
+  }).join('');
+  list.querySelectorAll('[data-notes-subject]').forEach(b=>b.onclick=e=>{
+    e.preventDefault();
+    notesToggleSubject(b.dataset.notesSubject);
+  });
+  list.querySelectorAll('[data-open-note]').forEach(b=>b.onclick=e=>{e.stopPropagation();notesOpenReader(b.dataset.openNote)});
+  list.querySelectorAll('[data-delete-note]').forEach(b=>b.onclick=e=>{e.stopPropagation();notesDeleteById(b.dataset.deleteNote)});
+}
+
+function notesSelect(subject){
+  if(!NOTES_SUBJECTS.includes(subject))return;
+  notesSelectedSubject=subject;
+  const data=notesLoad();
+  const notes=Array.isArray(data[subject])?data[subject]:[];
+  $('notesCurrentSubject').textContent=subject;
+  $('notesTitleInput').value='';
+  $('notesHtmlInput').value='';
+  $('notesLastSaved').textContent=notes.length?`${notes.length} saved note${notes.length===1?'':'s'}`:'No notes saved yet';
+  $('notesCurrentStatus').textContent=notes.length?'Create a new note or open one from the subject list.':'No notes yet — add your HTML below.';
+  $('notesPreviewPane').classList.add('hidden');
+  $('notesSyncBadge').textContent='☁ Auto-synced';
+  $('notesDeleteBtn').textContent='Clear all notes for this subject';
+  notesRenderSubjects();
+}
+
+function notesSaveCurrent(){
+  if(!notesSelectedSubject)return;
+  const data=notesLoad();
+  const htmlText=$('notesHtmlInput').value||'';
+  if(!htmlText.trim()){
+    $('notesCurrentStatus').textContent='Add some HTML before saving.';
+    return;
+  }
+  const note={
+    id:'note_'+Date.now()+'_'+Math.random().toString(36).slice(2,8),
+    title:$('notesTitleInput').value.trim()||notesSelectedSubject+' Notes',
+    html:htmlText,
+    updatedAt:new Date().toISOString()
+  };
+  const existing=Array.isArray(data[notesSelectedSubject])?data[notesSelectedSubject]:[];
+  data[notesSelectedSubject]=[note,...existing];
+  notesSaveData(data);
+  $('notesLastSaved').textContent='Saved just now';
+  $('notesCurrentStatus').textContent=`Saved as "${note.title}". It now appears under ${notesSelectedSubject}.`;
+  $('notesSyncBadge').textContent='☁ Saving…';
+  setTimeout(()=>{$('notesSyncBadge').textContent='☁ Auto-synced'},700);
+  $('notesTitleInput').value='';
+  $('notesHtmlInput').value='';
+  notesRenderSubjects();
+}
+
+function notesOpenReader(id){
+  const data=notesLoad();
+  let found=null;
+  for(const subject of NOTES_SUBJECTS){
+    const arr=Array.isArray(data[subject])?data[subject]:[];
+    const n=arr.find(x=>x.id===id);
+    if(n){found={...n,subject};break;}
+  }
+  if(!found)return;
+  window._currentOpenNoteId=found.id;
+  window._currentOpenNoteSubject=found.subject;
+  ['start','progressScreen','revisionScreen','planScreen','studyHubScreen','notesScreen','exam','confirm','result'].forEach(id=>$(id)?.classList.add('hidden'));
+  $('noteReaderTitle').textContent=found.title||'Untitled Note';
+  $('noteReaderSubject').textContent=found.subject;
+  $('noteReaderContent').innerHTML=notesSafePreview(found.html||'');
+  $('noteReaderScreen').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+function notesCloseReader(){
+  /* Guaranteed reader -> notes transition. */
+  try{setActiveView('notes')}catch(e){}
+  const reader=$('noteReaderScreen');
+  const notes=$('notesScreen');
+  if(reader)reader.classList.add('hidden');
+  if(notes)notes.classList.remove('hidden');
+
+  /* Refresh the dashboard, but never let a refresh error block navigation. */
+  try{notesRenderSubjects()}catch(e){console.warn('Notes refresh failed:',e)}
+  try{notesSelect(notesSelectedSubject)}catch(e){console.warn('Notes selection refresh failed:',e)}
+  try{window.scrollTo(0,0)}catch(e){}
+}
+
+function notesEditOpenNote(){
+  /* Guaranteed reader -> editor transition using the exact currently opened note. */
+  const id=window._currentOpenNoteId;
+  const subject=window._currentOpenNoteSubject;
+  if(!id||!subject)return;
+
+  let note=null;
+  try{
+    const data=notesLoad();
+    const arr=Array.isArray(data[subject])?data[subject]:[];
+    note=arr.find(n=>n.id===id);
+  }catch(e){
+    console.warn('Could not load saved note:',e);
+    return;
+  }
+  if(!note)return;
+
+  try{setActiveView('notes')}catch(e){}
+  $('noteReaderScreen')?.classList.add('hidden');
+  $('notesScreen')?.classList.remove('hidden');
+
+  notesSelectedSubject=subject;
+
+  /* Do not call notesSelect() here because it intentionally clears the editor. */
+  $('notesCurrentSubject').textContent=subject;
+  $('notesTitleInput').value=note.title||'';
+  $('notesHtmlInput').value=note.html||'';
+  $('notesLastSaved').textContent=note.updatedAt
+    ? `Last saved ${new Date(note.updatedAt).toLocaleString()}`
+    : 'Saved note';
+  $('notesCurrentStatus').textContent='Editing saved note. Saving creates a new version.';
+  $('notesSyncBadge').textContent='☁ Auto-synced';
+  $('notesPreviewPane')?.classList.add('hidden');
+  $('notesDeleteBtn').textContent='Clear all notes for this subject';
+
+  try{notesRenderSubjects()}catch(e){console.warn('Notes list refresh failed:',e)}
+  try{window.scrollTo(0,0)}catch(e){}
+  setTimeout(()=>{$('notesTitleInput')?.focus()},0);
+}
+
+function notesDeleteById(id){
+  const data=notesLoad();
+  let subject=null;
+  for(const s of NOTES_SUBJECTS){
+    if(Array.isArray(data[s]) && data[s].some(n=>n.id===id)){subject=s;break;}
+  }
+  if(!subject)return;
+  const arr=data[subject]||[],note=arr.find(n=>n.id===id);
+  if(!confirm(`Delete "${note?.title||'this note'}"?`))return;
+  data[subject]=arr.filter(n=>n.id!==id);
+  notesSaveData(data);
+  if(window._currentOpenNoteId===id)notesCloseReader();
+  notesRenderSubjects();
+}
+
+function notesDeleteCurrent(){
+  const data=notesLoad();
+  const notes=Array.isArray(data[notesSelectedSubject])?data[notesSelectedSubject]:[];
+  if(!notes.length)return;
+  if(!confirm(`Delete all ${notes.length} saved notes for ${notesSelectedSubject}?`))return;
+  delete data[notesSelectedSubject];
+  notesSaveData(data);
+  notesSelect(notesSelectedSubject);
+}
+
+function notesOpen(){
+  setActiveView('notes');
+  ['start','progressScreen','revisionScreen','planScreen','studyHubScreen','noteReaderScreen'].forEach(id=>$(id)?.classList.add('hidden'));
+  $('notesScreen').classList.remove('hidden');
+  notesRenderSubjects();
+  notesSelect(notesSelectedSubject);
+  window.scrollTo(0,0);
+}
+
+function notesClose(){
+  setActiveView('home');
+  $('notesScreen').classList.add('hidden');
+  $('noteReaderScreen')?.classList.add('hidden');
+  $('start').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+function notesInit(){
+  const bind=(id,fn)=>{
+    const el=$(id);
+    if(!el)return;
+    el.onclick=null;
+    el.addEventListener('click',fn,false);
+  };
+
+  bind('notesHomeBtn',e=>{e.stopPropagation();notesOpen()});
+  bind('notesBackBtn',notesClose);
+  bind('notesSaveBtn',notesSaveCurrent);
+  bind('notesPreviewBtn',notesPreview);
+  bind('notesClosePreviewBtn',()=>$('notesPreviewPane')?.classList.add('hidden'));
+  bind('notesDeleteBtn',notesDeleteCurrent);
+
+  /* Saved-note reader controls: use normal DOM click handlers. */
+  bind('noteReaderBackBtn',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    notesCloseReader();
+  });
+  bind('noteReaderEditBtn',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    notesEditOpenNote();
+  });
+
+  const input=$('notesHtmlInput');
+  if(input){
+    input.onkeydown=e=>{
+      if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){
+        e.preventDefault();
+        notesSaveCurrent();
+      }
+    };
+  }
+
+  notesRenderSubjects();
+  notesSelect(notesSelectedSubject);
+}
+notesInit();
+
 /* ---------- SUBJECT-WISE QUESTION BANKS / STUDY HUB ---------- */
 const QUESTION_BANKS_KEY='cgpsc_question_banks_v1';
 const BANK_SUBJECTS=['Chhattisgarh General Studies','Hindi','English','Chhattisgarhi','Reasoning & Logical Ability','Mental Ability','Mathematics & Statistics','Chemistry','Physics','Biology','Technology','Environment','Agriculture','Forestry','Current Affairs'];
@@ -2827,14 +3963,33 @@ function bankRenderHub(){const b=bankLoad(),t=bankTotals();if($('hubTotalQuestio
 function bankAddFromInput(){const subject=$('bankSubjectSelect')?.value;if(!subject){$('error').textContent='Select a subject first.';return false}try{const raw=JSON.parse($('jsonInput').value);const incoming=bankNormalizeQuestions(raw,subject);const banks=bankLoad();const existing=Array.isArray(banks[subject])?banks[subject]:[];const seen=new Set(existing.map(q=>String(q.id)));const unique=incoming.filter(q=>{if(seen.has(String(q.id)))return false;seen.add(String(q.id));return true});banks[subject]=existing.concat(unique);bankSave(banks);$('error').textContent=`Added ${unique.length} new question${unique.length===1?'':'s'} to ${subject}.${incoming.length-unique.length?` ${incoming.length-unique.length} duplicate${incoming.length-unique.length===1?'':'s'} skipped.`:''}`;bankRenderSummary();bankRenderHub();return true}catch(e){$('error').textContent='Error: '+e.message;return false}}
 function bankLoadJsonFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{$('jsonInput').value=String(reader.result||'');$('error').textContent=`Loaded ${file.name}. Select/confirm the subject, then click Add to Question Bank.`};reader.onerror=()=>{$('error').textContent='Could not read the selected JSON file.'};reader.readAsText(file)}
 function bankPractice(subject){const banks=bankLoad(),qs=Array.isArray(banks[subject])?banks[subject]:[];if(!qs.length)return;App.questions=qs.map(q=>({...q}));App.state={index:0,remaining:App.questions.length*App.cfg.timePerQuestion,answers:{},status:{},started:false};App.questions.forEach(q=>App.state.status[q.id]='not-visited');$('jsonInput').value=JSON.stringify(App.questions,null,2);$('infoText').textContent=`${qs.length} ${subject} questions loaded • ${Math.ceil(App.state.remaining/60)} minutes • +${App.cfg.correct} / -${App.cfg.incorrect}`;$('examInfo').classList.remove('hidden');$('startBtn').textContent='START EXAM';$('startBtn').dataset.resume='0';hubClose();$('start').classList.remove('hidden');window.scrollTo(0,0)}
-function hubOpen(){setActiveView('hub');$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.add('hidden');$('progressScreen').classList.add('hidden');$('studyHubScreen').classList.remove('hidden');bankRenderHub();window.scrollTo(0,0)}
+function hubOpen(){setActiveView('hub');$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.add('hidden');$('notesScreen').classList.add('hidden');$('progressScreen').classList.add('hidden');$('studyHubScreen').classList.remove('hidden');bankRenderHub();window.scrollTo(0,0)}
 function hubClose(){setActiveView('home');$('studyHubScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0)}
 function hubInit(){bankInitSelect();bankRenderSummary();bankRenderHub();$('bankFileInput')?.addEventListener('change',e=>bankLoadJsonFile(e.target.files?.[0]));$('addBankBtn')?.addEventListener('click',bankAddFromInput);$('loadBtn')?.addEventListener('click',()=>{try{validateData(JSON.parse($('jsonInput').value));$('error').textContent='JSON is valid. Choose the subject and click “Add to Question Bank”.';}catch(e){$('error').textContent='Error: '+e.message}});$('studyHubHomeBtn')?.addEventListener('click',hubOpen);$('studyHubBackBtn')?.addEventListener('click',hubClose);$('studyHubRefreshBtn')?.addEventListener('click',bankRenderHub);$('hubImportBtn')?.addEventListener('click',()=>{hubClose();$('bankSubjectSelect')?.focus();window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})})}
-const _oldBuildCloudPayload=buildCloudPayload;buildCloudPayload=function(){const p=_oldBuildCloudPayload();p.version=3;p.questionBanks=bankLoad();return p};
-const _oldApplySnapshot=applySnapshot;applySnapshot=function(saved){const ok=_oldApplySnapshot(saved);if(saved?.questionBanks&&typeof saved.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(saved.questionBanks))}catch(e){}}return ok};
-const _oldCloudLoad=cloudLoad;cloudLoad=async function(){const remote=await _oldCloudLoad();if(remote?.questionBanks&&typeof remote.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(remote.questionBanks))}catch(e){}}return remote};
+const _oldBuildCloudPayload=buildCloudPayload;buildCloudPayload=function(){const p=_oldBuildCloudPayload();p.version=4;p.questionBanks=bankLoad();p.notes=notesLoad();return p};
+const _oldApplySnapshot=applySnapshot;applySnapshot=function(saved){const ok=_oldApplySnapshot(saved);if(saved?.questionBanks&&typeof saved.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(saved.questionBanks))}catch(e){}}if(saved?.notes&&typeof saved.notes==='object'){try{localStorage.setItem(NOTES_KEY,JSON.stringify(saved.notes))}catch(e){}}return ok};
+const _oldCloudLoad=cloudLoad;cloudLoad=async function(){const remote=await _oldCloudLoad();if(remote?.questionBanks&&typeof remote.questionBanks==='object'){try{localStorage.setItem(QUESTION_BANKS_KEY,JSON.stringify(remote.questionBanks))}catch(e){}}if(remote?.notes&&typeof remote.notes==='object'){try{localStorage.setItem(NOTES_KEY,JSON.stringify(remote.notes))}catch(e){}}return remote};
 const _oldRestoreActiveView=restoreActiveView;restoreActiveView=function(){const view=getActiveView();if(view==='hub'&&typeof hubOpen==='function'){hubOpen();return}_oldRestoreActiveView()};
 hubInit();
+
+/* Final fallback for the two saved-note reader controls.
+   This remains outside the note content, so authored HTML cannot replace it. */
+document.addEventListener('click',function(e){
+  const back=e.target.closest?.('#noteReaderBackBtn');
+  if(back){
+    e.preventDefault();
+    e.stopPropagation();
+    notesCloseReader();
+    return;
+  }
+  const edit=e.target.closest?.('#noteReaderEditBtn');
+  if(edit){
+    e.preventDefault();
+    e.stopPropagation();
+    notesEditOpenNote();
+  }
+},true);
+
 </script>
 
 
