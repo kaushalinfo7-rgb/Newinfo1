@@ -4342,4 +4342,168 @@ S(()=>{document.querySelectorAll('.quickquiz-stats strong').forEach(e=>{if(e.tex
 </script>
 <!-- ===== END KAUSHAL FIX PATCH v3 ===== -->
 
+
+<!-- ===== KAUSHAL PATCH v4 — AI prompt + schema compatibility fixes ===== -->
+<script type="text/plain" id="cgpscPromptText">You are an expert CGPSC Prelims Question Setter, PYQ Analyst, Subject Expert and MCQ Quality Controller.
+
+Convert the study material I provide into authentic CGPSC-style practice MCQs. Do NOT create generic school-level quiz questions. Match the logic, wording, factual depth, distractor quality and conceptual difficulty of CGPSC State Service Preliminary Examination questions.
+
+PRIMARY OBJECTIVE
+Test factual recall, conceptual understanding, application, comparison, classification, chronology, geographical relationships, cause-effect, statement verification, elimination, factual discrimination, data/order/ranking, terminology, institutional knowledge and Chhattisgarh-specific knowledge wherever relevant. Test whether the candidate can distinguish closely related facts.
+
+QUESTION PHILOSOPHY
+Use a natural mixture of direct factual, conceptual, two/three-statement, correct/incorrect, match-the-following, chronological/geographical order, ranking, cause-effect, assertion-reason, classification, application-based science, institution/report/scheme and terminology questions. Do not force every topic into one structure and never make every question "Consider the following statements".
+
+QUESTION-TYPE DISTRIBUTION
+For 20 questions approximately use 5–6 direct/conceptual, 4–5 statement-based, 2–3 application/analytical, 2 match/order/classification, 1–2 assertion-reason, with remaining questions according to the topic. Never use the same structure more than twice consecutively.
+
+DIFFICULTY
+Target approximately 20% Moderate, 60% Moderate-to-Difficult and 20% Difficult. Difficulty should come from similar concepts, precise factual distinctions, plausible options, interpretation, combinations, chronology, classification, application and elimination—not obscure trivia.
+
+DISTRACTORS
+Every option must be plausible to a reasonably prepared CGPSC candidate and belong to the same conceptual domain. Build distractors from related terms, nearby places, similar scientific names, constitutional provisions, institutions, years, numerical values, schemes, commonly confused concepts, species, regions, indicators and reversed/partially correct relationships. Avoid obviously unrelated school-level options.
+
+ANSWER PREDICTABILITY
+Randomize correct answer positions. Do not use a systematic A-B-C-D pattern, disproportionately use D, make the longest option correct, or use grammatical clues. For 20 questions aim for A/B/C/D approximately 4–6 each. Do not force equality when it harms quality.
+
+STATEMENT QUESTIONS
+Statements must contain genuine factual distinctions and require actual knowledge. Vary true/false combinations. Do not repeatedly make "1, 2 and 3" correct or always exactly one statement false. Use only logically valid combinations.
+
+TWO-STATEMENT / NOT-CORRECT
+Use competitive-exam style where appropriate, but vary wording and option order. Make negative questions unambiguous and avoid double negatives.
+
+MATCH / ORDER
+Use meaningful relationships and plausible cross-matches. Verify every pair independently and vary the correct sequence. Use chronology, geography, magnitude, constitutional chronology, stages/processes only when genuinely supported by the topic.
+
+ASSERTION-REASON
+Use only when the causal relationship is meaningful. Evaluate truth of A, truth of R, and whether R actually explains A. Vary the correct option.
+
+SCIENCE / AGRICULTURE / FORESTRY / ENVIRONMENT
+Prefer application, mechanism, comparison, cause-effect and elimination over simple definitions. Stay within supplied syllabus. For agriculture distinguish HYV/hybrid/composite, cropping systems, soils, irrigation, fertilizers, pest management and biotechnology where relevant. For forestry include scientific names, families, silvicultural systems, regeneration, management, mensuration, agroforestry, social forestry, JFM, biodiversity, wildlife, legislation, forest products, remote sensing and watershed/soil conservation without making every question a scientific-name question. For environment test biodiversity levels, hotspots, endemic species, conservation, protected areas, pollution, ecosystems, succession, climate/environment and institutions.
+
+CHHATTISGARH PRIORITY
+When the topic permits, prioritize Chhattisgarh geography, history, culture, tribes, economy, agriculture, forests, minerals, rivers, national parks, wildlife, industries, schemes, institutions and state-specific environment/current affairs. Do not artificially insert Chhattisgarh where it does not logically belong.
+
+SOURCE / FACT VERIFICATION
+Identify the factual claims required to answer each question. When web access is available, verify important facts using official government sources, CGPSC documents, Government of India/Chhattisgarh sources, official reports and authoritative academic sources. Verify dates/latest status for current affairs. Never invent statistics, rankings, schemes, years, scientific names or institutional facts. If uncertain, do not build a question whose answer depends on uncertainty.
+
+PYQ-INFORMED, NOT COPIED
+Use CGPSC PYQs to understand wording, depth, difficulty, distractors, topic selection and logic. Do not copy or merely rename a PYQ.
+
+QUALITY CONTROL
+Before output, check every question for factual accuracy, one defensible answer, syllabus relevance, plausible same-domain distractors, sufficient difficulty, structural diversity, answer-position balance and concise explanatory value. Explanations should explain why the answer is correct and clarify the key trap/distinction in about 2–4 sentences.
+
+STRICT JSON ONLY
+Return ONLY valid JSON. No markdown, code fences, introduction, conclusion, comments or text outside JSON. Use double quotes and no trailing commas. The output must be directly parseable by JavaScript JSON.parse().
+
+CRITICAL JSON-SAFETY RULES
+1. Every JSON key and every JSON string value must use double quotes.
+2. NEVER place an unescaped double quote inside a JSON string. If quotation marks are needed inside question text, options, statements or explanations, escape them as \".
+3. NEVER put a raw line break inside a JSON string. Keep every string on one line.
+4. NEVER use a raw backslash inside a JSON string. A literal backslash must be escaped as \\.
+5. Never use comments, undefined, NaN, Infinity or trailing commas.
+6. Never use single quotes as JSON syntax.
+7. Do not add markdown fences such as ```json.
+8. Before returning, mentally run JSON.parse() on the complete output. If ANY character would cause a parse error, fix it before returning.
+9. Avoid unnecessary quotation marks and backslashes in generated text because they increase JSON failure risk.
+10. The final response must begin with [ and end with ]. Nothing else may appear before or after the array.
+
+SCHEMA
+[
+{"id":1,"type":"mcq","topic":"Biology","difficulty":"moderate","question":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"answer":"C","explanation":"...","concept_tested":"...","trap_or_distinction":"..."},
+{"id":2,"type":"statement_based","topic":"Environment","difficulty":"moderate_to_difficult","question_intro":"...","statements":["...","...","..."],"question_ending":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"answer":"B","explanation":"...","concept_tested":"...","trap_or_distinction":"..."},
+{"id":3,"type":"assertion_reason","topic":"Agriculture","difficulty":"difficult","assertion":"...","reason":"...","options":{"A":"Both A and R are true and R is the correct explanation of A","B":"Both A and R are true but R is not the correct explanation of A","C":"A is true but R is false","D":"A is false but R is true"},"answer":"D","explanation":"...","concept_tested":"...","trap_or_distinction":"..."},
+{"id":4,"type":"match_following","topic":"Forestry","difficulty":"moderate_to_difficult","instruction":"Match List-I with List-II:","left_title":"List-I","right_title":"List-II","left_items":{"1":"...","2":"...","3":"...","4":"..."},"right_items":{"a":"...","b":"...","c":"...","d":"..."},"options":{"A":"...","B":"...","C":"...","D":"..."},"answer":"C","explanation":"...","concept_tested":"...","trap_or_distinction":"..."}
+]
+
+Do not put answer information inside the question or reveal it through formatting, capitalization or wording. Do not repeat the same micro-concept unnecessarily. Explanations must remain concise and useful.
+
+USER INPUT
+SUBJECT:
+[subject]
+
+TOPIC:
+[topic]
+
+SOURCE MATERIAL:
+[paste study material here]
+
+NUMBER OF QUESTIONS:
+[number]
+
+OPTIONAL DIFFICULTY:
+[moderate / moderate-to-difficult / difficult / mixed]
+
+Generate strictly according to these instructions. Perform a final JSON syntax check, then RETURN ONLY THE VALID JSON ARRAY.</script>
+<script id="kaushal-fixes-v4-js">
+(function(){
+const S=f=>{try{f()}catch(e){console.warn('v4:',e)}};
+S(()=>{
+  const old=document.getElementById('copySampleBtn'); if(!old)return;
+  const btn=old.cloneNode(true);
+  btn.textContent='Copy AI Prompt';
+  btn.title='Copies the CGPSC question-setter prompt.';
+  old.replaceWith(btn);
+  btn.addEventListener('click',async()=>{
+    const text=document.getElementById('cgpscPromptText').textContent.trim();
+    const say=m=>{const e=document.getElementById('error');if(e){e.textContent=m;setTimeout(()=>{if(e.textContent===m)e.textContent=''},3500)}};
+    try{await navigator.clipboard.writeText(text);say('Prompt copied. Fill SUBJECT / TOPIC / SOURCE MATERIAL / NUMBER OF QUESTIONS in your AI, then paste the JSON here.')}
+    catch(e){
+      try{const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();say(ok?'Prompt copied. Paste the JSON it returns here.':'Copy was blocked by the browser.')}
+      catch(e2){say('Copy was blocked by the browser.')}
+    }
+  });
+  const input=document.getElementById('jsonInput');
+  if(input)input.placeholder='Paste the JSON generated by your AI here…';
+});
+
+const previousNormalize=window.normalize;
+if(typeof previousNormalize==='function'){
+  window.normalize=function(q,i){
+    const x={...q};
+    if(x.type==='statement_based')x.type='multiple_statement';
+    if(x.type==='match_following'&&!Array.isArray(x.pairs)&&x.left_items&&x.right_items){
+      const lk=Object.keys(x.left_items).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+      const rk=Object.keys(x.right_items).sort();
+      x.pairs=lk.map((k,n)=>({left:x.left_items[k],right:x.right_items[rk[n]]}));
+    }
+    return previousNormalize(x,i);
+  };
+}
+
+const previousQuestionPlainText=window.questionPlainText;
+if(typeof previousQuestionPlainText==='function'){
+  window.questionPlainText=function(q,i){
+    if(q.type==='match_following'&&q.left_items&&q.right_items){
+      const L=[q.instruction||'Match List-I with List-II:'];
+      L.push((q.left_title||'List-I')+':');
+      Object.entries(q.left_items).forEach(([k,v])=>L.push(k+'. '+v));
+      L.push((q.right_title||'List-II')+':');
+      Object.entries(q.right_items).forEach(([k,v])=>L.push(k+'. '+v));
+      if(q.question_ending)L.push(q.question_ending);
+      L.push('Options:');
+      Object.entries(q.options||{}).forEach(([k,v])=>L.push(k+'. '+v));
+      return L.join('\n');
+    }
+    return previousQuestionPlainText(q,i);
+  };
+}
+
+const previousElaborate=window.elaborateExplanation;
+if(typeof previousElaborate==='function'){
+  window.elaborateExplanation=function(q){
+    const r=previousElaborate(q),extra=[];
+    if(q.concept_tested)extra.push('Concept tested: '+String(q.concept_tested).replace(/\.$/,'')+'.');
+    if(q.trap_or_distinction)extra.push('Key trap / distinction: '+String(q.trap_or_distinction).replace(/\.$/,'')+'.');
+    if(extra.length)r.focus=extra.join(' ')+' '+(r.focus||'');
+    return r;
+  };
+}
+
+const clean=()=>{const t=document.getElementById('jsonInput');if(t)t.value=t.value.trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim()};
+['loadBtn','loadExamBtn','addBankBtn'].forEach(id=>document.getElementById(id)?.addEventListener('click',clean,true));
+})();
+</script>
+<!-- ===== END KAUSHAL PATCH v4 ===== -->
+
 </body></html>
