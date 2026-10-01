@@ -1140,6 +1140,9 @@ html,body{
 .progress-topic-row{display:grid;grid-template-columns:minmax(100px,1fr) 1fr 55px;align-items:center;gap:10px;font-size:11px}.progress-topic-row span:first-child{font-weight:700;color:var(--text)}.progress-topic-row small{color:var(--muted)}.progress-topic-track{height:8px;background:var(--track);border-radius:99px;overflow:hidden}.progress-topic-track span{display:block;height:100%;background:var(--progress);border-radius:99px}.progress-topic-row b{text-align:right;color:var(--primary-dark)}
 .attention-item{border:1px solid var(--border);background:var(--soft);border-radius:12px;padding:11px 12px}.attention-top{display:flex;justify-content:space-between;gap:10px;font-size:11px;font-weight:800}.attention-top span{color:var(--danger)}.attention-sub{font-size:10px;color:var(--muted);margin-top:3px}.progress-inline-btn{margin-top:13px;border:0;background:var(--primary-dark);color:#fff;border-radius:10px;padding:9px 13px;font-size:11px;font-weight:800;cursor:pointer}
 .progress-recent-days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.recent-day{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:11px}.recent-day-date{font-size:10px;color:var(--muted)}.recent-day-total{font-size:20px;font-weight:900;color:var(--primary-dark);margin:3px 0}.recent-day-breakdown{font-size:9px;color:var(--muted)}
+.progress-five-day{margin-top:14px}.progress-five-day-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.five-day-summary{display:flex;align-items:baseline;gap:6px;color:var(--muted);font-size:10px}.five-day-summary strong{font-size:22px;color:var(--primary-dark);font-weight:950}.five-day-summary b{color:var(--primary-dark)}.five-day-card{border:1px solid var(--line);border-radius:12px;background:#fbfdfc;padding:12px;min-width:0}.five-day-card.today{box-shadow:inset 0 0 0 1px var(--accent)}.five-day-date{font-size:9px;color:var(--muted);font-weight:800}.five-day-number{font-size:25px;font-weight:950;color:var(--primary-dark);line-height:1.15;margin:4px 0}.five-day-label{font-size:8px;color:var(--muted)}.five-day-track{height:6px;background:#edf2f0;border-radius:99px;overflow:hidden;margin:9px 0 6px}.five-day-track span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px}.five-day-meta{display:flex;justify-content:space-between;gap:5px;font-size:8px;color:var(--muted)}.five-day-meta b{color:var(--primary-dark)}
+@media(max-width:700px){.progress-five-day-grid{grid-template-columns:repeat(5,minmax(74px,1fr));overflow-x:auto;padding-bottom:4px}.five-day-card{min-width:74px}.five-day-summary{align-self:flex-start}}
+
 .progress-empty{padding:18px;border:1px dashed var(--border);border-radius:12px;color:var(--muted);font-size:11px;text-align:center}
 @media(max-width:1100px){.progress-stat-grid{grid-template-columns:repeat(3,1fr)}.progress-two-col{grid-template-columns:1fr}.progress-recent-days{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.progress-dashboard{width:min(100% - 24px,1500px);padding:20px 0 40px}.progress-dashboard-header{align-items:flex-start;flex-direction:column}.progress-header-actions{width:100%}.progress-header-actions button{flex:1}.progress-hero{grid-template-columns:1fr;padding:22px}.progress-hero-ring{border-left:0;border-top:1px solid rgba(255,255,255,.15);padding-top:18px}.progress-stat-grid{grid-template-columns:repeat(2,1fr)}.progress-section-card{padding:16px}.progress-section-head{flex-direction:column}.progress-period-tabs{width:100%}.progress-period{flex:1}.progress-big-chart{height:250px}.progress-big-bars{height:185px}.progress-big-column{min-width:34px}.progress-two-col{grid-template-columns:1fr}.progress-recent-days{grid-template-columns:repeat(2,1fr)}}
@@ -2914,6 +2917,14 @@ body.theme-dark #start .study-nav-actions .quickquiz-home-btn{
       </div>
     </section>
 
+    <section class="progress-section-card progress-five-day">
+      <div class="progress-section-head compact">
+        <div><h2>Overall study progress — past 5 days</h2><p>A compact view of your recent study activity, showing how consistently you have been solving questions.</p></div>
+        <div class="five-day-summary"><strong id="progressFiveDaySolved">0</strong><span>questions · <b id="progressFiveDayAccuracy">0%</b> accuracy · <b id="progressFiveDayActive">0</b>/5 active days</span></div>
+      </div>
+      <div id="progressFiveDayGrid" class="progress-five-day-grid"></div>
+    </section>
+
     <section class="progress-stat-grid">
       <div class="progress-stat-card"><span class="ps-icon">✓</span><div><small>Correct</small><b id="progressCorrect">0</b><em id="progressCorrectRate">0% of solved</em></div></div>
       <div class="progress-stat-card"><span class="ps-icon wrong">×</span><div><small>Wrong</small><b id="progressWrong">0</b><em id="progressWrongRate">0% of solved</em></div></div>
@@ -3533,6 +3544,31 @@ function progressRenderRecent(){
   for(let i=6;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i),x=trackerDayStats(d);days.push(`<div class="recent-day"><div class="recent-day-date">${esc(d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}))}</div><div class="recent-day-total">${x.solved}</div><div class="recent-day-breakdown">${x.correct} correct · ${x.wrong} wrong</div></div>`)}
   el.innerHTML=days.join('');
 }
+function progressRenderFiveDay(){
+  const grid=$('progressFiveDayGrid');if(!grid)return;
+  const now=new Date(),days=[],summary={solved:0,correct:0,wrong:0,active:0};
+  for(let i=4;i>=0;i--){
+    const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i),x=trackerDayStats(d);
+    summary.solved+=x.solved;summary.correct+=x.correct;summary.wrong+=x.wrong;if(x.solved>0)summary.active++;
+    days.push({d,x});
+  }
+  const max=Math.max(1,...days.map(v=>v.x.solved));
+  grid.innerHTML=days.map(({d,x})=>{
+    const today=d.toDateString()===now.toDateString();
+    const acc=x.solved?Math.round(x.correct/x.solved*100):0;
+    const width=x.solved?Math.max(4,Math.round(x.solved/max*100)):2;
+    return `<div class="five-day-card${today?' today':''}">
+      <div class="five-day-date">${esc(d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}))}</div>
+      <div class="five-day-number">${x.solved}</div><div class="five-day-label">questions solved</div>
+      <div class="five-day-track"><span style="width:${width}%"></span></div>
+      <div class="five-day-meta"><span>${x.correct} ✓ · ${x.wrong} ×</span><b>${acc}%</b></div>
+    </div>`;
+  }).join('');
+  const acc=summary.solved?Math.round(summary.correct/summary.solved*100):0;
+  $('progressFiveDaySolved').textContent=summary.solved;
+  $('progressFiveDayAccuracy').textContent=acc+'%';
+  $('progressFiveDayActive').textContent=summary.active;
+}
 function progressRenderDashboard(){
   const all=progressAllTimeStats(),weekStart=trackerStartOfWeek(new Date()),week=trackerSumRange(weekStart,new Date()),revision=revisionMerge(App.revision,revisionLoad());
   const accuracy=all.solved?Math.round(all.correct/all.solved*100):0;
@@ -3552,7 +3588,7 @@ function progressRenderDashboard(){
   const streak=progressStreak();$('progressStreak').textContent=`${streak} day${streak===1?'':'s'}`;$('progressStreakHint').textContent=streak?'Keep the streak going':'Solve a question today';
   $('progressRevisionCount').textContent=revision.length;
   $('progressRevisionHint').textContent=revision.length?'Wrong answers to revisit':'Revision queue is clear';
-  progressRenderBigChart();progressRenderPerformance();progressRenderConsistency();progressRenderTopics();progressRenderAttention();progressRenderRecent();
+  progressRenderBigChart();progressRenderFiveDay();progressRenderPerformance();progressRenderConsistency();progressRenderTopics();progressRenderAttention();progressRenderRecent();
 }
 function progressOpenDashboard(){setActiveView('progress');trackerSetOpen(false);$('start').classList.add('hidden');$('revisionScreen').classList.add('hidden');$('planScreen').classList.add('hidden');$('studyHubScreen').classList.add('hidden');$('progressScreen').classList.remove('hidden');window.scrollTo(0,0);progressRenderDashboard()}
 function progressCloseDashboard(){setActiveView('home');$('progressScreen').classList.add('hidden');$('start').classList.remove('hidden');window.scrollTo(0,0);trackerRender()}
