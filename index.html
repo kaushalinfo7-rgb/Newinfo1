@@ -3041,6 +3041,18 @@ body.theme-dark #start .study-nav-actions > button.nav-tile:focus-visible{outlin
 </main>
 </div>
 </div>
+<style id="studyTimeCss">
+.st-day-total{margin-left:auto;text-align:right}.st-day-total small{display:block;font-size:9px;letter-spacing:.14em;font-weight:900;color:var(--muted)}.st-day-total b{font-size:20px;color:var(--primary-dark)}
+.st-clock{font-variant-numeric:tabular-nums;font-size:clamp(40px,7vw,60px);font-weight:900;letter-spacing:-.02em;text-align:center;color:var(--primary-dark);margin:6px 0 14px}
+.st-row{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:9px;margin-bottom:11px}.st-row select,.st-row input,.st-manual input{height:44px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:inherit;padding:0 12px;font:inherit;min-width:0}
+.st-btns{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.st-btns .btn:disabled{opacity:.45;cursor:not-allowed}
+.st-manual{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:14px;padding-top:14px;border-top:1px dashed var(--border);font-size:12px;color:var(--muted)}.st-manual input{width:110px}
+.st-msg{min-height:16px;margin:8px 0 0;font-size:12px;font-weight:700;color:var(--primary)}
+.st-log{display:grid;gap:8px;margin-top:6px}.st-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--soft)}.st-it-main{min-width:0}.st-it-main b{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.st-it-main small{color:var(--muted);font-size:10px}
+.st-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;height:96px;align-items:end}.st-bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:4px;cursor:pointer}.st-bar i{display:block;width:100%;max-width:26px;background:var(--primary);border-radius:6px 6px 2px 2px;opacity:.55}.st-bar.sel i{opacity:1}.st-bar span{font-size:10px;font-weight:800;color:var(--muted)}
+.st-subj{margin-top:12px;display:grid;gap:6px}.st-subj-row{display:flex;justify-content:space-between;gap:8px;font-size:12px}.st-subj-row span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:700px){.st-row{grid-template-columns:1fr}.st-item{grid-template-columns:minmax(0,1fr) auto auto}.st-item .plan-category-tag{display:none}}
+</style>
 <div aria-label="Daily study plan" class="screen hidden" id="planScreen">
 <div class="plan-dashboard">
 <header class="plan-header">
@@ -3065,6 +3077,15 @@ body.theme-dark #start .study-nav-actions > button.nav-tile:focus-visible{outlin
 </section>
 <div class="plan-layout">
 <main>
+<section class="plan-add-card" id="stCard">
+<div class="plan-add-title"><div class="plan-add-icon">⏱</div><div><h2>Study time tracker</h2><p id="stSub">Track how long you study.</p></div><div class="st-day-total"><small>STUDIED</small><b id="stDayTotal">0m</b></div></div>
+<div class="st-clock" id="stClock">00:00:00</div>
+<div class="st-row"><select aria-label="Subject" id="stCat"></select><input autocomplete="off" id="stTopic" list="stTopicList" maxlength="140" placeholder="Topic (optional)" type="text"/><datalist id="stTopicList"></datalist></div>
+<div class="st-btns"><button class="btn primary" id="stStart" type="button">▶ Start</button><button class="btn outline" id="stSave" type="button">Save session</button><button class="plan-text-btn" id="stDiscard" type="button">Discard</button></div>
+<div class="st-manual"><span>Forgot to start? Add time manually:</span><input id="stMin" max="1440" min="1" placeholder="Minutes" type="number"/><button class="btn outline" id="stAddManual" type="button">Add</button></div>
+<p class="st-msg" id="stMsg"></p>
+<div class="st-log" id="stLog"></div>
+</section>
 <section class="plan-add-card">
 <div class="plan-add-title">
 <div class="plan-add-icon">+</div>
@@ -3111,6 +3132,11 @@ body.theme-dark #start .study-nav-actions > button.nav-tile:focus-visible{outlin
 <div class="plan-progress-number"><b id="planDoneCount">0</b><span>/ <span id="planTotalCount">0</span></span></div>
 <div class="plan-progress-track"><span id="planProgressBar"></span></div>
 <p id="planProgressText">Nothing planned yet.</p>
+</section>
+<section class="plan-calendar-card">
+<div class="plan-side-head"><h3>Study time · week</h3><span id="stWeekTotal">0m</span></div>
+<div class="st-bars" id="stBars"></div>
+<div class="st-subj" id="stSubj"></div>
 </section>
 <section class="plan-calendar-card">
 <div class="plan-side-head"><h3>Upcoming</h3><span>7 days</span></div>
@@ -4036,6 +4062,54 @@ function planRender(){
   $('planListTitle').textContent=planSelectedDate===today?"Today's topics":`${d.toLocaleDateString(undefined,{day:'numeric',month:'short'})} topics`;
   planRenderList();planRenderUpcoming();planRenderStats();
 }
+
+/* ---------- STUDY TIME TRACKER (synced with cloud payload as "studyTime") ---------- */
+const STT_KEY='cgpsc_study_time_v1',STT_TIMER='cgpsc_study_timer_v1';
+function stLoad(){try{const x=JSON.parse(storageGet(STT_KEY,'')||'{}');return{sessions:Array.isArray(x.sessions)?x.sessions:[],del:x.del&&typeof x.del==='object'?x.del:{}}}catch(e){return{sessions:[],del:{}}}}
+function stSave(d){storageSet(STT_KEY,JSON.stringify(d));queueCloudSave()}
+function stMerge(a,b){a=a||{};b=b||{};const del={...(a.del||{}),...(b.del||{})},m=new Map();[...(a.sessions||[]),...(b.sessions||[])].forEach(s=>{if(s&&s.id&&!del[s.id])m.set(s.id,s)});return{sessions:[...m.values()],del}}
+let stT={run:false,since:0,acc:0},stInited=false,stTick=null,stMsgT=null;
+const stTSave=()=>storageSet(STT_TIMER,JSON.stringify(stT));
+const stElapsed=()=>stT.acc+(stT.run?Date.now()-stT.since:0);
+function stFmt(s){s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?h+'h '+m+'m':m?m+'m':s+'s'}
+function stPaintClock(){const e=$('stClock');if(!e)return;const s=Math.floor(stElapsed()/1000),p=n=>String(n).padStart(2,'0');e.textContent=p(Math.floor(s/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60);if($('stSave'))$('stSave').disabled=s<10}
+function stMsg(t){const e=$('stMsg');e.textContent=t;clearTimeout(stMsgT);stMsgT=setTimeout(()=>e.textContent='',2600)}
+function stAdd(o){const d=stLoad();d.sessions.push({id:'s_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),date:o.date,secs:o.secs,cat:$('stCat').value||'General',topic:$('stTopic').value.trim(),at:new Date().toISOString(),src:o.src});stSave(d)}
+function stDelete(id){const d=stLoad();d.sessions=d.sessions.filter(s=>s.id!==id);d.del[id]=new Date().toISOString();stSave(d);stRender()}
+function stInit(){
+ if(stInited)return;stInited=true;
+ try{stT=JSON.parse(storageGet(STT_TIMER,'')||'null')||stT}catch(e){}
+ const c=$('stCat');c.innerHTML='<option value="">General / Other</option>'+[...$('planCategory').options].filter(o=>o.value).map(o=>`<option value="${esc(o.value)}">${esc(o.textContent)}</option>`).join('');
+ if(stT.cat)c.value=stT.cat;if(stT.topic)$('stTopic').value=stT.topic;
+ $('stStart').onclick=()=>{const now=Date.now();if(stT.run)stT={...stT,run:false,acc:stT.acc+now-stT.since,since:0};else stT={...stT,run:true,since:now,date:stT.acc?stT.date:trackerDate(new Date())};stT.cat=c.value;stT.topic=$('stTopic').value.trim();stTSave();stRender()};
+ $('stSave').onclick=()=>{const secs=Math.floor(stElapsed()/1000);if(secs<10){stMsg('Session too short to save.');return}stAdd({date:stT.date||trackerDate(new Date()),secs,src:'timer'});stT={run:false,since:0,acc:0};stTSave();$('stTopic').value='';stMsg('Saved '+stFmt(secs)+' ✓');stRender()};
+ $('stDiscard').onclick=()=>{if(!confirm('Discard the current timer without saving?'))return;stT={run:false,since:0,acc:0};stTSave();stRender()};
+ const man=()=>{const m=parseInt($('stMin').value);if(!(m>=1&&m<=1440)){stMsg('Enter minutes between 1 and 1440.');return}stAdd({date:planSelectedDate,secs:m*60,src:'manual'});$('stMin').value='';stMsg('Added '+stFmt(m*60)+' ✓');stRender()};
+ $('stAddManual').onclick=man;$('stMin').onkeydown=e=>{if(e.key==='Enter')man()};
+ c.onchange=$('stTopic').onchange=()=>{stT.cat=c.value;stT.topic=$('stTopic').value.trim();stTSave()};
+}
+function stRender(){
+ stInit();
+ const d=stLoad(),day=d.sessions.filter(s=>s.date===planSelectedDate).sort((a,b)=>(a.at||'')<(b.at||'')?-1:1),today=trackerDate(new Date());
+ $('stDayTotal').textContent=stFmt(day.reduce((n,s)=>n+s.secs,0));
+ $('stSub').textContent=planSelectedDate===today?"Track today's study hours":'Viewing '+planDateObj().toLocaleDateString(undefined,{day:'numeric',month:'short'})+' — the timer always logs to today';
+ $('stStart').textContent=stT.run?'⏸ Pause':stT.acc?'▶ Resume':'▶ Start';
+ $('stDiscard').style.display=stElapsed()>0?'':'none';
+ $('stTopicList').innerHTML=planItems().map(x=>`<option value="${esc(x.text)}"></option>`).join('');
+ stPaintClock();clearInterval(stTick);if(stT.run)stTick=setInterval(stPaintClock,1000);
+ const log=$('stLog');
+ log.innerHTML=day.length?day.map(s=>`<div class="st-item"><span class="plan-category-tag">${esc(s.cat||'General')}</span><div class="st-it-main"><b>${esc(s.topic||'Study session')}</b><small>${s.src==='manual'?'Added manually':new Date(s.at).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div><strong>${stFmt(s.secs)}</strong><button class="plan-icon-btn" type="button" data-st-del="${esc(s.id)}" title="Delete">×</button></div>`).join(''):'<div class="plan-empty"><strong>No study time logged for this day</strong>Start the timer or add minutes manually.</div>';
+ log.querySelectorAll('[data-st-del]').forEach(b=>b.onclick=()=>stDelete(b.dataset.stDel));
+ const ws=trackerStartOfWeek(planDateObj()),sums=[],by={};
+ for(let i=0;i<7;i++){const k=trackerDate(new Date(ws.getFullYear(),ws.getMonth(),ws.getDate()+i));let n=0;d.sessions.forEach(s=>{if(s.date===k){n+=s.secs;const c=s.cat||'General';by[c]=(by[c]||0)+s.secs}});sums.push([k,n])}
+ const mx=Math.max(1,...sums.map(x=>x[1]));
+ $('stWeekTotal').textContent=stFmt(sums.reduce((n,x)=>n+x[1],0));
+ $('stBars').innerHTML=sums.map(([k,n])=>{const[y,m,dd]=k.split('-').map(Number);return`<div class="st-bar ${k===planSelectedDate?'sel':''}" data-st-date="${k}" title="${stFmt(n)}"><i style="height:${n?Math.max(6,Math.round(n/mx*80)):0}%"></i><span>${new Date(y,m-1,dd).toLocaleDateString(undefined,{weekday:'narrow'})}</span></div>`}).join('');
+ $('stBars').querySelectorAll('[data-st-date]').forEach(b=>b.onclick=()=>planOpen(b.dataset.stDate));
+ const rows=Object.entries(by).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ $('stSubj').innerHTML=rows.length?rows.map(([k,v])=>`<div class="st-subj-row"><span>${esc(k)}</span><b>${stFmt(v)}</b></div>`).join(''):'<div class="plan-empty">No study time this week yet.</div>';
+}
+const _stPlanRender=planRender;planRender=function(){_stPlanRender();try{stRender()}catch(e){console.warn('study time:',e)}};
 /* ---------- SAFE STORAGE LAYER ---------- */
 const SAFE_STORAGE_MEMORY={};
 function storageGet(key,fallback=null){
@@ -4640,8 +4714,8 @@ const cleanAtt=a=>(Array.isArray(a)?a:[]).map(x=>({at:isNaN(Date.parse(x?.at))?n
 
 /* ---------- sync v3: upload gate, compare-and-swap, light polling, merge ---------- */
 writeLocalSnapshot=function(){};
-const _bcp=buildCloudPayload;buildCloudPayload=function(){const p=_bcp();p.questions=[];p.state={};p.startRemaining=0;p.attempts=cleanAtt(J(ATT,[]));return p};
-const sig=()=>hs(JSON.stringify([bankLoad(),notesLoad(),getTrackerSnapshot(),planLoad(),revisionLoad(),storageGet(ATT,'')]));
+const _bcp=buildCloudPayload;buildCloudPayload=function(){const p=_bcp();p.questions=[];p.state={};p.startRemaining=0;p.attempts=cleanAtt(J(ATT,[]));p.studyTime=stLoad();return p};
+const sig=()=>hs(JSON.stringify([bankLoad(),notesLoad(),getTrackerSnapshot(),planLoad(),revisionLoad(),storageGet(ATT,''),storageGet(STT_KEY,'')]));
 cloudStatus=function(t){const e=$('cloudSyncText');if(e)e.textContent=t;document.querySelectorAll('.bank-cloud-pill,#notesSyncBadge').forEach(x=>x.textContent='☁ '+t)};
 function mergeObj(l,r,key,pick){const m=new Map();(l||[]).forEach(x=>x&&m.set(x[key],x));(r||[]).forEach(x=>{if(!x)return;const o=m.get(x[key]);m.set(x[key],o?pick(o,x):x)});return[...m.values()]}
 function union(remote){
@@ -4651,8 +4725,9 @@ function union(remote){
  storageSet(REVISION_KEY,JSON.stringify(revisionMerge(revisionLoad(),remote.revision||[])));
  const lp=planLoad(),rp=remote.plan?.days||{};Object.entries(rp).forEach(([d,items])=>{lp.days[d]=mergeObj(lp.days[d],items,'id',(a,c)=>({...a,done:a.done||c.done}))});storageSet(PLAN_KEY,JSON.stringify(lp));
  storageSet(ATT,JSON.stringify(cleanAtt(mergeObj(J(ATT,[]),remote.attempts,'at',o=>o).sort((a,c)=>Date.parse(c.at)-Date.parse(a.at)))));
+ if(remote.studyTime)storageSet(STT_KEY,JSON.stringify(stMerge(stLoad(),remote.studyTime)));
 }
-function takeRemote(r){if(r.questionBanks)storageSet(QUESTION_BANKS_KEY,JSON.stringify(migBank(r.questionBanks)));if(r.notes)storageSet(NOTES_KEY,JSON.stringify(r.notes));if(r.tracker?.days)storageSet(TRACKER_KEY,JSON.stringify(r.tracker));if(Array.isArray(r.revision))storageSet(REVISION_KEY,JSON.stringify(r.revision));if(r.plan?.days)storageSet(PLAN_KEY,JSON.stringify(r.plan));if(Array.isArray(r.attempts))storageSet(ATT,JSON.stringify(cleanAtt(r.attempts)))}
+function takeRemote(r){if(r.questionBanks)storageSet(QUESTION_BANKS_KEY,JSON.stringify(migBank(r.questionBanks)));if(r.notes)storageSet(NOTES_KEY,JSON.stringify(r.notes));if(r.tracker?.days)storageSet(TRACKER_KEY,JSON.stringify(r.tracker));if(Array.isArray(r.revision))storageSet(REVISION_KEY,JSON.stringify(r.revision));if(r.plan?.days)storageSet(PLAN_KEY,JSON.stringify(r.plan));if(Array.isArray(r.attempts))storageSet(ATT,JSON.stringify(cleanAtt(r.attempts)));if(r.studyTime)storageSet(STT_KEY,JSON.stringify(stMerge(stLoad(),r.studyTime)))}
 function refresh(){S(()=>{App.revision=revisionLoad();revisionRenderHome();revisionRenderScreen();trackerRender();bankRenderHub();notesRenderSubjects();if(!$('planScreen').classList.contains('hidden'))planRender();if(!$('progressScreen').classList.contains('hidden'))progressRenderDashboard()})}
 applySnapshot=function(){return false};   /* never load another device's exam state */
 async function pull(full){
