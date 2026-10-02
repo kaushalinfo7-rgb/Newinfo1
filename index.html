@@ -5,7 +5,21 @@
 <meta name="theme-color" content="#173E42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>KAUSHAL • Study Command Center</title>
-<style>
+<style id="kaushal-app-styles">
+/* ============================================================
+   KAUSHAL • STUDY COMMAND CENTER
+   Clean single-file refactor
+   - Original visual cascade preserved in exact order
+   - Original JavaScript execution order preserved
+   - Screen markup and IDs preserved for compatibility
+   - No external runtime dependencies
+   ============================================================ */
+
+/* ============================================================
+   STYLE MODULE 01: inline-style-1
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 :root{--bg:#274245;--surface:#fff;--soft:#f7f8f7;--primary:#274245;--gold:#dfd6ae;--muted:#68797b;--danger:#b86b67;--border:#ddd7b9;--radius:16px;--shadow:0 12px 35px rgba(25,45,47,.12)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--primary);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input,textarea{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}.screen{min-height:100vh}.btn{padding:11px 18px;border-radius:11px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--primary);color:white}.outline{background:white;color:var(--primary);border:1px solid var(--primary)}.danger{background:var(--danger);color:white}.light{background:transparent;color:white;border:1px solid rgba(255,255,255,.35)}
 .start{max-width:980px;margin:6vh auto;background:var(--surface);border-radius:24px;padding:42px;box-shadow:var(--shadow)}.brand{text-align:center;border-bottom:1px solid #eee8cf;padding-bottom:25px;margin-bottom:25px}.brand h1{margin:8px 0;font-size:clamp(28px,4vw,40px)}.badge{display:inline-block;background:var(--gold);padding:5px 12px;border-radius:30px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.sub{color:var(--muted)}
@@ -341,9 +355,13 @@ body.theme-comfort .ambient-svg{opacity:.55}
   to{opacity:1;transform:scale(1) rotate(0)}
 }
 
-</style>
 
-<style id="accessible-theme-final">
+
+/* ============================================================
+   STYLE MODULE 02: accessible-theme-final
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* =========================================================
    ACCESSIBLE COLOR SYSTEM — FINAL UI POLISH
    Designed for strong text/background contrast in every mode.
@@ -546,8 +564,13 @@ body.theme-dark .timer.critical{color:#FF9E9E!important}
   .display-mode-grid .theme-btn,.display-mode-grid .focus-btn{min-height:46px;font-size:13px}
   .palette-grid .qbtn{min-height:46px}
 }
-</style>
-<style id="mobile-result-webview-fix">
+
+
+/* ============================================================
+   STYLE MODULE 03: mobile-result-webview-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 
 /* =========================================================
    MOBILE APP RESULT SCREEN — FINAL WEBVIEW FIT
@@ -790,9 +813,13 @@ html,body{
   }
 }
 
-</style>
 
-<style id="desktop-app-redesign">
+
+/* ============================================================
+   STYLE MODULE 04: desktop-app-redesign
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Stable desktop layout: no overlap, no transparent elements covering content. */
 @media (min-width:1051px){
   html,body{min-width:0}
@@ -878,17 +905,25 @@ html,body{
   #exam .exam-body{grid-template-columns:minmax(0,1fr) 350px}
   #exam .q-content{padding-left:54px;padding-right:54px}
 }
-</style>
 
-<style id="desktop-question-header">
+
+/* ============================================================
+   STYLE MODULE 05: desktop-question-header
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 .q-head-main{min-width:0}.q-eyebrow{display:none}
 @media(min-width:1051px){
   .q-head-main{display:flex;align-items:center;gap:10px}
   .q-eyebrow{display:inline-flex;align-items:center;padding:4px 7px;border-radius:6px;background:#E5EEEC;color:#527174;font-size:9px;font-weight:900;letter-spacing:.09em}
 }
-</style>
 
-<style id="desktop-perfect-fix">
+
+/* ============================================================
+   STYLE MODULE 06: desktop-perfect-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* =========================================================
    DESKTOP STABILITY PASS
    The DOM is intentionally kept intact. This layer only fixes
@@ -1175,9 +1210,13 @@ html,body{
 @media(max-width:900px){.plan-layout{grid-template-columns:1fr}.plan-sidebar{display:grid;grid-template-columns:1fr 1fr;gap:12px}.plan-summary-card,.plan-calendar-card{margin-bottom:0}.plan-sidebar .plan-calendar-card:last-child{grid-column:1/-1}}
 @media(max-width:700px){.plan-dashboard{width:calc(100% - 24px);padding:20px 0 40px}.plan-header{flex-direction:column;align-items:flex-start}.plan-header-actions,.plan-header-actions button{width:100%}.plan-day-nav{grid-template-columns:40px 1fr 40px}.plan-today-btn{grid-column:1/-1}.plan-add-row{grid-template-columns:1fr}.plan-add-row .btn{width:100%}.plan-sidebar{display:block}.plan-sidebar>*{margin-bottom:12px}.plan-topic-item{grid-template-columns:27px 1fr}.plan-topic-actions{grid-column:2}.plan-topic-actions .plan-icon-btn{background:var(--soft)}}
 
-</style>
 
-<style id="final-progress-placement">
+
+/* ============================================================
+   STYLE MODULE 07: final-progress-placement
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Final progress tracker placement: keep it inside the left branding rail on desktop. */
 @media (min-width:1051px){
   #start .study-tracker{
@@ -1209,9 +1248,13 @@ html,body{
     margin:0!important;
   }
 }
-</style>
 
-<style id="view-menu-final-fix">
+
+/* ============================================================
+   STYLE MODULE 08: view-menu-final-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Final View control fix: one isolated, clickable header stacking layer. */
 #exam .exam-head{
   isolation:isolate!important;
@@ -1308,9 +1351,13 @@ html,body{
     z-index:100000!important;
   }
 }
-</style>
 
-<style id="final-dark-theme-fix">
+
+/* ============================================================
+   STYLE MODULE 09: final-dark-theme-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Final Dark Theme: one coherent high-contrast palette. This layer intentionally
    overrides older theme rules in the file so no legacy light colors leak through. */
 body.theme-dark{
@@ -1478,9 +1525,13 @@ body.theme-dark .focus-mode .question-ending,
 body.theme-dark .focus-mode .statement,
 body.theme-dark .focus-mode .option,
 body.theme-dark .focus-mode .option-key{color:var(--text)!important}
-</style>
 
-<style id="revision-system">
+
+/* ============================================================
+   STYLE MODULE 10: revision-system
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 .revision-home-card{margin-top:28px;padding:18px;border:1px solid rgba(255,255,255,.18);border-radius:16px;background:rgba(255,255,255,.075);color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.12)}
 .revision-home-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.revision-home-title{font-weight:900;font-size:15px}.revision-count{min-width:34px;height:34px;padding:0 9px;border-radius:999px;display:inline-grid;place-items:center;background:#D9C98B;color:#173E42;font-weight:900;font-size:13px}
 .revision-home-sub{margin:8px 0 12px;color:#DCE9E6;font-size:12px;line-height:1.55}.revision-focus-list{display:grid;gap:6px;margin:0 0 13px;padding:0;list-style:none}.revision-focus-list li{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#EEF5F3}.revision-focus-list span:last-child{color:#E6DFAE;font-weight:850}
@@ -1497,14 +1548,22 @@ body.theme-dark .focus-mode .option-key{color:var(--text)!important}
 body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-topic{background:#294245;color:#EDF6F4}body.theme-dark .revision-explanation{background:#21383A;border-color:#496568}body.theme-dark .revision-empty-icon{background:#294245;color:#8BC7C2}body.theme-dark .revision-remove{border-color:#805A5A}
 @media(max-width:1050px){#revisionScreen{padding:18px 16px 30px}.revision-layout{grid-template-columns:1fr}.revision-side{position:static}}
 @media(max-width:700px){#revisionScreen{padding:12px 10px 24px}.revision-header{padding:18px 15px;border-radius:15px;flex-direction:column}.revision-header h1{font-size:23px}.revision-header-actions{width:100%}.revision-header-actions .btn{flex:1}.revision-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.revision-stat{padding:12px}.revision-stat b{font-size:21px}.revision-list{border-radius:15px}.revision-list-head{padding:14px}.revision-items{padding:9px}.revision-item{padding:13px;margin-bottom:9px}.revision-item-top{display:block}.revision-date{display:block;margin-top:5px}.revision-meta{grid-template-columns:1fr;gap:6px}}
-</style>
 
-<style id="question-bank-study-hub">
+
+/* ============================================================
+   STYLE MODULE 11: question-bank-study-hub
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 .bank-import-card{margin-top:24px;background:linear-gradient(135deg,#f7faf9,#eef5f3);border:1px solid #d4e0dd;border-radius:20px;padding:20px;box-shadow:0 12px 30px rgba(23,42,45,.07)}.bank-import-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.bank-kicker,.studyhub-kicker{font-size:10px;letter-spacing:.16em;font-weight:900;color:var(--primary)}.bank-import-head h2{margin:4px 0 3px;color:var(--primary-dark);font-size:20px}.bank-import-head p{margin:0;color:var(--muted);font-size:11px}.bank-cloud-pill{padding:8px 11px;border-radius:999px;background:#e5f1ed;color:#286258;font-size:10px;font-weight:900;white-space:nowrap}.bank-import-row{display:grid;grid-template-columns:minmax(220px,1fr) minmax(260px,1fr);gap:10px;margin:16px 0 10px}.bank-field,.bank-file-label{display:flex;flex-direction:column;gap:6px;font-size:10px;font-weight:900;color:var(--primary-dark)}.bank-field select,.bank-file-label input{height:43px;box-sizing:border-box;border:1px solid var(--border);border-radius:10px;background:white;color:var(--text);padding:0 11px;font:inherit}.bank-file-label input{padding:9px}.bank-file-label small{font-weight:600;color:var(--muted)}.bank-import-card #jsonInput{min-height:180px;margin:8px 0 12px;background:#fff!important}.bank-import-summary{margin-top:9px;font-size:11px;color:var(--muted)}.cloud-status-hidden{display:none!important}.hub-home-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 15px;border-radius:999px;background:var(--primary-dark);color:#fff;border:1px solid var(--primary-dark);box-shadow:0 8px 24px rgba(23,42,45,.18);font-weight:900;cursor:pointer}.hub-home-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}.studyhub-dashboard{width:min(1400px,calc(100% - 56px));margin:0 auto;padding:34px 0 64px}.studyhub-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}.studyhub-header h1{margin:4px 0;font-size:clamp(32px,4vw,48px);letter-spacing:-.035em;color:var(--primary-dark)}.studyhub-header p{margin:0;color:var(--muted);font-size:14px}.studyhub-actions{display:flex;gap:9px}.studyhub-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.studyhub-overview>div{background:var(--surface);border:1px solid var(--border);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.studyhub-overview small,.studyhub-overview span{display:block;color:var(--muted);font-size:10px}.studyhub-overview strong{display:block;font-size:25px;color:var(--primary-dark);margin:3px 0}.studyhub-bank-section{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:21px}.studyhub-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:16px}.studyhub-section-head h2{margin:0;color:var(--primary-dark);font-size:19px}.studyhub-section-head p{margin:3px 0 0;color:var(--muted);font-size:11px}.hub-add-btn{border:0;border-radius:10px;padding:10px 13px;background:var(--gold);color:var(--primary-dark);font-weight:900;cursor:pointer}.hub-subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.hub-subject-card{border:1px solid var(--border);border-radius:15px;padding:15px;background:var(--soft);display:flex;flex-direction:column;min-height:150px}.hub-subject-top{display:flex;justify-content:space-between;gap:10px}.hub-subject-card h3{margin:0;font-size:13px;color:var(--text)}.hub-subject-count{font-size:24px;font-weight:950;color:var(--primary-dark);margin:12px 0 2px}.hub-subject-label{font-size:10px;color:var(--muted)}.hub-subject-meta{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;gap:8px;align-items:center}.hub-ready{font-size:9px;color:var(--success);font-weight:900}.hub-practice-btn{border:1px solid var(--primary);background:var(--primary);color:#fff;border-radius:9px;padding:8px 11px;font-size:10px;font-weight:900;cursor:pointer}.hub-practice-btn:hover{filter:brightness(1.06)}.hub-empty{grid-column:1/-1;border:1px dashed var(--border);border-radius:15px;padding:30px;text-align:center;color:var(--muted);font-size:12px}.hub-empty b{display:block;color:var(--primary-dark);font-size:15px;margin-bottom:5px}
 @media(max-width:900px){.hub-subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.studyhub-overview{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.bank-import-head,.studyhub-header,.studyhub-section-head{flex-direction:column}.bank-import-row{grid-template-columns:1fr}.studyhub-dashboard{width:min(100% - 24px,1400px);padding:22px 0 45px}.studyhub-actions{width:100%}.studyhub-actions .btn{flex:1}.hub-subject-grid{grid-template-columns:1fr}.studyhub-overview{grid-template-columns:1fr 1fr}.bank-cloud-pill{align-self:flex-start}}
-</style>
 
-<style id="front-page-order-fix">
+
+/* ============================================================
+   STYLE MODULE 12: front-page-order-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* =========================================================
    FRONT PAGE — CLEAN INFORMATION HIERARCHY
    Desktop: brand/revision on the left; question-bank workflow
@@ -1754,10 +1813,13 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
     width:100%!important;
   }
 }
-</style>
 
 
-<style id="compact-study-nav">
+/* ============================================================
+   STYLE MODULE 13: compact-study-nav
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Compact Progress / Study Hub / Plan navigation */
 #start .study-tracker{
   width:100%!important;
@@ -1803,9 +1865,13 @@ body.theme-dark #revisionScreen{background:var(--bg)}body.theme-dark .revision-t
     font-size:10px!important;
   }
 }
-</style>
 
-<style id="kaushal-new-design">
+
+/* ============================================================
+   STYLE MODULE 14: kaushal-new-design
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* ============================================================
    KAUSHAL STUDY OS — COMPLETE VISUAL REBUILD
    Presentation-only layer. Existing HTML/JS/data behavior stays intact.
@@ -2254,9 +2320,13 @@ body.theme-comfort{--canvas:#f1eee5;--panel:#fffdf7;--panel-2:#f8f5ec;--ink:#292
 /* accessibility + reduced motion */
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(101,166,155,.35);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
 
-<style id="nav-button-polish">
+
+/* ============================================================
+   STYLE MODULE 15: nav-button-polish
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Consistent main navigation buttons */
 #start .study-nav-actions{display:grid!important;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px!important}
 #start .study-nav-actions>button{
@@ -2268,10 +2338,13 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 body.theme-dark #start .study-nav-actions>button{background:linear-gradient(145deg,#172235,#111a2b)!important;color:#f8fafc!important;border-color:rgba(148,163,184,.18)!important;box-shadow:0 10px 25px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04)!important}
 @media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}#start .study-nav-actions>button{min-height:50px!important;padding:10px 12px!important}}
-</style>
 
 
-<style id="subject-notes-system">
+/* ============================================================
+   STYLE MODULE 16: subject-notes-system
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Separate Subject Notes page */
 .notes-dashboard{width:min(1480px,calc(100% - 48px));margin:0 auto;padding:34px 0 56px}
 .notes-header{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:24px}
@@ -2335,11 +2408,13 @@ body.theme-dark .notes-content th{background:#172235}
 body.theme-dark .notes-content th,body.theme-dark .notes-content td{border-color:rgba(148,163,184,.2)}
 @media(max-width:900px){.notes-workspace{grid-template-columns:1fr}.notes-subject-panel{min-height:0}.notes-subject-list{grid-template-columns:repeat(2,minmax(0,1fr))}.notes-header{align-items:flex-start;flex-direction:column}.notes-header-actions{width:100%;justify-content:space-between}}
 @media(max-width:560px){.notes-dashboard{width:min(100% - 24px,1480px);padding-top:20px}.notes-editor-panel{padding:16px}.notes-subject-list{grid-template-columns:1fr}.notes-editor-head{flex-direction:column}.notes-editor-actions{width:100%}.notes-editor-actions .btn{flex:1}.notes-format-strip{display:block}.notes-format-strip span{display:block}.notes-format-strip span+span{margin-top:4px}}
-</style>
 
 
+/* ============================================================
+   STYLE MODULE 17: quickquiz-ui
+   Original cascade order preserved intentionally.
+   ============================================================ */
 
-<style id="quickquiz-ui">
 #start .study-nav-actions{grid-template-columns:repeat(5,minmax(120px,1fr))!important}
 .quickquiz-home-btn{position:relative;min-height:54px;padding:12px 18px;border:1px solid rgba(148,163,184,.22);border-top:3px solid #f59e0b;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(241,245,249,.94));color:#172033;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95);font-weight:800;cursor:pointer;transition:.2s ease}
 .quickquiz-home-btn:hover{transform:translateY(-3px);border-color:rgba(245,158,11,.45);box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(245,158,11,.08)}
@@ -2379,18 +2454,25 @@ body.theme-dark .quickquiz-list-card{background:#111a2b;border-color:rgba(148,16
 body.theme-dark .quickquiz-mix-badge{color:#fbbf24;background:rgba(245,158,11,.1)}
 @media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}.quickquiz-hero{grid-template-columns:50px 1fr}.quickquiz-start-btn{grid-column:1/-1}.quickquiz-stats{grid-template-columns:repeat(2,1fr)}.quickquiz-question-list{grid-template-columns:1fr}}
 @media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}.quickquiz-dashboard{width:min(100% - 24px,1180px);padding-top:20px}.quickquiz-header{flex-direction:column}.quickquiz-actions{width:100%}.quickquiz-actions .btn{flex:1}.quickquiz-hero{padding:16px}.quickquiz-header h1{font-size:29px}.quickquiz-stats{grid-template-columns:1fr 1fr}}
-</style>
 
-<style id="notes-home-button-polish">
+
+/* ============================================================
+   STYLE MODULE 18: notes-home-button-polish
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 #start .study-nav-actions{display:grid !important;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px !important}
 #start .notes-home-btn{position:relative;min-height:54px;padding:12px 18px;border:1px solid rgba(148,163,184,.22);border-top:3px solid #7c3aed;border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(241,245,249,.94));color:#172033;box-shadow:0 8px 22px rgba(15,23,42,.08),inset 0 1px 0 rgba(255,255,255,.95);font-weight:800;cursor:pointer;transition:.2s ease}
 #start .notes-home-btn:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.4);box-shadow:0 14px 30px rgba(15,23,42,.12),0 0 0 4px rgba(124,58,237,.07)}
 body.theme-dark #start .notes-home-btn{background:linear-gradient(145deg,#172235,#111a2b);color:#f8fafc;border-color:rgba(148,163,184,.18)}
 @media(max-width:720px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))}#start .notes-home-btn{min-height:50px;padding:10px 13px}}
-</style>
 
 
-<style id="saved-notes-v2">
+/* ============================================================
+   STYLE MODULE 19: saved-notes-v2
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 .notes-subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
 .notes-subject-card{background:var(--card,#fff);border:1px solid rgba(148,163,184,.22);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.06)}
 .notes-subject-card h3{margin:0 0 6px;font-size:16px}
@@ -2427,9 +2509,13 @@ body.dark .notes-back-btn{background:#172235;color:#f8fafc}
 body.dark .saved-note-document{background:#111a2b;border-color:rgba(148,163,184,.16)}
 body.dark .saved-note-document th,body.dark .saved-note-document td{border-color:#334155}
 body.dark .saved-note-document blockquote{background:#0b2524}
-</style>
 
-<style id="saved-notes-reader-interaction-fix">
+
+/* ============================================================
+   STYLE MODULE 20: saved-notes-reader-interaction-fix
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Keep saved-note HTML from ever covering the reader controls. */
 #noteReaderScreen{
   position:relative!important;
@@ -2470,10 +2556,13 @@ body.dark .saved-note-document blockquote{background:#0b2524}
   contain:paint!important;
   overflow:hidden!important;
 }
-</style>
 
 
-<style id="notes-subject-list-v2">
+/* ============================================================
+   STYLE MODULE 21: notes-subject-list-v2
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 .notes-subject-group{margin-bottom:12px;border:1px solid rgba(148,163,184,.16);border-radius:15px;overflow:hidden;background:rgba(148,163,184,.035)}
 .notes-subject-group.active{border-color:rgba(13,148,136,.3)}
 .notes-subject-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border:0;background:transparent;cursor:pointer;text-align:left;font-weight:750}
@@ -2499,10 +2588,13 @@ body.dark .saved-note-document blockquote{background:#0b2524}
 body.theme-dark .notes-subject-chevron{background:rgba(111,168,167,.12);color:#A9D8D4}
 body.theme-dark .notes-subject-group.is-open{box-shadow:0 6px 22px rgba(0,0,0,.18)}
 @media(prefers-reduced-motion:reduce){.notes-subject-group .saved-note-list{animation:none}}
-</style>
 
 
-<style id="final-main-nav-consistency">
+/* ============================================================
+   STYLE MODULE 22: final-main-nav-consistency
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
 /* Final override: one coherent button system for the main dashboard navigation. */
 #start .study-nav-actions>button,
 #start .study-nav-actions .tracker-toggle,
@@ -2551,484 +2643,740 @@ body.theme-dark #start .study-nav-actions .quickquiz-home-btn{
 }
 @media(max-width:900px){#start .study-nav-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:560px){#start .study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}#start .study-nav-actions>button{min-height:50px!important;padding:10px 12px!important}}
-</style>
 
+
+/* ============================================================
+   STYLE MODULE 23: kaushal-fixes
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
+.qbtn.visited{background:#f3d9d5!important;border-color:#d8a6a0!important}
+body.theme-dark .qbtn.visited{background:#6b3c3c!important;color:#fff!important}
+body.theme-dark .notes-reader-header{background:rgba(17,26,43,.94)!important}
+body.theme-dark .notes-reader-shell{background:#0b1220!important}
+body.theme-dark .notes-back-btn{background:#172235!important;color:#f8fafc!important}
+body.theme-dark .saved-note-document{background:#111a2b!important;color:#e2e8f0!important}
+body.exam-active *,body.exam-active *::before,body.exam-active *::after{animation:none!important}
+@media(min-width:1051px){#start #examInfo{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;grid-column:2!important;grid-row:3!important}}
+.tracker-label,.tracker-value,.tracker-accuracy,.progress-big-label,.progress-big-value,.progress-big-accuracy,.recent-day-breakdown,.hub-ready,.plan-priority,.plan-category-tag,.attention-sub,.progress-stat-card em{font-size:11px!important}
+.muted-fix,.sub{color:#4E6265!important}
+
+
+/* ============================================================
+   STYLE MODULE 24: kaushal-fixes-v3
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
+@media(max-width:700px){input,select,textarea{font-size:16px!important}}
+
+
+/* ============================================================
+   STYLE MODULE 25: kaushal-fixes-v5
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
+.revision-question{white-space:normal;font-weight:500}
+.revision-question .rq-intro,.revision-question .rq-end{font-weight:700;margin:6px 0}
+.revision-question .rq-box,.revision-question .rq-passage{background:var(--panel-2,#f7faf9);border:1px solid var(--line,#dbe5e1);border-radius:12px;padding:12px 14px;margin:8px 0}
+.revision-question .rq-row{display:grid;grid-template-columns:28px 1fr;gap:6px;margin:0 0 9px;line-height:1.65}
+.revision-question .rq-row:last-child{margin-bottom:0}
+.revision-question .rq-ar{border:1px solid var(--line,#dbe5e1);border-left:4px solid var(--accent,#2d6b67);border-radius:10px;background:var(--panel-2,#f7faf9);padding:11px 13px;margin:8px 0;line-height:1.65}
+.revision-question .rq-ar span{display:block;font-weight:900;font-size:12px;margin-bottom:3px;color:var(--accent,#2d6b67)}
+.revision-question .rq-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;font-weight:500}
+.revision-question .rq-table th{background:var(--navy,#10242b);color:#fff;padding:8px 10px;text-align:left;font-size:12px}
+.revision-question .rq-table td{border:1px solid var(--line,#dbe5e1);padding:8px 10px;vertical-align:top}
+
+
+/* ============================================================
+   STYLE MODULE 26: kaushal-hall-css
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
+@media(min-width:901px){#start .study-nav-actions{grid-template-columns:repeat(6,minmax(0,1fr))!important}}
+body.hall-open{overflow:hidden}
+#examHallScreen{position:fixed;inset:0;z-index:5000;overflow:auto;background:#26342f;--text:#1a1a1a;--text-strong:#000;--muted:#555;--surface:#fffdf4;--soft:#f6f1e2;--border:#d2c9ae;color:#1a1a1a;font-family:Georgia,"Noto Serif Devanagari","Times New Roman",serif}
+#examHallScreen button{font-family:inherit}
+.eh-brief{max-width:900px;margin:0 auto;padding:22px 14px 50px}
+.eh-booklet{background:#fffdf4;border-radius:6px;padding:30px 34px;box-shadow:0 20px 60px rgba(0,0,0,.45);border-top:7px double #173E42}
+.eh-code{font:800 22px Georgia,serif;letter-spacing:.04em;text-align:center;color:#173E42}
+.eh-booklet h1{font-size:25px;text-align:center;margin:4px 0 14px;line-height:1.25}
+.eh-booklet h3{margin:20px 0 8px;font-size:15px;text-transform:uppercase;letter-spacing:.07em;color:#173E42}
+.eh-sm{display:block;text-align:center;color:#555;font-size:13px}
+.eh-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border:1px solid #cfc6aa;border-radius:4px;padding:10px;background:#f6f1e2;text-align:center}
+.eh-meta small{display:block;font-size:11px;color:#555}.eh-meta b{font-size:18px}
+.eh-table{width:100%;border-collapse:collapse;font-size:13px}
+.eh-table th{background:#173E42;color:#fff;padding:7px 9px;text-align:left;font-size:12px}
+.eh-table td{border:1px solid #d2c9ae;padding:7px 9px;vertical-align:top;color:#1a1a1a}
+.eh-table td small{display:block;color:#666;font-size:11px}
+.eh-ok{color:#2f6b45!important;font-weight:700}.eh-low{color:#a33a3a!important;font-weight:700}
+.eh-warn{font-size:13px;font-weight:700;color:#7a5b16;margin:8px 0 0}
+.eh-booklet ol{margin:0;padding-left:20px;font-size:14px;line-height:1.7}
+.eh-cand{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.eh-cand label{font-size:12px;font-weight:700;display:grid;gap:4px}
+.eh-cand input{padding:9px 10px;border:1px solid #bdb391;border-radius:4px;font:inherit;font-size:15px;background:#fff}
+.eh-chk{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0;font-size:13px}.eh-chk label{display:flex;gap:6px;align-items:center}
+.eh-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;margin-top:14px}
+.eh-seal{min-height:100%;display:grid;place-items:center;text-align:center;color:#fff;padding:20px}
+.eh-seal b{display:block;font-size:110px;line-height:1}.eh-seal p{font-size:18px;max-width:420px}
+#ehExam{min-height:100%;display:flex;flex-direction:column}
+.eh-head{position:sticky;top:0;z-index:20;background:#173E42;color:#fff;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:9px 16px}
+.eh-head small{display:block;color:#cfe0dc;font-size:11px}.eh-head b{font-size:13px;letter-spacing:.05em}
+.eh-mid{text-align:center;font-size:12px}.eh-mid b{display:block;font-size:14px;letter-spacing:0}
+.eh-right{display:flex;gap:10px;align-items:center;justify-content:flex-end}
+.eh-timer{font:800 22px ui-monospace,Menlo,monospace;min-width:104px;text-align:center;background:#0d2a2d;padding:4px 10px;border-radius:6px}
+.eh-timer.warn{color:#f3d36b}.eh-timer.crit{color:#ff9c9c;animation:ehpulse 1s infinite}
+@keyframes ehpulse{50%{opacity:.55}}
+.eh-tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;background:#1d2b27}
+.eh-tabs button{flex:0 0 auto;border:1px solid #4b5f58;background:transparent;color:#d9e5e1;border-radius:4px;padding:6px 10px;font-size:12px;cursor:pointer}
+.eh-tabs button.on{background:#fffdf4;color:#173E42;font-weight:700}.eh-tabs small{margin-left:6px;opacity:.7}
+.eh-body{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px;padding:14px;max-width:1400px;width:100%;margin:0 auto;box-sizing:border-box}
+.eh-paper{background:#fffdf4;border-radius:4px;padding:26px 32px 14px;box-shadow:0 10px 40px rgba(0,0,0,.35);min-height:60vh;display:flex;flex-direction:column;background-image:repeating-linear-gradient(transparent 0 31px,rgba(23,62,66,.04) 31px 32px)}
+.eh-qno{font:800 26px Georgia,serif;color:#173E42}
+.eh-q{font-size:18px;line-height:1.75;margin:4px 0 16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.eh-q .statement-box,.eh-q .ar-item{background:#f6f1e2!important}
+#examHallScreen .passage{background:#f7f3e4!important;color:#1a1a1a!important}
+#examHallScreen .match-table tr:nth-child(even) td{background:#f1ecda!important}
+#examHallScreen .match-table td{color:#1a1a1a!important}
+.eh-opts-list{display:grid;gap:8px}
+.eh-opt{display:flex;gap:10px;text-align:left;width:100%;padding:11px 14px;border:1px solid #cfc6aa;background:#fffef9;border-radius:4px;font-size:17px;line-height:1.5;color:#1a1a1a;cursor:pointer}
+.eh-opt:hover{background:#f3efdd}.eh-opt.on{background:#173E42;color:#fff;border-color:#173E42}
+.eh-pf{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;border-top:2px solid #1a1a1a;font:700 12px Georgia,serif;color:#333}
+.eh-omr{background:#fffdf4;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.35);display:flex;flex-direction:column;height:calc(100vh - 150px);position:sticky;top:104px;overflow:hidden}
+.eh-omr-h{padding:10px 12px;background:#b7432f;color:#fff;font:800 12px Georgia,serif;letter-spacing:.06em}
+.eh-omr-grid{overflow:auto;padding:6px 10px}
+.eh-row{display:flex;align-items:center;gap:7px;padding:3px 4px;border-radius:4px}
+.eh-row.sep{margin-bottom:8px;border-bottom:1px dashed #b7432f55}.eh-row.cur{background:#fbe9a7}.eh-row.fl .eh-n{color:#b7432f;text-decoration:underline}
+.eh-n{width:30px;font:700 12px Georgia,serif;text-align:right;color:#222}
+.eh-b{width:24px;height:24px;border-radius:50%;border:1.5px solid #b7432f;background:#fff;color:#b7432f;font-size:10px;padding:0;cursor:pointer}
+.eh-b.on{background:#111;border-color:#111;color:#111}
+.eh-bar{position:sticky;bottom:0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px;background:#1d2b27}
+.eh-btn{border:1px solid #6b8079;background:#2c3f39;color:#fff;border-radius:6px;padding:9px 14px;font-size:13px;cursor:pointer}
+.eh-btn.on{background:#b7432f;border-color:#b7432f}.eh-btn:disabled{opacity:.4}.eh-btn.go{background:#d9c98b;color:#173E42;border-color:#d9c98b;font-weight:700}
+.eh-m{display:none}
+.eh-pad{position:fixed;left:14px;bottom:70px;width:min(340px,calc(100vw - 28px));z-index:30;background:#fffdf4;border:2px solid #173E42;border-radius:6px;padding:8px}
+#ehPadBox textarea{min-height:0;height:150px;width:100%;box-sizing:border-box;font:14px/1.5 Georgia,serif!important;background:#fff!important;color:#1a1a1a!important;border:1px solid #bdb391!important}
+.eh-toast{position:fixed;top:78px;left:50%;transform:translateX(-50%);background:#b7432f;color:#fff;padding:10px 18px;border-radius:6px;z-index:6500;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.4);max-width:90vw;text-align:center}
+@media(max-width:900px){
+ .eh-body{grid-template-columns:1fr;padding:8px}.eh-paper{padding:18px 16px 12px}.eh-q{font-size:16px}
+ .eh-omr{position:fixed;left:0;right:0;bottom:0;top:auto;height:62vh;z-index:40;border-radius:12px 12px 0 0;transform:translateY(105%);transition:transform .2s}
+ .eh-omr.open{transform:none}.eh-m{display:inline-block}
+ .eh-head{grid-template-columns:1fr auto}.eh-mid{display:none}.eh-meta{grid-template-columns:repeat(2,1fr)}.eh-booklet{padding:20px 16px}.eh-cand{grid-template-columns:1fr}.eh-timer{font-size:17px;min-width:84px}
+}
+.eh-ptabs{display:flex;gap:6px;justify-content:center;margin-bottom:12px}.eh-ptabs button{border:1px solid #173E42;background:#fff;color:#173E42;border-radius:4px;padding:7px 18px;font-weight:700;cursor:pointer}.eh-ptabs button.on{background:#173E42;color:#fff}
+
+
+/* ============================================================
+   STYLE MODULE 27: kaushal-nav-v8
+   Original cascade order preserved intentionally.
+   ============================================================ */
+
+#start .study-nav-actions.study-nav-actions{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:14px!important;
+}
+@media(max-width:600px){
+  #start .study-nav-actions.study-nav-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+}
+#start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile{
+  --a:#2d6b67; --a-soft:rgba(45,107,103,.12); --a-soft-d:rgba(111,190,180,.18); --a-lt:#8fd0c8;
+  position:relative!important;display:flex!important;flex-direction:column!important;
+  align-items:flex-start!important;justify-content:flex-start!important;gap:14px!important;
+  width:100%!important;min-width:0!important;height:auto!important;min-height:120px!important;
+  margin:0!important;padding:18px!important;background:var(--panel,#fff)!important;
+  color:var(--ink,#142027)!important;border:1px solid var(--line,#dbe5e1)!important;
+  border-radius:18px!important;
+  box-shadow:0 1px 2px rgba(16,36,43,.05),0 10px 22px -14px rgba(16,36,43,.22)!important;
+  text-align:left!important;font-weight:inherit!important;white-space:normal!important;
+  filter:none!important;overflow:hidden!important;cursor:pointer!important;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important;
+}
+#start .study-nav-actions > button.nav-tile.nav-progress{--a:#2d6b67;--a-soft:rgba(45,107,103,.12);--a-soft-d:rgba(111,190,180,.18);--a-lt:#8fd0c8}
+#start .study-nav-actions > button.nav-tile.nav-hub{--a:#4a5bb0;--a-soft:rgba(74,91,176,.11);--a-soft-d:rgba(138,153,235,.20);--a-lt:#a9b6f5}
+#start .study-nav-actions > button.nav-tile.nav-plan{--a:#3b8458;--a-soft:rgba(59,132,88,.12);--a-soft-d:rgba(116,206,148,.18);--a-lt:#8fd9ab}
+#start .study-nav-actions > button.nav-tile.nav-notes{--a:#7a55c0;--a-soft:rgba(122,85,192,.11);--a-soft-d:rgba(179,148,240,.20);--a-lt:#c7adf5}
+#start .study-nav-actions > button.nav-tile.nav-quiz{--a:#c27d10;--a-soft:rgba(194,125,16,.12);--a-soft-d:rgba(246,190,90,.20);--a-lt:#f6c868}
+#start .study-nav-actions > button.nav-tile.nav-hall{--a:#b2503b;--a-soft:rgba(178,80,59,.11);--a-soft-d:rgba(240,140,118,.20);--a-lt:#f5a592}
+#start .study-nav-actions > button.nav-tile::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:0;
+  background:var(--a);transform:scaleX(0);transform-origin:left;transition:transform .22s ease;
+}
+#start .study-nav-actions > button.nav-tile .nav-ico{
+  flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  background:var(--a-soft);color:var(--a);transition:background .16s ease,color .16s ease;
+}
+#start .study-nav-actions > button.nav-tile .nav-ico svg{
+  width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#start .study-nav-actions > button.nav-tile .nav-txt{
+  display:flex;flex-direction:column;gap:4px;width:100%;min-width:0;white-space:normal;
+}
+#start .study-nav-actions > button.nav-tile .nav-label{
+  display:block;font-size:16px;line-height:1.25;font-weight:750;letter-spacing:-.01em;
+  white-space:normal;overflow:visible;text-overflow:clip;color:inherit;
+}
+#start .study-nav-actions > button.nav-tile .nav-sub{
+  display:block;font-size:13px;line-height:1.4;font-weight:500;color:#4a5c62;
+  white-space:normal;overflow:visible;text-overflow:clip;
+}
+#start .study-nav-actions.study-nav-actions > button.nav-tile .nav-badge.nav-badge{
+  position:absolute;top:16px;right:16px;min-width:26px;height:26px;padding:0 8px;
+  border-radius:999px;display:grid;place-items:center;background:var(--a)!important;
+  color:#fff!important;font-size:13px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;
+}
+#start .study-nav-actions.study-nav-actions > button.nav-tile .nav-badge.nav-badge.is-zero{
+  background:var(--a-soft)!important;color:var(--a)!important;
+}
+@media(hover:hover){
+  #start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile:hover{
+    transform:translateY(-3px)!important;border-color:var(--a)!important;
+    background:var(--panel,#fff)!important;
+    box-shadow:0 2px 4px rgba(16,36,43,.05),0 18px 30px -16px rgba(16,36,43,.32)!important;
+  }
+  #start .study-nav-actions > button.nav-tile:hover::after{transform:scaleX(1)}
+  #start .study-nav-actions > button.nav-tile:hover .nav-ico{background:var(--a);color:#fff}
+}
+#start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile:active{transform:translateY(0) scale(.985)!important}
+#start .study-nav-actions > button.nav-tile:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+#start .study-nav-actions > button.nav-tile:focus-visible::after{transform:scaleX(1)}
+@media(max-width:600px){
+  #start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile{
+    min-height:112px!important;padding:14px!important;gap:12px!important;border-radius:16px!important
+  }
+  #start .study-nav-actions > button.nav-tile .nav-ico{width:42px;height:42px;border-radius:12px}
+  #start .study-nav-actions > button.nav-tile .nav-ico svg{width:22px;height:22px}
+  #start .study-nav-actions > button.nav-tile .nav-label{font-size:15px}
+  #start .study-nav-actions > button.nav-tile .nav-sub{font-size:12.5px}
+  #start .study-nav-actions.study-nav-actions > button.nav-tile .nav-badge.nav-badge{top:12px;right:12px}
+}
+body.theme-dark #start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile{
+  box-shadow:0 1px 2px rgba(0,0,0,.3),0 12px 24px -16px rgba(0,0,0,.65)!important;
+}
+body.theme-dark #start .study-nav-actions > button.nav-tile .nav-ico{background:var(--a-soft-d);color:var(--a-lt)}
+body.theme-dark #start .study-nav-actions > button.nav-tile .nav-sub{color:#b9cbc8}
+body.theme-dark #start .study-nav-actions.study-nav-actions > button.nav-tile.nav-tile:hover{border-color:var(--a-lt)!important}
+body.theme-dark #start .study-nav-actions > button.nav-tile:hover .nav-ico{background:var(--a-lt);color:#0d171a}
+body.theme-dark #start .study-nav-actions > button.nav-tile::after{background:var(--a-lt)}
+body.theme-dark #start .study-nav-actions.study-nav-actions > button.nav-tile .nav-badge.nav-badge{background:var(--a-lt)!important;color:#0d171a!important}
+body.theme-dark #start .study-nav-actions.study-nav-actions > button.nav-tile .nav-badge.nav-badge.is-zero{background:var(--a-soft-d)!important;color:var(--a-lt)!important}
+body.theme-dark #start .study-nav-actions > button.nav-tile:focus-visible{outline-color:var(--a-lt)}
+@media(prefers-reduced-motion:reduce){
+  #start .study-nav-actions > button.nav-tile,
+  #start .study-nav-actions > button.nav-tile::after{transition:none!important}
+}
+
+
+</style>
+<style id="front-page-text-cleanup">
+/* Remove non-essential instructional/status copy from the bottom of the home screen.
+   Controls and question-bank functionality remain unchanged. */
+#start .bank-import-card .bank-kicker,
+#start .bank-import-card .bank-import-head p,
+#start .bank-import-card .bank-cloud-pill,
+#start .bank-import-card .bank-file-label small,
+#start .bank-import-card .helper,
+#start #cloudSyncStatus{display:none!important}
+</style>
 </head>
 <body>
+<!-- ============================================================
+     APPLICATION SCREENS
+     Existing DOM structure intentionally preserved.
+     ============================================================ -->
 
-<div class="ambient-svg" aria-hidden="true">
-  <svg viewBox="0 0 1600 700" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="ambientGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#24565A" stop-opacity=".13"/>
-        <stop offset="48%" stop-color="#D9C98B" stop-opacity=".08"/>
-        <stop offset="100%" stop-color="#527B7E" stop-opacity=".12"/>
-      </linearGradient>
-      <filter id="blurGlow"><feGaussianBlur stdDeviation="24"/></filter>
-    </defs>
-    <path class="ambient-wave wave-one"
-      d="M-80 520 C180 350 340 690 620 470 S1050 220 1320 390 S1550 560 1690 330"
-      fill="none" stroke="url(#ambientGrad)" stroke-width="80" filter="url(#blurGlow)"/>
-    <path class="ambient-wave wave-two"
-      d="M-100 160 C210 290 390 80 650 230 S1030 450 1280 220 S1510 90 1710 180"
-      fill="none" stroke="url(#ambientGrad)" stroke-width="42"/>
-    <circle class="ambient-orb orb-one" cx="220" cy="150" r="70" fill="#24565A"/>
-    <circle class="ambient-orb orb-two" cx="1390" cy="520" r="95" fill="#D9C98B"/>
-  </svg>
+<div aria-hidden="true" class="ambient-svg">
+<svg preserveaspectratio="none" viewbox="0 0 1600 700">
+<defs>
+<lineargradient id="ambientGrad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#24565A" stop-opacity=".13"></stop>
+<stop offset="48%" stop-color="#D9C98B" stop-opacity=".08"></stop>
+<stop offset="100%" stop-color="#527B7E" stop-opacity=".12"></stop>
+</lineargradient>
+<filter id="blurGlow"><fegaussianblur stddeviation="24"></fegaussianblur></filter>
+</defs>
+<path class="ambient-wave wave-one" d="M-80 520 C180 350 340 690 620 470 S1050 220 1320 390 S1550 560 1690 330" fill="none" filter="url(#blurGlow)" stroke="url(#ambientGrad)" stroke-width="80"></path>
+<path class="ambient-wave wave-two" d="M-100 160 C210 290 390 80 650 230 S1030 450 1280 220 S1510 90 1710 180" fill="none" stroke="url(#ambientGrad)" stroke-width="42"></path>
+<circle class="ambient-orb orb-one" cx="220" cy="150" fill="#24565A" r="70"></circle>
+<circle class="ambient-orb orb-two" cx="1390" cy="520" fill="#D9C98B" r="95"></circle>
+</svg>
 </div>
-
-<div id="start" class="screen">
-  <main class="start">
-    <div class="brand"><span class="badge">CGPSC EXAM PREPARATION</span><h1>HELLO KAUSHAL</h1><p class="sub">Structured question bank • OMR navigation • Detailed result analysis</p><div id="revisionHomeCard" class="revision-home-card"><div class="revision-home-head"><span class="revision-home-title">Revision</span><strong id="revisionCount" class="revision-count">0</strong></div><p id="revisionHomeSub" class="revision-home-sub">Wrong answers you save during tests will appear here automatically.</p><ul id="revisionFocusList" class="revision-focus-list"></ul><button id="revisionOpenBtn" class="revision-open-btn" type="button">Open Revision</button></div></div>
-    <div id="studyTracker" class="study-tracker" aria-live="polite">
-      <div class="study-nav-actions">
-        <button id="trackerToggle" class="tracker-toggle" type="button" aria-expanded="false" aria-controls="trackerPanel">
-          <span class="tracker-icon" aria-hidden="true">▥</span><span>Progress</span><strong id="trackerTodayMini">0</strong>
-        </button>
-        <button id="studyHubHomeBtn" class="hub-home-btn" type="button" title="Open Study Hub"><span aria-hidden="true">✦</span><span>Study Hub</span></button>
-        <button id="studyPlanHomeBtn" class="plan-home-btn" type="button" title="Open daily study plan">
-          <span aria-hidden="true">✓</span><span>Plan</span>
-        </button>
-        <button id="notesHomeBtn" class="notes-home-btn" type="button" title="Open subject notes">
-          <span aria-hidden="true">▤</span><span>Notes</span>
-        </button>
-        <button id="quickQuizHomeBtn" class="quickquiz-home-btn" type="button" title="Start a 25-question mixed quiz">
-          <span aria-hidden="true">⚡</span><span>Quick Quiz</span>
-        </button>
-      </div>
-      <section id="trackerPanel" class="tracker-panel hidden" aria-label="Question solving progress">
-        <div class="tracker-panel-head">
-          <div><b>Question Progress</b><small id="trackerSummary">0 questions solved today</small></div>
-          <button id="trackerClose" class="tracker-close" type="button" aria-label="Close progress tracker">×</button>
-        </div>
-        <div class="tracker-tabs" role="tablist" aria-label="Progress period">
-          <button class="tracker-tab active" data-period="daily" type="button" role="tab">Daily</button>
-          <button class="tracker-tab" data-period="weekly" type="button" role="tab">Weekly</button>
-          <button class="tracker-tab" data-period="monthly" type="button" role="tab">Monthly</button>
-        </div>
-        <div class="tracker-stats">
-          <div><small>Today</small><b id="trackerToday">0</b></div>
-          <div><small>This week</small><b id="trackerWeek">0</b></div>
-          <div><small>This month</small><b id="trackerMonth">0</b></div>
-        </div>
-        <div class="tracker-chart-wrap">
-          <div class="tracker-chart-title"><b id="trackerChartTitle">Daily questions</b><span id="trackerChartTotal">0 solved</span></div>
-          <div class="tracker-legend">
-            <span><i class="tl solved"></i>Solved</span>
-            <span><i class="tl correct"></i>Correct</span>
-            <span><i class="tl wrong"></i>Wrong</span>
-          </div>
-          <div id="trackerChart" class="tracker-chart" aria-label="Solved, correct and wrong question graph"></div>
-        </div>
-        <p class="tracker-note">Each question is counted once on the day it is first answered. Accuracy = Correct ÷ Solved.</p>
-      </section>
-    </div>
-    <section class="bank-import-card">
-      <div class="bank-import-head"><div><span class="bank-kicker">QUESTION BANK BUILDER</span><h2>Add questions to your Study Hub</h2><p>Select the subject first, then paste JSON or choose a JSON file. New questions are added to that subject's existing bank.</p></div><div class="bank-cloud-pill">☁ Auto-synced</div></div>
-      <div class="bank-import-row">
-        <label class="bank-field"><span>Subject</span><select id="bankSubjectSelect"></select></label>
-        <label class="bank-file-label"><span>JSON file</span><input id="bankFileInput" type="file" accept=".json,application/json"><small>Optional — imports directly into the selected subject</small></label>
-      </div>
-      <textarea id="jsonInput" spellcheck="false"></textarea>
-      <div class="actions"><button class="btn outline" id="copySampleBtn">Copy Sample JSON</button><button class="btn outline" id="loadBtn">Validate JSON</button><button class="btn primary" id="addBankBtn">Add to Question Bank</button></div>
-      <div id="error" class="error"></div>
-      <div class="helper"><b>Supported types:</b> <code>mcq</code> · <code>multiple_statement</code> · <code>assertion_reason</code> · <code>match_following</code>. Old JSON using <code>question + options + answer</code> is also accepted automatically.</div>
-      <div id="bankImportSummary" class="bank-import-summary"></div>
-    </section>
-    <div id="cloudSyncStatus" class="helper cloud-status-hidden"><b>Cloud sync:</b> <span id="cloudSyncText">Automatic sync active</span></div>
-    <div id="examInfo" class="hidden" style="margin-top:25px"><div class="helper"><b id="infoText"></b><br>Timer and marking settings can be changed below before starting.</div><div class="actions"><button class="btn outline" id="fullscreenBtn">Enter Fullscreen</button><button class="btn primary" id="startBtn">START EXAM</button></div></div>
-  </main>
+<div class="screen" id="start">
+<main class="start">
+<div class="brand"><span class="badge">CGPSC EXAM PREPARATION</span><h1>HELLO KAUSHAL</h1><p class="sub">Structured question bank • OMR navigation • Detailed result analysis</p><div class="revision-home-card" id="revisionHomeCard"><div class="revision-home-head"><span class="revision-home-title">Revision</span><strong class="revision-count" id="revisionCount">0</strong></div><p class="revision-home-sub" id="revisionHomeSub">Wrong answers you save during tests will appear here automatically.</p><ul class="revision-focus-list" id="revisionFocusList"></ul><button class="revision-open-btn" id="revisionOpenBtn" type="button">Open Revision</button></div></div>
+<div aria-live="polite" class="study-tracker" id="studyTracker">
+<div class="study-nav-actions">
+<button aria-controls="trackerPanel" aria-expanded="false" class="tracker-toggle" id="trackerToggle" type="button">
+<span aria-hidden="true" class="tracker-icon">▥</span><span>Progress</span><strong id="trackerTodayMini">0</strong>
+</button>
+<button class="hub-home-btn" id="studyHubHomeBtn" title="Open Study Hub" type="button"><span aria-hidden="true">✦</span><span>Study Hub</span></button>
+<button class="plan-home-btn" id="studyPlanHomeBtn" title="Open daily study plan" type="button">
+<span aria-hidden="true">✓</span><span>Plan</span>
+</button>
+<button class="notes-home-btn" id="notesHomeBtn" title="Open subject notes" type="button">
+<span aria-hidden="true">▤</span><span>Notes</span>
+</button>
+<button class="quickquiz-home-btn" id="quickQuizHomeBtn" title="Start a 25-question mixed quiz" type="button">
+<span aria-hidden="true">⚡</span><span>Quick Quiz</span>
+</button>
 </div>
-
-
-
-<div id="revisionScreen" class="screen hidden" aria-label="Revision section"><div class="revision-shell"><header class="revision-header"><div><h1>Revision</h1><p>Your automatically compiled wrong answers. Review them, understand the explanation, and remove a question when you have mastered it.</p></div><div class="revision-header-actions"><button id="revisionBackBtn" class="btn outline" type="button">Back to Home</button></div></header><div class="revision-summary"><div class="revision-stat"><small>Questions to revise</small><b id="revisionTotal">0</b></div><div class="revision-stat"><small>Topics needing attention</small><b id="revisionTopicTotal">0</b></div><div class="revision-stat"><small>Most repeated topic</small><b id="revisionTopTopic">—</b></div><div class="revision-stat"><small>Last added</small><b id="revisionLastAdded">—</b></div></div><div class="revision-layout"><section class="revision-list"><div class="revision-list-head"><h2>Wrong answers</h2><span id="revisionListCount">0 saved</span></div><div id="revisionItems" class="revision-items"></div></section><aside class="revision-side"><h3>Focus topics</h3><p>Topics with the most missed questions are shown first so you can prioritize your revision time.</p><div id="revisionTopicBreakdown"></div></aside></div></div></div>
-
-
-
-<div id="notesScreen" class="screen hidden" aria-label="Subject Notes">
-  <div class="notes-dashboard">
-    <header class="notes-header">
-      <div>
-        <span class="notes-kicker">PERSONAL KNOWLEDGE BASE</span>
-        <h1>Subject Notes</h1>
-        <p>Create and maintain HTML notes separately for every subject. Notes are automatically saved and synced across your devices.</p>
-      </div>
-      <div class="notes-header-actions">
-        <span id="notesSyncBadge" class="notes-sync-badge">☁ Auto-synced</span>
-        <button id="notesBackBtn" class="btn outline" type="button">Back to Home</button>
-      </div>
-    </header>
-
-    <section class="notes-workspace">
-      <aside class="notes-subject-panel">
-        <div class="notes-panel-head">
-          <div><span>SUBJECTS</span><h2>Your notes</h2></div>
-          <b id="notesSubjectCount">0/0</b>
-        </div>
-        <div id="notesSubjectList" class="notes-subject-list"></div>
-      </aside>
-
-      <main class="notes-editor-panel">
-        <div class="notes-editor-head">
-          <div>
-            <span class="notes-current-label">CURRENT SUBJECT</span>
-            <h2 id="notesCurrentSubject">Select a subject</h2>
-            <p id="notesCurrentStatus">Choose a subject from the left to create or edit its notes.</p>
-          </div>
-          <div class="notes-editor-actions">
-            <button id="notesPreviewBtn" class="btn outline" type="button">Preview</button>
-            <button id="notesSaveBtn" class="btn primary" type="button">Save Notes</button>
-          </div>
-        </div>
-
-        <div class="notes-title-row">
-          <label>Note title
-            <input id="notesTitleInput" type="text" maxlength="160" placeholder="e.g. Fundamental Rights — Quick Revision">
-          </label>
-        </div>
-
-        <div class="notes-format-strip">
-          <span>HTML editor</span>
-          <span>Use headings, lists, tables, links, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, etc.</span>
-        </div>
-        <textarea id="notesHtmlInput" class="notes-html-input" spellcheck="false" placeholder="<h2>Topic</h2>
-<p>Write your notes here...</p>
-
-<ul>
-  <li>Key point</li>
-  <li>Important fact</li>
-</ul>"></textarea>
-
-        <div id="notesPreviewPane" class="notes-preview-pane hidden">
-          <div class="notes-preview-head"><span>LIVE PREVIEW</span><button id="notesClosePreviewBtn" type="button">Close</button></div>
-          <article id="notesPreviewContent" class="notes-content"></article>
-        </div>
-
-        <div class="notes-editor-footer">
-          <span id="notesLastSaved">Not saved yet</span>
-        </div>
-      </main>
-    </section>
-  </div>
+<section aria-label="Question solving progress" class="tracker-panel hidden" id="trackerPanel">
+<div class="tracker-panel-head">
+<div><b>Question Progress</b><small id="trackerSummary">0 questions solved today</small></div>
+<button aria-label="Close progress tracker" class="tracker-close" id="trackerClose" type="button">×</button>
 </div>
-
-
-<div id="noteReaderScreen" class="screen hidden" aria-label="Saved HTML Note">
-  <div class="notes-reader-shell">
-    <header class="notes-reader-header">
-      <button class="notes-back-btn" id="noteReaderBackBtn" type="button" onclick="event.preventDefault();event.stopPropagation();notesCloseReader();return false;">← Back to Notes</button>
-      <div>
-        <div class="eyebrow">SAVED NOTE</div>
-        <h1 id="noteReaderTitle">Note</h1>
-        <div id="noteReaderSubject" class="notes-reader-subject"></div>
-      </div>
-      <button class="notes-reader-edit" id="noteReaderEditBtn" type="button" onclick="event.preventDefault();event.stopPropagation();notesEditOpenNote();return false;">Edit Note</button>
-    </header>
-    <main class="notes-reader-content">
-      <article id="noteReaderContent" class="saved-note-document"></article>
-    </main>
-  </div>
+<div aria-label="Progress period" class="tracker-tabs" role="tablist">
+<button class="tracker-tab active" data-period="daily" role="tab" type="button">Daily</button>
+<button class="tracker-tab" data-period="weekly" role="tab" type="button">Weekly</button>
+<button class="tracker-tab" data-period="monthly" role="tab" type="button">Monthly</button>
 </div>
-
-<div id="planScreen" class="screen hidden" aria-label="Daily study plan">
-  <div class="plan-dashboard">
-    <header class="plan-header">
-      <div>
-        <span class="plan-kicker">DAILY STUDY PLAN</span>
-        <h1>What do you need to study?</h1>
-        <p>Create a simple topic to-do list for each day and tick topics off as you complete them.</p>
-      </div>
-      <div class="plan-header-actions">
-        <button id="planBackBtn" class="btn outline" type="button">Back to Home</button>
-      </div>
-    </header>
-
-    <section class="plan-day-nav">
-      <button id="planPrevDay" class="plan-day-arrow" type="button" aria-label="Previous day">‹</button>
-      <div class="plan-selected-date">
-        <small id="planDateLabel">Today</small>
-        <strong id="planDateFull">—</strong>
-        <span id="planDayCount">0 topics planned</span>
-      </div>
-      <button id="planNextDay" class="plan-day-arrow" type="button" aria-label="Next day">›</button>
-      <button id="planTodayBtn" class="plan-today-btn" type="button">Today</button>
-    </section>
-
-    <div class="plan-layout">
-      <main>
-        <section class="plan-add-card">
-          <div class="plan-add-title">
-            <div class="plan-add-icon">+</div>
-            <div><h2>Add a topic</h2><p>Add what you want to study on this day.</p></div>
-          </div>
-          <div class="plan-add-row">
-            <input id="planTopicInput" type="text" maxlength="140" placeholder="e.g. Fundamental Rights" autocomplete="off">
-            <select id="planCategory" aria-label="Subject category">
-              <option value="">Select subject</option>
-              <option value="Chhattisgarh General Studies">Chhattisgarh General Studies</option>
-              <option value="Hindi">Hindi</option>
-              <option value="English">English</option>
-              <option value="Chhattisgarhi">Chhattisgarhi</option>
-              <option value="Reasoning & Logical Ability">Reasoning & Logical Ability</option>
-              <option value="Mental Ability">Mental Ability</option>
-              <option value="Mathematics & Statistics">Mathematics & Statistics</option>
-              <option value="Chemistry">Chemistry</option>
-              <option value="Physics">Physics</option>
-              <option value="Biology">Biology</option>
-              <option value="Technology">Technology</option>
-              <option value="Environment">Environment</option>
-              <option value="Agriculture">Agriculture</option>
-              <option value="Forestry">Forestry</option>
-            </select>
-            <select id="planPriority" aria-label="Topic priority">
-              <option value="normal">Normal priority</option>
-              <option value="high">High priority</option>
-              <option value="low">Low priority</option>
-            </select>
-            <button id="planAddBtn" class="btn primary" type="button">Add topic</button>
-          </div>
-        </section>
-
-        <section class="plan-list-card">
-          <div class="plan-list-head">
-            <div><h2 id="planListTitle">Today's topics</h2><p>Check a topic when you have completed it.</p></div>
-            <button id="planClearCompleted" class="plan-text-btn" type="button">Clear completed</button>
-          </div>
-          <div id="planTopicList" class="plan-topic-list"></div>
-        </section>
-      </main>
-
-      <aside class="plan-sidebar">
-        <section class="plan-summary-card">
-          <span class="plan-side-label">DAY PROGRESS</span>
-          <div class="plan-progress-number"><b id="planDoneCount">0</b><span>/ <span id="planTotalCount">0</span></span></div>
-          <div class="plan-progress-track"><span id="planProgressBar"></span></div>
-          <p id="planProgressText">Nothing planned yet.</p>
-        </section>
-
-        <section class="plan-calendar-card">
-          <div class="plan-side-head"><h3>Upcoming</h3><span>7 days</span></div>
-          <div id="planUpcomingList" class="plan-upcoming-list"></div>
-        </section>
-
-        <section class="plan-calendar-card">
-          <div class="plan-side-head"><h3>Quick stats</h3></div>
-          <div class="plan-mini-stats">
-            <div><b id="planWeekTopics">0</b><span>This week</span></div>
-            <div><b id="planWeekDone">0</b><span>Completed</span></div>
-            <div><b id="planOpenCount">0</b><span>Open topics</span></div>
-          </div>
-        </section>
-      </aside>
-    </div>
-  </div>
+<div class="tracker-stats">
+<div><small>Today</small><b id="trackerToday">0</b></div>
+<div><small>This week</small><b id="trackerWeek">0</b></div>
+<div><small>This month</small><b id="trackerMonth">0</b></div>
 </div>
-
-
-<div id="quickQuizScreen" class="screen hidden" aria-label="Quick Quiz">
-  <div class="quickquiz-dashboard">
-    <header class="quickquiz-header">
-      <div>
-        <span class="quickquiz-kicker">RAPID MIXED PRACTICE</span>
-        <h1>Quick Quiz</h1>
-        <p>25 randomly selected questions from your subject-wise question bank.</p>
-      </div>
-      <div class="quickquiz-actions">
-        <button id="quickQuizRefreshBtn" class="btn outline" type="button">New Random Set</button>
-        <button id="quickQuizBackBtn" class="btn primary" type="button">Back to Home</button>
-      </div>
-    </header>
-
-    <section class="quickquiz-hero">
-      <div class="quickquiz-hero-icon">⚡</div>
-      <div>
-        <span>25 QUESTIONS • MIXED SUBJECTS</span>
-        <h2>Test your overall CGPSC readiness</h2>
-        <p id="quickQuizStatus">Generating a random set from your question bank…</p>
-      </div>
-      <button id="quickQuizStartBtn" class="quickquiz-start-btn" type="button">Start Quick Quiz</button>
-    </section>
-
-    <section class="quickquiz-stats">
-      <div><small>Questions</small><strong id="quickQuizCount">0 / 25</strong></div>
-      <div><small>Subjects represented</small><strong id="quickQuizSubjects">0</strong></div>
-      <div><small>Question bank</small><strong id="quickQuizBankTotal">0</strong><span>available questions</span></div>
-      <div><small>Selection</small><strong>Random</strong><span>fresh on every new set</span></div>
-    </section>
-
-    <section class="quickquiz-list-card">
-      <div class="quickquiz-list-head">
-        <div><span>QUESTION PREVIEW</span><h2>Today's random set</h2></div>
-        <span id="quickQuizSubjectMix" class="quickquiz-mix-badge">Mixed subjects</span>
-      </div>
-      <div id="quickQuizQuestionList" class="quickquiz-question-list"></div>
-    </section>
-  </div>
+<div class="tracker-chart-wrap">
+<div class="tracker-chart-title"><b id="trackerChartTitle">Daily questions</b><span id="trackerChartTotal">0 solved</span></div>
+<div class="tracker-legend">
+<span><i class="tl solved"></i>Solved</span>
+<span><i class="tl correct"></i>Correct</span>
+<span><i class="tl wrong"></i>Wrong</span>
 </div>
-
-<div id="studyHubScreen" class="screen hidden" aria-label="Study Hub">
-  <div class="studyhub-dashboard">
-    <header class="studyhub-header">
-      <div><span class="studyhub-kicker">STUDY COMMAND CENTER</span><h1>Study Hub</h1><p>Your subject-wise question banks, preparation coverage, and practice entry point in one place.</p></div>
-      <div class="studyhub-actions"><button id="studyHubRefreshBtn" class="btn outline" type="button">Refresh</button><button id="studyHubBackBtn" class="btn primary" type="button">Back to Home</button></div>
-    </header>
-    <section class="studyhub-overview">
-      <div><small>Question bank coverage</small><strong id="hubTotalQuestions">0</strong><span>questions across all subjects</span></div>
-      <div><small>Subjects with questions</small><strong id="hubSubjectCount">0</strong><span>ready for practice</span></div>
-      <div><small>Largest bank</small><strong id="hubLargestBank">—</strong><span id="hubLargestBankCount">0 questions</span></div>
-      <div><small>Last updated</small><strong id="hubLastUpdated">—</strong><span>automatically saved</span></div>
-    </section>
-    <section class="studyhub-bank-section">
-      <div class="studyhub-section-head"><div><h2>Subject-wise question banks</h2><p>Every JSON set you add is kept under its selected subject and synced with your study data.</p></div><button id="hubImportBtn" class="hub-add-btn" type="button">＋ Add Question Bank</button></div>
-      <div id="hubSubjectGrid" class="hub-subject-grid"></div>
-    </section>
-  </div>
+<div aria-label="Solved, correct and wrong question graph" class="tracker-chart" id="trackerChart"></div>
 </div>
-
-<div id="progressScreen" class="screen hidden" aria-label="Progress dashboard">
-  <div class="progress-dashboard">
-    <header class="progress-dashboard-header">
-      <div>
-        <span class="progress-kicker">STUDY ANALYTICS</span>
-        <h1>Your Progress</h1>
-        <p>See your question-solving activity, accuracy, consistency, and the areas that need the most attention.</p>
-      </div>
-      <div class="progress-header-actions">
-        <button id="progressRefreshBtn" class="btn outline" type="button">Refresh</button>
-        <button id="progressBackBtn" class="btn primary" type="button">Back to Home</button>
-      </div>
-    </header>
-
-    <section class="progress-hero">
-      <div class="progress-hero-main">
-        <div class="progress-hero-label">Overall study progress</div>
-        <div class="progress-hero-number" id="progressHeroSolved">0</div>
-        <div class="progress-hero-caption">questions solved</div>
-        <div class="progress-hero-bar"><span id="progressHeroBar"></span></div>
-        <div class="progress-hero-foot">
-          <span id="progressHeroAccuracy">0% accuracy</span>
-          <span id="progressHeroAttempted">0 attempted</span>
-        </div>
-      </div>
-      <div class="progress-hero-ring" aria-label="Accuracy">
-        <div class="progress-ring" id="progressAccuracyRing"><span id="progressRingValue">0%</span></div>
-        <small>Accuracy</small>
-      </div>
-    </section>
-
-    <section class="progress-section-card progress-five-day">
-      <div class="progress-section-head compact">
-        <div><h2>Overall study progress — past 5 days</h2><p>A compact view of your recent study activity, showing how consistently you have been solving questions.</p></div>
-        <div class="five-day-summary"><strong id="progressFiveDaySolved">0</strong><span>questions · <b id="progressFiveDayAccuracy">0%</b> accuracy · <b id="progressFiveDayActive">0</b>/5 active days</span></div>
-      </div>
-      <div id="progressFiveDayGrid" class="progress-five-day-grid"></div>
-    </section>
-
-    <section class="progress-stat-grid">
-      <div class="progress-stat-card"><span class="ps-icon">✓</span><div><small>Correct</small><b id="progressCorrect">0</b><em id="progressCorrectRate">0% of solved</em></div></div>
-      <div class="progress-stat-card"><span class="ps-icon wrong">×</span><div><small>Wrong</small><b id="progressWrong">0</b><em id="progressWrongRate">0% of solved</em></div></div>
-      <div class="progress-stat-card"><span class="ps-icon">↗</span><div><small>This week</small><b id="progressWeekSolved">0</b><em id="progressWeekDelta">Questions solved</em></div></div>
-      <div class="progress-stat-card"><span class="ps-icon">◷</span><div><small>Current streak</small><b id="progressStreak">0 days</b><em id="progressStreakHint">Keep solving daily</em></div></div>
-      <div class="progress-stat-card"><span class="ps-icon">!</span><div><small>Revision queue</small><b id="progressRevisionCount">0</b><em id="progressRevisionHint">Wrong answers to revisit</em></div></div>
-    </section>
-
-    <section class="progress-section-card progress-activity">
-      <div class="progress-section-head">
-        <div><h2>Study activity</h2><p>Questions solved over time, with correct and wrong answers separated.</p></div>
-        <div class="progress-period-tabs">
-          <button class="progress-period active" data-period="daily" type="button">14 days</button>
-          <button class="progress-period" data-period="weekly" type="button">9 weeks</button>
-          <button class="progress-period" data-period="monthly" type="button">6 months</button>
-        </div>
-      </div>
-      <div class="progress-chart-meta"><b id="progressChartTitle">Last 14 days</b><span id="progressChartTotal">0 solved</span></div>
-      <div id="progressBigChart" class="progress-big-chart"></div>
-      <div class="progress-chart-legend">
-        <span><i class="pc-dot solved"></i>Solved</span>
-        <span><i class="pc-dot correct"></i>Correct</span>
-        <span><i class="pc-dot wrong"></i>Wrong</span>
-      </div>
-    </section>
-
-    <div class="progress-two-col">
-      <section class="progress-section-card">
-        <div class="progress-section-head compact">
-          <div><h2>Performance overview</h2><p>How your recent solving is translating into accuracy.</p></div>
-        </div>
-        <div class="progress-performance-list" id="progressPerformanceList"></div>
-      </section>
-
-      <section class="progress-section-card">
-        <div class="progress-section-head compact">
-          <div><h2>Consistency</h2><p>Your active study days and recent routine.</p></div>
-        </div>
-        <div class="consistency-calendar-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
-        <div id="progressConsistencyGrid" class="consistency-grid"></div>
-        <div class="consistency-summary" id="progressConsistencySummary">0 active days</div>
-      </section>
-    </div>
-
-    <div class="progress-two-col">
-      <section class="progress-section-card">
-        <div class="progress-section-head compact">
-          <div><h2>Topic performance</h2><p>Topics with enough tracked answers are shown with their accuracy and volume.</p></div>
-        </div>
-        <div id="progressTopicList" class="progress-topic-list"></div>
-      </section>
-
-      <section class="progress-section-card">
-        <div class="progress-section-head compact">
-          <div><h2>Needs attention</h2><p>Use this alongside Revision to decide what to revisit next.</p></div>
-        </div>
-        <div id="progressAttentionList" class="progress-attention-list"></div>
-        <button id="progressOpenRevisionBtn" class="progress-inline-btn" type="button">Open Revision →</button>
-      </section>
-    </div>
-
-    <section class="progress-section-card progress-recent">
-      <div class="progress-section-head compact">
-        <div><h2>Recent activity</h2><p>Your latest tracked study days.</p></div>
-      </div>
-      <div id="progressRecentDays" class="progress-recent-days"></div>
-    </section>
-  </div>
+<p class="tracker-note">Each question is counted once on the day it is first answered. Accuracy = Correct ÷ Solved.</p>
+</section>
 </div>
+<section class="bank-import-card">
+<div class="bank-import-head"><div><span class="bank-kicker">QUESTION BANK BUILDER</span><h2>Add questions to your Study Hub</h2><p>Select the subject first, then paste JSON or choose a JSON file. New questions are added to that subject's existing bank.</p></div><div class="bank-cloud-pill">☁ Auto-synced</div></div>
+<div class="bank-import-row">
+<label class="bank-field"><span>Subject</span><select id="bankSubjectSelect"></select></label>
+<label class="bank-file-label"><span>JSON file</span><input accept=".json,application/json" id="bankFileInput" type="file"/><small>Optional — imports directly into the selected subject</small></label>
+</div>
+<textarea id="jsonInput" spellcheck="false"></textarea>
+<div class="actions"><button class="btn outline" id="copySampleBtn">Copy Sample JSON</button><button class="btn outline" id="loadBtn">Validate JSON</button><button class="btn primary" id="addBankBtn">Add to Question Bank</button></div>
+<div class="error" id="error"></div>
+<div class="helper"><b>Supported types:</b> <code>mcq</code> · <code>multiple_statement</code> · <code>assertion_reason</code> · <code>match_following</code>. Old JSON using <code>question + options + answer</code> is also accepted automatically.</div>
+<div class="bank-import-summary" id="bankImportSummary"></div>
+</section>
+<div class="helper cloud-status-hidden" id="cloudSyncStatus"><b>Cloud sync:</b> <span id="cloudSyncText">Automatic sync active</span></div>
+<div class="hidden" id="examInfo" style="margin-top:25px"><div class="helper"><b id="infoText"></b><br/>Timer and marking settings can be changed below before starting.</div><div class="actions"><button class="btn outline" id="fullscreenBtn">Enter Fullscreen</button><button class="btn primary" id="startBtn">START EXAM</button></div></div>
+</main>
+</div>
+<div aria-label="Revision section" class="screen hidden" id="revisionScreen"><div class="revision-shell"><header class="revision-header"><div><h1>Revision</h1><p>Your automatically compiled wrong answers. Review them, understand the explanation, and remove a question when you have mastered it.</p></div><div class="revision-header-actions"><button class="btn outline" id="revisionBackBtn" type="button">Back to Home</button></div></header><div class="revision-summary"><div class="revision-stat"><small>Questions to revise</small><b id="revisionTotal">0</b></div><div class="revision-stat"><small>Topics needing attention</small><b id="revisionTopicTotal">0</b></div><div class="revision-stat"><small>Most repeated topic</small><b id="revisionTopTopic">—</b></div><div class="revision-stat"><small>Last added</small><b id="revisionLastAdded">—</b></div></div><div class="revision-layout"><section class="revision-list"><div class="revision-list-head"><h2>Wrong answers</h2><span id="revisionListCount">0 saved</span></div><div class="revision-items" id="revisionItems"></div></section><aside class="revision-side"><h3>Focus topics</h3><p>Topics with the most missed questions are shown first so you can prioritize your revision time.</p><div id="revisionTopicBreakdown"></div></aside></div></div></div>
+<div aria-label="Subject Notes" class="screen hidden" id="notesScreen">
+<div class="notes-dashboard">
+<header class="notes-header">
+<div>
+<span class="notes-kicker">PERSONAL KNOWLEDGE BASE</span>
+<h1>Subject Notes</h1>
+<p>Create and maintain HTML notes separately for every subject. Notes are automatically saved and synced across your devices.</p>
+</div>
+<div class="notes-header-actions">
+<span class="notes-sync-badge" id="notesSyncBadge">☁ Auto-synced</span>
+<button class="btn outline" id="notesBackBtn" type="button">Back to Home</button>
+</div>
+</header>
+<section class="notes-workspace">
+<aside class="notes-subject-panel">
+<div class="notes-panel-head">
+<div><span>SUBJECTS</span><h2>Your notes</h2></div>
+<b id="notesSubjectCount">0/0</b>
+</div>
+<div class="notes-subject-list" id="notesSubjectList"></div>
+</aside>
+<main class="notes-editor-panel">
+<div class="notes-editor-head">
+<div>
+<span class="notes-current-label">CURRENT SUBJECT</span>
+<h2 id="notesCurrentSubject">Select a subject</h2>
+<p id="notesCurrentStatus">Choose a subject from the left to create or edit its notes.</p>
+</div>
+<div class="notes-editor-actions">
+<button class="btn outline" id="notesPreviewBtn" type="button">Preview</button>
+<button class="btn primary" id="notesSaveBtn" type="button">Save Notes</button>
+</div>
+</div>
+<div class="notes-title-row">
+<label>Note title
+            <input id="notesTitleInput" maxlength="160" placeholder="e.g. Fundamental Rights — Quick Revision" type="text"/>
+</label>
+</div>
+<div class="notes-format-strip">
+<span>HTML editor</span>
+<span>Use headings, lists, tables, links, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, etc.</span>
+</div>
+<textarea class="notes-html-input" id="notesHtmlInput" placeholder="&lt;h2&gt;Topic&lt;/h2&gt;
+&lt;p&gt;Write your notes here...&lt;/p&gt;
 
-<div id="exam" class="screen hidden">
+&lt;ul&gt;
+  &lt;li&gt;Key point&lt;/li&gt;
+  &lt;li&gt;Important fact&lt;/li&gt;
+&lt;/ul&gt;" spellcheck="false"></textarea>
+<div class="notes-preview-pane hidden" id="notesPreviewPane">
+<div class="notes-preview-head"><span>LIVE PREVIEW</span><button id="notesClosePreviewBtn" type="button">Close</button></div>
+<article class="notes-content" id="notesPreviewContent"></article>
+</div>
+<div class="notes-editor-footer">
+<span id="notesLastSaved">Not saved yet</span>
+</div>
+</main>
+</section>
+</div>
+</div>
+<div aria-label="Saved HTML Note" class="screen hidden" id="noteReaderScreen">
+<div class="notes-reader-shell">
+<header class="notes-reader-header">
+<button class="notes-back-btn" id="noteReaderBackBtn" onclick="event.preventDefault();event.stopPropagation();notesCloseReader();return false;" type="button">← Back to Notes</button>
+<div>
+<div class="eyebrow">SAVED NOTE</div>
+<h1 id="noteReaderTitle">Note</h1>
+<div class="notes-reader-subject" id="noteReaderSubject"></div>
+</div>
+<button class="notes-reader-edit" id="noteReaderEditBtn" onclick="event.preventDefault();event.stopPropagation();notesEditOpenNote();return false;" type="button">Edit Note</button>
+</header>
+<main class="notes-reader-content">
+<article class="saved-note-document" id="noteReaderContent"></article>
+</main>
+</div>
+</div>
+<div aria-label="Daily study plan" class="screen hidden" id="planScreen">
+<div class="plan-dashboard">
+<header class="plan-header">
+<div>
+<span class="plan-kicker">DAILY STUDY PLAN</span>
+<h1>What do you need to study?</h1>
+<p>Create a simple topic to-do list for each day and tick topics off as you complete them.</p>
+</div>
+<div class="plan-header-actions">
+<button class="btn outline" id="planBackBtn" type="button">Back to Home</button>
+</div>
+</header>
+<section class="plan-day-nav">
+<button aria-label="Previous day" class="plan-day-arrow" id="planPrevDay" type="button">‹</button>
+<div class="plan-selected-date">
+<small id="planDateLabel">Today</small>
+<strong id="planDateFull">—</strong>
+<span id="planDayCount">0 topics planned</span>
+</div>
+<button aria-label="Next day" class="plan-day-arrow" id="planNextDay" type="button">›</button>
+<button class="plan-today-btn" id="planTodayBtn" type="button">Today</button>
+</section>
+<div class="plan-layout">
+<main>
+<section class="plan-add-card">
+<div class="plan-add-title">
+<div class="plan-add-icon">+</div>
+<div><h2>Add a topic</h2><p>Add what you want to study on this day.</p></div>
+</div>
+<div class="plan-add-row">
+<input autocomplete="off" id="planTopicInput" maxlength="140" placeholder="e.g. Fundamental Rights" type="text"/>
+<select aria-label="Subject category" id="planCategory">
+<option value="">Select subject</option>
+<option value="Chhattisgarh General Studies">Chhattisgarh General Studies</option>
+<option value="Hindi">Hindi</option>
+<option value="English">English</option>
+<option value="Chhattisgarhi">Chhattisgarhi</option>
+<option value="Reasoning &amp; Logical Ability">Reasoning &amp; Logical Ability</option>
+<option value="Mental Ability">Mental Ability</option>
+<option value="Mathematics &amp; Statistics">Mathematics &amp; Statistics</option>
+<option value="Chemistry">Chemistry</option>
+<option value="Physics">Physics</option>
+<option value="Biology">Biology</option>
+<option value="Technology">Technology</option>
+<option value="Environment">Environment</option>
+<option value="Agriculture">Agriculture</option>
+<option value="Forestry">Forestry</option>
+</select>
+<select aria-label="Topic priority" id="planPriority">
+<option value="normal">Normal priority</option>
+<option value="high">High priority</option>
+<option value="low">Low priority</option>
+</select>
+<button class="btn primary" id="planAddBtn" type="button">Add topic</button>
+</div>
+</section>
+<section class="plan-list-card">
+<div class="plan-list-head">
+<div><h2 id="planListTitle">Today's topics</h2><p>Check a topic when you have completed it.</p></div>
+<button class="plan-text-btn" id="planClearCompleted" type="button">Clear completed</button>
+</div>
+<div class="plan-topic-list" id="planTopicList"></div>
+</section>
+</main>
+<aside class="plan-sidebar">
+<section class="plan-summary-card">
+<span class="plan-side-label">DAY PROGRESS</span>
+<div class="plan-progress-number"><b id="planDoneCount">0</b><span>/ <span id="planTotalCount">0</span></span></div>
+<div class="plan-progress-track"><span id="planProgressBar"></span></div>
+<p id="planProgressText">Nothing planned yet.</p>
+</section>
+<section class="plan-calendar-card">
+<div class="plan-side-head"><h3>Upcoming</h3><span>7 days</span></div>
+<div class="plan-upcoming-list" id="planUpcomingList"></div>
+</section>
+<section class="plan-calendar-card">
+<div class="plan-side-head"><h3>Quick stats</h3></div>
+<div class="plan-mini-stats">
+<div><b id="planWeekTopics">0</b><span>This week</span></div>
+<div><b id="planWeekDone">0</b><span>Completed</span></div>
+<div><b id="planOpenCount">0</b><span>Open topics</span></div>
+</div>
+</section>
+</aside>
+</div>
+</div>
+</div>
+<div aria-label="Quick Quiz" class="screen hidden" id="quickQuizScreen">
+<div class="quickquiz-dashboard">
+<header class="quickquiz-header">
+<div>
+<span class="quickquiz-kicker">RAPID MIXED PRACTICE</span>
+<h1>Quick Quiz</h1>
+<p>25 randomly selected questions from your subject-wise question bank.</p>
+</div>
+<div class="quickquiz-actions">
+<button class="btn outline" id="quickQuizRefreshBtn" type="button">New Random Set</button>
+<button class="btn primary" id="quickQuizBackBtn" type="button">Back to Home</button>
+</div>
+</header>
+<section class="quickquiz-hero">
+<div class="quickquiz-hero-icon">⚡</div>
+<div>
+<span>25 QUESTIONS • MIXED SUBJECTS</span>
+<h2>Test your overall CGPSC readiness</h2>
+<p id="quickQuizStatus">Generating a random set from your question bank…</p>
+</div>
+<button class="quickquiz-start-btn" id="quickQuizStartBtn" type="button">Start Quick Quiz</button>
+</section>
+<section class="quickquiz-stats">
+<div><small>Questions</small><strong id="quickQuizCount">0 / 25</strong></div>
+<div><small>Subjects represented</small><strong id="quickQuizSubjects">0</strong></div>
+<div><small>Question bank</small><strong id="quickQuizBankTotal">0</strong><span>available questions</span></div>
+<div><small>Selection</small><strong>Random</strong><span>fresh on every new set</span></div>
+</section>
+<section class="quickquiz-list-card">
+<div class="quickquiz-list-head">
+<div><span>QUESTION PREVIEW</span><h2>Today's random set</h2></div>
+<span class="quickquiz-mix-badge" id="quickQuizSubjectMix">Mixed subjects</span>
+</div>
+<div class="quickquiz-question-list" id="quickQuizQuestionList"></div>
+</section>
+</div>
+</div>
+<div aria-label="Study Hub" class="screen hidden" id="studyHubScreen">
+<div class="studyhub-dashboard">
+<header class="studyhub-header">
+<div><span class="studyhub-kicker">STUDY COMMAND CENTER</span><h1>Study Hub</h1><p>Your subject-wise question banks, preparation coverage, and practice entry point in one place.</p></div>
+<div class="studyhub-actions"><button class="btn outline" id="studyHubRefreshBtn" type="button">Refresh</button><button class="btn primary" id="studyHubBackBtn" type="button">Back to Home</button></div>
+</header>
+<section class="studyhub-overview">
+<div><small>Question bank coverage</small><strong id="hubTotalQuestions">0</strong><span>questions across all subjects</span></div>
+<div><small>Subjects with questions</small><strong id="hubSubjectCount">0</strong><span>ready for practice</span></div>
+<div><small>Largest bank</small><strong id="hubLargestBank">—</strong><span id="hubLargestBankCount">0 questions</span></div>
+<div><small>Last updated</small><strong id="hubLastUpdated">—</strong><span>automatically saved</span></div>
+</section>
+<section class="studyhub-bank-section">
+<div class="studyhub-section-head"><div><h2>Subject-wise question banks</h2><p>Every JSON set you add is kept under its selected subject and synced with your study data.</p></div><button class="hub-add-btn" id="hubImportBtn" type="button">＋ Add Question Bank</button></div>
+<div class="hub-subject-grid" id="hubSubjectGrid"></div>
+</section>
+</div>
+</div>
+<div aria-label="Progress dashboard" class="screen hidden" id="progressScreen">
+<div class="progress-dashboard">
+<header class="progress-dashboard-header">
+<div>
+<span class="progress-kicker">STUDY ANALYTICS</span>
+<h1>Your Progress</h1>
+<p>See your question-solving activity, accuracy, consistency, and the areas that need the most attention.</p>
+</div>
+<div class="progress-header-actions">
+<button class="btn outline" id="progressRefreshBtn" type="button">Refresh</button>
+<button class="btn primary" id="progressBackBtn" type="button">Back to Home</button>
+</div>
+</header>
+<section class="progress-hero">
+<div class="progress-hero-main">
+<div class="progress-hero-label">Overall study progress</div>
+<div class="progress-hero-number" id="progressHeroSolved">0</div>
+<div class="progress-hero-caption">questions solved</div>
+<div class="progress-hero-bar"><span id="progressHeroBar"></span></div>
+<div class="progress-hero-foot">
+<span id="progressHeroAccuracy">0% accuracy</span>
+<span id="progressHeroAttempted">0 attempted</span>
+</div>
+</div>
+<div aria-label="Accuracy" class="progress-hero-ring">
+<div class="progress-ring" id="progressAccuracyRing"><span id="progressRingValue">0%</span></div>
+<small>Accuracy</small>
+</div>
+</section>
+<section class="progress-section-card progress-five-day">
+<div class="progress-section-head compact">
+<div><h2>Overall study progress — past 5 days</h2><p>A compact view of your recent study activity, showing how consistently you have been solving questions.</p></div>
+<div class="five-day-summary"><strong id="progressFiveDaySolved">0</strong><span>questions · <b id="progressFiveDayAccuracy">0%</b> accuracy · <b id="progressFiveDayActive">0</b>/5 active days</span></div>
+</div>
+<div class="progress-five-day-grid" id="progressFiveDayGrid"></div>
+</section>
+<section class="progress-stat-grid">
+<div class="progress-stat-card"><span class="ps-icon">✓</span><div><small>Correct</small><b id="progressCorrect">0</b><em id="progressCorrectRate">0% of solved</em></div></div>
+<div class="progress-stat-card"><span class="ps-icon wrong">×</span><div><small>Wrong</small><b id="progressWrong">0</b><em id="progressWrongRate">0% of solved</em></div></div>
+<div class="progress-stat-card"><span class="ps-icon">↗</span><div><small>This week</small><b id="progressWeekSolved">0</b><em id="progressWeekDelta">Questions solved</em></div></div>
+<div class="progress-stat-card"><span class="ps-icon">◷</span><div><small>Current streak</small><b id="progressStreak">0 days</b><em id="progressStreakHint">Keep solving daily</em></div></div>
+<div class="progress-stat-card"><span class="ps-icon">!</span><div><small>Revision queue</small><b id="progressRevisionCount">0</b><em id="progressRevisionHint">Wrong answers to revisit</em></div></div>
+</section>
+<section class="progress-section-card progress-activity">
+<div class="progress-section-head">
+<div><h2>Study activity</h2><p>Questions solved over time, with correct and wrong answers separated.</p></div>
+<div class="progress-period-tabs">
+<button class="progress-period active" data-period="daily" type="button">14 days</button>
+<button class="progress-period" data-period="weekly" type="button">9 weeks</button>
+<button class="progress-period" data-period="monthly" type="button">6 months</button>
+</div>
+</div>
+<div class="progress-chart-meta"><b id="progressChartTitle">Last 14 days</b><span id="progressChartTotal">0 solved</span></div>
+<div class="progress-big-chart" id="progressBigChart"></div>
+<div class="progress-chart-legend">
+<span><i class="pc-dot solved"></i>Solved</span>
+<span><i class="pc-dot correct"></i>Correct</span>
+<span><i class="pc-dot wrong"></i>Wrong</span>
+</div>
+</section>
+<div class="progress-two-col">
+<section class="progress-section-card">
+<div class="progress-section-head compact">
+<div><h2>Performance overview</h2><p>How your recent solving is translating into accuracy.</p></div>
+</div>
+<div class="progress-performance-list" id="progressPerformanceList"></div>
+</section>
+<section class="progress-section-card">
+<div class="progress-section-head compact">
+<div><h2>Consistency</h2><p>Your active study days and recent routine.</p></div>
+</div>
+<div class="consistency-calendar-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+<div class="consistency-grid" id="progressConsistencyGrid"></div>
+<div class="consistency-summary" id="progressConsistencySummary">0 active days</div>
+</section>
+</div>
+<div class="progress-two-col">
+<section class="progress-section-card">
+<div class="progress-section-head compact">
+<div><h2>Topic performance</h2><p>Topics with enough tracked answers are shown with their accuracy and volume.</p></div>
+</div>
+<div class="progress-topic-list" id="progressTopicList"></div>
+</section>
+<section class="progress-section-card">
+<div class="progress-section-head compact">
+<div><h2>Needs attention</h2><p>Use this alongside Revision to decide what to revisit next.</p></div>
+</div>
+<div class="progress-attention-list" id="progressAttentionList"></div>
+<button class="progress-inline-btn" id="progressOpenRevisionBtn" type="button">Open Revision →</button>
+</section>
+</div>
+<section class="progress-section-card progress-recent">
+<div class="progress-section-head compact">
+<div><h2>Recent activity</h2><p>Your latest tracked study days.</p></div>
+</div>
+<div class="progress-recent-days" id="progressRecentDays"></div>
+</section>
+</div>
+</div>
+<div class="screen hidden" id="exam">
 <header class="exam-head">
-  <div class="head-left"><b>CGPSC Mock Test</b><span>Structured Question Engine</span></div>
-  <div class="head-center">Question <span id="currentNo">1</span> of <span id="totalNo">0</span></div>
-  <div class="exam-actions">
-    <div class="display-menu-wrap">
-      <button class="display-menu-btn" id="displayMenuBtn" type="button" aria-expanded="false" aria-controls="displayMenu">View</button>
-      <div id="displayMenu" class="display-menu hidden">
-        <div class="display-menu-title">Screen Mode</div>
-        <div class="display-mode-grid">
-          <button class="theme-btn active" id="dayThemeBtn" type="button">Day</button>
-          <button class="theme-btn" id="comfortThemeBtn" type="button">Comfort</button>
-          <button class="theme-btn" id="darkThemeBtn" type="button">Dark</button>
-          <button class="focus-btn" id="focusBtn" type="button">Focus</button>
-        </div>
-      </div>
-    </div>
-    <div id="timer" class="timer">00:00:00</div>
-    <button class="btn light" id="submitTop" type="button">Submit</button>
-    <button class="palette-top-btn" id="paletteTopBtn" type="button" aria-label="Open question palette" aria-expanded="false">Palette</button>
-  </div>
-  <div class="progress-track" aria-label="Question progress"><div id="progress" class="progress"></div></div>
+<div class="head-left"><b>CGPSC Mock Test</b><span>Structured Question Engine</span></div>
+<div class="head-center">Question <span id="currentNo">1</span> of <span id="totalNo">0</span></div>
+<div class="exam-actions">
+<div class="display-menu-wrap">
+<button aria-controls="displayMenu" aria-expanded="false" class="display-menu-btn" id="displayMenuBtn" type="button">View</button>
+<div class="display-menu hidden" id="displayMenu">
+<div class="display-menu-title">Screen Mode</div>
+<div class="display-mode-grid">
+<button class="theme-btn active" id="dayThemeBtn" type="button">Day</button>
+<button class="theme-btn" id="comfortThemeBtn" type="button">Comfort</button>
+<button class="theme-btn" id="darkThemeBtn" type="button">Dark</button>
+<button class="focus-btn" id="focusBtn" type="button">Focus</button>
+</div>
+</div>
+</div>
+<div class="timer" id="timer">00:00:00</div>
+<button class="btn light" id="submitTop" type="button">Submit</button>
+<button aria-expanded="false" aria-label="Open question palette" class="palette-top-btn" id="paletteTopBtn" type="button">Palette</button>
+</div>
+<div aria-label="Question progress" class="progress-track"><div class="progress" id="progress"></div></div>
 </header>
 <div class="exam-body"><section class="card"><div class="q-head">
-  <div class="q-head-main"><span class="q-eyebrow">CURRENT QUESTION</span><h2 id="qTitle">Question 1</h2></div>
-  <span class="topic" id="topic">General</span>
-</div><div class="q-content"><div id="questionContent" class="q-text"></div><div id="options" class="options"></div></div><div class="q-footer"><div style="display:flex;gap:10px"><button class="btn outline" id="markBtn">Mark for Review & Next</button><button class="btn danger" id="clearBtn">Clear</button></div><div style="display:flex;gap:10px"><button class="btn outline" id="prevBtn">Previous</button><button class="btn primary" id="nextBtn">Save & Next</button></div></div></section>
-<aside id="palette" class="card palette"><div class="palette-head"><span>Question Palette</span><button id="closePalette" class="palette-close" type="button" aria-label="Close question palette">×</button></div><div id="paletteGrid" class="palette-grid"></div><div class="legend"><div><i class="dot" style="background:var(--gold)"></i>Answered</div><div><i class="dot" style="background:#f3f0df"></i>Not Answered</div><div><i class="dot" style="background:#8b9d9f"></i>Marked</div><div><i class="dot" style="background:#6b7d7f"></i>Ans & Marked</div></div></aside></div><div id="paletteBackdrop" class="palette-backdrop hidden"></div><button id="mobilePalette" class="mobile-toggle" type="button" aria-label="Open question palette" aria-expanded="false">Palette</button>
+<div class="q-head-main"><span class="q-eyebrow">CURRENT QUESTION</span><h2 id="qTitle">Question 1</h2></div>
+<span class="topic" id="topic">General</span>
+</div><div class="q-content"><div class="q-text" id="questionContent"></div><div class="options" id="options"></div></div><div class="q-footer"><div style="display:flex;gap:10px"><button class="btn outline" id="markBtn">Mark for Review &amp; Next</button><button class="btn danger" id="clearBtn">Clear</button></div><div style="display:flex;gap:10px"><button class="btn outline" id="prevBtn">Previous</button><button class="btn primary" id="nextBtn">Save &amp; Next</button></div></div></section>
+<aside class="card palette" id="palette"><div class="palette-head"><span>Question Palette</span><button aria-label="Close question palette" class="palette-close" id="closePalette" type="button">×</button></div><div class="palette-grid" id="paletteGrid"></div><div class="legend"><div><i class="dot" style="background:var(--gold)"></i>Answered</div><div><i class="dot" style="background:#f3f0df"></i>Not Answered</div><div><i class="dot" style="background:#8b9d9f"></i>Marked</div><div><i class="dot" style="background:#6b7d7f"></i>Ans &amp; Marked</div></div></aside></div><div class="palette-backdrop hidden" id="paletteBackdrop"></div><button aria-expanded="false" aria-label="Open question palette" class="mobile-toggle" id="mobilePalette" type="button">Palette</button>
+</div>
+<div class="modal hidden" id="confirm"><div class="modal-box"><h2>Submit Examination?</h2><p class="sub">You can still cancel and return to the test.</p><div class="helper" id="confirmStats"></div><div class="actions"><button class="btn outline" id="cancelSubmit">Cancel</button><button class="btn primary" id="confirmSubmit">Submit Test</button></div></div></div>
+<div class="screen hidden" id="result"><header class="exam-head no-print"><b>CGPSC Mock Test Result</b><div><button class="btn light" id="printBtn">Print Result</button><button class="btn primary" id="retakeBtn">Retake</button></div></header><main class="result"><section class="result-header"><h1>Performance Summary</h1><div class="score"><span id="score">0</span> / <span id="maxScore">0</span></div><p class="sub">Percentage: <b id="percent">0%</b> · Accuracy: <b id="accuracy">0%</b></p></section><div class="stats"><div class="stat"><small>Attempted</small><b id="attempted">0</b></div><div class="stat"><small>Correct</small><b id="correct">0</b></div><div class="stat"><small>Incorrect</small><b id="incorrect">0</b></div><div class="stat"><small>Negative Marks</small><b id="negative">0</b></div><div class="stat"><small>Time Taken</small><b id="timeTaken">00:00</b></div></div><section class="section"><h2>Topic-wise Analysis</h2><div id="topicAnalysis"></div></section><section class="section"><h2>Question-wise Analysis</h2><div style="overflow:auto"><table class="result-table"><thead><tr><th>Q</th><th>Topic</th><th>Your Answer</th><th>Correct</th><th>Status</th><th>Marks</th></tr></thead><tbody id="resultTable"></tbody></table></div></section><section class="section"><h2>Detailed Solutions</h2><div id="solutions"></div></section></main></div>
+
+
+
+  
+
+
+
+
+
+
+
+<div aria-label="Exam Hall" class="hidden" id="examHallScreen" role="dialog">
+<div class="eh-brief" id="ehBrief"><div class="eh-booklet">
+<div class="eh-ptabs"><button class="on" data-p="p1" type="button">Paper-I</button><button data-p="p2" type="button">Paper-II</button></div>
+<div class="eh-code">C37E-2020 · <span id="ehSetPrev">Set-?</span></div>
+<span class="eh-sm" id="ehPSub"></span>
+<h1 id="ehPTitle"></h1>
+<div class="eh-meta"><div><small>Questions</small><b id="ehMQ">150</b></div><div><small>Max marks</small><b id="ehMM">300</b></div><div><small>Time</small><b id="ehMT">2½ hrs</b></div><div><small>Marking</small><b id="ehMK">+2 / −0.66</b></div></div>
+<h3 id="ehBPH"></h3>
+<table class="eh-table"><thead><tr><th>Section</th><th>In paper</th><th>In your bank</th><th>Status</th></tr></thead><tbody id="ehBP"></tbody></table>
+<p class="eh-warn" id="ehShort"></p>
+<h3>Instructions to candidates</h3>
+<ol><li>All questions are compulsory and carry equal marks. Answers are marked on the OMR sheet by filling one bubble (A–D).</li>
+<li id="ehRuleStrict">In strict OMR mode a filled bubble cannot be changed or erased.</li>
+<li>Calculators, log tables, mobile phones and smart watches are prohibited. Use only the rough-work pad.</li>
+<li>The clock never stops. Invigilator announcements come at 1 hr, 30, 15, 5 and 1 min. The sheet is collected automatically at zero.</li>
+<li>Leaving the exam window is recorded and shown in your result.</li>
+<li id="ehTip"></li></ol>
+<h3>Candidate details</h3>
+<div class="eh-cand"><label>Name<input id="ehName" maxlength="40"/></label><label>Roll number<input id="ehRoll" maxlength="12"/></label></div>
+<div class="eh-chk"><label><input checked="" id="ehStrict" type="checkbox"/> Strict OMR mode</label><label><input checked="" id="ehFs" type="checkbox"/> Fullscreen</label><label><input checked="" id="ehSound" type="checkbox"/> Bell sounds</label></div>
+<div class="eh-actions"><button class="btn outline" id="ehBack" type="button">Back to Home</button><button class="btn outline hidden" id="ehResume" type="button">Resume exam in progress</button><button class="btn primary" id="ehBegin" type="button">Enter Exam Hall</button></div>
+</div></div>
+<div class="eh-seal hidden" id="ehSeal"><div><b id="ehSealN">5</b><p id="ehSealT"></p></div></div>
+<div class="hidden" id="ehExam">
+<header class="eh-head">
+<div><b><span id="ehPRom">QUESTION PAPER-I</span> · <span id="ehSetTag"></span></b><small id="ehCand"></small></div>
+<div class="eh-mid"><b id="ehSecChip"></b><span id="ehPos"></span></div>
+<div class="eh-right"><div class="eh-timer" id="ehTimer">00:00:00</div><button class="eh-btn go" id="ehSubmit" type="button">Hand in</button></div>
+</header>
+<nav class="eh-tabs" id="ehTabs"></nav>
+<div class="eh-body">
+<main class="eh-paper"><div class="eh-qno" id="ehQNo"></div><div class="eh-q" id="ehQ"></div><div class="eh-opts-list" id="ehOpts"></div>
+<div class="eh-pf"><span>CJ-FOR-1</span><span id="ehPage">[ 3 ]</span><span id="ehSetF">Set-D</span></div></main>
+<aside class="eh-omr" id="ehOmrBox"><div class="eh-omr-h">OMR ANSWER SHEET · <span id="ehOmrCount"></span></div><div class="eh-omr-grid" id="ehOmr"></div></aside>
+</div>
+<div class="eh-bar"><button class="eh-btn" id="ehPrev" type="button">◀ Previous</button><button class="eh-btn" id="ehFlag" type="button">⚑ Flag</button><button class="eh-btn" id="ehPad" type="button">✎ Rough work</button><button class="eh-btn" id="ehErase" type="button">Erase</button><button class="eh-btn eh-m" id="ehOmrBtn" type="button">OMR</button><button class="eh-btn" id="ehNext" type="button">Next ▶</button></div>
+<div class="eh-pad hidden" id="ehPadBox"><textarea placeholder="Rough work (not saved)…"></textarea></div>
+</div>
 </div>
 
-<div id="confirm" class="modal hidden"><div class="modal-box"><h2>Submit Examination?</h2><p class="sub">You can still cancel and return to the test.</p><div id="confirmStats" class="helper"></div><div class="actions"><button class="btn outline" id="cancelSubmit">Cancel</button><button class="btn primary" id="confirmSubmit">Submit Test</button></div></div></div>
+ 
+ 
 
-<div id="result" class="screen hidden"><header class="exam-head no-print"><b>CGPSC Mock Test Result</b><div><button class="btn light" id="printBtn">Print Result</button><button class="btn primary" id="retakeBtn">Retake</button></div></header><main class="result"><section class="result-header"><h1>Performance Summary</h1><div class="score"><span id="score">0</span> / <span id="maxScore">0</span></div><p class="sub">Percentage: <b id="percent">0%</b> · Accuracy: <b id="accuracy">0%</b></p></section><div class="stats"><div class="stat"><small>Attempted</small><b id="attempted">0</b></div><div class="stat"><small>Correct</small><b id="correct">0</b></div><div class="stat"><small>Incorrect</small><b id="incorrect">0</b></div><div class="stat"><small>Negative Marks</small><b id="negative">0</b></div><div class="stat"><small>Time Taken</small><b id="timeTaken">00:00</b></div></div><section class="section"><h2>Topic-wise Analysis</h2><div id="topicAnalysis"></div></section><section class="section"><h2>Question-wise Analysis</h2><div style="overflow:auto"><table class="result-table"><thead><tr><th>Q</th><th>Topic</th><th>Your Answer</th><th>Correct</th><th>Status</th><th>Marks</th></tr></thead><tbody id="resultTable"></tbody></table></div></section><section class="section"><h2>Detailed Solutions</h2><div id="solutions"></div></section></main></div>
-<script>
+
+
+
+<!-- ============================================================
+     APPLICATION LOGIC
+     Script order intentionally matches the source application.
+     ============================================================ -->
+
+<script id="script-1">
+
 
 /* CLOUD SETUP: Create a Supabase table named cgpsc_progress with columns:
    id uuid primary key, payload jsonb not null, updated_at timestamptz not null.
@@ -4176,23 +4524,11 @@ document.addEventListener('click',function(e){
   }
 },true);
 
+
 </script>
 
-
-<!-- ===== KAUSHAL FIX PATCH v2 — paste this whole block immediately before </body> (after the existing </script>) ===== -->
-<style id="kaushal-fixes">
-.qbtn.visited{background:#f3d9d5!important;border-color:#d8a6a0!important}
-body.theme-dark .qbtn.visited{background:#6b3c3c!important;color:#fff!important}
-body.theme-dark .notes-reader-header{background:rgba(17,26,43,.94)!important}
-body.theme-dark .notes-reader-shell{background:#0b1220!important}
-body.theme-dark .notes-back-btn{background:#172235!important;color:#f8fafc!important}
-body.theme-dark .saved-note-document{background:#111a2b!important;color:#e2e8f0!important}
-body.exam-active *,body.exam-active *::before,body.exam-active *::after{animation:none!important}
-@media(min-width:1051px){#start #examInfo{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;grid-column:2!important;grid-row:3!important}}
-.tracker-label,.tracker-value,.tracker-accuracy,.progress-big-label,.progress-big-value,.progress-big-accuracy,.recent-day-breakdown,.hub-ready,.plan-priority,.plan-category-tag,.attention-sub,.progress-stat-card em{font-size:11px!important}
-.muted-fix,.sub{color:#4E6265!important}
-</style>
 <script id="kaushal-fixes-js">
+
 (function(){
 const S=f=>{try{f()}catch(e){console.warn('patch:',e)}};
 const EDIT_KEY='cgpsc_last_edit_v1',SIG_KEY='cgpsc_sync_sig_v1',ATT_KEY='cgpsc_attempts_v1';
@@ -4277,14 +4613,11 @@ cloudPullLatest=async function(){if(!cloudEnabled()||!cloudReady||cloudPullBusy|
 const _sca=startCloudAutoSync;startCloudAutoSync=function(){cloudReady=true;_sca()};
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cloudReady){clearTimeout(cloudSaveTimer);cloudSaveNow()}});
 })();
-</script>
-<!-- ===== END KAUSHAL FIX PATCH ===== -->
 
-<!-- ===== KAUSHAL FIX PATCH v3 — paste AFTER the v2 patch block, immediately before </body> ===== -->
-<style id="kaushal-fixes-v3">
-@media(max-width:700px){input,select,textarea{font-size:16px!important}}
-</style>
+</script>
+
 <script id="kaushal-fixes-v3-js">
+
 (function(){
 const S=f=>{try{f()}catch(e){console.warn('v3:',e)}};
 const VER='cgpsc_srv_ver_v3',SYNC='cgpsc_sync_sig_v3',FORCE='cgpsc_force_push_v3',MIG='cgpsc_mig_v3',ATT='cgpsc_attempts_v1';
@@ -4375,12 +4708,11 @@ window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCa
 S(()=>{const fi=[...document.querySelectorAll('input[type=file][hidden]')].pop();if(fi)fi.onchange=()=>{const f=fi.files[0];if(!f)return;const r=new FileReader();r.onload=async()=>{try{const o=JSON.parse(r.result);if(!(await dlg('Restore this backup? It replaces the data on this device and then syncs to the cloud.',{ok:'Restore'})))return;Object.entries(o).forEach(([k,v])=>{if(k.startsWith('cgpsc_')&&![VER,SYNC,FORCE,'cgpsc_cloud_snapshot_v1'].includes(k))localStorage.setItem(k,v)});localStorage.setItem(FORCE,'1');location.reload()}catch(e){toast('Invalid backup file.')}};r.readAsText(f)}});
 S(()=>{document.querySelectorAll('.quickquiz-stats strong').forEach(e=>{if(e.textContent==='Random')e.textContent='Smart mix'});const i=document.getElementById('infoText')?.parentNode;if(i)i.innerHTML=i.innerHTML.replace('Timer and marking settings can be changed below before starting.','Marking: +'+App.cfg.correct+' / −'+App.cfg.incorrect+' per question.')});
 })();
+
 </script>
-<!-- ===== END KAUSHAL FIX PATCH v3 ===== -->
 
-
-<!-- ===== KAUSHAL PATCH v4 — AI prompt + schema compatibility fixes ===== -->
-<script type="text/plain" id="cgpscPromptText">You are an expert CGPSC Prelims Question Setter, PYQ Analyst, Subject Expert and MCQ Quality Controller.
+<script id="cgpscPromptText" type="text/plain">
+You are an expert CGPSC Prelims Question Setter, PYQ Analyst, Subject Expert and MCQ Quality Controller.
 
 Convert the study material I provide into authentic CGPSC-style practice MCQs. Do NOT create generic school-level quiz questions. Match the logic, wording, factual depth, distractor quality and conceptual difficulty of CGPSC State Service Preliminary Examination questions.
 
@@ -4470,8 +4802,11 @@ NUMBER OF QUESTIONS:
 OPTIONAL DIFFICULTY:
 [moderate / moderate-to-difficult / difficult / mixed]
 
-Generate strictly according to these instructions. Perform a final JSON syntax check, then RETURN ONLY THE VALID JSON ARRAY.</script>
+Generate strictly according to these instructions. Perform a final JSON syntax check, then RETURN ONLY THE VALID JSON ARRAY.
+</script>
+
 <script id="kaushal-fixes-v4-js">
+
 (function(){
 const S=f=>{try{f()}catch(e){console.warn('v4:',e)}};
 S(()=>{
@@ -4539,24 +4874,11 @@ if(typeof previousElaborate==='function'){
 const clean=()=>{const t=document.getElementById('jsonInput');if(t)t.value=t.value.trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim()};
 ['loadBtn','loadExamBtn','addBankBtn'].forEach(id=>document.getElementById(id)?.addEventListener('click',clean,true));
 })();
+
 </script>
-<!-- ===== END KAUSHAL PATCH v4 ===== -->
 
-
-<!-- ===== KAUSHAL PATCH v5 — revision sync (tombstones) + readable revision questions ===== -->
-<style id="kaushal-fixes-v5">
-.revision-question{white-space:normal;font-weight:500}
-.revision-question .rq-intro,.revision-question .rq-end{font-weight:700;margin:6px 0}
-.revision-question .rq-box,.revision-question .rq-passage{background:var(--panel-2,#f7faf9);border:1px solid var(--line,#dbe5e1);border-radius:12px;padding:12px 14px;margin:8px 0}
-.revision-question .rq-row{display:grid;grid-template-columns:28px 1fr;gap:6px;margin:0 0 9px;line-height:1.65}
-.revision-question .rq-row:last-child{margin-bottom:0}
-.revision-question .rq-ar{border:1px solid var(--line,#dbe5e1);border-left:4px solid var(--accent,#2d6b67);border-radius:10px;background:var(--panel-2,#f7faf9);padding:11px 13px;margin:8px 0;line-height:1.65}
-.revision-question .rq-ar span{display:block;font-weight:900;font-size:12px;margin-bottom:3px;color:var(--accent,#2d6b67)}
-.revision-question .rq-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;font-weight:500}
-.revision-question .rq-table th{background:var(--navy,#10242b);color:#fff;padding:8px 10px;text-align:left;font-size:12px}
-.revision-question .rq-table td{border:1px solid var(--line,#dbe5e1);padding:8px 10px;vertical-align:top}
-</style>
 <script id="kaushal-fixes-v5-js">
+
 (function(){
 const S=f=>{try{f()}catch(e){console.warn('v5:',e)}};
 const TOMB='cgpsc_revision_tomb_v1';
@@ -4637,7 +4959,160 @@ revisionRenderScreen=function(){
 };
 S(()=>{revisionRenderHome();revisionRenderScreen()});
 })();
-</script>
-<!-- ===== END KAUSHAL PATCH v5 ===== -->
 
-</body></html>
+</script>
+
+<script id="kaushal-hall-js">
+
+(function(){
+const S=f=>{try{f()}catch(e){console.warn('hall:',e)}};
+const g=id=>document.getElementById(id),KEY='cgpsc_hall_session_v1';
+/* Blueprint measured from Paper-I (150 Q): Q1-26,44,50 quant | Q27-43,45-49 reasoning & DM | Q51-100 C.G. G.K. | Hindi 20 | Chhattisgarhi 13 | English 17 */
+const PAPERS={
+p1:{rom:'I',sub:'प्रश्न-पत्र / Question Paper-I',title:'छ.ग. का सामान्य ज्ञान, भाषा एवं योग्यता परीक्षा<br>G.K. of C.G., Language &amp; Aptitude Test',bph:'Paper blueprint (analysed from CGPSC Forest Ranger 2020, Paper-I)',tip:'Expect many “match the list”, “arrange in order”, two-statement and “NOT correct” questions in G.K.',bp:[
+{key:'quant',name:'Quantitative Aptitude',n:28,subs:['Mathematics & Statistics'],hint:'Work, %, interest, partnership, mensuration, algebra, DI'},
+{key:'reason',name:'Reasoning & Decision Making',n:22,subs:['Reasoning & Logical Ability','Mental Ability'],hint:'Series, coding, direction, venn, syllogism, situation judgement'},
+{key:'gk',name:'G.K. of Chhattisgarh',n:50,subs:['Chhattisgarh General Studies'],hint:'History, Panchayat Raj, culture, forests, minerals, economy'},
+{key:'hin',name:'Hindi',n:20,subs:['Hindi'],hint:'Grammar, samas, sandhi, vocabulary, literature'},
+{key:'chh',name:'Chhattisgarhi',n:13,subs:['Chhattisgarhi'],hint:'Words, dialects, literature'},
+{key:'eng',name:'English',n:17,subs:['English'],hint:'Grammar, passage, vocabulary, sentence correction'}]},
+/* Paper-II boundaries were read from the scanned PDF by OCR and are accurate to about ±2 questions. */
+p2:{rom:'II',sub:'प्रश्न-पत्र / Question Paper-II',title:'विज्ञान, प्रौद्योगिकी, पर्यावरण, कृषि विज्ञान एवं वानिकी<br>Science, Technology, Environment, Agriculture Science &amp; Forestry',bph:'Paper blueprint (analysed from CGPSC Forest Ranger 2020, Paper-II)',tip:'Expect many “match the columns” questions (trees, herbicides, conventions, chromosomal aberrations), statement-based questions, and numericals in Physics, Chemistry and Agronomy.',bp:[
+{key:'for',name:'Forestry',n:18,subs:['Forestry'],hint:'Silviculture, mensuration, taungya, tree species, forest policy and law'},
+{key:'tec',name:'Technology',n:5,subs:['Technology'],hint:'GPS, remote sensing, space organisations'},
+{key:'phy',name:'Physics',n:21,subs:['Physics'],hint:'Waves, optics, current electricity, magnetism (numericals)'},
+{key:'che',name:'Chemistry',n:23,subs:['Chemistry'],hint:'Kinetics, thermochemistry, periodic table, organic'},
+{key:'bio',name:'Biology',n:24,subs:['Biology'],hint:'Cell, photosynthesis, physiology, genetics, evolution'},
+{key:'env',name:'Environment',n:35,subs:['Environment'],hint:'Biodiversity, conventions, pollution, atmosphere, EIA'},
+{key:'agr',name:'Agriculture',n:24,subs:['Agriculture'],hint:'Plant breeding, agronomy, herbicides, plant pathology, seed'}]}};
+let PK='p1',BP=PAPERS.p1.bp;
+function setPaper(k){PK=k;BP=PAPERS[k].bp;const P=PAPERS[k];g('ehPSub').textContent=P.sub;g('ehPTitle').innerHTML=P.title;g('ehBPH').textContent=P.bph;g('ehTip').innerHTML=P.tip;g('ehPRom').textContent='QUESTION PAPER-'+P.rom;document.querySelectorAll('.eh-ptabs button').forEach(b=>b.classList.toggle('on',b.dataset.p===k));renderBP()}
+const H={qs:[],ans:{},flag:{},i:0,end:0,set:'D',name:'',roll:'',strict:true,sound:true,warns:0,timer:null,on:false,total:0,sent:{}};
+const POS=()=>App.cfg.correct,NEG=()=>App.cfg.incorrect;
+const pool=s=>{const b=bankLoad(),o=[];s.subs.forEach(x=>(b[x]||[]).forEach(q=>o.push(q)));return o};
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function bell(n){if(!H.sound)return;try{const c=H.ac||(H.ac=new(window.AudioContext||window.webkitAudioContext)());for(let i=0;i<n;i++){const o=c.createOscillator(),v=c.createGain(),t=c.currentTime+i*.4;o.frequency.value=880;v.gain.setValueAtTime(.15,t);v.gain.exponentialRampToValueAtTime(.001,t+.35);o.connect(v);v.connect(c.destination);o.start(t);o.stop(t+.35)}}catch(e){}}
+function say(m){const t=document.createElement('div');t.className='eh-toast';t.textContent=m;g('examHallScreen').appendChild(t);setTimeout(()=>t.remove(),3800)}
+function ask(msg,ok){return new Promise(r=>{const m=document.createElement('div');m.className='modal';m.style.zIndex=6000;m.innerHTML='<div class="modal-box"><p style="font-weight:700;margin:0 0 14px"></p><div class="actions" style="justify-content:flex-end"><button class="btn outline" data-r="0">Go back</button><button class="btn primary" data-r="1"></button></div></div>';m.querySelector('p').innerHTML=msg;m.querySelector('.primary').textContent=ok;m.onclick=e=>{const b=e.target.closest('[data-r]');if(b){m.remove();r(b.dataset.r==='1')}};g('examHallScreen').appendChild(m)})}
+function sess(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({pk:PK,end:H.end,set:H.set,name:H.name,roll:H.roll,strict:H.strict,sound:H.sound,ids:H.qs.map(q=>q.id),sec:H.qs.map(q=>q.hallSec),ans:H.ans,flag:H.flag,i:H.i,warns:H.warns,total:H.total}))}catch(e){}}
+
+/* ---------- briefing ---------- */
+function renderBP(){let tot=0,need=0;g('ehBP').innerHTML=BP.map(s=>{const n=pool(s).length;tot+=Math.min(n,s.n);need+=s.n;const ok=n>=s.n;return `<tr><td><b>${s.name}</b><small>${s.hint}</small></td><td>${s.n}</td><td>${n}</td><td class="${ok?'eh-ok':'eh-low'}">${ok?'Ready':'Need '+(s.n-n)+' more'}</td></tr>`}).join('');
+ const q=Math.min(tot,need);g('ehMQ').textContent=q;g('ehMM').textContent=q*POS();g('ehMT').textContent=q>=150?'2½ hrs':q+' min';g('ehMK').textContent='+'+POS()+' / −'+NEG();
+ g('ehShort').textContent=tot>=need?'Your bank can fill the complete 150-question paper.':`Your bank can fill ${tot} of ${need} questions. The paper runs in reduced mode (${tot} Q · ${tot} min · ${tot*POS()} marks) until you add more questions.`;
+ g('ehBegin').disabled=tot<10;g('ehBegin').title=tot<10?'Add at least 10 questions to the bank first.':'';
+ g('ehSetPrev').textContent='Set-'+'ABCD'[Math.floor(Math.random()*4)];
+ g('ehResume').classList.toggle('hidden',!(sess()&&sess().end))}
+function openHall(){const s=g('examHallScreen');s.classList.remove('hidden');document.body.classList.add('hall-open');g('ehBrief').classList.remove('hidden');g('ehExam').classList.add('hidden');g('ehSeal').classList.add('hidden');if(!g('ehName').value)g('ehName').value='Kaushal';if(!g('ehRoll').value)g('ehRoll').value=String(1000000+Math.floor(Math.random()*8999999));setPaper(PK);s.scrollTop=0}
+function closeHall(){g('examHallScreen').classList.add('hidden');document.body.classList.remove('hall-open')}
+
+/* ---------- start ---------- */
+function build(){const qs=[];BP.forEach(sec=>{const seen=new Set();shuf(pool(sec)).filter(q=>!seen.has(q.id)&&seen.add(q.id)).slice(0,sec.n).forEach(q=>qs.push({...normalize(q,0),hallSec:sec.key}))});return qs}
+function begin(){const qs=build();if(qs.length<10)return;Object.assign(H,{qs,total:qs.length,ans:{},flag:{},i:0,warns:0,sent:{},set:'ABCD'[Math.floor(Math.random()*4)],name:g('ehName').value.trim()||'Candidate',roll:g('ehRoll').value.trim(),strict:g('ehStrict').checked,sound:g('ehSound').checked});
+ if(g('ehFs').checked)document.documentElement.requestFullscreen?.().catch(()=>{});
+ g('ehBrief').classList.add('hidden');g('ehSeal').classList.remove('hidden');let n=5;
+ const set=()=>{g('ehSealN').textContent=n>0?n:'';g('ehSealT').textContent=n>0?'Do not open the question booklet until the invigilator tells you to.':'You may begin. Good luck.'};set();bell(1);
+ const t=setInterval(()=>{n--;set();if(n<=0){clearInterval(t);bell(2);setTimeout(()=>{g('ehSeal').classList.add('hidden');H.end=Date.now()+H.total*60000;enter()},800)}},1000)}
+function resume(){const s=sess();if(!s)return;setPaper(s.pk||'p1');const m={};Object.values(bankLoad()).forEach(a=>(a||[]).forEach(q=>m[q.id]=q));const qs=[];s.ids.forEach((id,k)=>{if(m[id])qs.push({...normalize(m[id],0),hallSec:s.sec[k]})});if(!qs.length){localStorage.removeItem(KEY);renderBP();return}
+ Object.assign(H,{qs,ans:s.ans||{},flag:s.flag||{},i:Math.min(s.i||0,qs.length-1),end:s.end,set:s.set,name:s.name,roll:s.roll,strict:s.strict,sound:s.sound,warns:s.warns||0,total:s.total||qs.length,sent:{}});enter()}
+function enter(){H.on=true;g('ehBrief').classList.add('hidden');g('examHallScreen').classList.remove('hidden');document.body.classList.add('hall-open');g('ehExam').classList.remove('hidden');
+ g('ehSetTag').textContent='SET-'+H.set;g('ehSetF').textContent='Set-'+H.set;g('ehCand').textContent=H.name+' · Roll '+H.roll;
+ g('ehOmr').innerHTML=H.qs.map((q,i)=>`<div class="eh-row${i%10===9?' sep':''}"><span class="eh-n" data-n="${i}">${i+1}</span>${Object.keys(q.options).slice(0,4).map(k=>`<button type="button" class="eh-b" data-i="${i}" data-k="${k}">${k}</button>`).join('')}</div>`).join('');
+ draw();clearInterval(H.timer);H.timer=setInterval(tick,1000);tick();history.pushState({v:'exam'},'');persist()}
+
+/* ---------- exam ---------- */
+function tick(){if(!H.on)return;const left=Math.max(0,Math.round((H.end-Date.now())/1000)),t=g('ehTimer');t.textContent=[Math.floor(left/3600),Math.floor(left%3600/60),left%60].map(v=>String(v).padStart(2,'0')).join(':');t.className='eh-timer'+(left<=300?' crit':left<=900?' warn':'');
+ [[3600,'1 hour'],[1800,'30 minutes'],[900,'15 minutes'],[300,'5 minutes'],[60,'1 minute']].forEach(([s,l])=>{if(left<=s&&left>s-3&&!H.sent[s]&&H.total*60>s){H.sent[s]=1;say('Invigilator: '+l+' remaining.');bell(s<=300?3:1)}});
+ if(left<=0)hallSubmit(true)}
+function draw(){const q=H.qs[H.i];if(!q)return;const sec=BP.find(s=>s.key===q.hallSec)||BP[0];
+ g('ehQNo').textContent=(H.i+1)+'.';g('ehSecChip').textContent=sec.name;g('ehPos').textContent='Question '+(H.i+1)+' of '+H.qs.length;
+ const box=g('ehQ');box.innerHTML='';(q.type==='multiple_statement'?renderStatements:q.type==='assertion_reason'?renderAR:q.type==='match_following'?renderMatch:renderMCQ)(box,q);
+ const o=g('ehOpts');o.innerHTML='';Object.entries(q.options||{}).forEach(([k,v])=>{const d=document.createElement('button');d.type='button';d.className='eh-opt'+(H.ans[q.id]===k?' on':'');d.innerHTML='<b>('+k+')</b><span></span>';d.lastChild.textContent=v;d.onclick=()=>mark(k);o.appendChild(d)});
+ g('ehPage').textContent='[ '+(Math.floor(H.i/2)+3)+' ]';g('ehFlag').classList.toggle('on',!!H.flag[q.id]);g('ehPrev').disabled=H.i===0;g('ehErase').disabled=H.strict;g('ehNext').textContent=H.i===H.qs.length-1?'Finish':'Next ▶';
+ let a=0;g('ehOmr').querySelectorAll('.eh-row').forEach((r,i)=>{const x=H.qs[i];r.classList.toggle('cur',i===H.i);r.classList.toggle('fl',!!H.flag[x.id]);r.querySelectorAll('.eh-b').forEach(b=>b.classList.toggle('on',H.ans[x.id]===b.dataset.k));if(H.ans[x.id])a++});
+ g('ehOmrCount').textContent=a+'/'+H.qs.length+' marked';const c=g('ehOmr').querySelector('.cur');if(c)c.scrollIntoView({block:'nearest'});
+ g('ehTabs').innerHTML=BP.map(s=>{const ix=H.qs.map((x,i)=>x.hallSec===s.key?i:-1).filter(i=>i>=0);if(!ix.length)return'';return `<button type="button" class="${s.key===q.hallSec?'on':''}" data-go="${ix[0]}">${s.name}<small>${ix.filter(i=>H.ans[H.qs[i].id]).length}/${ix.length}</small></button>`}).join('')}
+function mark(k){const q=H.qs[H.i];if(!q||!H.on)return;if(H.strict&&H.ans[q.id]&&H.ans[q.id]!==k){say('OMR rule: a filled bubble cannot be changed.');return}H.ans[q.id]=k;persist();draw()}
+function go(d){const n=H.i+d;if(n<0)return;if(n>=H.qs.length){hallSubmit(false);return}H.i=n;persist();draw()}
+function flag(){const q=H.qs[H.i];H.flag[q.id]=!H.flag[q.id];persist();draw()}
+
+/* ---------- submit & result ---------- */
+function secTable(){const rows=BP.map(s=>{const qs=H.qs.filter(q=>q.hallSec===s.key);if(!qs.length)return'';let c=0,w=0;qs.forEach(q=>{const a=H.ans[q.id];if(!a)return;a===q.answer?c++:w++});const t=c+w;return `<tr><td>${s.name}</td><td>${qs.length}</td><td>${t}</td><td>${c}</td><td>${w}</td><td>${(c*POS()-w*NEG()).toFixed(2)}/${qs.length*POS()}</td><td>${t?Math.round(c/t*100):0}%</td></tr>`}).join('');
+ let el=g('hallSection');if(!el){el=document.createElement('section');el.className='section';el.id='hallSection';const m=document.querySelector('#result main.result');m.insertBefore(el,m.querySelector('.section'))}
+ el.innerHTML=`<h2>Exam Hall — Section-wise Analysis</h2><div style="overflow:auto"><table class="eh-table" style="font-family:inherit"><thead><tr><th>Section</th><th>Qs</th><th>Tried</th><th>Right</th><th>Wrong</th><th>Score</th><th>Acc.</th></tr></thead><tbody>${rows}</tbody></table></div><p class="sub" style="font-size:12px;margin:10px 0 0">Paper-${PAPERS[PK].rom} · Set-${H.set} · Roll ${esc(H.roll)} · Window switches logged: <b>${H.warns}</b> · Wrong answers were added to Revision.</p>`}
+async function hallSubmit(auto){if(!H.on)return;
+ if(!auto&&!(await ask(`Marked <b>${Object.keys(H.ans).length}</b> of <b>${H.qs.length}</b>. Hand in your OMR sheet? This cannot be undone.`,'Hand in')))return;
+ H.on=false;clearInterval(H.timer);localStorage.removeItem(KEY);closeHall();if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});
+ const left=Math.max(0,Math.round((H.end-Date.now())/1000));
+ App.questions=H.qs.map(q=>({...q}));App.state={index:0,remaining:left,answers:{...H.ans},status:{},started:false};App.startRemaining=H.total*60;
+ H.qs.forEach(q=>{const a=H.ans[q.id];App.state.status[q.id]=a?'answered':'visited';if(a){trackerRecordQuestion(q);revisionRecordQuestion(q,a)}});
+ try{const r=calc(),a=JSON.parse(storageGet('cgpsc_attempts_v1','[]')||'[]');a.unshift({at:new Date().toISOString(),n:H.qs.length,score:+r.score.toFixed(2),max:H.qs.length*POS(),attempted:r.attempted,correct:r.correct,wrong:r.wrong});storageSet('cgpsc_attempts_v1',JSON.stringify(a.slice(0,100)))}catch(e){}
+ buildResult();secTable();['start','exam','confirm'].forEach(id=>g(id)&&g(id).classList.add('hidden'));g('result').classList.remove('hidden');window.scrollTo(0,0);S(save);queueCloudSave()}
+
+/* ---------- wiring ---------- */
+document.querySelector('.eh-ptabs').onclick=e=>{const b=e.target.closest('[data-p]');if(b)setPaper(b.dataset.p)};
+g('ehBegin').onclick=begin;g('ehResume').onclick=resume;g('ehBack').onclick=closeHall;
+g('ehSubmit').onclick=()=>hallSubmit(false);g('ehPrev').onclick=()=>go(-1);g('ehNext').onclick=()=>go(1);g('ehFlag').onclick=flag;
+g('ehErase').onclick=()=>{const q=H.qs[H.i];if(!H.strict&&q){delete H.ans[q.id];persist();draw()}};
+g('ehPad').onclick=()=>g('ehPadBox').classList.toggle('hidden');g('ehOmrBtn').onclick=()=>g('ehOmrBox').classList.toggle('open');
+g('ehOmr').onclick=e=>{const b=e.target.closest('.eh-b'),n=e.target.closest('[data-n]');if(b){H.i=+b.dataset.i;mark(b.dataset.k)}else if(n){H.i=+n.dataset.n;persist();draw();g('ehOmrBox').classList.remove('open')}};
+g('ehTabs').onclick=e=>{const b=e.target.closest('[data-go]');if(b){H.i=+b.dataset.go;persist();draw()}};
+g('ehStrict').onchange=()=>{g('ehRuleStrict').style.opacity=g('ehStrict').checked?1:.4};
+document.addEventListener('visibilitychange',()=>{if(!H.on)return;if(document.visibilityState==='hidden'){H.warns++;persist()}else say('Invigilator: leaving the exam window is recorded ('+H.warns+').')});
+window.addEventListener('beforeunload',e=>{if(H.on){persist();e.preventDefault();e.returnValue=''}});
+window.addEventListener('popstate',()=>{if(H.on){history.pushState({v:'exam'},'');say('You cannot leave during the examination. Use Hand in to finish.')}});
+document.addEventListener('keydown',e=>{if(!H.on||e.ctrlKey||e.metaKey||e.altKey)return;const t=(e.target.tagName||'').toLowerCase();if(t==='textarea'||t==='input')return;const q=H.qs[H.i],k=e.key.length===1?e.key.toUpperCase():'';
+ if(k&&'ABCD'.includes(k)&&q.options[k])mark(k);else if(k&&'1234'.includes(k)){const x='ABCD'[+k-1];if(q.options[x])mark(x)}else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(k==='F')flag()},true);
+S(()=>{const b=document.createElement('button');b.id='examHallHomeBtn';b.type='button';b.title='Real exam-hall simulation of Paper-I';b.innerHTML='<span aria-hidden="true">🏛</span><span>Exam Hall</span>';b.onclick=e=>{e.stopPropagation();openHall()};document.querySelector('#start .study-nav-actions').appendChild(b)});
+if(sess()&&sess().end)setTimeout(openHall,900);   /* an exam in progress is re-opened after a reload */
+})();
+
+</script>
+
+<script id="kaushal-nav-v8-js">
+
+(function(){
+  const ICON={
+    progress:'<svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>',
+    hub:'<svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5" opacity=".55"/></svg>',
+    plan:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="m9 14 2 2 4-4"/></svg>',
+    notes:'<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M8.5 13h7"/><path d="M8.5 17h5"/></svg>',
+    quiz:'<svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
+    hall:'<svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M9 21v-8"/><path d="M15 21v-8"/><path d="M2.5 10 12 4l9.5 6h-19Z"/></svg>'
+  };
+  const MAP=[
+    ['trackerToggle','progress','Progress','Questions solved and accuracy'],
+    ['studyHubHomeBtn','hub','Study Hub','Your question banks'],
+    ['studyPlanHomeBtn','plan','Plan','Daily study to-do list'],
+    ['notesHomeBtn','notes','Notes','Notes for each subject'],
+    ['quickQuizHomeBtn','quiz','Quick Quiz','25 mixed questions'],
+    ['examHallHomeBtn','hall','Exam Hall','Full timed paper']
+  ];
+  function build(){
+    MAP.forEach(([id,key,label,sub])=>{
+      const b=document.getElementById(id);
+      if(!b||b.dataset.navV8)return;
+      const badge=b.querySelector('#trackerTodayMini');
+      b.classList.add('nav-tile','nav-'+key);
+      b.innerHTML=
+        '<span class="nav-ico" aria-hidden="true">'+ICON[key]+'</span>'+
+        '<span class="nav-txt"><span class="nav-label">'+label+'</span><span class="nav-sub">'+sub+'</span></span>';
+      if(badge){
+        badge.className='nav-badge';
+        badge.title='Questions solved today';
+        b.appendChild(badge);
+        const sync=()=>badge.classList.toggle('is-zero',String(badge.textContent).trim()==='0');
+        sync();
+        new MutationObserver(sync).observe(badge,{childList:true,characterData:true,subtree:true});
+      }
+      b.dataset.navV8='1';
+    });
+  }
+  build();
+  setTimeout(build,300);
+})();
+
+</script>
+</body>
+</html>
