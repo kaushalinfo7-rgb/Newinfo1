@@ -4542,4 +4542,102 @@ const clean=()=>{const t=document.getElementById('jsonInput');if(t)t.value=t.val
 </script>
 <!-- ===== END KAUSHAL PATCH v4 ===== -->
 
+
+<!-- ===== KAUSHAL PATCH v5 — revision sync (tombstones) + readable revision questions ===== -->
+<style id="kaushal-fixes-v5">
+.revision-question{white-space:normal;font-weight:500}
+.revision-question .rq-intro,.revision-question .rq-end{font-weight:700;margin:6px 0}
+.revision-question .rq-box,.revision-question .rq-passage{background:var(--panel-2,#f7faf9);border:1px solid var(--line,#dbe5e1);border-radius:12px;padding:12px 14px;margin:8px 0}
+.revision-question .rq-row{display:grid;grid-template-columns:28px 1fr;gap:6px;margin:0 0 9px;line-height:1.65}
+.revision-question .rq-row:last-child{margin-bottom:0}
+.revision-question .rq-ar{border:1px solid var(--line,#dbe5e1);border-left:4px solid var(--accent,#2d6b67);border-radius:10px;background:var(--panel-2,#f7faf9);padding:11px 13px;margin:8px 0;line-height:1.65}
+.revision-question .rq-ar span{display:block;font-weight:900;font-size:12px;margin-bottom:3px;color:var(--accent,#2d6b67)}
+.revision-question .rq-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;font-weight:500}
+.revision-question .rq-table th{background:var(--navy,#10242b);color:#fff;padding:8px 10px;text-align:left;font-size:12px}
+.revision-question .rq-table td{border:1px solid var(--line,#dbe5e1);padding:8px 10px;vertical-align:top}
+</style>
+<script id="kaushal-fixes-v5-js">
+(function(){
+const S=f=>{try{f()}catch(e){console.warn('v5:',e)}};
+const TOMB='cgpsc_revision_tomb_v1';
+
+/* ---------- tombstones ---------- */
+function tombLoad(){try{const t=JSON.parse(storageGet(TOMB,'{}')||'{}');return t&&typeof t==='object'?t:{}}catch(e){return {}}}
+function tombSave(t){const cut=Date.now()-120*864e5;Object.keys(t).forEach(k=>{if(Date.parse(t[k])<cut)delete t[k]});storageSet(TOMB,JSON.stringify(t))}
+function mergeTomb(remote){
+  if(!remote||typeof remote!=='object')return;
+  const t=tombLoad();let changed=false;
+  Object.entries(remote).forEach(([k,v])=>{if(!t[k]||Date.parse(v)>Date.parse(t[k])){t[k]=v;changed=true}});
+  if(changed)tombSave(t);
+}
+const live=arr=>{const t=tombLoad();return (Array.isArray(arr)?arr:[]).filter(x=>x&&!(t[x.key]&&Date.parse(t[x.key])>=Date.parse(x.lastWrongAt||x.addedAt||0)))};
+
+const _rl=revisionLoad;  revisionLoad=function(){return live(_rl())};
+const _rm=revisionMerge; revisionMerge=function(a,b){return live(_rm(a,b))};
+
+revisionRemove=function(index){
+  const list=revisionMerge(App.revision,revisionLoad());
+  if(index<0||index>=list.length)return;
+  const [item]=list.splice(index,1);
+  const t=tombLoad();t[item.key]=new Date().toISOString();tombSave(t);
+  revisionSave(list);revisionRenderHome();revisionRenderScreen();
+  clearTimeout(cloudSaveTimer);cloudSaveNow();
+};
+
+/* send tombstones with every upload */
+const _bcp=buildCloudPayload;
+buildCloudPayload=function(){const p=_bcp();p.revisionTombstones=tombLoad();return p};
+
+/* read tombstones from every cloud download BEFORE the sync code merges lists */
+const _fetch=window.fetch.bind(window);
+window.fetch=async function(input,init){
+  const res=await _fetch(input,init);
+  try{
+    const url=typeof input==='string'?input:(input&&input.url)||'';
+    const method=((init&&init.method)||(input&&input.method)||'GET').toUpperCase();
+    if(method==='GET'&&url.includes('/rest/v1/'+CLOUD_CONFIG.table)&&url.includes('select=payload')){
+      const rows=await res.clone().json();
+      mergeTomb(rows?.[0]?.payload?.revisionTombstones);
+    }
+  }catch(e){}
+  return res;
+};
+
+/* ---------- readable question layout ---------- */
+function fmtQ(text){
+  const body=String(text||'').split(/\nOptions:\s*(?:\n|$)/)[0];
+  const L=body.split('\n').map(s=>s.trim()).filter(Boolean);
+  let out='',st=[],pr=[],lf=[],rt=[],side='';
+  const tbl=(rows,h1,h2)=>`<table class="rq-table"><thead><tr><th>${h1}</th><th>${h2}</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}</tbody></table>`;
+  const flush=()=>{
+    if(st.length){out+=`<div class="rq-box">${st.map(x=>`<div class="rq-row"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('')}</div>`;st=[]}
+    if(pr.length){out+=tbl(pr.map(p=>[p[0]+'. '+p[1],p[2]+'. '+p[3]]),'List-I','List-II');pr=[]}
+    if(lf.length||rt.length){const n=Math.max(lf.length,rt.length),rows=[];for(let i=0;i<n;i++)rows.push([lf[i]||'',rt[i]||'']);out+=tbl(rows,'List-I','List-II');lf=[];rt=[]}
+  };
+  for(const ln of L){
+    let m;
+    if(/^Passage:/i.test(ln)){flush();out+=`<div class="rq-passage">${esc(ln.replace(/^Passage:\s*/i,''))}</div>`}
+    else if((m=ln.match(/^(Assertion \(A\)|Reason \(R\)):\s*(.*)$/))){flush();out+=`<div class="rq-ar"><span>${esc(m[1])}</span>${esc(m[2])}</div>`}
+    else if((m=ln.match(/^(\d+)\.\s*(.+?)\s+—\s+([a-z])\.\s*(.+)$/))){pr.push([m[1],m[2],m[3],m[4]])}
+    else if(/^List[^:]*:\s*$/i.test(ln)){side=side?'R':'L'}
+    else if(side&&/^(\d+|[a-z])\.\s*\S/.test(ln)){(side==='L'?lf:rt).push(ln)}
+    else if((m=ln.match(/^(\d+)\.\s*(.+)$/))){st.push([m[1]+'.',m[2]])}
+    else{flush();side='';out+=`<div class="${out?'rq-end':'rq-intro'}">${esc(ln)}</div>`}
+  }
+  flush();
+  return out||esc(text||'Question unavailable');
+}
+const _rrs=revisionRenderScreen;
+revisionRenderScreen=function(){
+  _rrs();
+  S(()=>{
+    const list=revisionMerge(App.revision,revisionLoad());
+    document.querySelectorAll('#revisionItems .revision-question').forEach((el,i)=>{if(list[i])el.innerHTML=fmtQ(list[i].questionText)});
+  });
+};
+S(()=>{revisionRenderHome();revisionRenderScreen()});
+})();
+</script>
+<!-- ===== END KAUSHAL PATCH v5 ===== -->
+
 </body></html>
